@@ -1,0 +1,30 @@
+{
+  "name": "livery-docs",
+  "version": "1.0.0",
+  "description": "Documentation for Ex Machina Group Livery.",
+  "author": "Ex Machina Group",
+  "homepage": "https://docs.liveryvideo.com",
+  "license": "MIT",
+  "repository": "github:exmg/livery-docs",
+  "scripts": {
+    "format": "markdownlint \"**/*.md\" --fix",
+    "lint": "markdownlint \"**/*.md\"",
+    "start": "live-server --entry-file=index.html"
+  },
+  "dependencies": {
+    "husky": "^4.2.1",
+    "lint-staged": "^10.0.7",
+    "live-server": "^1.2.1",
+    "markdownlint-cli": "^0.21.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "**/*.md": [
+      "markdownlint --fix"
+    ]
+  }
+}

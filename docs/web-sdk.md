@@ -90,7 +90,7 @@ Invisible element defined as `<livery-sdk>` which is used to initialize the Live
 | ---------- | ---------- | -------------------------------------------------------- | -------- | ----------------------------------------------------------- |
 | `bubbles`  | `bubbles`  | `boolean`                                                | `false`  | If true then events dispatched by this element will bubble. |
 | `config`   | `config`   | `string`                                                 | `''`     | Remote config URL.                                          |
-| `loglevel` | `logLevel` | `'quiet' | 'error' | 'warn' | 'info' | 'debug' | 'spam'` | `'info'` | Log level.                                                  |
+| `loglevel` | `logLevel` | `'quiet'` \| `'error'` \| `'warn'` \| `'info'` \| `'debug'` \| `'spam'` | `'info'` | Log level.                                                  |
 
 #### Events
 
@@ -112,13 +112,13 @@ This will not start playing until a `<livery-sdk>` element has been successfully
 | `autoplay`      | `autoplay`      | `boolean`       | `false` | If `true` then automatically begin playback as soon as possible.<br />Note: Browser might prevent this if muted is false.                 |
 | `autoplaymuted` | `autoplayMuted` | `boolean`       | `false` | If `true` then automatically begin playback as soon as possible, falling back to muted autoplay if necessary.                             |
 | `bubbles`       | `bubbles`       | `boolean`       | `false` | If true then events dispatched by this element will bubble.                                                                               |
-| `controls`      | `controls`      | `string | null` | `null`  | Which controls to enable (space separated; e.g. to enable all controls: `'mute fullscreen quality'`).                                     |
+| `controls`      | `controls`      | `string` \| `null` | `null`  | Which controls to enable (space separated; e.g. to enable all controls: `'mute fullscreen quality'`).                                     |
 | `loop`          | `loop`          | `boolean`       | `false` | If `true` then automatically seek back to the start upon reaching the end.                                                                |
 | `muted`         | `muted`         | `boolean`       | `false` | If `true` then audio is muted.<br />Dispatches: `livery-volume-change`.                                                                   |
 | `persistmuted`  | `persistMuted`  | `boolean`       | `false` | If `true` then persist muted state of player in localStorage with key `'muted'`.                                                          |
-| `poster`        | `poster`        | `string | null` | `null`  | A URL for an image to be shown while the video is downloading.                                                                            |
-| `preload`       | `preload`       | `string | null` | `null`  | Whether to preload `'none'`, just `'metadata'` (default) or `'full'` media.                                                               |
-| `targetlatency` | `targetLatency` | `number | null` | `null`  | Custom target live latency in seconds. If `null` then remote config or default latency is used. If `0` or `NaN` then syncing is disabled. |
+| `poster`        | `poster`        | `string` \| `null` | `null`  | A URL for an image to be shown while the video is downloading.                                                                            |
+| `preload`       | `preload`       | `string` \| `null` | `null`  | Whether to preload `'none'`, just `'metadata'` (default) or `'full'` media.                                                               |
+| `targetlatency` | `targetLatency` | `number` \| `null` | `null`  | Custom target live latency in seconds. If `null` then remote config or default latency is used. If `0` or `NaN` then syncing is disabled. |
 
 #### Properties
 
@@ -133,14 +133,14 @@ This will not start playing until a `<livery-sdk>` element has been successfully
 | `droppedFrames`   | R   | `number`                                                                                                                                          | `NaN`       | Number of video frames which have been dropped since the last time the media was loaded.<br />If not supported this will return `NaN`.                                                  |
 | `duration`        | R   | `number`                                                                                                                                          | `NaN`       | Media duration in seconds.<br />Dispatches: `livery-duration-change`.                                                                                                                   |
 | `engineName`      | R   | `string`                                                                                                                                          | `''`        | Current media engine name.                                                                                                                                                              |
-| `error`           | R   | `Error | undefined`                                                                                                                               | `undefined` | Most recent unrecovered error.<br />Dispatches: `livery-error`, `livery-recovered`.                                                                                                     |
+| `error`           | R   | `Error` \| `undefined`                                                                                                                               | `undefined` | Most recent unrecovered error.<br />Dispatches: `livery-error`, `livery-recovered`.                                                                                                     |
 | `latency`         | R   | `number`                                                                                                                                          | `NaN`       | End to end latency in seconds.<br />Changes on: `livery-offset-change`, `livery-time-update`, `livery-zero-change`.                                                                     |
 | `playbackRate`    | R/W | `number`                                                                                                                                          | `1`         | Playback rate (1 is normal).<br />Dispatches: `livery-rate-change`.                                                                                                                     |
-| `playbackState`   | R   | `'BUFFERING' |`<br />`'ENDED' |`<br />`'FAST_FORWARD' |`<br />`'PAUSED' |`<br />`'PLAYING' |`<br />`'REWIND'`<br />`'SEEKING' |`<br />`'SLOW_MO'` | `'PAUSED'`  | Playback state.<br />Dispatches: `livery-playback-change`.                                                                                                                              |
+| `playbackState`   | R   | `'BUFFERING'` \| `'ENDED'` \| `'FAST_FORWARD'` \| `'PAUSED'` \| `'PLAYING'` \| `'REWIND'` \| `'SEEKING'` \| `'SLOW_MO'` | `'PAUSED'`  | Playback state.<br />Dispatches: `livery-playback-change`.                                                                                                                              |
 | `qualities`       | R   | `LiveryQuality[]`                                                                                                                                 | `[]`        | Available qualities.<br />Dispatches: `livery-qualities-change`.                                                                                                                        |
 | `selectedQuality` | R/W | `number`                                                                                                                                          | `-1`        | Index of selected quality.<br />If `-1` then no quality is selected and automatic quality selection is used instead.<br />Dispatches: `livery-selected-quality-change`.                 |
 | `streamTimestamp` | R   | `number`                                                                                                                                          | `NaN`       | Stream time in milliseconds since 1/1/1970 UTC.<br />Changes on: `livery-time-update`, `livery-zero-change`.                                                                            |
-| `streamType`      | R   | `'UNKNOWN' | 'ONDEMAND' | 'LIVE'`                                                                                                                 | `'UNKNOWN'` | Stream type.<br />Changes on: `livery-duration-change`.                                                                                                                                 |
+| `streamType`      | R   | `'UNKNOWN'` \| `'ONDEMAND'` \| `'LIVE'`                                                                                                                 | `'UNKNOWN'` | Stream type.<br />Changes on: `livery-duration-change`.                                                                                                                                 |
 | `timeOffset`      | R   | `number`                                                                                                                                          | `NaN`       | Local device time offset in milliseconds.<br />To be added to local time to get synchronized (e.g: server) time.<br />Dispatches: `livery-offset-change`.                               |
 | `volume`          | R/W | `number`                                                                                                                                          | `1`         | Audio volume, from 0.0 (silent) to 1.0 (loudest).<br />Dispatches: `livery-volume-change`.                                                                                              |
 | `zeroTimestamp`   | R   | `number`                                                                                                                                          | `NaN`       | Time in milliseconds since 1/1/1970 UTC at which currentTime would have been 0.<br />Dispatches: `livery-zero-change`.                                                                  |
@@ -189,12 +189,12 @@ Element defined as `<livery-buffer-graph>` which renders a graph of the buffer s
 
 | Attribute         | Property          | Type            | Default | Description                                                                                                                             |
 | ----------------- | ----------------- | --------------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------- |
-| `backgroundcolor` | `backgroundColor` | `string | null` | `null`  | Chart background color.                                                                                                                 |
+| `backgroundcolor` | `backgroundColor` | `string` \| `null` | `null`  | Chart background color.                                                                                                                 |
 | `bubbles`         | `bubbles`         | `boolean`       | `false` | If true then events dispatched by this element will bubble.                                                                             |
-| `buffercolor`     | `bufferColor`     | `string | null` | `null`  | Buffer line color.                                                                                                                      |
-| `latencycolor`    | `latencyColor`    | `string | null` | `null`  | Latency line color.                                                                                                                     |
+| `buffercolor`     | `bufferColor`     | `string` \| `null` | `null`  | Buffer line color.                                                                                                                      |
+| `latencycolor`    | `latencyColor`    | `string` \| `null` | `null`  | Latency line color.                                                                                                                     |
 | `maxrows`         | `maxRows`         | `number`        | `60`    | Maximum number of rows to store in data table. E.g: With default value: 60 and 500ms updateInterval this will roughly equal 30 seconds. |
-| `textcolor`       | `textColor`       | `string | null` | `null`  | Chart text color.                                                                                                                       |
+| `textcolor`       | `textColor`       | `string` \| `null` | `null`  | Chart text color.                                                                                                                       |
 | `updateinterval`  | `updateInterval`  | `number`        | `500`   | Interval in milliseconds at which to add a row to the data table and draw the chart.                                                    |
 
 #### Properties
@@ -284,7 +284,7 @@ Dispatched with event type: `'livery-playback-change'` when `playbackState` has 
 
 | Property        | Type                                                                                                                                              | Description     |
 | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- | --------------- |
-| `playbackState` | `'BUFFERING' |`<br />`'ENDED' |`<br />`'FAST_FORWARD' |`<br />`'PAUSED' |`<br />`'PLAYING' |`<br />`'REWIND'`<br />`'SEEKING' |`<br />`'SLOW_MO'` | Playback state. |
+| `playbackState` | `'BUFFERING'` \| `'ENDED'` \| `'FAST_FORWARD'` \| `'PAUSED'` \| `'PLAYING'` \| `'REWIND'` \| `'SEEKING'` \| `'SLOW_MO'` | Playback state. |
 
 #### LiveryProgressEvent
 

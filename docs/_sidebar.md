@@ -1,2 +1,2 @@
-* [Home](/ "Livery Docs")
+* [Livery Docs](/ "Livery Docs")
 * [Web SDK](web-sdk.md "Livery Web SDK")

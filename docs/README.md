@@ -1,6 +1,6 @@
-# Home
+# Livery Docs
 
-Documentation for Ex Machina Group Livery.
+Ex Machina Group Livery documentation.
 
 Please find links to documentation of our SDKs in the sidebar.
 

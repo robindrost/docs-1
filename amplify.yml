@@ -8,9 +8,7 @@ frontend:
   artifacts:
     baseDirectory: /docs
     files:
-      - 'index.html'
-      - 'logo.png'
-      - '*.md'
+      - '**/*'
   cache:
     paths:
       - '$HOME/.npm'

@@ -9,7 +9,7 @@
   "scripts": {
     "format": "markdownlint \"**/*.md\" --fix",
     "lint": "markdownlint \"**/*.md\"",
-    "start": "live-server --entry-file=index.html"
+    "start": "live-server docs --entry-file=index.html"
   },
   "dependencies": {
     "husky": "^4.2.1",

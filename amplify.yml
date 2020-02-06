@@ -1,0 +1,16 @@
+version: 0.1
+frontend:
+  phases:
+    build:
+      commands:
+        - npm ci
+        - npm run lint
+  artifacts:
+    baseDirectory: /docs
+    files:
+      - 'index.html'
+      - 'logo.png'
+      - '*.md'
+  cache:
+    paths:
+      - '$HOME/.npm'

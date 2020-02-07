@@ -50,7 +50,7 @@ import '@exmg/livery';
   config="https://cdn.playtotv.com/video-encoder/remoteconfigs/5ddb98f5e4b0937e6a4507f2.json"
 ></livery-sdk>
 
-<livery-player autoplayMuted persistMuted>
+<livery-player autoplaymuted persistmuted>
   <source
     src="https://exmachina-ull-demo.akamaized.net/cmaf/live/664379/5ddb98f5e4b0937e6a4507f2-TESTING/out.mpd"
   />

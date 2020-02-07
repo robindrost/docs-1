@@ -19,11 +19,11 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "lint-staged -r"
     }
   },
   "lint-staged": {
-    "**/*.md": [
+    "*.md": [
       "markdownlint --fix"
     ]
   }

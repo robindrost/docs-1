@@ -110,7 +110,7 @@ This will not start playing until a `<livery-sdk>` element has been successfully
 | `autoplay`      | `autoplay`      | `boolean`       | `false` | If `true` then automatically begin playback as soon as possible.<br />Note: Browser might prevent this if muted is false.                 |
 | `autoplaymuted` | `autoplayMuted` | `boolean`       | `false` | If `true` then automatically begin playback as soon as possible, falling back to muted autoplay if necessary.                             |
 | `bubbles`       | `bubbles`       | `boolean`       | `false` | If true then events dispatched by this element will bubble.                                                                               |
-| `controls`      | `controls`      | `string` \| `null` | `null`  | Which controls to enable (space separated; e.g. to enable all controls: `'mute fullscreen quality'`).                                     |
+| `controls`      | `controls`      | `string` \| `null` | `null`  | Which controls to enable (space separated; e.g. to enable all controls: `'error mute fullscreen quality'`).                                     |
 | `loop`          | `loop`          | `boolean`       | `false` | If `true` then automatically seek back to the start upon reaching the end.                                                                |
 | `muted`         | `muted`         | `boolean`       | `false` | If `true` then audio is muted.<br />Dispatches: `livery-volume-change`.                                                                   |
 | `persistmuted`  | `persistMuted`  | `boolean`       | `false` | If `true` then persist muted state of player in localStorage with key `'muted'`.                                                          |

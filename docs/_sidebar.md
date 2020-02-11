@@ -1,3 +1,3 @@
-* [Livery Docs](/ "Livery Docs")
-* [Web SDK](web-sdk.md "Livery Web SDK")
-* [iOS SDK](ios-sdk.md "Livery iOS SDK")
+- [Livery Docs](/ 'Livery Docs')
+- [Web SDK](web-sdk.md 'Livery Web SDK')
+- [iOS SDK](ios-sdk.md 'Livery iOS SDK')

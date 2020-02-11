@@ -19,7 +19,7 @@ For basic usage of the SDK following minimal steps are needed:
 - Initialize the SDK (See SDK `initialize()` method below)
 - Create playerOptions at least with a source URL of a DASH manifest.
 - Create a player object with this playerOptions (See SDK `createPlayer()` method below and playerOptions for a full list of supported options)
-- Set a UIView for the player to render into. (See Player Method `setView()`  method below)
+- Set a UIView for the player to render into. (See Player Method `setView()` method below)
 - `Player.play()`
 
 At this point, the player will fetch the DASH manifest, start rendering by automatically synching to the targetLatency set in playerOptions (or 3 seconds default.)
@@ -30,10 +30,10 @@ For a sample application code utilizing these minimal steps see the LiveryExampl
 
 #### Methods
 
-| Name  | Returns   | Description                                                   |
-|---|----|----|
-|`createPlayer(playerOptions)` |`Player`|Create a Live Player by combining specified options with the initialize() config.|
-|`initialize(configUrl)` |`boolean`|Livery SDK initialization method.|
+| Name                          | Returns   | Description                                                                       |
+| ----------------------------- | --------- | --------------------------------------------------------------------------------- |
+| `createPlayer(playerOptions)` | `Player`  | Create a Live Player by combining specified options with the initialize() config. |
+| `initialize(configUrl)`       | `boolean` | Livery SDK initialization method.                                                 |
 
 #### SDK Initialize
 
@@ -87,99 +87,99 @@ These are the options that can be specified under `advanced`:
 
 Amazon AWS Pinpoint Analytics options should be specified under `advanced.analytics`:
 
-|Name|Type|Default|Description|
-|--|--|--|--|
-|`customerId`|`String`|`<required>`|Ex Machina Customer ID.|
+| Name         | Type     | Default      | Description             |
+| ------------ | -------- | ------------ | ----------------------- |
+| `customerId` | `String` | `<required>` | Ex Machina Customer ID. |
 
 #### Stall Config
 
 Stall recovery options can be specified under `advanced.stall`:
 
-|Name|Type|Default|Description|
-|--|--|--|--|
-|`minRecoveryDelay`|`Number`|`10`|Minimum delay in seconds before starting automatic recovery.|
-|`maxRecoveryDelay`|`Number`|`90`|The maximum delay in seconds between subsequent recovery attempts.|
+| Name               | Type     | Default | Description                                                        |
+| ------------------ | -------- | ------- | ------------------------------------------------------------------ |
+| `minRecoveryDelay` | `Number` | `10`    | Minimum delay in seconds before starting automatic recovery.       |
+| `maxRecoveryDelay` | `Number` | `90`    | The maximum delay in seconds between subsequent recovery attempts. |
 
 #### Sync Config
 
 Sync options can be specified under `advanced.sync`:
 
-|Name|Type|Default|Description|
-|--|--|--|--|
-|`targetLatency`|`Number`|`3`|Target live latency in seconds. If 0 then syncing is disabled.|
+| Name            | Type     | Default | Description                                                    |
+| --------------- | -------- | ------- | -------------------------------------------------------------- |
+| `targetLatency` | `Number` | `3`     | Target live latency in seconds. If 0 then syncing is disabled. |
 
 ## Player Options
 
 These are the options to be passed to Players:
 
-|Name|Type|Default|Description|
-|--|--|--|--|
-|`autoplay`|`Boolean`|`false`|If true then automatically begin playback as soon as possible. Note: In browsers this will not work unless muted is true.|
-|`muted`|`Boolean`|`false`|If true then the audio will initially be silenced.|
-|`targetLatency`|`Integer`|`3`|Target live latency in seconds. If 0 then syncing is disabled.|
-|`sources`|`String[]`|`<required>`|Array of media source URLs from which the first that can be played will be selected.|
-|`fit`|`enum playerFit`|`.contain`|Determines how the video will be scaled and cropped. See Section Player Fitting.|
-|`minRecoveryDelay`|`Integer`|`10`|Minimum delay in seconds before starting automatic recovery.|
-|`maxRecoveryDelay`|`Integer`|`90`|Maximum delay in seconds between subsequent recovery attempts.|
+| Name               | Type             | Default      | Description                                                                                                               |
+| ------------------ | ---------------- | ------------ | ------------------------------------------------------------------------------------------------------------------------- |
+| `autoplay`         | `Boolean`        | `false`      | If true then automatically begin playback as soon as possible. Note: In browsers this will not work unless muted is true. |
+| `muted`            | `Boolean`        | `false`      | If true then the audio will initially be silenced.                                                                        |
+| `targetLatency`    | `Integer`        | `3`          | Target live latency in seconds. If 0 then syncing is disabled.                                                            |
+| `sources`          | `String[]`       | `<required>` | Array of media source URLs from which the first that can be played will be selected.                                      |
+| `fit`              | `enum playerFit` | `.contain`   | Determines how the video will be scaled and cropped. See Section Player Fitting.                                          |
+| `minRecoveryDelay` | `Integer`        | `10`         | Minimum delay in seconds before starting automatic recovery.                                                              |
+| `maxRecoveryDelay` | `Integer`        | `90`         | Maximum delay in seconds between subsequent recovery attempts.                                                            |
 
 ### Source Protocols
 
 The source protocol must be DASH for IOS SDK
 
-|Extension|Protocol|
-|--|--|
-|.mpd|DASH|
+| Extension | Protocol |
+| --------- | -------- |
+| .mpd      | DASH     |
 
 ## Player Properties
 
 The following properties are exposed by Live Player instances:
 
-|Name|Type|Write|Description|
-|--|--|--|--|
-|`activeQuality`|`Number`|No|Index of active quality.| Emits: `activeQualityChange`.|
-|`advanced`|`AdvancedProperties`|No|Advanced properties.|
-|`currentSrc`|`String`|No|Current media source URL.|
-|`currentTime`|`Number`|Yes|Current playback time position in seconds.Emits: `timeUpdate`.|
-|`duration`|`Number`|No|Media duration in seconds. Used in `onDemand`.Emits: `durationChange`.|
-|`error`|`Error`|No|Most recent unrecovered error.Emits: error, recovered.|
-|`muted`|`Boolean`|Yes|If true then audio is muted. Emits: `volumeChange`.|
-|`playbackRate`|`Number`|Yes|Playback rate (1 is normal).Emits: `rateChange`.|
-|`playbackState`|`String`|No|Playback state. BUFFERING / ENDED / FAST_FORWARD / PAUSED / PLAYING / REWIND / SEEKING / SLOW_MO Emits: `playbackChange`.|
-|`selectedQuality`|`Number`|Yes|Index of selected quality. Emits: selectedQualityChange.|
-|`streamType`|`String`|No|Stream type. LIVE / ONDEMAND / UNKNOWN Computed: duration == Infinite => LIVE, Finite => ONDEMAND and NaN => UNKNOWN Changes on: `durationChange`.|
-|`volume`|`Number`|Yes|Audio volume, from 0.0 (silent) to 1.0 (loudest).Emits: `volumeChange`.|
+| Name              | Type                 | Write | Description                                                                                                                                        |
+| ----------------- | -------------------- | ----- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `activeQuality`   | `Number`             | No    | Index of active quality.                                                                                                                           | Emits: `activeQualityChange`. |
+| `advanced`        | `AdvancedProperties` | No    | Advanced properties.                                                                                                                               |
+| `currentSrc`      | `String`             | No    | Current media source URL.                                                                                                                          |
+| `currentTime`     | `Number`             | Yes   | Current playback time position in seconds.Emits: `timeUpdate`.                                                                                     |
+| `duration`        | `Number`             | No    | Media duration in seconds. Used in `onDemand`.Emits: `durationChange`.                                                                             |
+| `error`           | `Error`              | No    | Most recent unrecovered error.Emits: error, recovered.                                                                                             |
+| `muted`           | `Boolean`            | Yes   | If true then audio is muted. Emits: `volumeChange`.                                                                                                |
+| `playbackRate`    | `Number`             | Yes   | Playback rate (1 is normal).Emits: `rateChange`.                                                                                                   |
+| `playbackState`   | `String`             | No    | Playback state. BUFFERING / ENDED / FAST_FORWARD / PAUSED / PLAYING / REWIND / SEEKING / SLOW_MO Emits: `playbackChange`.                          |
+| `selectedQuality` | `Number`             | Yes   | Index of selected quality. Emits: selectedQualityChange.                                                                                           |
+| `streamType`      | `String`             | No    | Stream type. LIVE / ONDEMAND / UNKNOWN Computed: duration == Infinite => LIVE, Finite => ONDEMAND and NaN => UNKNOWN Changes on: `durationChange`. |
+| `volume`          | `Number`             | Yes   | Audio volume, from 0.0 (silent) to 1.0 (loudest).Emits: `volumeChange`.                                                                            |
 
 ## Player Methods
 
 The following methods are exposed by Player instances:
 
-|Name|Description|
-|--|--|
-|`constructor(options)`|Construct player with specified options.|
-|`dispose()`|Cleanup all resources and stop playback.|
-|`load()`|Resets the media and selects the best available source again.|
-|`setView(view: UIView)`|Set the view for player to render.|
-|`stop()`|Stop media playback.|
-|`play()`|Start/resume media playback.|
-|`updateOptions(playerOptions)|Update player options|
-|`onApplicationDidBecomeActive()`|Call in your IOS Application Lifecycle callback`applicationDidBecomeActive()`|
-|`onApplicationWillResignActive()`|Call in your IOS Application Lifecycle callback`applicationWillResignActive()`|
-|`onApplicationDidEnterBackground()`\|Call in your IOS Application Lifecycle callback`applicationDidEnterBackground()`|
-|`onApplicationWillEnterForeground()`|Call in your IOS Application Lifecycle callback`applicationWillEnterForeground()`|
+| Name                                 | Description                                                                       |
+| ------------------------------------ | --------------------------------------------------------------------------------- |
+| `constructor(options)`               | Construct player with specified options.                                          |
+| `dispose()`                          | Cleanup all resources and stop playback.                                          |
+| `load()`                             | Resets the media and selects the best available source again.                     |
+| `setView(view: UIView)`              | Set the view for player to render.                                                |
+| `stop()`                             | Stop media playback.                                                              |
+| `play()`                             | Start/resume media playback.                                                      |
+| `updateOptions(playerOptions)`       | Update player options                                                             |
+| `onApplicationDidBecomeActive()`     | Call in your IOS Application Lifecycle callback`applicationDidBecomeActive()`     |
+| `onApplicationWillResignActive()`    | Call in your IOS Application Lifecycle callback`applicationWillResignActive()`    |
+| `onApplicationDidEnterBackground()`  | Call in your IOS Application Lifecycle callback`applicationDidEnterBackground()`  |
+| `onApplicationWillEnterForeground()` | Call in your IOS Application Lifecycle callback`applicationWillEnterForeground()` |
 
 ## Player Events
 
 The following events can be emitted by Player instances via Notification center:
 
-|Name|Description|Properties|
-|--|--|--|
-|`activeQualityChange`|Emitted when activeQuality has changed.|`activeQuality`|
-|`error`|Emitted when an error occurs with a reference to the platform specific Error instance.|`error`|
-|`playbackChange`|Emitted when playbackState has changed.|`playbackState`|
-|`qualitiesChange`|Emitted when qualities have changed.|`qualities`|
-|`selectedQualityChange`|Emitted when selectedQuality has changed.|`selectedQuality`|
-|volumeChange`|Emitted when volume or muted has changed.|`muted`|
-|`volume`|See MediaPlayerLiveExample app to see how playback state change events are received via Notification center and check the below list for Notification names|
+| Name                    | Description                                                                                                                                                 | Properties        |
+| ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------- |
+| `activeQualityChange`   | Emitted when activeQuality has changed.                                                                                                                     | `activeQuality`   |
+| `error`                 | Emitted when an error occurs with a reference to the platform specific Error instance.                                                                      | `error`           |
+| `playbackChange`        | Emitted when playbackState has changed.                                                                                                                     | `playbackState`   |
+| `qualitiesChange`       | Emitted when qualities have changed.                                                                                                                        | `qualities`       |
+| `selectedQualityChange` | Emitted when selectedQuality has changed.                                                                                                                   | `selectedQuality` |
+| `volumeChange`          | Emitted when volume or muted has changed.                                                                                                                   | `muted`           |
+| `volume`                | See MediaPlayerLiveExample app to see how playback state change events are received via Notification center and check the below list for Notification names |
 
 Below are the names for the Notifications to listen to
 
@@ -258,12 +258,12 @@ public  enum playerFit {
 }
 ```
 
-|Name|Description|
-|--|--|
-|`.contain`|The video will be scaled to fit in the view while maintaining the aspect ratio.(equivalent to ```swift videoGravity = .resizeAspect```)
-|`.cover`|The video will be scaled to fill the entire view while maintaining the aspect ratio. If the object's aspect ratio does not match the aspect ratio of its box, then the object will be cropped to fit. (equivalent to ```swift videoGravity = .resizeAspectFill```)|
-|`.fill`|T​he video will be scaled to fill the entire view. The aspect ratio is ignored so the video will be stretched to the size of the view.(equivalent to ```swift videoGravity = .resize``` )|
-|`.scaledown`|Same as .contain for now|
+| Name         | Description                                                                                                                                                                                                                                                    |
+| ------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `.contain`   | The video will be scaled to fit in the view while maintaining the aspect ratio.(equivalent to `swift videoGravity = .resizeAspect`)                                                                                                                            |
+| `.cover`     | The video will be scaled to fill the entire view while maintaining the aspect ratio. If the object's aspect ratio does not match the aspect ratio of its box, then the object will be cropped to fit. (equivalent to `swift videoGravity = .resizeAspectFill`) |
+| `.fill`      | T​he video will be scaled to fill the entire view. The aspect ratio is ignored so the video will be stretched to the size of the view.(equivalent to `swift videoGravity = .resize` )                                                                          |
+| `.scaledown` | Same as .contain for now                                                                                                                                                                                                                                       |
 
 ## Player Skin
 
@@ -329,7 +329,7 @@ See below how this is done in the sample application
 ### AWSPinpoint Analytics dependencies
 
 - The `Podfile` that you configure to install the AWS Pinpoint SDK must contain:
-![Pinpoint in podfile](https://lh3.googleusercontent.com/BPTm7yTMeRQy0CBBg09B1B_y5l_te-DayCdM1AT8DTl8xZvL2D1vscFNhoYb548Z9jmiLhFT7N8B1Ckjuqp0gIuCGBRn9ihnJYcB6Koo1KRogrUYJtGN1qI2XPBcK9xBBn1A2_Iu)
+  ![Pinpoint in podfile](https://lh3.googleusercontent.com/BPTm7yTMeRQy0CBBg09B1B_y5l_te-DayCdM1AT8DTl8xZvL2D1vscFNhoYb548Z9jmiLhFT7N8B1Ckjuqp0gIuCGBRn9ihnJYcB6Koo1KRogrUYJtGN1qI2XPBcK9xBBn1A2_Iu)
 
 - Run `pod install --repo-update` before you continue
 - From now on use YOUR_PROJECT_NAME. xcworkspace file in Xcode to open your project
@@ -377,6 +377,6 @@ Check section above for app store validation
 
 ## Revission History
 
-|Version|Description|
-|--|--|
-|0.9.6|Fixed issues with having to use a device or simulator version. You can now use the universal build. Made initialize call asynchronous, so it doesn’t block the main thread. The onSuccess and onError functions are called when initialisation is completed. Library only works with Xcode 11 now, since it is compiled in Swift 5.1.|
+| Version | Description                                                                                                                                                                                                                                                                                                                           |
+| ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 0.9.6   | Fixed issues with having to use a device or simulator version. You can now use the universal build. Made initialize call asynchronous, so it doesn’t block the main thread. The onSuccess and onError functions are called when initialisation is completed. Library only works with Xcode 11 now, since it is compiled in Swift 5.1. |

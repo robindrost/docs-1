@@ -175,11 +175,11 @@ This will not start playing until a `<livery-sdk>` element has been successfully
 
 !> Support for CSS custom properties is experimental.
 
-| Property                             | Default              | Description               |
-| ------------------------------------ | -------------------- | ------------------------- |
-| `--media-player-error-message-color` | `#999`               | Error message color.      |
-| `--media-player-overlay-color`       | `rgba(0, 0, 0, 0.8)` | Overlay background color. |
-| `--media-player-overlay-text-color`  | `#ccc`               | Overlay text color.       |
+| Property                              | Default              | Description               |
+| ------------------------------------- | -------------------- | ------------------------- |
+| `--livery-player-error-message-color` | `#999`               | Error message color.      |
+| `--livery-player-overlay-color`       | `rgba(0, 0, 0, 0.8)` | Overlay background color. |
+| `--livery-player-overlay-text-color`  | `#ccc`               | Overlay text color.       |
 
 ### LiveryBufferGraph
 

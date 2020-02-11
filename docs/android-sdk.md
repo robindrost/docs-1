@@ -155,3 +155,10 @@ public void onDestroy() {
 
 You have implemented Livery SDK successfully. By default, the target latency is three seconds.
 For a detailed explanation of implementation please follow the rest of this document.
+
+### Advanced Implementation
+
+#### SDK Methods
+
+> To access the SDK class, ‘LiverySDK’ class should be used.
+

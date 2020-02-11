@@ -161,4 +161,3 @@ For a detailed explanation of implementation please follow the rest of this docu
 #### SDK Methods
 
 > To access the SDK class, ‘LiverySDK’ class should be used.
-

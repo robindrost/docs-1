@@ -7,15 +7,16 @@
   "license": "MIT",
   "repository": "github:exmg/livery-docs",
   "scripts": {
-    "format": "markdownlint \"**/*.md\" --fix",
-    "lint": "markdownlint \"**/*.md\"",
+    "format": "markdownlint \"**/*.md\" --fix && prettier \"**/*.{html,md}\" --write",
+    "lint": "markdownlint \"**/*.md\" && prettier \"**/*.{html,md}\" --check",
     "start": "live-server docs --entry-file=index.html"
   },
   "dependencies": {
     "husky": "^4.2.1",
     "lint-staged": "^10.0.7",
     "live-server": "^1.2.1",
-    "markdownlint-cli": "^0.21.0"
+    "markdownlint-cli": "^0.22.0",
+    "prettier": "^1.19.1"
   },
   "husky": {
     "hooks": {
@@ -24,7 +25,8 @@
   },
   "lint-staged": {
     "*.md": [
-      "markdownlint --fix"
+      "markdownlint --fix",
+      "prettier --write"
     ]
   }
 }

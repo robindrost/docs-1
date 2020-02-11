@@ -7,7 +7,7 @@
 
 Ex Machina Group Livery Web SDK, published as [@exmg/livery](https://www.npmjs.com/package/@exmg/livery).
 
-?> Demo can be found at: [demo.liveryvideo.com](https://demo.liveryvideo.com) ([source](https://github.com/exmg/livery-demo)).
+?> Demo can be found at: [demo.liveryvideo.com](https://demo.liveryvideo.com) ([source](https://github.com/exmg/livery-demo-web)).
 
 More information can be found at: [liveryvideo.com](https://liveryvideo.com).
 

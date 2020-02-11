@@ -62,13 +62,11 @@ android {
 }
 ```
 
-## Usage
-
-### Quick Implementation
+## Quick Implementation
 
 For basic usage of the SDK following minimal steps are needed:
 
-#### Step 1: Define Remote Config URL
+### Step 1: Define Remote Config URL
 
 Add ‘livery_remote_config_url’ to your strings and pass the remote config URL as the value.
 
@@ -79,10 +77,9 @@ Add ‘livery_remote_config_url’ to your strings and pass the remote config UR
 </resources>
 ```
 
-> You can change remote config url later on. To do so, check [here](#Analytics)
-> TODO: Edit the link to change remote config
+> You can also change remote config url on run-time. To do so, check [here](#Update-Remote-Config)
 
-#### Step 2: Add LiveryPlayerView
+### Step 2: Add LiveryPlayerView
 
 Add the player view into the layout that your activity or fragment is using.
 
@@ -97,7 +94,7 @@ screen can turn off after an amount of time or not.
    android:keepScreenOn="true" />
 ```
 
-#### Step 3: Configure LiveryPlayerView
+### Step 3: Configure LiveryPlayerView
 
 Bind LiveryPlayerView to your layout file, then create the livery player with passing LiveryPlayerOptions object after activity or fragment is created.
 
@@ -121,7 +118,7 @@ public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceStat
 }
 ```
 
-#### Step 3: Add Life-cycle methods
+### Step 3: Add Life-cycle methods
 
 It is critical to implement the lifecycle methods of Livery Player. Otherwise, you can notice the playback is still going on when an activity is paused, stopped or destroyed. Therefore add these lifecycle methods on your activity or fragment’s onDestroy, onStop, onPause and onResume blocks.
 
@@ -154,10 +151,44 @@ public void onDestroy() {
 #### 🎉 Done
 
 You have implemented Livery SDK successfully. By default, the target latency is three seconds.
-For a detailed explanation of implementation please follow the rest of this document.
 
-### Advanced Implementation
+To have more control over Livery SDK, next sections should provide you more knowledge.
 
-#### SDK Methods
+## SDK Methods
 
-> To access the SDK class, ‘LiverySDK’ class should be used.
+> To access the SDK class, ‘LiverySDK’ should be used.
+
+### SDK Instance
+
+In order to call some methods, instance of the SDK must be used.
+You can get the instance with the line below:
+
+```java
+LiverySDK.getInstance();
+```
+
+### Generic Player Options
+
+To generate player options to pass to the player quickly, use this method below:
+
+```java
+LiverySDK.getPlayerOptions("MPD Url");
+//Or
+LiverySDK.getPlayerOptions(mpdUrlsList);
+```
+
+### Pinpoint User ID
+
+In some cases, getting the pinpoint user ID can be useful, i.e.: You would like to show the user their pinpoint user ID for analysis based on a specific user. To do so, here is how to get the pinpoint user ID:
+
+```java
+String pinpointUserId = LiverySDK.getInstance().getPinpointUserId();
+```
+
+### Update Remote Config
+
+Initial remote config is passed to the SDK via strings.xml, however there might be situations that remote config URL needs to be changed later on during run-time. To achieve this, the code below can be used:
+
+```java
+LiverySDK.getInstance().updateRemoteConfig("Remote Config URL");
+```

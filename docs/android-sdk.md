@@ -118,7 +118,7 @@ public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceStat
 }
 ```
 
-### Step 3: Add Life-cycle methods
+### Step 4: Add Life-cycle methods
 
 It is critical to implement the lifecycle methods of Livery Player. Otherwise, you can notice the playback is still going on when an activity is paused, stopped or destroyed. Therefore add these lifecycle methods on your activity or fragment’s onDestroy, onStop, onPause and onResume blocks.
 
@@ -153,6 +153,89 @@ public void onDestroy() {
 You have implemented Livery SDK successfully. By default, the target latency is three seconds.
 
 To have more control over Livery SDK, next sections should provide you more knowledge.
+
+## Creating Player
+
+By calling `createPlayer(LiveryPlayerOptions)` on LiveryPlayerView reference, a player instance will be created and initialized.
+
+## Player Options
+
+LiveryPlayerOptions has these properties listed on the table below. These options take effect only after [createPlayer](#creating-player) is called.
+
+**_LiveryPlayerOptions_**
+
+| Name       | Type                    | Default                                                                                                          | Description                                                                                                                                                       |
+| ---------- | ----------------------- | ---------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `autoPlay` | `Boolean`               | `false`                                                                                                          | Determines whether video shall play immediately after [createPlayer](#creating-player).                                                                           |
+| `controls` | `LiveryControlsOptions` | `new LiveryControlsOptions()`                                                                                    | Provides access to [LiveryControlsOptions](#livery-controls-options). Player controls can be tweaked by this object.                                              |
+| `fit`      | `LiveryResizeMode`      | `CONTAIN`                                                                                                        | Provides access to LiveryResizeMode. Video size inside the player view can be changed from here.                                                                  |
+| `loop`     | `Boolean`               | `false`                                                                                                          | Determines whether the video should restart after it ends.                                                                                                        |
+| `muted`    | `Boolean`               | `false`                                                                                                          | Determines whether media should be muted or not.                                                                                                                  |
+| `poster`   | `String`                | `` | Represents URL to poster image. When this property is not empty, the player will show a poster on creation. |
+| `sources`  | `List<String>`          | `new ArrayList<String>()`                                                                                        | List of DASH manifest URLs to play. The player starts from the first element of this list, then iterates through it one by one if the current index doesn’t play. |
+
+## Player Resize Mode
+
+Player resize mode is passed on [Player Options](#player-options) to indicate video size.
+
+| Name    | Description                                                                                                       |
+| ------- | ----------------------------------------------------------------------------------------------------------------- |
+| CONTAIN | Shows the full video in the view box no matter what, without breaking the aspect ratio.                           |
+| COVER   | Fills the view box, however, zooms the video if video dimensions are too big for the view. Keep the aspect ratio. |
+| FILL    | Fits the video into the view box, by ignoring aspect ratio rules.                                                 |
+
+## Player Controls
+
+You can edit LiveryControlsOptions from controls property of LiveryPlayerOptions. Available controls are listed on the table below.
+
+**_LiveryPlayerControls_**
+
+| Name         | Type      | Default | Description                                   |
+| ------------ | --------- | ------- | --------------------------------------------- |
+| `fullscreen` | `Boolean` | `false` | Sets the visibility of the fullscreen button. |
+| `mute`       | `Boolean` | `false` | Sets the visibility of the mute button.       |
+| `quality`    | `Boolean` | `false` | Sets the visibility of the quality button.    |
+| `error`      | `Boolean` | `false` | Sets the visibility of the error overlay.     |
+
+### Fullscreen Button
+
+Default behavior of fullscreen button can be changed like shown below:
+
+```java
+playerView.overrideFullscreenButton(new View.OnClickListener() {
+   @Override
+   public void onClick(View v) {
+
+   }
+});
+```
+
+### Quality Button
+
+Default behavior of quality button can be changed like shown below:
+
+```java
+playerView.overrideQualityButton(new View.OnClickListener() {
+   @Override
+   public void onClick(View v) {
+
+   }
+});
+```
+
+## Player Events
+
+It might be important in some cases to receive player events and process the data for your needs. In order to receive player events, a LiveryPlayerListener must be registered to the player.
+
+### Registering Player Event Listener
+
+By calling `registerListener(LiveryPlayerListener)` method on LiveryPlayerView, a player event listener can be registered.
+
+```java
+playerView.registerListener(new LiveryPlayerListener() {
+   //...
+});
+```
 
 ## SDK Methods
 

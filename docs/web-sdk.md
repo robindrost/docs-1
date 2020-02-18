@@ -173,13 +173,14 @@ This will not start playing until a `<livery-sdk>` element has been successfully
 
 #### CSS Custom Properties
 
-!> Support for CSS custom properties is experimental.
+!> Support for CSS custom properties is experimental; names etc. might change.
 
-| Property                              | Default              | Description               |
-| ------------------------------------- | -------------------- | ------------------------- |
-| `--livery-player-error-message-color` | `#999`               | Error message color.      |
-| `--livery-player-overlay-color`       | `rgba(0, 0, 0, 0.8)` | Overlay background color. |
-| `--livery-player-overlay-text-color`  | `#ccc`               | Overlay text color.       |
+| Property                              | Default              | Description                                                                                                                       |
+| ------------------------------------- | -------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| `--livery-player-error-message-color` | `#999`               | Error message color.                                                                                                              |
+| `--livery-player-fit`                 | `'cover'`            | Video [object-fit](https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit) value (contain, cover, fill, none or scale-down). |
+| `--livery-player-overlay-color`       | `rgba(0, 0, 0, 0.8)` | Overlay background color.                                                                                                         |
+| `--livery-player-overlay-text-color`  | `#ccc`               | Overlay text color.                                                                                                               |
 
 ### LiveryBufferGraph
 

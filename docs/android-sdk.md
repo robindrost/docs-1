@@ -517,3 +517,9 @@ Available IDs and their corresponding view types are listed below, ID names are 
 To customize the loading indicator, create a layout named `livery_player_audio_only_view.xml`.
 
 For this layout, there are no IDs available. This means that whenever the player is playing only audio, this layout will be shown.
+
+## Change log
+
+### 1.6.4
+
+Fixed a crash occured when player.dispose() method was called due to uiElementsHandler not being able to find the player instance.

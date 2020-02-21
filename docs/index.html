@@ -17,20 +17,21 @@
     />
 
     <style>
-      :root {
-        /* Change the theme color hue */
-        --theme-hue: 300;
-      }
+        :root {
+          /* Change the theme color hue */
+          --theme-hue: 300;
+        }
 
-      /* Allow docsify-themeable tables to scroll horizontally when necessary */
-      .markdown-section .table-wrapper {
-        overflow-x: auto;
-      }
+        /* Allow docsify-themeable tables to scroll horizontally when necessary */
+        .markdown-section .table-wrapper {
+          overflow-x: auto;
+        }
 
-      /* Prevent docsify-themeable responsive table cells from overflowing (unscrollable) */
-      @media (max-width: 30em) {
-        .markdown-section .table-wrapper td {
-          flex-wrap: wrap;
+        /* Prevent docsify-themeable responsive table cells from overflowing (unscrollable) */
+        @media (max-width: 30em) {
+          .markdown-section .table-wrapper td {
+            flex-wrap: wrap;
+          }
         }
       }
     </style>
@@ -63,6 +64,8 @@
     <!-- https://docsify.js.org/#/plugins?id=copy-to-clipboard -->
     <script src="//unpkg.com/docsify-copy-code"></script>
 
+    <script src="//unpkg.com/prismjs/components/prism-groovy.min.js"></script>
+    <script src="//unpkg.com/prismjs/components/prism-java.min.js"></script>
     <script src="//unpkg.com/prismjs/components/prism-swift.min.js"></script>
   </body>
 </html>

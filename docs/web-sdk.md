@@ -74,6 +74,18 @@ import '@exmg/livery';
 </script>
 ```
 
+### Video Fitting
+
+To control how the [LiveryPlayer](#liveryplayer) resizes the video contents to fit it's container you can specify [object-fit](https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit) and [object-position](https://developer.mozilla.org/en-US/docs/Web/CSS/object-position) properties just like on a `<video>` element. E.g. to have the player fit the full screen height and crop the left and right sides if necessary:
+
+```css
+livery-player {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+}
+```
+
 ## Exports
 
 When using the UMD bundle, these can be found as properties of `exmg.livery`.
@@ -170,17 +182,6 @@ This will not start playing until a `<livery-sdk>` element has been successfully
 | [livery-time-update](#liverytimeupdateevent)                        | Dispatched periodically when `currentTime` changes.                                                |
 | [livery-volume-change](#liveryvolumechangeevent)                    | Dispatched when `volume` and/or `muted` have changed.                                              |
 | [livery-zero-change](#liveryzerochangeevent)                        | Dispatched when `zeroTimestamp` has changed.                                                       |
-
-#### CSS Custom Properties
-
-!> Support for CSS custom properties is experimental; names etc. might change.
-
-| Property                              | Default              | Description                                                                                                                       |
-| ------------------------------------- | -------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
-| `--livery-player-error-message-color` | `#999`               | Error message color.                                                                                                              |
-| `--livery-player-fit`                 | `'cover'`            | Video [object-fit](https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit) value (contain, cover, fill, none or scale-down). |
-| `--livery-player-overlay-color`       | `rgba(0, 0, 0, 0.8)` | Overlay background color.                                                                                                         |
-| `--livery-player-overlay-text-color`  | `#ccc`               | Overlay text color.                                                                                                               |
 
 ### LiveryBufferGraph
 

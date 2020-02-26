@@ -43,7 +43,7 @@ Add these implementations inside **dependencies** to your app-level build.gradle
 ```groovy
 dependencies {
    //...
-   implementation 'tv.exmg.livery:livery:1.6.4'
+   implementation 'tv.exmg.livery:livery:1.6.6'
    implementation 'android.arch.core:runtime:1.1.1'
 }
 ```
@@ -523,6 +523,14 @@ To customize the loading indicator, create a layout named `livery_player_audio_o
 For this layout, there are no IDs available. This means that whenever the player is playing only audio, this layout will be shown.
 
 ## Change log
+
+### 1.6.6
+
+Fixed paid version of SDK was not using default error overlay.
+
+### 1.6.5
+
+Fixed analytics values (EdgeServer, VideoURL) not being reported sometimes.
 
 ### 1.6.4
 

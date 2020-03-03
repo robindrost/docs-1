@@ -10,7 +10,7 @@ More information can be found at: [liveryvideo.com](https://liveryvideo.com).
 
 ### Compatibility
 
-The Livery iOS SDK is compatible with iOS 10 of higher.
+The Livery iOS SDK is compatible with iOS 12 of higher.
 
 ## Usage
 

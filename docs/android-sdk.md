@@ -524,14 +524,20 @@ For this layout, there are no IDs available. This means that whenever the player
 
 ## Change log
 
+### 1.6.7
+
+- Added "Error" event for analytics.
+- Added "PinPointID" to Sentry tags.
+- Added missing fields to "Connection Change" and "Switch Bitrate" events.
+
 ### 1.6.6
 
-Fixed paid version of SDK was not using default error overlay.
+- Fixed paid version of SDK was not using default error overlay.
 
 ### 1.6.5
 
-Fixed analytics values (EdgeServer, VideoURL) not being reported sometimes.
+- Fixed analytics values (EdgeServer, VideoURL) not being reported sometimes.
 
 ### 1.6.4
 
-Fixed a crash occured when player.dispose() method was called due to uiElementsHandler not being able to find the player instance.
+- Fixed a crash occured when player.dispose() method was called due to uiElementsHandler not being able to find the player instance.

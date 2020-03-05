@@ -524,6 +524,13 @@ For this layout, there are no IDs available. This means that whenever the player
 
 ## Change log
 
+### 1.6.8
+
+- Remove load function.
+- Add toggle method for play/pause actions.
+- Fix a crash issue on playerStateChanged when playerOptions was passed null.
+- Fix pause method so it won't skip frames on paused state.
+
 ### 1.6.7
 
 - Added "Error" event for analytics.

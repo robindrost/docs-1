@@ -36,6 +36,12 @@ allprojects {
 }
 ```
 
+You can get the Bintray API key by following these steps below:
+
+1. Navigate to [Bintray Login](https://bintray.com/login) then login with the credentials given to you.
+2. After logging in, go to [Edit Profile](https://bintray.com/profile/edit) from the menu on top right which is shown by clicking to your username.
+3. Once you land to Edit Profile page, you should be able to see more menu items on the left. Click to 'API Key' and you will be asked to input your password. After verifying the password, API Key will be shown.
+
 #### Add Implementations
 
 Add these implementations inside **dependencies** to your app-level build.gradle.

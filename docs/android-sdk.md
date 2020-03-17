@@ -530,6 +530,14 @@ For this layout, there are no IDs available. This means that whenever the player
 
 ## Change log
 
+### 1.6.9
+
+- Fix an issue where branded version error view could be overridden.
+- Fix an issue where min or max buffer would be reported below zero.
+- Refactor stall reporting mechanism.
+- Fix an issue where the player would not recover.
+- Save muted or unmuted state to keep it after recovering.
+
 ### 1.6.8
 
 - Remove load function.

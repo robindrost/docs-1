@@ -32,8 +32,9 @@ For a sample application code utilizing these minimal steps see the LiveryExampl
 
 | Name                          | Returns   | Description                                                                       |
 | ----------------------------- | --------- | --------------------------------------------------------------------------------- |
+| `initialize(configUrl, completionQueue, completion)`       | `void` | Livery SDK initialization method.
 | `createPlayer(playerOptions)` | `Player`  | Create a Live Player by combining specified options with the initialize() config. |
-| `initialize(configUrl)`       | `boolean` | Livery SDK initialization method.                                                 |
+                                              |
 
 #### SDK Initialize
 
@@ -41,7 +42,12 @@ The SDK `initialize()` method has to be called on an sdk instance before Live Pl
 
 ```swift
 let liveSDK = Livery()
+liveSDK.initialize(configUrl: String?, completionQueue: DispatchQueue = .main, completion: (Livery.Result) -> Void)
+
+or
+
 liveSDK.initialize(configUrl: nil, onSuccess: () -> (), onError: (String?) -> ())
+-> Void)
 ```
 
 There are basically two ways to initialize the SDK. With or Without a remote configuration url.
@@ -49,8 +55,33 @@ If a remote configuration url `configUrl` is set and remote configuration fails 
 
 Second option is to initialize without a `configUrl` and give the necessary options to the player via `playerOptions`.
 
-The values `onSuccess` and `onError` are functions called when the player successfully initialised or failed respectively. In case of an error, `onError` returns an optional localized error string.
+The `completionQueue` defines the `DispatchQueue` in which the `completion` callback is called.
+
+The `completion` callback is a block that receives a `Livery.Result` with the SDK initialisation result. In case of an error `Livery.Result` contains an error of type `Livery.Errors`.
+
 For more info about the supported `playerOptions` see relevant sections below.
+
+##### SDK Initialisation Result
+
+```swift
+extension Livery {
+  typealias Result = Swift.Result<Void, Errors>
+}
+```
+
+##### SDK Initialisation Errors
+
+```swift
+extension Livery {
+  enum Errors : Error {
+    case invalidURL
+    case invalidServerTime
+    case downloadError(_ error: Error)
+    case missingData
+    case invalidConfig(_ error: Error)
+  }
+}
+```
 
 #### SDK Create Player
 
@@ -108,6 +139,14 @@ Sync options can be specified under `advanced.sync`:
 | --------------- | -------- | ------- | -------------------------------------------------------------- |
 | `targetLatency` | `Number` | `3`     | Target live latency in seconds. If 0 then syncing is disabled. |
 
+### Interactive Config
+
+Interactive options can be specified under `advanced.interactive`:
+
+| Name            | Type     | Default | Description                                                    |
+| --------------- | -------- | ------- | -------------------------------------------------------------- |
+| `url` | `URL?` | `nil`     | The interactive layer URL. |
+
 ## Player Options
 
 These are the options to be passed to Players:
@@ -155,17 +194,18 @@ The following methods are exposed by Player instances:
 
 | Name                                 | Description                                                                       |
 | ------------------------------------ | --------------------------------------------------------------------------------- |
-| `constructor(options)`               | Construct player with specified options.                                          |
 | `dispose()`                          | Cleanup all resources and stop playback.                                          |
 | `load()`                             | Resets the media and selects the best available source again.                     |
 | `setView(view: UIView)`              | Set the view for player to render.                                                |
-| `stop()`                             | Stop media playback.                                                              |
-| `play()`                             | Start/resume media playback.                                                      |
+| `play(completionQueue: DispatchQueue = .main, completion: (Player.Result) -> Void)` | Async call to start/resume media playback. |
+| `play() -> Player.Result`            | Sync call to start/resume media playback. |
+| `stop(completionQueue: DispatchQueue = .main, completion: @escaping () -> Void)` | Async call to stop media playback. |
+| `stop()`                             | Sync call to stop media playback.                                                 |
 | `updateOptions(playerOptions)`       | Update player options                                                             |
-| `onApplicationDidBecomeActive()`     | Call in your IOS Application Lifecycle callback`applicationDidBecomeActive()`     |
-| `onApplicationWillResignActive()`    | Call in your IOS Application Lifecycle callback`applicationWillResignActive()`    |
-| `onApplicationDidEnterBackground()`  | Call in your IOS Application Lifecycle callback`applicationDidEnterBackground()`  |
-| `onApplicationWillEnterForeground()` | Call in your IOS Application Lifecycle callback`applicationWillEnterForeground()` |
+| `onApplicationDidBecomeActive()`     | Call in your IOS Application Lifecycle callback `applicationDidBecomeActive()`     |
+| `onApplicationWillResignActive()`    | Call in your IOS Application Lifecycle callback `applicationWillResignActive()`    |
+| `onApplicationDidEnterBackground()`  | Call in your IOS Application Lifecycle callback `applicationDidEnterBackground()`  |
+| `onApplicationWillEnterForeground()` | Call in your IOS Application Lifecycle callback `applicationWillEnterForeground()` |
 
 ## Player Events
 
@@ -208,6 +248,35 @@ Notification.Name {
   }
  static  var volumeChange: Notification.Name {
   return .init(rawValue: "Livery.volumeChange")
+  }
+}
+```
+
+### Player Types
+
+```swift
+extension Player {
+  typealias Result = Swift.Result<Void, Player.Errors>
+}
+
+extension Player {
+  public enum Errors : Error {
+    case invalidRenderView
+    case alreadyPlaying
+    case invalidPlayerOptions
+    case invalidPlayerOptionsSources
+    case invalidAudioSource
+    case invalidVideoSources
+  }
+}
+
+extension Player {
+  enum PlaybackState : String {
+    case none = ""
+    case buffering = "Buffering"
+    case playing = "Playing"
+    case paused = "Paused"
+    case ended = "Ended"
   }
 }
 ```

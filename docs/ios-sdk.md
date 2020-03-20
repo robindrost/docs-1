@@ -26,7 +26,7 @@ At this point, the player will fetch the DASH manifest, start rendering by autom
 For more information about options, properties and methods please see relevant sections below.
 For a sample application code utilizing these minimal steps see the LiveryExample sample application section.
 
-### LiverySdk
+### Livery SDK
 
 #### Methods
 
@@ -34,7 +34,6 @@ For a sample application code utilizing these minimal steps see the LiveryExampl
 | ----------------------------- | --------- | --------------------------------------------------------------------------------- |
 | `initialize(configUrl, completionQueue, completion)`       | `void` | Livery SDK initialization method.
 | `createPlayer(playerOptions)` | `Player`  | Create a Live Player by combining specified options with the initialize() config. |
-                                              |
 
 #### SDK Initialize
 
@@ -47,7 +46,6 @@ liveSDK.initialize(configUrl: String?, completionQueue: DispatchQueue = .main, c
 or
 
 liveSDK.initialize(configUrl: nil, onSuccess: () -> (), onError: (String?) -> ())
--> Void)
 ```
 
 There are basically two ways to initialize the SDK. With or Without a remote configuration url.
@@ -57,11 +55,11 @@ Second option is to initialize without a `configUrl` and give the necessary opti
 
 The `completionQueue` defines the `DispatchQueue` in which the `completion` callback is called.
 
-The `completion` callback is a block that receives a `Livery.Result` with the SDK initialisation result. In case of an error `Livery.Result` contains an error of type `Livery.Errors`.
+The `completion` callback is a block that receives a `Livery.Result` with the SDK initialization result. In case of an error `Livery.Result` contains an error of type `Livery.Errors`.
 
 For more info about the supported `playerOptions` see relevant sections below.
 
-##### SDK Initialisation Result
+##### SDK Initialization Result
 
 ```swift
 extension Livery {
@@ -69,7 +67,7 @@ extension Livery {
 }
 ```
 
-##### SDK Initialisation Errors
+##### SDK Initialization Errors
 
 ```swift
 extension Livery {
@@ -194,18 +192,18 @@ The following methods are exposed by Player instances:
 
 | Name                                 | Description                                                                       |
 | ------------------------------------ | --------------------------------------------------------------------------------- |
-| `dispose()`                          | Cleanup all resources and stop playback.                                          |
-| `load()`                             | Resets the media and selects the best available source again.                     |
 | `setView(view: UIView)`              | Set the view for player to render.                                                |
 | `play(completionQueue: DispatchQueue = .main, completion: (Player.Result) -> Void)` | Async call to start/resume media playback. |
 | `play() -> Player.Result`            | Sync call to start/resume media playback. |
 | `stop(completionQueue: DispatchQueue = .main, completion: @escaping () -> Void)` | Async call to stop media playback. |
 | `stop()`                             | Sync call to stop media playback.                                                 |
+| `load()`                             | Resets the media and selects the best available source again.                     |
 | `updateOptions(playerOptions)`       | Update player options                                                             |
 | `onApplicationDidBecomeActive()`     | Call in your IOS Application Lifecycle callback `applicationDidBecomeActive()`     |
 | `onApplicationWillResignActive()`    | Call in your IOS Application Lifecycle callback `applicationWillResignActive()`    |
 | `onApplicationDidEnterBackground()`  | Call in your IOS Application Lifecycle callback `applicationDidEnterBackground()`  |
 | `onApplicationWillEnterForeground()` | Call in your IOS Application Lifecycle callback `applicationWillEnterForeground()` |
+| `dispose()`                          | Cleanup all resources and stop playback.                                          |
 
 ## Player Events
 
@@ -364,8 +362,9 @@ Notice dependency to external AWSPinpoint SDK changes the build instructions for
 Please check MediaPlayerLiveExample App and custom player build instructions for managing AWS Pinpoint dependency via the sample CocoaPod Podfile
 
 If you are using AWSPinpoint in your own application analytics, AWSPinpoint version must be the same with the SDK
-
-![Pinpoint version](https://lh3.googleusercontent.com/BPTm7yTMeRQy0CBBg09B1B_y5l_te-DayCdM1AT8DTl8xZvL2D1vscFNhoYb548Z9jmiLhFT7N8B1Ckjuqp0gIuCGBRn9ihnJYcB6Koo1KRogrUYJtGN1qI2XPBcK9xBBn1A2_Iu)
+```
+  pod 'AWSPinpoint', '~> 2.12.1'
+```
 
 ## Sample MediaPlayerLiveExample App
 
@@ -395,10 +394,13 @@ See below how this is done in the sample application
 
 ![libdash as Cocoapod dependency](https://lh5.googleusercontent.com/Z9sxhp9n2F8zUeEL1WRnXc1ZsEzpUuBmVzwPHnUfLGNB582Nk0Reh-fUdPn-6VazohEKIiJMngaEsxZYzgbo5VHK6EQYrtRFGgsFwtn4DKH9MREMl8e66Nv7ODEYsRSu6Vi6yBkt)
 
-### AWSPinpoint Analytics dependencies
+### Livery SDK dependencies
 
-- The `Podfile` that you configure to install the AWS Pinpoint SDK must contain:
-  ![Pinpoint in podfile](https://lh3.googleusercontent.com/BPTm7yTMeRQy0CBBg09B1B_y5l_te-DayCdM1AT8DTl8xZvL2D1vscFNhoYb548Z9jmiLhFT7N8B1Ckjuqp0gIuCGBRn9ihnJYcB6Koo1KRogrUYJtGN1qI2XPBcK9xBBn1A2_Iu)
+- The `Podfile` that you configure to install the Livery SDK must contain:
+```
+  pod 'AWSPinpoint', '~> 2.12.1'
+  pod 'TrueTime', '~> 5.0.3'
+```
 
 - Run `pod install --repo-update` before you continue
 - From now on use YOUR_PROJECT_NAME. xcworkspace file in Xcode to open your project
@@ -448,4 +450,5 @@ Check section above for app store validation
 
 | Version | Description                                                                                                                                                                                                                                                                                                                           |
 | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 0.9.6   | Fixed issues with having to use a device or simulator version. You can now use the universal build. Made initialize call asynchronous, so it doesn’t block the main thread. The onSuccess and onError functions are called when initialisation is completed. Library only works with Xcode 11 now, since it is compiled in Swift 5.1. |
+| 0.9.6   | Fixed issues with having to use a device or simulator version. You can now use the universal build. Made initialize call asynchronous, so it doesn’t block the main thread. The onSuccess and onError functions are called when initialization is completed. Library only works with Xcode 11 now, since it is compiled in Swift 5.1. |
+| 0.9.9 | Methods are now async.<br> Added interactive layer feature.<br> Using NTP as time source.<br> Fixed volume control. |

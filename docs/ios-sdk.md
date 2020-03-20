@@ -26,14 +26,14 @@ At this point, the player will fetch the DASH manifest, start rendering by autom
 For more information about options, properties and methods please see relevant sections below.
 For a sample application code utilizing these minimal steps see the LiveryExample sample application section.
 
-### LiverySdk
+### Livery SDK
 
 #### Methods
 
 | Name                          | Returns   | Description                                                                       |
 | ----------------------------- | --------- | --------------------------------------------------------------------------------- |
+| `initialize(configUrl, completionQueue, completion)`       | `void` | Livery SDK initialization method.
 | `createPlayer(playerOptions)` | `Player`  | Create a Live Player by combining specified options with the initialize() config. |
-| `initialize(configUrl)`       | `boolean` | Livery SDK initialization method.                                                 |
 
 #### SDK Initialize
 
@@ -41,6 +41,10 @@ The SDK `initialize()` method has to be called on an sdk instance before Live Pl
 
 ```swift
 let liveSDK = Livery()
+liveSDK.initialize(configUrl: String?, completionQueue: DispatchQueue = .main, completion: (Livery.Result) -> Void)
+
+or
+
 liveSDK.initialize(configUrl: nil, onSuccess: () -> (), onError: (String?) -> ())
 ```
 
@@ -49,8 +53,33 @@ If a remote configuration url `configUrl` is set and remote configuration fails 
 
 Second option is to initialize without a `configUrl` and give the necessary options to the player via `playerOptions`.
 
-The values `onSuccess` and `onError` are functions called when the player successfully initialised or failed respectively. In case of an error, `onError` returns an optional localized error string.
+The `completionQueue` defines the `DispatchQueue` in which the `completion` callback is called.
+
+The `completion` callback is a block that receives a `Livery.Result` with the SDK initialization result. In case of an error `Livery.Result` contains an error of type `Livery.Errors`.
+
 For more info about the supported `playerOptions` see relevant sections below.
+
+##### SDK Initialization Result
+
+```swift
+extension Livery {
+  typealias Result = Swift.Result<Void, Errors>
+}
+```
+
+##### SDK Initialization Errors
+
+```swift
+extension Livery {
+  enum Errors : Error {
+    case invalidURL
+    case invalidServerTime
+    case downloadError(_ error: Error)
+    case missingData
+    case invalidConfig(_ error: Error)
+  }
+}
+```
 
 #### SDK Create Player
 
@@ -108,6 +137,14 @@ Sync options can be specified under `advanced.sync`:
 | --------------- | -------- | ------- | -------------------------------------------------------------- |
 | `targetLatency` | `Number` | `3`     | Target live latency in seconds. If 0 then syncing is disabled. |
 
+### Interactive Config
+
+Interactive options can be specified under `advanced.interactive`:
+
+| Name            | Type     | Default | Description                                                    |
+| --------------- | -------- | ------- | -------------------------------------------------------------- |
+| `url` | `URL?` | `nil`     | The interactive layer URL. |
+
 ## Player Options
 
 These are the options to be passed to Players:
@@ -155,17 +192,18 @@ The following methods are exposed by Player instances:
 
 | Name                                 | Description                                                                       |
 | ------------------------------------ | --------------------------------------------------------------------------------- |
-| `constructor(options)`               | Construct player with specified options.                                          |
-| `dispose()`                          | Cleanup all resources and stop playback.                                          |
-| `load()`                             | Resets the media and selects the best available source again.                     |
 | `setView(view: UIView)`              | Set the view for player to render.                                                |
-| `stop()`                             | Stop media playback.                                                              |
-| `play()`                             | Start/resume media playback.                                                      |
+| `play(completionQueue: DispatchQueue = .main, completion: (Player.Result) -> Void)` | Async call to start/resume media playback. |
+| `play() -> Player.Result`            | Sync call to start/resume media playback. |
+| `stop(completionQueue: DispatchQueue = .main, completion: @escaping () -> Void)` | Async call to stop media playback. |
+| `stop()`                             | Sync call to stop media playback.                                                 |
+| `load()`                             | Resets the media and selects the best available source again.                     |
 | `updateOptions(playerOptions)`       | Update player options                                                             |
-| `onApplicationDidBecomeActive()`     | Call in your IOS Application Lifecycle callback`applicationDidBecomeActive()`     |
-| `onApplicationWillResignActive()`    | Call in your IOS Application Lifecycle callback`applicationWillResignActive()`    |
-| `onApplicationDidEnterBackground()`  | Call in your IOS Application Lifecycle callback`applicationDidEnterBackground()`  |
-| `onApplicationWillEnterForeground()` | Call in your IOS Application Lifecycle callback`applicationWillEnterForeground()` |
+| `onApplicationDidBecomeActive()`     | Call in your IOS Application Lifecycle callback `applicationDidBecomeActive()`     |
+| `onApplicationWillResignActive()`    | Call in your IOS Application Lifecycle callback `applicationWillResignActive()`    |
+| `onApplicationDidEnterBackground()`  | Call in your IOS Application Lifecycle callback `applicationDidEnterBackground()`  |
+| `onApplicationWillEnterForeground()` | Call in your IOS Application Lifecycle callback `applicationWillEnterForeground()` |
+| `dispose()`                          | Cleanup all resources and stop playback.                                          |
 
 ## Player Events
 
@@ -208,6 +246,35 @@ Notification.Name {
   }
  static  var volumeChange: Notification.Name {
   return .init(rawValue: "Livery.volumeChange")
+  }
+}
+```
+
+### Player Types
+
+```swift
+extension Player {
+  typealias Result = Swift.Result<Void, Player.Errors>
+}
+
+extension Player {
+  public enum Errors : Error {
+    case invalidRenderView
+    case alreadyPlaying
+    case invalidPlayerOptions
+    case invalidPlayerOptionsSources
+    case invalidAudioSource
+    case invalidVideoSources
+  }
+}
+
+extension Player {
+  enum PlaybackState : String {
+    case none = ""
+    case buffering = "Buffering"
+    case playing = "Playing"
+    case paused = "Paused"
+    case ended = "Ended"
   }
 }
 ```
@@ -295,8 +362,9 @@ Notice dependency to external AWSPinpoint SDK changes the build instructions for
 Please check MediaPlayerLiveExample App and custom player build instructions for managing AWS Pinpoint dependency via the sample CocoaPod Podfile
 
 If you are using AWSPinpoint in your own application analytics, AWSPinpoint version must be the same with the SDK
-
-![Pinpoint version](https://lh3.googleusercontent.com/BPTm7yTMeRQy0CBBg09B1B_y5l_te-DayCdM1AT8DTl8xZvL2D1vscFNhoYb548Z9jmiLhFT7N8B1Ckjuqp0gIuCGBRn9ihnJYcB6Koo1KRogrUYJtGN1qI2XPBcK9xBBn1A2_Iu)
+```
+  pod 'AWSPinpoint', '~> 2.12.1'
+```
 
 ## Sample MediaPlayerLiveExample App
 
@@ -326,10 +394,13 @@ See below how this is done in the sample application
 
 ![libdash as Cocoapod dependency](https://lh5.googleusercontent.com/Z9sxhp9n2F8zUeEL1WRnXc1ZsEzpUuBmVzwPHnUfLGNB582Nk0Reh-fUdPn-6VazohEKIiJMngaEsxZYzgbo5VHK6EQYrtRFGgsFwtn4DKH9MREMl8e66Nv7ODEYsRSu6Vi6yBkt)
 
-### AWSPinpoint Analytics dependencies
+### Livery SDK dependencies
 
-- The `Podfile` that you configure to install the AWS Pinpoint SDK must contain:
-  ![Pinpoint in podfile](https://lh3.googleusercontent.com/BPTm7yTMeRQy0CBBg09B1B_y5l_te-DayCdM1AT8DTl8xZvL2D1vscFNhoYb548Z9jmiLhFT7N8B1Ckjuqp0gIuCGBRn9ihnJYcB6Koo1KRogrUYJtGN1qI2XPBcK9xBBn1A2_Iu)
+- The `Podfile` that you configure to install the Livery SDK must contain:
+```
+  pod 'AWSPinpoint', '~> 2.12.1'
+  pod 'TrueTime', '~> 5.0.3'
+```
 
 - Run `pod install --repo-update` before you continue
 - From now on use YOUR_PROJECT_NAME. xcworkspace file in Xcode to open your project
@@ -379,4 +450,5 @@ Check section above for app store validation
 
 | Version | Description                                                                                                                                                                                                                                                                                                                           |
 | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 0.9.6   | Fixed issues with having to use a device or simulator version. You can now use the universal build. Made initialize call asynchronous, so it doesn’t block the main thread. The onSuccess and onError functions are called when initialisation is completed. Library only works with Xcode 11 now, since it is compiled in Swift 5.1. |
+| 0.9.6   | Fixed issues with having to use a device or simulator version. You can now use the universal build. Made initialize call asynchronous, so it doesn’t block the main thread. The onSuccess and onError functions are called when initialization is completed. Library only works with Xcode 11 now, since it is compiled in Swift 5.1. |
+| 0.9.9 | Methods are now async.<br> Added interactive layer feature.<br> Using NTP as time source.<br> Fixed volume control. |

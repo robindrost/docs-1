@@ -129,6 +129,7 @@ This will not start playing until a `<livery-sdk>` element has been successfully
 | `poster`        | `poster`        | `string` \| `null` | `null`  | A URL for an image to be shown while the video is downloading.                                                                            |
 | `preload`       | `preload`       | `string` \| `null` | `null`  | Whether to preload `'none'`, just `'metadata'` (default) or `'full'` media.                                                               |
 | `targetlatency` | `targetLatency` | `number` \| `null` | `null`  | Custom target live latency in seconds. If `null` then remote config or default latency is used. If `0` or `NaN` then syncing is disabled. |
+| `vumeter`       | `vuMeter`       | `boolean`          | `false` | Enable volume unit meter.                                                                                                                 |
 
 #### Properties
 

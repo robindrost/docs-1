@@ -530,6 +530,12 @@ For this layout, there are no IDs available. This means that whenever the player
 
 ## Change log
 
+### 1.7.0
+
+- Reset dropped frames each progress event.
+- Fix bitrate sorting issue.
+- Fix invalid stall durations and wrong end session event reports.
+
 ### 1.6.9
 
 - Fix an issue where branded version error view could be overridden.

@@ -179,11 +179,13 @@ The following properties are exposed by Live Player instances:
 | `currentTime`     | `Number`             | Yes   | Current playback time position in seconds.Emits: `timeUpdate`.                                                                                     |
 | `duration`        | `Number`             | No    | Media duration in seconds. Used in `onDemand`.Emits: `durationChange`.                                                                             |
 | `error`           | `Error`              | No    | Most recent unrecovered error.Emits: error, recovered.                                                                                             |
-| `muted`           | `Boolean`            | Yes   | If true then audio is muted. Emits: `volumeChange`.                                                                                                |
+| `muted`           | `Boolean`            | Yes   | If true then audio is muted. Emits: `volumeChange`.
+| `latency`         | `Number`             | No    | End to end latency in milliseconds.                                                                                                                |
 | `playbackRate`    | `Number`             | Yes   | Playback rate (1 is normal).Emits: `rateChange`.                                                                                                   |
 | `playbackState`   | `String`             | No    | Playback state. BUFFERING / ENDED / FAST_FORWARD / PAUSED / PLAYING / REWIND / SEEKING / SLOW_MO Emits: `playbackChange`.                          |
 | `selectedQuality` | `Number`             | Yes   | Index of selected quality. Emits: selectedQualityChange.                                                                                           |
 | `streamType`      | `String`             | No    | Stream type. LIVE / ONDEMAND / UNKNOWN Computed: duration == Infinite => LIVE, Finite => ONDEMAND and NaN => UNKNOWN Changes on: `durationChange`. |
+| `timeOffset`      | `Number`             | No    | Local device time offset in milliseconds.                                                                                                          |
 | `volume`          | `Number`             | Yes   | Audio volume, from 0.0 (silent) to 1.0 (loudest).Emits: `volumeChange`.                                                                            |
 
 ## Player Methods

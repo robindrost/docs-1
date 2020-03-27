@@ -12,18 +12,92 @@ More information can be found at: [liveryvideo.com](https://liveryvideo.com).
 
 The Livery iOS SDK is compatible with iOS 12 of higher.
 
+### Configuration
+
+To install Livery SDK into your project, follow these steps below.
+
+You should request credentials from Ex Machina, then place them in your ~/.netrc as follows: (create if necessary)
+```
+machine sdk-ios-binaries.liveryvideo.com
+  login YOUR_USERNAME
+  password YOUR_PASSWORD
+```
+
+#### CocoaPods
+
+[CocoaPods](https://cocoapods.org/) is a dependency manager for Swift and Objective-C Cocoa projects. You can install it with the following command:
+```
+$ gem install cocoapods
+```
+
+To integrate Livery SDK into your Xcode project using CocoaPods, specify it in your Podfile, as follows:
+
+```ruby
+source 'https://github.com/CocoaPods/Specs.git'
+source 'https://github.com/exmg/livery-sdk-ios-podspec.git'
+
+target 'MyProject' do
+  pod "Livery", "0.9.9"
+end
+```
+
+Then run 
+```
+$ pod install
+```
+
 ## Usage
 
 For basic usage of the SDK following minimal steps are needed:
 
-- Initialize the SDK (See SDK `initialize()` method below)
-- Create playerOptions at least with a source URL of a DASH manifest.
-- Create a player object with this playerOptions (See SDK `createPlayer()` method below and playerOptions for a full list of supported options)
-- Set a UIView for the player to render into. (See Player Method `setView()` method below)
-- `Player.play()`
+```swift
+import Livery
 
-At this point, the player will fetch the DASH manifest, start rendering by automatically synching to the targetLatency set in playerOptions (or 3 seconds default.)
-For more information about options, properties and methods please see relevant sections below.
+@IBOutlet weak var playerView: UIView!
+
+var player: Player?
+let liveSDK = Livery()
+
+// 1. Initialize the SDK (See SDK initialize() method below for more options)
+liveSDK.initialize(configUrl: "yourConfigUrl" /* can be nil */, completionQueue: .main) { result in
+    switch result {            
+    case .success:
+      // 2. Create playerOptions at least with a source URL of a DASH manifest
+      let options = playerOptions()
+      options.autoplay = false
+      options.sources = ["yourSourceUrl"]
+      options.fit = .contain
+      
+      // 3. Create a player object with this playerOptions 
+      // (See SDK createPlayer() method below and playerOptions for a full list of supported options)
+      self.player = self.liveSDK.createPlayer(options: options)
+      if let player = self.player {
+        // 4. Set a UIView for the player to render into. (See Player Method setView() method below)
+        player.setView(view: self.playerView)
+      }
+
+      // 5. The player is now ready to play
+      play()
+
+    case .failure(let error):
+      // deal with the initialization error here
+    }
+}
+
+func play() {
+  player?.play(completionQueue: .main) { result in
+    switch result {
+      case .success:
+        // player is now playing
+                
+      case .failure(let error):
+        // deal with the play error here
+      }
+  }
+}
+```
+
+At this point, the player will fetch the DASH manifest, start rendering by automatically synching to the targetLatency set in playerOptions (or 3 seconds default). For more information about options, properties and methods please see relevant sections below.
 For a sample application code utilizing these minimal steps see the LiveryExample sample application section.
 
 ### Livery SDK
@@ -225,28 +299,28 @@ Below are the names for the Notifications to listen to
 
 ```swift
 Notification.Name {
- static  var activeQualityChange: Notification.Name {
+ static var activeQualityChange: Notification.Name {
   return .init(rawValue: "Livery.activeQualityChange")
   }
- static  var error: Notification.Name {
+ static var error: Notification.Name {
   return .init(rawValue: "Livery.error")
   }
- static  var networkChange: Notification.Name {
+ static var networkChange: Notification.Name {
   return .init(rawValue: "Livery.networkChange")
   }
- static  var playbackChange: Notification.Name {
+ static var playbackChange: Notification.Name {
   return .init(rawValue: "Livery.playbackChange")
   }
- static  var progress: Notification.Name {
+ static var progress: Notification.Name {
   return .init(rawValue: "Livery.progress")
   }
- static  var qualitiesChange: Notification.Name {
+ static var qualitiesChange: Notification.Name {
   return .init(rawValue: "Livery.qualitiesChange")
   }
- static  var selectedQualityChange: Notification.Name {
+ static var selectedQualityChange: Notification.Name {
   return .init(rawValue: "Livery.selectedQualityChange")
   }
- static  var volumeChange: Notification.Name {
+ static var volumeChange: Notification.Name {
   return .init(rawValue: "Livery.volumeChange")
   }
 }
@@ -302,10 +376,10 @@ To be updated with recovery options implementation in v 1.0.0
 Your application needs to call the corresponding player methods for each IOS Application LifeCycle callback
 
 ```swift
-public  func onApplicationDidBecomeActive()
-public  func onApplicationWillResignActive()
-public  func onApplicationDidEnterBackground()
-public  func onApplicationWillEnterForeground()
+public func onApplicationDidBecomeActive()
+public func onApplicationWillResignActive()
+public func onApplicationDidEnterBackground()
+public func onApplicationWillEnterForeground()
 ```
 
 ## Player Stall Recovery
@@ -361,9 +435,10 @@ The `customerId` will be added to all pinpoint events as a property.
 In future releases, the appId, region and `identityPoolId` properties of `advanced.analytics` configuration will be used for the necessary Pinpoint configuration.
 Notice dependency to external AWSPinpoint SDK changes the build instructions for your custom app.
 
-Please check MediaPlayerLiveExample App and custom player build instructions for managing AWS Pinpoint dependency via the sample CocoaPod Podfile
+If you are not using the AWSPinpoint in your own application there's no need to include this on your Podfile since this dependency is included in our SDK.
 
-If you are using AWSPinpoint in your own application analytics, AWSPinpoint version must be the same with the SDK
+Note: 
+- If your application already contains AWSPinpoint make sure its version matches the one used in the SDK, which is:
 ```
   pod 'AWSPinpoint', '~> 2.12.1'
 ```

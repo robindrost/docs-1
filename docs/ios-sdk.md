@@ -37,11 +37,11 @@ source 'https://github.com/CocoaPods/Specs.git'
 source 'https://github.com/exmg/livery-sdk-ios-podspec.git'
 
 target 'MyProject' do
-  pod "Livery", "0.9.9"
+  pod "Livery", "0.10.0"
 end
 ```
 
-Then run 
+Then run
 ```
 $ pod install
 ```
@@ -56,19 +56,19 @@ import Livery
 @IBOutlet weak var playerView: UIView!
 
 var player: Player?
-let liveSDK = Livery()
+let liveSDK = LiverySDK()
 
 // 1. Initialize the SDK (See SDK initialize() method below for more options)
 liveSDK.initialize(configUrl: "yourConfigUrl" /* can be nil */, completionQueue: .main) { result in
-    switch result {            
+    switch result {
     case .success:
       // 2. Create playerOptions at least with a source URL of a DASH manifest
       let options = playerOptions()
       options.autoplay = false
       options.sources = ["yourSourceUrl"]
       options.fit = .contain
-      
-      // 3. Create a player object with this playerOptions 
+
+      // 3. Create a player object with this playerOptions
       // (See SDK createPlayer() method below and playerOptions for a full list of supported options)
       self.player = self.liveSDK.createPlayer(options: options)
       if let player = self.player {
@@ -89,7 +89,7 @@ func play() {
     switch result {
       case .success:
         // player is now playing
-                
+
       case .failure(let error):
         // deal with the play error here
       }
@@ -114,8 +114,8 @@ For a sample application code utilizing these minimal steps see the LiveryExampl
 The SDK `initialize()` method has to be called on an sdk instance before Live Players are created.
 
 ```swift
-let liveSDK = Livery()
-liveSDK.initialize(configUrl: String?, completionQueue: DispatchQueue = .main, completion: (Livery.Result) -> Void)
+let liveSDK = LiverySDK()
+liveSDK.initialize(configUrl: String?, completionQueue: DispatchQueue = .main, completion: (LiverySDK.Result) -> Void)
 
 or
 
@@ -129,14 +129,14 @@ Second option is to initialize without a `configUrl` and give the necessary opti
 
 The `completionQueue` defines the `DispatchQueue` in which the `completion` callback is called.
 
-The `completion` callback is a block that receives a `Livery.Result` with the SDK initialization result. In case of an error `Livery.Result` contains an error of type `Livery.Errors`.
+The `completion` callback is a block that receives a `LiverySDK.Result` with the SDK initialization result. In case of an error `LiverySDK.Result` contains an error of type `LiverySDK.Errors`.
 
 For more info about the supported `playerOptions` see relevant sections below.
 
 ##### SDK Initialization Result
 
 ```swift
-extension Livery {
+extension LiverySDK {
   typealias Result = Swift.Result<Void, Errors>
 }
 ```
@@ -144,7 +144,7 @@ extension Livery {
 ##### SDK Initialization Errors
 
 ```swift
-extension Livery {
+extension LiverySDK {
   enum Errors : Error {
     case invalidURL
     case invalidServerTime
@@ -437,7 +437,7 @@ Notice dependency to external AWSPinpoint SDK changes the build instructions for
 
 If you are not using the AWSPinpoint in your own application there's no need to include this on your Podfile since this dependency is included in our SDK.
 
-Note: 
+Note:
 - If your application already contains AWSPinpoint make sure its version matches the one used in the SDK, which is:
 ```
   pod 'AWSPinpoint', '~> 2.12.1'
@@ -529,3 +529,4 @@ Check section above for app store validation
 | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 0.9.6   | Fixed issues with having to use a device or simulator version. You can now use the universal build. Made initialize call asynchronous, so it doesn’t block the main thread. The onSuccess and onError functions are called when initialization is completed. Library only works with Xcode 11 now, since it is compiled in Swift 5.1. |
 | 0.9.9 | Methods are now async.<br> Added interactive layer feature.<br> Using NTP as time source.<br> Fixed volume control. |
+| 0.10.0 | Livery class was renamed to LiverySDK to avoid build errors with `BUILD_LIBRARIES_FOR_DISTRIBUTION=YES`. This is a [known issue](https://developer.apple.com/documentation/xcode_release_notes/xcode_11_2_release_notes) present from Xcode 10.2. |

@@ -293,8 +293,10 @@ The following events can be emitted by Player instances via Notification center:
 | `playbackChange`        | Emitted when playbackState has changed.                                                                                                                     | `playbackState`   |
 | `qualitiesChange`       | Emitted when qualities have changed.                                                                                                                        | `qualities`       |
 | `selectedQualityChange` | Emitted when selectedQuality has changed.                                                                                                                   | `selectedQuality` |
-| `volumeChange`          | Emitted when volume or muted has changed.                                                                                                                   | `muted`           |
-| `volume`                | See MediaPlayerLiveExample app to see how playback state change events are received via Notification center and check the below list for Notification names |
+| `volumeChange`          | Emitted when volume or muted has changed.                                                                                                                   | `muted` ,  `volume`           |
+| `bandwidthTest`          | Emitted when trying to upgrade video bandwidth.                                                                                                                   |
+
+See MediaPlayerLiveExample app to see how playback state change events are received via Notification center and check the below list for Notification names
 
 Below are the names for the Notifications to listen to
 
@@ -323,6 +325,9 @@ Notification.Name {
   }
  static var volumeChange: Notification.Name {
   return .init(rawValue: "Livery.volumeChange")
+  }
+  static var bandwidthTest: Notification.Name {
+    return Notification.Name("Livery.bandwidthTest")
   }
 }
 ```

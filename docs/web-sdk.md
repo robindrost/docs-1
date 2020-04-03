@@ -29,6 +29,8 @@ Livery can be loaded from [unpkg](https://unpkg.com):
 <script src="https://unpkg.com/@exmg/livery"></script>
 ```
 
+?> You will probably want to add `@X` to the SDK URL above to lock into a specific major version.
+
 ### NPM
 
 Or Livery can be installed using NPM:

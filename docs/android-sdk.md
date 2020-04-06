@@ -74,12 +74,12 @@ For basic usage of the SDK following minimal steps are needed:
 
 ### Define Remote Config URL
 
-Add ‘livery_remote_config_url’ to your strings and pass the remote config URL as the value.
+Add ‘livery_remote_config_url’ to your strings and pass the remote config URL or the customer ID as the value.
 
 ```xml
 <resources>
    <!--...-->
-   <string name="livery_remote_config_url">insert_remote_config_url_here</string>
+   <string name="livery_remote_config_url">insert_remote_config_url_or_customer_id_here</string>
 </resources>
 ```
 
@@ -193,10 +193,10 @@ String pinpointUserId = LiverySDK.getInstance().getPinpointUserId();
 
 ### Update Remote Config
 
-Initial remote config is passed to the SDK via strings.xml, however there might be situations that remote config URL needs to be changed later on during run-time. To achieve this, the code below can be used:
+Initial remote config is passed to the SDK via strings.xml, however there might be situations that remote config URL or customer ID needs to be changed later on during run-time. To achieve this, the code below can be used:
 
 ```java
-LiverySDK.getInstance().updateRemoteConfig("Remote Config URL");
+LiverySDK.getInstance().updateRemoteConfig("Remote Config URL or Customer ID");
 ```
 
 ## Player Methods
@@ -529,6 +529,13 @@ To customize the loading indicator, create a layout named `livery_player_audio_o
 For this layout, there are no IDs available. This means that whenever the player is playing only audio, this layout will be shown.
 
 ## Change log
+
+### 1.7.1
+
+- Add the possibility to initialize SDK only with customer ID.
+- Fix a crash issue on null media source.
+- Refactor the way loading view worked, add extra parameters for switching qualities.
+- Added an algorithm to fetch and check the cache of remote config each minute.
 
 ### 1.7.0
 

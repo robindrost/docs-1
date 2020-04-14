@@ -59,7 +59,7 @@ The yellow plane is the input image and the blue plane is the part of that image
 
 ### Resolution and refresh rate
 
-If a computer is used as the video source there are usually 2 places where we have to set the resolution and refresh rate. In order to achieve the best possible image quality these settings must match the encoder settings (or the other way around). The first place is the monitor settings and the second place is the mixing software settings. Let's say we want to stream a landscape video in 16/9 format where the highest quality we want to stream is 1080P/30FPS. On Windows we can change the display settings like this:
+If a computer is used as the video source there are usually 2 places where we have to set the resolution and refresh rate. In order to achieve the best possible image quality these settings must match the encoder settings (or the other way around). The first place is the monitor settings and the second place is the mixing software settings. Let's say we want to stream a landscape video in 16/9 format where the highest quality we want to stream is 1080P/30FPS. If possible the framerate should be 30FPS or exactly double the target framerate. So 60FPS in this case. On Windows we can change the display settings like this:
 
 ![Windows display settings](encoder/windows-display-settings-1.png)
 
@@ -67,5 +67,12 @@ Make sure to also check the `Advanced display settings` to make sure Active sign
 
 ![Windows advanced display settings](encoder/windows-display-settings-2.png)
 
+On macOS open `Displays` to alter the settings. Use the `Gather Windows` button to see the settings window of both monitor outputs. For the 1080P/30FPS we could set it up like this:
+![OSX display settings](encoder/osx-display-settings.png)
+
 Next is the mixing software. For example in OBS it's possible to set the rendering resolution in the video settings page:
 ![OBS video settings](encoder/obs-video-settings.png)
+
+## Network
+
+It is recommended to use an internet connection which has at least twich the speed of the total bitrate that is going to be streamed as upload speed. For example if you have a 5Mbit and a 1Mbit video quality with a 96Kbit audio quality you would need an internet connection with an upload speed of at least 12.2 Mbit. This extra internet speed is needed to be able to cope with fluctuations in the internet connection.

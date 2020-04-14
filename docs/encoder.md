@@ -11,7 +11,7 @@ SDI
 
 - Integrated cable equalizer supporting cable lengths up to 230M for HD signals
 - Support for SD/HD/3Ga/3Gb/3Gb-DL/3Gb-DS standards
-- Support for RGB 4:4:4, YCbCr 4:4:4, YCbCr 4:2:2 color sampling
+- Support for RGB 444, YCbCr 444, YCbCr 422 color sampling
 - Support resolutions up to 1080P. Please contact us for information about higher resolutions on SDI.
 - Support for capture frame rates up to 144fps (Actual capture frame rate can be limited by the image resolution)
 
@@ -19,10 +19,10 @@ HDMI
 
 - 297MHz HDMI receiver
 - Adaptive HDMI equalizer
-- Support for RGB/YUV 4: 4: 4 8-bit format signals with a pixel frequency of no more than 297MHz
-- Support for YUV 4:2:2 12-bit format signals with a pixel frequency of no more than 297MHz
-- Support for RGB/YUV 4:4:4 10/12-bit format signals with a pixel frequency of no more than 170MHz
-- Support resulutions up to 4K (4096x2160).
+- Support for RGB/YUV 444 8-bit format signals with a pixel frequency of no more than 297MHz
+- Support for YUV 422 12-bit format signals with a pixel frequency of no more than 297MHz
+- Support for RGB/YUV 444 10/12-bit format signals with a pixel frequency of no more than 170MHz
+- Support resolutions up to 4K (4096x2160).
 - Support for capture frame rates up to 144fps (Actual capture frame rate can be limited by the image resolution)
 
 ### Mixing software
@@ -35,9 +35,25 @@ Make sure you do this on the scene and not on one of the sources within your sce
 
 ## Cloud encoder
 
+### Livery Console
+
+The cloud encoder can be controlled from the Livery console. After pressing the `start stream` button a cloud encoder will be provisioned.
+
+![Console cloud start stream](encoder/console-cloud-start.png)
+
+This will take some time. In the `encoders` section a new encoder is added which will show PROVISIONING as the `encoder state`.
+
+![Console cloud provisioning](encoder/console-cloud-provisioning.png)
+
+After the encoder is fully provisioned the state will change to PROVISIONED.
+
+![Console cloud provisioned](encoder/console-cloud-provisioned.png)
+
+Notice the Ingest URL. Once the encoder is fully provisioned this URL can be copy/pasted into the streaming software (OBS/Wirecast/etc.).
+
 ### Input signal
 
-The cloud encoder currently expects a resolution of 1920x1080. It can receive this input signal over RTMP. The URL that is used for RTMP can be found in the Livery CMS. The encoder does not support a stream key or authenticaiton. For example in OBS you can setup the RTPM URL like this:
+The cloud encoder currently expects a resolution of 1920x1080. It can receive this input signal over RTMP. The URL that is used for RTMP can be found in the [Livery console](#Livery-Console). The encoder does not support a stream key or authentication. For example in OBS you can setup the RTPM URL like this:
 
 ![OBS rtmp](encoder/obs-rtmp.png)
 
@@ -49,9 +65,9 @@ Sending the video to the cloud encoder adds a bit of latency. In OBS there is a 
 
 ### Cropping
 
-The livery encoder can crop the video that it is receiving before it encodes the video. This is usefull when the video stream is used in a portrait mode app. If we would not crop the image the video player will receive the full landscape image and has to crop it in order to not show black bars above and below the video. While this will also work it means that a lot of the streamed pixels are discarded by the video player. This is a waiste of bandwidth.
+The livery encoder can crop the video that it is receiving before it encodes the video. This is useful when the video stream is used in a portrait mode app. If we would not crop the image the video player will receive the full landscape image and has to crop it in order to not show black bars above and below the video. While this will also work it means that a lot of the streamed pixels are discarded by the video player. This is a waste of bandwidth.
 
-Cropping on the encoder works as follows. The encoder uses the output resolution aspect ratio to determine the size of the cropping area. We can provide a position from where to do the cropping. Usually this wille be eitehr at the complete left or exactly centered. This is an example for a portrait stream with a 9:16 aspect ratio. The input resolution is 1920x1080 and we have set the encoder to do centered cropping.
+Cropping on the encoder works as follows. The encoder uses the output resolution aspect ratio to determine the size of the cropping area. We can provide a position from where to do the cropping. Usually this will be either at the complete left or exactly centered. This is an example for a portrait stream with a 9:16 aspect ratio. The input resolution is 1920x1080 and we have set the encoder to do centered cropping.
 
 ![OBS zerolatency](encoder/cropping.png)
 
@@ -75,4 +91,4 @@ Next is the mixing software. For example in OBS it's possible to set the renderi
 
 ## Network
 
-It is recommended to use an internet connection which has at least twich the speed of the total bitrate that is going to be streamed as upload speed. For example if you have a 5Mbit and a 1Mbit video quality with a 96Kbit audio quality you would need an internet connection with an upload speed of at least 12.2 Mbit. This extra internet speed is needed to be able to cope with fluctuations in the internet connection.
+It is recommended to use an internet connection which has at least twice the speed of the total bitrate that is going to be streamed as upload speed. For example if you have a 5Mbit and a 1Mbit video quality with a 96Kbit audio quality you would need an internet connection with an upload speed of at least 12.2Mbit. This extra internet speed is needed to be able to cope with fluctuations in the internet connection.

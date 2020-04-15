@@ -32,7 +32,11 @@ There are some things to consider when using a hardware encoder in combination w
 #### ** OBS **
 ![OBS extend screen](encoder/obs-extend-screen.png)
 #### ** Streamlabs OBS **
-TBD
+![Streamlabs OBS extend screen](encoder/streamlabs-obs-extend-screen-2.png)
+
+Choose matching output resolution
+
+![Streamlabs OBS output resolution](encoder/streamlabs-obs-extend-screen.png)
 #### ** Wirecast **
 TBD
 <!-- tabs:end -->

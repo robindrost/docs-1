@@ -27,9 +27,17 @@ HDMI
 
 ### Mixing software
 
-There are some things to consider when using a hardware encoder in combination with video mixing software on a computer. The encoder will be assigned as an external monitor for the computer. The mixing software has to be setup in such a way that it outputs the video and audio to the external monitor. In OBS this can be done like this:
-
+There are some things to consider when using a hardware encoder in combination with video mixing software on a computer. The encoder will be assigned as an external monitor for the computer. The mixing software has to be setup in such a way that it outputs the video and audio to the external monitor. See examples of how this is set up in some mixers:
+<!-- tabs:start -->
+#### ** OBS **
 ![OBS extend screen](encoder/obs-extend-screen.png)
+#### ** Streamlabs OBS **
+TBD
+#### ** Wirecast **
+TBD
+<!-- tabs:end -->
+
+
 
 Make sure you do this on the scene and not on one of the sources within your scene. Otherwise you will only see the selected source being sent to the encoder.
 
@@ -53,13 +61,36 @@ Notice the Ingest URL. Once the encoder is fully provisioned this URL can be cop
 
 ### Input signal
 
-The cloud encoder currently expects a resolution of 1920x1080. It can receive this input signal over RTMP. The URL that is used for RTMP can be found in the [Livery console](#Livery-Console). The encoder does not support a stream key or authentication. For example in OBS you can setup the RTPM URL like this:
+The cloud encoder currently expects a resolution of 1920x1080. It can receive this input signal over RTMP. The URL that is used for RTMP can be found in the [Livery console](#Livery-Console). The encoder does not support a stream key or authentication. For the mixing software, see the RTMP URL stream and output settings (contact us if your prefered streaming software is not included):
+
+<!-- tabs:start -->
+
+#### ** OBS **
+
+Note that the rtmp url is an example!
 
 ![OBS rtmp](encoder/obs-rtmp.png)
 
 Sending the video to the cloud encoder adds a bit of latency. In OBS there is a setting for x264 called Tune=zerolatency that helps lowering this latency:
 
 ![OBS zerolatency](encoder/obs-zerolatency.png)
+
+
+#### ** Streamlabs OBS **
+
+Note that the rtmp url is an example!
+
+![Streamlabs OBS rtmp](encoder/streamlabs-obs-rtmp.png)
+
+Sending the video to the cloud encoder adds a bit of latency. In Streamlabs OBS there is a setting for x264 called Tune=zerolatency that helps lowering this latency:
+
+![Streamlabs OBS zerolatency](encoder/streamlabs-obs-zerolatency.png)
+
+#### ** Wirecast **
+
+Wirecast
+
+<!-- tabs:end -->
 
 ## Image settings
 
@@ -86,8 +117,15 @@ Make sure to also check the `Advanced display settings` to make sure Active sign
 On macOS open `Displays` to alter the settings. Use the `Gather Windows` button to see the settings window of both monitor outputs. For the 1080P/30FPS we could set it up like this:
 ![OSX display settings](encoder/osx-display-settings.png)
 
-Next is the mixing software. For example in OBS it's possible to set the rendering resolution in the video settings page:
+Next is the mixing software. See how to set the rendering resolution:
+
+<!-- tabs:start -->
+#### ** OBS **
 ![OBS video settings](encoder/obs-video-settings.png)
+#### ** Streamlabs OBS **
+![Streamlabs OBS video settings](encoder/streamlabs-obs-video-settings.png)
+#### ** Wirecast **
+<!-- tabs:end -->
 
 ## Network
 

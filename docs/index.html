@@ -17,23 +17,20 @@
     />
 
     <style>
-        :root {
-          /* Change the theme color hue */
-          --theme-hue: 300;
-          --docsifytabs-border-color: #ededed;
-    --docsifytabs-tab-highlight-color: purple;
-        }
+      :root {
+        /* Change the theme color hue */
+        --theme-hue: 300;
+      }
 
-        /* Allow docsify-themeable tables to scroll horizontally when necessary */
-        .markdown-section .table-wrapper {
-          overflow-x: auto;
-        }
+      /* Allow docsify-themeable tables to scroll horizontally when necessary */
+      .markdown-section .table-wrapper {
+        overflow-x: auto;
+      }
 
-        /* Prevent docsify-themeable responsive table cells from overflowing (unscrollable) */
-        @media (max-width: 30em) {
-          .markdown-section .table-wrapper td {
-            flex-wrap: wrap;
-          }
+      /* Prevent docsify-themeable responsive table cells from overflowing (unscrollable) */
+      @media (max-width: 30em) {
+        .markdown-section .table-wrapper td {
+          flex-wrap: wrap;
         }
       }
     </style>
@@ -51,13 +48,6 @@
         search: {
           namespace: 'livery-docs',
           depth: 6,
-        },
-        tabs: {
-          persist    : true,      // default
-          sync       : true,      // default
-          theme      : 'classic', // default
-          tabComments: true,      // default
-          tabHeadings: true       // default
         },
       };
     </script>
@@ -79,6 +69,5 @@
 
     <!-- docsify-tabs (latest v1.x.x) -->
     <script src="https://cdn.jsdelivr.net/npm/docsify-tabs@1"></script>
-
   </body>
 </html>

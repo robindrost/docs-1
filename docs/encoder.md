@@ -28,20 +28,26 @@ HDMI
 ### Mixing software
 
 There are some things to consider when using a hardware encoder in combination with video mixing software on a computer. The encoder will be assigned as an external monitor for the computer. The mixing software has to be setup in such a way that it outputs the video and audio to the external monitor. See examples of how this is set up in some mixers:
+
 <!-- tabs:start -->
-#### ** OBS **
+
+#### **OBS**
+
 ![OBS extend screen](encoder/obs-extend-screen.png)
-#### ** Streamlabs OBS **
+
+#### **Streamlabs OBS**
+
 ![Streamlabs OBS extend screen](encoder/streamlabs-obs-extend-screen-2.png)
 
 Choose matching output resolution
 
 ![Streamlabs OBS output resolution](encoder/streamlabs-obs-extend-screen.png)
-#### ** Wirecast **
+
+#### **Wirecast**
+
 TBD
+
 <!-- tabs:end -->
-
-
 
 Make sure you do this on the scene and not on one of the sources within your scene. Otherwise you will only see the selected source being sent to the encoder.
 
@@ -69,7 +75,7 @@ The cloud encoder currently expects a resolution of 1920x1080. It can receive th
 
 <!-- tabs:start -->
 
-#### ** OBS **
+#### **OBS**
 
 Note that the rtmp url is an example!
 
@@ -79,8 +85,7 @@ Sending the video to the cloud encoder adds a bit of latency. In OBS there is a 
 
 ![OBS zerolatency](encoder/obs-zerolatency.png)
 
-
-#### ** Streamlabs OBS **
+#### **Streamlabs OBS**
 
 Note that the rtmp url is an example!
 
@@ -90,7 +95,7 @@ Sending the video to the cloud encoder adds a bit of latency. In Streamlabs OBS 
 
 ![Streamlabs OBS zerolatency](encoder/streamlabs-obs-zerolatency.png)
 
-#### ** Wirecast **
+#### **Wirecast**
 
 Wirecast
 
@@ -124,11 +129,17 @@ On macOS open `Displays` to alter the settings. Use the `Gather Windows` button 
 Next is the mixing software. See how to set the rendering resolution:
 
 <!-- tabs:start -->
-#### ** OBS **
+
+#### **OBS**
+
 ![OBS video settings](encoder/obs-video-settings.png)
-#### ** Streamlabs OBS **
+
+#### **Streamlabs OBS**
+
 ![Streamlabs OBS video settings](encoder/streamlabs-obs-video-settings.png)
-#### ** Wirecast **
+
+#### **Wirecast**
+
 <!-- tabs:end -->
 
 ## Network

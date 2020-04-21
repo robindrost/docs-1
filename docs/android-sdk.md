@@ -74,12 +74,12 @@ For basic usage of the SDK following minimal steps are needed:
 
 ### Define Remote Config URL
 
-Add ‘livery_remote_config_url’ to your strings and pass the remote config URL as the value.
+Add ‘livery_remote_config_url’ to your strings and pass the remote config URL or the customer ID as the value.
 
 ```xml
 <resources>
    <!--...-->
-   <string name="livery_remote_config_url">insert_remote_config_url_here</string>
+   <string name="livery_remote_config_url">insert_remote_config_url_or_customer_id_here</string>
 </resources>
 ```
 
@@ -193,10 +193,10 @@ String pinpointUserId = LiverySDK.getInstance().getPinpointUserId();
 
 ### Update Remote Config
 
-Initial remote config is passed to the SDK via strings.xml, however there might be situations that remote config URL needs to be changed later on during run-time. To achieve this, the code below can be used:
+Initial remote config is passed to the SDK via strings.xml, however there might be situations that remote config URL or customer ID needs to be changed later on during run-time. To achieve this, the code below can be used:
 
 ```java
-LiverySDK.getInstance().updateRemoteConfig("Remote Config URL");
+LiverySDK.getInstance().updateRemoteConfig("Remote Config URL or Customer ID");
 ```
 
 ## Player Methods
@@ -503,24 +503,30 @@ To customize player controls, create a layout named `livery_player_control_view.
 
 Available IDs and their corresponding view types are listed below, ID names are self-explanatory about what that item does. Each view is optional.
 
-| Name                 | ID                          | Type        |
-| -------------------- | --------------------------- | ----------- |
-| Previous Button      | `livery_prev`               | `View`      |
-| Next Button          | `livery_next`               | `View`      |
-| Play Button          | `livery_play`               | `View`      |
-| Pause Button         | `livery_pause`              | `View`      |
-| Fast Forward Button  | `livery_ffwd`               | `View`      |
-| Rewind Button        | `livery_rew`                | `View`      |
-| Mute Button          | `livery_mute`               | `View`      |
-| Unmute Button        | `livery_unmute`             | `View`      |
-| Quality Button       | `livery_quality`            | `View`      |
-| Fullscreen Button    | `livery_fullscreen`         | `View`      |
-| Time bar Layout      | `controller_timebar_layout` | `View`      |
-| Time bar             | `livery_progress`           | `TimeBar`   |
-| Repeat Toggle Button | `livery_repeat_toggle`      | `ImageView` |
-| Shuffle Button       | `livery_shuffle`            | `View`      |
-| Duration View        | `livery_duration`           | `TextView`  |
-| Position View        | `livery_position`           | `TextView`  |
+| Name                         | ID                                    | Type        |
+| ---------------------------- | ------------------------------------- | ----------- |
+| Previous Button              | `livery_prev`                         | `View`      |
+| Next Button                  | `livery_next`                         | `View`      |
+| Play Button                  | `livery_play`                         | `View`      |
+| Pause Button                 | `livery_pause`                        | `View`      |
+| Fast Forward Button          | `livery_ffwd`                         | `View`      |
+| Rewind Button                | `livery_rew`                          | `View`      |
+| Mute Button                  | `livery_mute`                         | `View`      |
+| Unmute Button                | `livery_unmute`                       | `View`      |
+| Quality Button               | `livery_quality`                      | `View`      |
+| Fullscreen Button            | `livery_fullscreen`                   | `View`      |
+| Shuffle Button               | `livery_shuffle`                      | `View`      |
+| Video Camera Button          | `livery_videocam`                     | `View`      |
+| Cast Button                  | `livery_cast`                         | `View`      |
+| Live Circle View             | `livery_live_circle`                  | `View`      |
+| Quality Indicator Background | `livery_quality_indicator_background` | `View`      |
+| Time bar                     | `livery_progress`                     | `TimeBar`   |
+| Repeat Toggle Button         | `livery_repeat_toggle`                | `ImageView` |
+| Duration Text                | `livery_duration`                     | `TextView`  |
+| Position Text                | `livery_position`                     | `TextView`  |
+| Time Separator Text          | `livery_time_separator`               | `TextView`  |
+| Live Text                    | `livery_live_text`                    | `TextView`  |
+| Quality Indicator Text       | `livery_quality_indicator_text`       | `TextView`  |
 
 ### Audio Only Stream Indicator
 
@@ -529,6 +535,19 @@ To customize the loading indicator, create a layout named `livery_player_audio_o
 For this layout, there are no IDs available. This means that whenever the player is playing only audio, this layout will be shown.
 
 ## Change log
+
+### 1.7.2-dev
+
+- Change UI of player controls.
+- Add new fields to Player Controls Customizing documentation.
+- Change audio only indicator.
+
+### 1.7.1
+
+- Add the possibility to initialize SDK only with customer ID.
+- Fix a crash issue on null media source.
+- Refactor the way loading view worked, add extra parameters for switching qualities.
+- Added an algorithm to fetch and check the cache of remote config each minute.
 
 ### 1.7.0
 

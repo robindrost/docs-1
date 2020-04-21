@@ -17,22 +17,9 @@
     />
 
     <style>
-        :root {
-          /* Change the theme color hue */
-          --theme-hue: 300;
-        }
-
-        /* Allow docsify-themeable tables to scroll horizontally when necessary */
-        .markdown-section .table-wrapper {
-          overflow-x: auto;
-        }
-
-        /* Prevent docsify-themeable responsive table cells from overflowing (unscrollable) */
-        @media (max-width: 30em) {
-          .markdown-section .table-wrapper td {
-            flex-wrap: wrap;
-          }
-        }
+      :root {
+        /* Change the theme color hue */
+        --theme-hue: 300;
       }
     </style>
   </head>
@@ -67,5 +54,8 @@
     <script src="//unpkg.com/prismjs/components/prism-groovy.min.js"></script>
     <script src="//unpkg.com/prismjs/components/prism-java.min.js"></script>
     <script src="//unpkg.com/prismjs/components/prism-swift.min.js"></script>
+
+    <!-- docsify-tabs (latest v1.x.x) -->
+    <script src="https://cdn.jsdelivr.net/npm/docsify-tabs@1"></script>
   </body>
 </html>

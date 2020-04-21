@@ -1,4 +1,5 @@
 - [Livery Docs](/ 'Livery Docs')
+- [Encoder](encoder.md 'Livery Encoder')
 - [Android SDK](android-sdk.md 'Livery Android SDK')
 - [iOS SDK](ios-sdk.md 'Livery iOS SDK')
 - [Web SDK](web-sdk.md 'Livery Web SDK')

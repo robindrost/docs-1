@@ -17,6 +17,7 @@ The Livery iOS SDK is compatible with iOS 12 of higher.
 To install Livery SDK into your project, follow these steps below.
 
 You should request credentials from Ex Machina, then place them in your ~/.netrc as follows: (create if necessary)
+
 ```
 machine sdk-ios-binaries.liveryvideo.com
   login YOUR_USERNAME
@@ -26,6 +27,7 @@ machine sdk-ios-binaries.liveryvideo.com
 #### CocoaPods
 
 [CocoaPods](https://cocoapods.org/) is a dependency manager for Swift and Objective-C Cocoa projects. You can install it with the following command:
+
 ```
 $ gem install cocoapods
 ```
@@ -42,6 +44,7 @@ end
 ```
 
 Then run
+
 ```
 $ pod install
 ```
@@ -104,10 +107,10 @@ For a sample application code utilizing these minimal steps see the LiveryExampl
 
 #### Methods
 
-| Name                          | Returns   | Description                                                                       |
-| ----------------------------- | --------- | --------------------------------------------------------------------------------- |
-| `initialize(configUrl, completionQueue, completion)`       | `void` | Livery SDK initialization method.
-| `createPlayer(playerOptions)` | `Player`  | Create a Live Player by combining specified options with the initialize() config. |
+| Name                                                 | Returns  | Description                                                                       |
+| ---------------------------------------------------- | -------- | --------------------------------------------------------------------------------- |
+| `initialize(configUrl, completionQueue, completion)` | `void`   | Livery SDK initialization method.                                                 |
+| `createPlayer(playerOptions)`                        | `Player` | Create a Live Player by combining specified options with the initialize() config. |
 
 #### SDK Initialize
 
@@ -215,9 +218,9 @@ Sync options can be specified under `advanced.sync`:
 
 Interactive options can be specified under `advanced.interactive`:
 
-| Name            | Type     | Default | Description                                                    |
-| --------------- | -------- | ------- | -------------------------------------------------------------- |
-| `url` | `URL?` | `nil`     | The interactive layer URL. |
+| Name  | Type   | Default | Description                |
+| ----- | ------ | ------- | -------------------------- |
+| `url` | `URL?` | `nil`   | The interactive layer URL. |
 
 ## Player Options
 
@@ -267,20 +270,20 @@ The following properties are exposed by Live Player instances:
 
 The following methods are exposed by Player instances:
 
-| Name                                 | Description                                                                       |
-| ------------------------------------ | --------------------------------------------------------------------------------- |
-| `setView(view: UIView)`              | Set the view for player to render.                                                |
-| `play(completionQueue: DispatchQueue = .main, completion: (Player.Result) -> Void)` | Async call to start/resume media playback. |
-| `play() -> Player.Result`            | Sync call to start/resume media playback. |
-| `stop(completionQueue: DispatchQueue = .main, completion: @escaping () -> Void)` | Async call to stop media playback. |
-| `stop()`                             | Sync call to stop media playback.                                                 |
-| `load()`                             | Resets the media and selects the best available source again.                     |
-| `updateOptions(playerOptions)`       | Update player options                                                             |
-| `onApplicationDidBecomeActive()`     | Call in your IOS Application Lifecycle callback `applicationDidBecomeActive()`     |
-| `onApplicationWillResignActive()`    | Call in your IOS Application Lifecycle callback `applicationWillResignActive()`    |
-| `onApplicationDidEnterBackground()`  | Call in your IOS Application Lifecycle callback `applicationDidEnterBackground()`  |
-| `onApplicationWillEnterForeground()` | Call in your IOS Application Lifecycle callback `applicationWillEnterForeground()` |
-| `dispose()`                          | Cleanup all resources and stop playback.                                          |
+| Name                                                                                | Description                                                                        |
+| ----------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `setView(view: UIView)`                                                             | Set the view for player to render.                                                 |
+| `play(completionQueue: DispatchQueue = .main, completion: (Player.Result) -> Void)` | Async call to start/resume media playback.                                         |
+| `play() -> Player.Result`                                                           | Sync call to start/resume media playback.                                          |
+| `stop(completionQueue: DispatchQueue = .main, completion: @escaping () -> Void)`    | Async call to stop media playback.                                                 |
+| `stop()`                                                                            | Sync call to stop media playback.                                                  |
+| `load()`                                                                            | Resets the media and selects the best available source again.                      |
+| `updateOptions(playerOptions)`                                                      | Update player options                                                              |
+| `onApplicationDidBecomeActive()`                                                    | Call in your IOS Application Lifecycle callback `applicationDidBecomeActive()`     |
+| `onApplicationWillResignActive()`                                                   | Call in your IOS Application Lifecycle callback `applicationWillResignActive()`    |
+| `onApplicationDidEnterBackground()`                                                 | Call in your IOS Application Lifecycle callback `applicationDidEnterBackground()`  |
+| `onApplicationWillEnterForeground()`                                                | Call in your IOS Application Lifecycle callback `applicationWillEnterForeground()` |
+| `dispose()`                                                                         | Cleanup all resources and stop playback.                                           |
 
 ## Player Events
 
@@ -459,7 +462,9 @@ Notice dependency to external AWSPinpoint SDK changes the build instructions for
 If you are not using the AWSPinpoint in your own application there's no need to include this on your Podfile since this dependency is included in our SDK.
 
 Note:
+
 - If your application already contains AWSPinpoint make sure its version matches the one used in the SDK, which is:
+
 ```
   pod 'AWSPinpoint', '~> 2.12.1'
 ```
@@ -495,6 +500,7 @@ See below how this is done in the sample application
 ### Livery SDK dependencies
 
 - The `Podfile` that you configure to install the Livery SDK must contain:
+
 ```
   pod 'AWSPinpoint', '~> 2.12.1'
   pod 'TrueTime', '~> 5.0.3'
@@ -549,5 +555,6 @@ Check section above for app store validation
 | Version | Description                                                                                                                                                                                                                                                                                                                           |
 | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 0.9.6   | Fixed issues with having to use a device or simulator version. You can now use the universal build. Made initialize call asynchronous, so it doesn’t block the main thread. The onSuccess and onError functions are called when initialization is completed. Library only works with Xcode 11 now, since it is compiled in Swift 5.1. |
-| 0.9.9 | Methods are now async.<br> Added interactive layer feature.<br> Using NTP as time source.<br> Fixed volume control. |
-| 0.10.0 | Livery class was renamed to LiverySDK to avoid build errors with `BUILD_LIBRARIES_FOR_DISTRIBUTION=YES`. This is a [known issue](https://developer.apple.com/documentation/xcode_release_notes/xcode_11_2_release_notes) present from Xcode 10.2. |
+| 0.9.9   | Methods are now async.<br> Added interactive layer feature.<br> Using NTP as time source.<br> Fixed volume control.                                                                                                                                                                                                                   |
+| 0.10.0  | Livery class was renamed to LiverySDK to avoid build errors with `BUILD_LIBRARIES_FOR_DISTRIBUTION=YES`. This is a [known issue](https://developer.apple.com/documentation/xcode_release_notes/xcode_11_2_release_notes) present from Xcode 10.2.                                                                                     |
+| 0.10.1  | Battery life improvements.<br> New ABR algorithm.<br> Backup/main stream switching support.<br> Synchronization improvements for restricted networks.<br> Analytics improvements |

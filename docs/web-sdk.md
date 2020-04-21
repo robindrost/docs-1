@@ -29,6 +29,8 @@ Livery can be loaded from [unpkg](https://unpkg.com):
 <script src="https://unpkg.com/@exmg/livery"></script>
 ```
 
+?> You will probably want to add `@X` to the SDK URL above to lock into a specific major version.
+
 ### NPM
 
 Or Livery can be installed using NPM:
@@ -128,6 +130,7 @@ This will not start playing until a `<livery-sdk>` element has been successfully
 | `persistmuted`  | `persistMuted`  | `boolean`          | `false` | If `true` then persist muted state of player in localStorage with key `'muted'`.                                                          |
 | `poster`        | `poster`        | `string` \| `null` | `null`  | A URL for an image to be shown while the video is downloading.                                                                            |
 | `preload`       | `preload`       | `string` \| `null` | `null`  | Whether to preload `'none'`, just `'metadata'` (default) or `'full'` media.                                                               |
+| `preroll`       | `preRoll`       | `string` \| `null` | `null`  | Source URL to play before the main sources.                                                                                               |
 | `targetlatency` | `targetLatency` | `number` \| `null` | `null`  | Custom target live latency in seconds. If `null` then remote config or default latency is used. If `0` or `NaN` then syncing is disabled. |
 | `vumeter`       | `vuMeter`       | `boolean`          | `false` | Enable volume unit meter.                                                                                                                 |
 

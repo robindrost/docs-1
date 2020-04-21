@@ -248,23 +248,23 @@ The source protocol must be DASH for IOS SDK
 
 The following properties are exposed by Live Player instances:
 
-| Name              | Type                 | Write | Description                                                                                                                                        |
-| ----------------- | -------------------- | ----- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `activeQuality`   | [`Quality`](#player-media-quality)             | No    | Active Media Quality. Emits: `activeQualityChange`.                                                                                                                              |
-| `advanced`        | `AdvancedProperties` | No    | Advanced properties.                                                                                                                               |
-| `currentSrc`      | `String`             | No    | Current media source URL.                                                                                                                          |
-| `currentTime`     | `Number`             | Yes   | Current playback time position in seconds. Emits: `timeUpdate`.                                                                                     |
-| `duration`        | `Number`             | No    | Media duration in seconds. Used in `onDemand`. Emits: `durationChange`.                                                                             |
-| `error`           | `Error`              | No    | Most recent unrecovered error. Emits: error, recovered.                                                                                             |
-| `muted`           | `Boolean`            | Yes   | If true then audio is muted. Emits: `volumeChange`.
-| `latency`         | `Number`             | No    | End to end latency in milliseconds.                                                                                                                |
-| `playbackRate`    | `Number`             | Yes   | Playback rate (1 is normal).Emits: `rateChange`.                                                                                                   |
-| `playbackState`   | `String`             | No    | Playback state. BUFFERING / ENDED / FAST_FORWARD / PAUSED / PLAYING / REWIND / SEEKING / SLOW_MO Emits: `playbackChange`.                          |
-| `selectedQuality` | [`Quality`](#player-media-quality)             | Yes   | Selected Media Quality. Emits: `selectedQualityChange`.                                                                                           |
-| `volume`          | `Number`             | Yes   | Audio volume, from 0.0 (silent) to 1.0 (loudest). Emits: `volumeChange`.                                                                            |
-| `streamType`      | `String`             | No    | Stream type. LIVE / ONDEMAND / UNKNOWN Computed: duration == Infinite => LIVE, Finite => ONDEMAND and NaN => UNKNOWN Changes on: `durationChange`. |
-| `timeOffset`      | `Number`             | No    | Local device time offset in milliseconds.                                                                                                          |
-| `qualities`       |`[Quality]`          | No   | Array of Available Media Qualities. Emits: `qualitiesChange`.                                                                            |
+| Name              | Type                               | Write | Description                                                                                                                                        |
+| ----------------- | ---------------------------------- | ----- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `activeQuality`   | [`Quality`](#player-media-quality) | No    | Active Media Quality. Emits: `activeQualityChange`.                                                                                                |
+| `advanced`        | `AdvancedProperties`               | No    | Advanced properties.                                                                                                                               |
+| `currentSrc`      | `String`                           | No    | Current media source URL.                                                                                                                          |
+| `currentTime`     | `Number`                           | Yes   | Current playback time position in seconds. Emits: `timeUpdate`.                                                                                    |
+| `duration`        | `Number`                           | No    | Media duration in seconds. Used in `onDemand`. Emits: `durationChange`.                                                                            |
+| `error`           | `Error`                            | No    | Most recent unrecovered error. Emits: error, recovered.                                                                                            |
+| `muted`           | `Boolean`                          | Yes   | If true then audio is muted. Emits: `volumeChange`.                                                                                                |
+| `latency`         | `Number`                           | No    | End to end latency in milliseconds.                                                                                                                |
+| `playbackRate`    | `Number`                           | Yes   | Playback rate (1 is normal).Emits: `rateChange`.                                                                                                   |
+| `playbackState`   | `String`                           | No    | Playback state. BUFFERING / ENDED / FAST_FORWARD / PAUSED / PLAYING / REWIND / SEEKING / SLOW_MO Emits: `playbackChange`.                          |
+| `selectedQuality` | [`Quality`](#player-media-quality) | Yes   | Selected Media Quality. Emits: `selectedQualityChange`.                                                                                            |
+| `volume`          | `Number`                           | Yes   | Audio volume, from 0.0 (silent) to 1.0 (loudest). Emits: `volumeChange`.                                                                           |
+| `streamType`      | `String`                           | No    | Stream type. LIVE / ONDEMAND / UNKNOWN Computed: duration == Infinite => LIVE, Finite => ONDEMAND and NaN => UNKNOWN Changes on: `durationChange`. |
+| `timeOffset`      | `Number`                           | No    | Local device time offset in milliseconds.                                                                                                          |
+| `qualities`       | `[Quality]`                        | No    | Array of Available Media Qualities. Emits: `qualitiesChange`.                                                                                      |
 
 ## Player Methods
 
@@ -289,15 +289,15 @@ The following methods are exposed by Player instances:
 
 The following events can be emitted by Player instances via Notification center:
 
-| Name                    | Description                                                                                                                                                 | Properties        |
-| ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------- |
-| `activeQualityChange`   | Emitted when activeQuality has changed.                                                                                                                     | `activeQuality`   |
-| `error`                 | Emitted when an error occurs with a reference to the platform specific Error instance.                                                                      | `error`           |
-| `playbackChange`        | Emitted when playbackState has changed.                                                                                                                     | `playbackState`   |
-| `qualitiesChange`       | Emitted when qualities have changed.                                                                                                                        | `qualities`       |
-| `selectedQualityChange` | Emitted when selectedQuality has changed.                                                                                                                   | `selectedQuality` |
-| `volumeChange`          | Emitted when volume or muted has changed.                                                                                                                   | `muted` ,  `volume`           |
-| `bandwidthTest`          | Emitted when trying to upgrade video bandwidth.                                                                                                                   |
+| Name                    | Description                                                                            | Properties         |
+| ----------------------- | -------------------------------------------------------------------------------------- | ------------------ |
+| `activeQualityChange`   | Emitted when activeQuality has changed.                                                | `activeQuality`    |
+| `error`                 | Emitted when an error occurs with a reference to the platform specific Error instance. | `error`            |
+| `playbackChange`        | Emitted when playbackState has changed.                                                | `playbackState`    |
+| `qualitiesChange`       | Emitted when qualities have changed.                                                   | `qualities`        |
+| `selectedQualityChange` | Emitted when selectedQuality has changed.                                              | `selectedQuality`  |
+| `volumeChange`          | Emitted when volume or muted has changed.                                              | `muted` , `volume` |
+| `bandwidthTest`         | Emitted when trying to upgrade video bandwidth.                                        |
 
 See MediaPlayerLiveExample app to see how playback state change events are received via Notification center and check the below list for Notification names
 
@@ -557,4 +557,4 @@ Check section above for app store validation
 | 0.9.6   | Fixed issues with having to use a device or simulator version. You can now use the universal build. Made initialize call asynchronous, so it doesn’t block the main thread. The onSuccess and onError functions are called when initialization is completed. Library only works with Xcode 11 now, since it is compiled in Swift 5.1. |
 | 0.9.9   | Methods are now async.<br> Added interactive layer feature.<br> Using NTP as time source.<br> Fixed volume control.                                                                                                                                                                                                                   |
 | 0.10.0  | Livery class was renamed to LiverySDK to avoid build errors with `BUILD_LIBRARIES_FOR_DISTRIBUTION=YES`. This is a [known issue](https://developer.apple.com/documentation/xcode_release_notes/xcode_11_2_release_notes) present from Xcode 10.2.                                                                                     |
-| 0.10.1  | Battery life improvements.<br> New ABR algorithm.<br> Backup/main stream switching support.<br> Synchronization improvements for restricted networks.<br> Analytics improvements |
+| 0.10.1  | Battery life improvements.<br> New ABR algorithm.<br> Backup/main stream switching support.<br> Synchronization improvements for restricted networks.<br> Analytics improvements                                                                                                                                                      |

@@ -538,6 +538,11 @@ For this layout, there are no IDs available. This means that whenever the player
 
 ## Change log
 
+### 1.7.4-dev
+
+- Add name of the device which is being casted to casting indicator.
+- Fix a bug where mute/unmute button disappeared after stop casting.
+
 ### 1.7.3-dev
 
 - Add 'Casting' feature.

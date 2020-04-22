@@ -383,14 +383,16 @@ enum **_LiveryResizeMode_**
 
 You can edit LiveryControlsOptions from controls property of LiveryPlayerOptions. Available controls are listed on the table below.
 
-class **_LiveryPlayerControls_**
+class **_LiveryControlsOptions_**
 
-| Name         | Type      | Default | Description                                   |
-| ------------ | --------- | ------- | --------------------------------------------- |
-| `fullscreen` | `Boolean` | `false` | Sets the visibility of the fullscreen button. |
-| `mute`       | `Boolean` | `false` | Sets the visibility of the mute button.       |
-| `quality`    | `Boolean` | `false` | Sets the visibility of the quality button.    |
-| `error`      | `Boolean` | `false` | Sets the visibility of the error overlay.     |
+| Name           | Type      | Default | Description                                   |
+| -------------- | --------- | ------- | --------------------------------------------- |
+| `fullscreen`   | `Boolean` | `false` | Sets the visibility of the fullscreen button. |
+| `mute`         | `Boolean` | `false` | Sets the visibility of the mute button.       |
+| `quality`      | `Boolean` | `false` | Sets the visibility of the quality button.    |
+| `error`        | `Boolean` | `false` | Sets the visibility of the error overlay.     |
+| `liveControls` | `Boolean` | `false` | Sets the visibility of the live controls.     |
+| `cast`         | `Boolean` | `false` | Sets the visibility of the cast feature.      |
 
 #### Fullscreen Button
 
@@ -535,6 +537,12 @@ To customize the loading indicator, create a layout named `livery_player_audio_o
 For this layout, there are no IDs available. This means that whenever the player is playing only audio, this layout will be shown.
 
 ## Change log
+
+### 1.7.3-dev
+
+- Add 'Casting' feature.
+- Add related 'Casting' elements to UI.
+- Add new properties to 'LiveryControlsOptions'.
 
 ### 1.7.2-dev
 

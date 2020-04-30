@@ -62,9 +62,9 @@ var player: Player?
 let liveSDK = LiverySDK()
 
 // 1. Initialize the SDK (See SDK initialize() method below for more options)
-liveSDK.initialize(configUrl: "yourConfigUrl" /* can be nil */, completionQueue: .main) { result in
+liveSDK.initialize(streamId: "yourStreamId", completionQueue: .main) { result in
     switch result {
-    case .success:
+    case .success(let config):
       // 2. Create playerOptions at least with a source URL of a DASH manifest
       let options = playerOptions()
       options.autoplay = false
@@ -107,10 +107,10 @@ For a sample application code utilizing these minimal steps see the LiveryExampl
 
 #### Methods
 
-| Name                                                 | Returns  | Description                                                                       |
-| ---------------------------------------------------- | -------- | --------------------------------------------------------------------------------- |
-| `initialize(configUrl, completionQueue, completion)` | `void`   | Livery SDK initialization method.                                                 |
-| `createPlayer(playerOptions)`                        | `Player` | Create a Live Player by combining specified options with the initialize() config. |
+| Name                                                | Returns  | Description                                                                       |
+| --------------------------------------------------- | -------- | --------------------------------------------------------------------------------- |
+| `initialize(streamId, completionQueue, completion)` | `void`   | Livery SDK initialization method.                                                 |
+| `createPlayer(playerOptions)`                       | `Player` | Create a Live Player by combining specified options with the initialize() config. |
 
 #### SDK Initialize
 
@@ -118,29 +118,23 @@ The SDK `initialize()` method has to be called on an sdk instance before Live Pl
 
 ```swift
 let liveSDK = LiverySDK()
-liveSDK.initialize(configUrl: String?, completionQueue: DispatchQueue = .main, completion: (LiverySDK.Result) -> Void)
-
-or
-
-liveSDK.initialize(configUrl: nil, onSuccess: () -> (), onError: (String?) -> ())
+liveSDK.initialize(streamId: String, completionQueue: DispatchQueue = .main, completion: (LiverySDK.ResultConfig) -> Void)
 ```
 
-There are basically two ways to initialize the SDK. With or Without a remote configuration url.
-If a remote configuration url `configUrl` is set and remote configuration fails to be fetched, the SDK will fail to initialize.
-
-Second option is to initialize without a `configUrl` and give the necessary options to the player via `playerOptions`.
+The streamId is used to determine the remote configuration url and is fetched from it. If the remote configuration fails to be fetched the SDK will fail to initialize.
 
 The `completionQueue` defines the `DispatchQueue` in which the `completion` callback is called.
 
-The `completion` callback is a block that receives a `LiverySDK.Result` with the SDK initialization result. In case of an error `LiverySDK.Result` contains an error of type `LiverySDK.Errors`.
+The `completion` callback is a block that receives a `LiverySDK.ResultConfig` with the SDK initialization result.
 
-For more info about the supported `playerOptions` see relevant sections below.
+- In case of success it contains the fetched [`LiveryConfig`](#config).
+- In case of an error it contains an error of type `LiverySDK.Errors`.
 
 ##### SDK Initialization Result
 
 ```swift
 extension LiverySDK {
-  typealias Result = Swift.Result<Void, Errors>
+  typealias ResultConfig = Swift.Result<LiveryConfig, Errors>
 }
 ```
 
@@ -222,19 +216,33 @@ Interactive options can be specified under `advanced.interactive`:
 | ----- | ------ | ------- | -------------------------- |
 | `url` | `URL?` | `nil`   | The interactive layer URL. |
 
+### Config
+
+class **_LiveryConfig_**
+
+| Name       | Type             | Description                                                                                                 |
+| ---------- | ---------------- | ----------------------------------------------------------------------------------------------------------- |
+| `sources`  | `String[]`       | Array of media source URLs from which the first that can be played will be selected.                        |
+| `advanced` | `advancedConfig` | Advanced options.                                                                                           |
+| `autoplay` | `Bool`           | Determines whether video shall play immediately after [`createPlayer`](#sdk-create-player).                 |
+| `fit`      | `String`         | Determines how the video will be scaled and cropped. See: [`Player Fitting`](#player-fitting)               |
+| `loop`     | `Bool`           | Determines whether the video should restart after it ends.                                                  |
+| `muted`    | `Bool`           | Determines whether media should be muted or not.                                                            |
+| `poster`   | `String`         | Represents URL to poster image. When this property is not empty, the player will show a poster on creation. |
+
 ## Player Options
 
 These are the options to be passed to Players:
 
-| Name               | Type             | Default      | Description                                                                                                               |
-| ------------------ | ---------------- | ------------ | ------------------------------------------------------------------------------------------------------------------------- |
-| `autoplay`         | `Boolean`        | `false`      | If true then automatically begin playback as soon as possible. Note: In browsers this will not work unless muted is true. |
-| `muted`            | `Boolean`        | `false`      | If true then the audio will initially be silenced.                                                                        |
-| `targetLatency`    | `Integer`        | `3`          | Target live latency in seconds. If 0 then syncing is disabled.                                                            |
-| `sources`          | `String[]`       | `<required>` | Array of media source URLs from which the first that can be played will be selected.                                      |
-| `fit`              | `enum playerFit` | `.contain`   | Determines how the video will be scaled and cropped. See Section Player Fitting.                                          |
-| `minRecoveryDelay` | `Integer`        | `10`         | Minimum delay in seconds before starting automatic recovery.                                                              |
-| `maxRecoveryDelay` | `Integer`        | `90`         | Maximum delay in seconds between subsequent recovery attempts.                                                            |
+| Name               | Type             | Default      | Description                                                                          |
+| ------------------ | ---------------- | ------------ | ------------------------------------------------------------------------------------ |
+| `autoplay`         | `Boolean`        | `false`      | Determines whether video shall play immediately after createPlayer.                  |
+| `muted`            | `Boolean`        | `false`      | Determines whether media should be muted or not.                                     |
+| `targetLatency`    | `Integer`        | `3`          | Target live latency in seconds. If 0 then syncing is disabled.                       |
+| `sources`          | `String[]`       | `<required>` | Array of media source URLs from which the first that can be played will be selected. |
+| `fit`              | `enum playerFit` | `.contain`   | Determines how the video will be scaled and cropped. See Section Player Fitting.     |
+| `minRecoveryDelay` | `Integer`        | `10`         | Minimum delay in seconds before starting automatic recovery.                         |
+| `maxRecoveryDelay` | `Integer`        | `90`         | Maximum delay in seconds between subsequent recovery attempts.                       |
 
 ### Source Protocols
 
@@ -559,3 +567,4 @@ Check section above for app store validation
 | 0.10.0  | Livery class was renamed to LiverySDK to avoid build errors with `BUILD_LIBRARIES_FOR_DISTRIBUTION=YES`. This is a [known issue](https://developer.apple.com/documentation/xcode_release_notes/xcode_11_2_release_notes) present from Xcode 10.2.                                                                                     |
 | 0.10.1  | Battery life improvements.<br> New ABR algorithm.<br> Backup/main stream switching support.<br> Synchronization improvements for restricted networks.<br> Analytics improvements                                                                                                                                                      |
 | 0.10.2  | Fixed recovery timeout logic                                                                                                                                                                                                                                                                                                          |
+| 0.10.3  | SDK initialize with configURL is deprecated. Use the new initialize with streamId instead.<br> Remote config is fetched and updated each minute, if it was modified.                                                                                                                                                                  |

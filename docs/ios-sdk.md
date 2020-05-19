@@ -220,15 +220,13 @@ Interactive options can be specified under `advanced.interactive`:
 
 class **_LiveryConfig_**
 
-| Name       | Type             | Description                                                                                                 |
-| ---------- | ---------------- | ----------------------------------------------------------------------------------------------------------- |
-| `sources`  | `String[]`       | Array of media source URLs from which the first that can be played will be selected.                        |
-| `advanced` | `advancedConfig` | Advanced options.                                                                                           |
-| `autoplay` | `Bool`           | Determines whether video shall play immediately after [`createPlayer`](#sdk-create-player).                 |
-| `fit`      | `String`         | Determines how the video will be scaled and cropped. See: [`Player Fitting`](#player-fitting)               |
-| `loop`     | `Bool`           | Determines whether the video should restart after it ends.                                                  |
-| `muted`    | `Bool`           | Determines whether media should be muted or not.                                                            |
-| `poster`   | `String`         | Represents URL to poster image. When this property is not empty, the player will show a poster on creation. |
+| Name       | Type             | Description                                                                                   |
+| ---------- | ---------------- | --------------------------------------------------------------------------------------------- |
+| `sources`  | `String[]`       | Array of media source URLs from which the first that can be played will be selected.          |
+| `advanced` | `advancedConfig` | Advanced options.                                                                             |
+| `autoplay` | `Bool`           | Determines whether video shall play immediately after [`createPlayer`](#sdk-create-player).   |
+| `fit`      | `String`         | Determines how the video will be scaled and cropped. See: [`Player Fitting`](#player-fitting) |
+| `muted`    | `Bool`           | Determines whether media should be muted or not.                                              |
 
 ## Player Options
 
@@ -283,6 +281,7 @@ The following methods are exposed by Player instances:
 | `setView(view: UIView)`                                                             | Set the view for player to render.                                                 |
 | `play(completionQueue: DispatchQueue = .main, completion: (Player.Result) -> Void)` | Async call to start/resume media playback.                                         |
 | `play() -> Player.Result`                                                           | Sync call to start/resume media playback.                                          |
+| `pause(completionQueue: DispatchQueue = .main, completion: @escaping () -> Void)`   | Async call to pause media                                                          |
 | `stop(completionQueue: DispatchQueue = .main, completion: @escaping () -> Void)`    | Async call to stop media playback.                                                 |
 | `stop()`                                                                            | Sync call to stop media playback.                                                  |
 | `load()`                                                                            | Resets the media and selects the best available source again.                      |
@@ -567,4 +566,4 @@ Check section above for app store validation
 | 0.10.0  | Livery class was renamed to LiverySDK to avoid build errors with `BUILD_LIBRARIES_FOR_DISTRIBUTION=YES`. This is a [known issue](https://developer.apple.com/documentation/xcode_release_notes/xcode_11_2_release_notes) present from Xcode 10.2.                                                                                     |
 | 0.10.1  | Battery life improvements.<br> New ABR algorithm.<br> Backup/main stream switching support.<br> Synchronization improvements for restricted networks.<br> Analytics improvements                                                                                                                                                      |
 | 0.10.2  | Fixed recovery timeout logic                                                                                                                                                                                                                                                                                                          |
-| 0.10.3  | SDK initialize with configURL is deprecated. Use the new initialize with streamId instead.<br> Remote config is fetched and updated each minute, if it was modified.                                                                                                                                                                  |
+| 0.10.3  | SDK initialize with configURL is deprecated. Use the new initialize with streamId instead.<br> Remote config is fetched and updated each minute, if it was modified.<br> Added pause method.<br> Fixed sound hiccups.                                                                                                                 |

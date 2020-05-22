@@ -92,6 +92,14 @@ livery-player {
 
 When using the UMD bundle, these can be found as properties of `exmg.livery`.
 
+### endpointId
+
+String property specifying id used by this Livery endpoint.
+
+### version
+
+String property specifying version of Livery SDK.
+
 ### LiverySdk
 
 Invisible element defined as `<livery-sdk>` which is used to initialize the Livery SDK.

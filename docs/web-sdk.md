@@ -92,6 +92,14 @@ livery-player {
 
 When using the UMD bundle, these can be found as properties of `exmg.livery`.
 
+### endpointId
+
+String property specifying id used by this Livery endpoint.
+
+### version
+
+String property specifying version of Livery SDK.
+
 ### LiverySdk
 
 Invisible element defined as `<livery-sdk>` which is used to initialize the Livery SDK.
@@ -132,7 +140,7 @@ This will not start playing until a `<livery-sdk>` element has been successfully
 | `preload`       | `preload`       | `string` \| `null` | `null`  | Whether to preload `'none'`, just `'metadata'` (default) or `'full'` media.                                                               |
 | `preroll`       | `preRoll`       | `string` \| `null` | `null`  | Source URL to play before the main sources.                                                                                               |
 | `targetlatency` | `targetLatency` | `number` \| `null` | `null`  | Custom target live latency in seconds. If `null` then remote config or default latency is used. If `0` or `NaN` then syncing is disabled. |
-| `vumeter`       | `vuMeter`       | `boolean`          | `false` | Enable volume unit meter.                                                                                                                 |
+| `vumeter`       | `vuMeter`       | `boolean`          | `false` | Enable volume unit meter. Note: Will result in anonymous CORS requests.                                                                   |
 
 #### Properties
 

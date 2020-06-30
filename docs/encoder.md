@@ -43,10 +43,6 @@ Choose matching output resolution
 
 ![Streamlabs OBS output resolution](encoder/streamlabs-obs-extend-screen.png)
 
-#### **Wirecast**
-
-TBD
-
 <!-- tabs:end -->
 
 Make sure you do this on the scene and not on one of the sources within your scene. Otherwise you will only see the selected source being sent to the encoder.
@@ -59,15 +55,13 @@ The cloud encoder can be controlled from the Livery console. After pressing the 
 
 ![Console cloud start stream](encoder/console-cloud-start.png)
 
-This will take some time. In the `encoders` section a new encoder is added which will show PROVISIONING as the `encoder state`.
+While the encoder is provisioned the `INGEST URL` field will show a loading spinner.
 
 ![Console cloud provisioning](encoder/console-cloud-provisioning.png)
 
-After the encoder is fully provisioned the state will change to PROVISIONED.
+After the encoder is fully provisioned the spinner is gone and the ingest url is shown. This URL can be copy/pasted into the streaming software (OBS/Wirecast/etc.).
 
 ![Console cloud provisioned](encoder/console-cloud-provisioned.png)
-
-Notice the Ingest URL. Once the encoder is fully provisioned this URL can be copy/pasted into the streaming software (OBS/Wirecast/etc.).
 
 ### Input signal
 
@@ -94,10 +88,6 @@ Note that the rtmp url is an example!
 Sending the video to the cloud encoder adds a bit of latency. In Streamlabs OBS there is a setting for x264 called Tune=zerolatency that helps lowering this latency:
 
 ![Streamlabs OBS zerolatency](encoder/streamlabs-obs-zerolatency.png)
-
-#### **Wirecast**
-
-Wirecast
 
 <!-- tabs:end -->
 
@@ -137,10 +127,6 @@ Next is the mixing software. See how to set the rendering resolution:
 #### **Streamlabs OBS**
 
 ![Streamlabs OBS video settings](encoder/streamlabs-obs-video-settings.png)
-
-#### **Wirecast**
-
-<!-- tabs:end -->
 
 ## Network
 

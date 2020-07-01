@@ -541,20 +541,7 @@ For this layout, there are no IDs available. This means that whenever the player
 ### 1.7.6
 
 - Improved bitrate switching
-
-### 1.7.4-dev
-
-- Add name of the device which is being casted to casting indicator.
-- Fix a bug where mute/unmute button disappeared after stop casting.
-
-### 1.7.3-dev
-
-- Add 'Casting' feature.
-- Add related 'Casting' elements to UI.
-- Add new properties to 'LiveryControlsOptions'.
-
-### 1.7.2-dev
-
+- Add ‘Casting’ feature.
 - Change UI of player controls.
 - Add new fields to Player Controls Customizing documentation.
 - Change audio only indicator.

@@ -19,4 +19,4 @@ For improved user experience and extended capabilities please use the [Livery We
 
 ## Example
 
-[embed](https://embed.liveryvideo.com?id=5ddb98f5e4b0937e6a4507f2 ':include :type=iframe width=560 height=315 frameborder=0 allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen')
+[embed](https://embed.liveryvideo.com?id=5ddb98f5e4b0937e6a4507f2 ':include :type=iframe width=100% height=315 frameborder=0 allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen')

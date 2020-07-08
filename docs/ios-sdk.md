@@ -272,6 +272,7 @@ The following properties are exposed by Live Player instances:
 | `streamType`      | `String`                           | No    | Stream type. LIVE / ONDEMAND / UNKNOWN Computed: duration == Infinite => LIVE, Finite => ONDEMAND and NaN => UNKNOWN Changes on: `durationChange`. |
 | `timeOffset`      | `Number`                           | No    | Local device time offset in milliseconds.                                                                                                          |
 | `qualities`       | `[Quality]`                        | No    | Array of Available Media Qualities. Emits: `qualitiesChange`.                                                                                      |
+| `branded`         | `Boolean`                          | Yes   | If true the Livery branding is visible (loading indicator, info dialog, etc).                                                                      |
 
 ## Player Methods
 

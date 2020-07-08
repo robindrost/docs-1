@@ -307,6 +307,7 @@ The following events can be emitted by Player instances via Notification center:
 | `selectedQualityChange` | Emitted when selectedQuality has changed.                                              | `selectedQuality`  |
 | `volumeChange`          | Emitted when volume or muted has changed.                                              | `muted` , `volume` |
 | `bandwidthTest`         | Emitted when trying to upgrade video bandwidth.                                        |
+| `didTapFullscreen`      | Emitted when user tapped full screen button.                                           | `player`           |
 
 See MediaPlayerLiveExample app to see how playback state change events are received via Notification center and check the below list for Notification names
 
@@ -314,32 +315,35 @@ Below are the names for the Notifications to listen to
 
 ```swift
 Notification.Name {
- static var activeQualityChange: Notification.Name {
-  return .init(rawValue: "Livery.activeQualityChange")
-  }
- static var error: Notification.Name {
-  return .init(rawValue: "Livery.error")
-  }
- static var networkChange: Notification.Name {
-  return .init(rawValue: "Livery.networkChange")
-  }
- static var playbackChange: Notification.Name {
-  return .init(rawValue: "Livery.playbackChange")
-  }
- static var progress: Notification.Name {
-  return .init(rawValue: "Livery.progress")
-  }
- static var qualitiesChange: Notification.Name {
-  return .init(rawValue: "Livery.qualitiesChange")
-  }
- static var selectedQualityChange: Notification.Name {
-  return .init(rawValue: "Livery.selectedQualityChange")
-  }
- static var volumeChange: Notification.Name {
-  return .init(rawValue: "Livery.volumeChange")
-  }
+  static var activeQualityChange: Notification.Name {
+    return .init(rawValue: "Livery.activeQualityChange")
+    }
+  static var error: Notification.Name {
+    return .init(rawValue: "Livery.error")
+    }
+  static var networkChange: Notification.Name {
+    return .init(rawValue: "Livery.networkChange")
+    }
+  static var playbackChange: Notification.Name {
+    return .init(rawValue: "Livery.playbackChange")
+    }
+  static var progress: Notification.Name {
+    return .init(rawValue: "Livery.progress")
+    }
+  static var qualitiesChange: Notification.Name {
+    return .init(rawValue: "Livery.qualitiesChange")
+    }
+  static var selectedQualityChange: Notification.Name {
+    return .init(rawValue: "Livery.selectedQualityChange")
+    }
+  static var volumeChange: Notification.Name {
+    return .init(rawValue: "Livery.volumeChange")
+    }
   static var bandwidthTest: Notification.Name {
     return Notification.Name("Livery.bandwidthTest")
+  }
+  static var didTapFullscreen: Notification.Name {
+    return Notification.Name("Livery.didTapFullscreen")
   }
 }
 ```

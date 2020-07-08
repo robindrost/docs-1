@@ -26,10 +26,10 @@ If you want to support Firefox and Edge, begin by loading polyfills:
 Livery can be loaded from [unpkg](https://unpkg.com):
 
 ```html
-<script src="https://unpkg.com/@exmg/livery"></script>
+<script src="https://unpkg.com/@exmg/livery@5.13.3"></script>
 ```
 
-?> You will probably want to add `@X` to the SDK URL above to lock into a specific major version.
+?> Replace the version (`5.13.3`) above by the version of the SDK that you wish to use.
 
 ### NPM
 
@@ -47,18 +47,18 @@ import '@exmg/livery';
 
 ## Usage
 
-?> This example uses the Livery Demo config and source, replace them by your own.
+?> Replace the Livery Demo stream id (`5ddb98f5e4b0937e6a4507f2`) below by your own.
 
 ```html
 <livery-sdk
   config="https://cdn.playtotv.com/video-encoder/remoteconfigs/5ddb98f5e4b0937e6a4507f2.json"
 ></livery-sdk>
 
-<livery-player autoplaymuted persistmuted>
-  <source
-    src="https://exmachina-ull-demo.akamaized.net/cmaf/live/664379/5ddb98f5e4b0937e6a4507f2-TESTING/out.mpd"
-  />
-</livery-player>
+<livery-player
+  autoplaymuted
+  persistmuted
+  controls="error mute fullscreen"
+></livery-player>
 
 <!-- Optionally show buffer graph -->
 <livery-buffer-graph></livery-buffer-graph>
@@ -122,7 +122,7 @@ Invisible element defined as `<livery-sdk>` which is used to initialize the Live
 ### LiveryPlayer
 
 Element defined as `<livery-player>` which can be used like a `<video>` element to play a live video stream.
-One or more sources will need to be specified as child `<source>` elements.
+One or more sources can be specified as child `<source>` elements, but your config should already provide these for you.
 This will not start playing until a `<livery-sdk>` element has been successfully initialized within the same `window`.
 
 #### Attributes

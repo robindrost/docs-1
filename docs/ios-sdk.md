@@ -254,25 +254,27 @@ The source protocol must be DASH for IOS SDK
 
 The following properties are exposed by Live Player instances:
 
-| Name              | Type                               | Write | Description                                                                                                                                        |
-| ----------------- | ---------------------------------- | ----- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `activeQuality`   | [`Quality`](#player-media-quality) | No    | Active Media Quality. Emits: `activeQualityChange`.                                                                                                |
-| `advanced`        | `AdvancedProperties`               | No    | Advanced properties.                                                                                                                               |
-| `currentSrc`      | `String`                           | No    | Current media source URL.                                                                                                                          |
-| `currentTime`     | `Number`                           | Yes   | Current playback time position in seconds. Emits: `timeUpdate`.                                                                                    |
-| `duration`        | `Number`                           | No    | Media duration in seconds. Used in `onDemand`. Emits: `durationChange`.                                                                            |
-| `error`           | `Error`                            | No    | Most recent unrecovered error. Emits: error, recovered.                                                                                            |
-| `muted`           | `Boolean`                          | Yes   | If true then audio is muted. Emits: `volumeChange`.                                                                                                |
-| `latency`         | `Number`                           | No    | End to end latency in milliseconds.                                                                                                                |
-| `buffer`          | `Number`                           | No    | Size of buffer, ahead of current position, in milliseconds.                                                                                        |
-| `playbackRate`    | `Number`                           | Yes   | Playback rate (1 is normal).Emits: `rateChange`.                                                                                                   |
-| `playbackState`   | `String`                           | No    | Playback state. BUFFERING / ENDED / FAST_FORWARD / PAUSED / PLAYING / REWIND / SEEKING / SLOW_MO Emits: `playbackChange`.                          |
-| `selectedQuality` | [`Quality`](#player-media-quality) | Yes   | Selected Media Quality. Emits: `selectedQualityChange`.                                                                                            |
-| `volume`          | `Number`                           | Yes   | Audio volume, from 0.0 (silent) to 1.0 (loudest). Emits: `volumeChange`.                                                                           |
-| `streamType`      | `String`                           | No    | Stream type. LIVE / ONDEMAND / UNKNOWN Computed: duration == Infinite => LIVE, Finite => ONDEMAND and NaN => UNKNOWN Changes on: `durationChange`. |
-| `timeOffset`      | `Number`                           | No    | Local device time offset in milliseconds.                                                                                                          |
-| `qualities`       | `[Quality]`                        | No    | Array of Available Media Qualities. Emits: `qualitiesChange`.                                                                                      |
-| `branded`         | `Boolean`                          | Yes   | If true the Livery branding is visible (loading indicator, info dialog, etc).                                                                      |
+| Name                | Type                                          | Write | Description                                                                                                                                        |
+| ------------------- | --------------------------------------------- | ----- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `activeQuality`     | [`Quality`](#player-media-quality)            | No    | Active Media Quality. Emits: `activeQualityChange`.                                                                                                |
+| `advanced`          | `AdvancedProperties`                          | No    | Advanced properties.                                                                                                                               |
+| `currentSrc`        | `String`                                      | No    | Current media source URL.                                                                                                                          |
+| `currentTime`       | `Number`                                      | Yes   | Current playback time position in seconds. Emits: `timeUpdate`.                                                                                    |
+| `duration`          | `Number`                                      | No    | Media duration in seconds. Used in `onDemand`. Emits: `durationChange`.                                                                            |
+| `error`             | `Error`                                       | No    | Most recent unrecovered error. Emits: error, recovered.                                                                                            |
+| `muted`             | `Boolean`                                     | Yes   | If true then audio is muted. Emits: `volumeChange`.                                                                                                |
+| `latency`           | `Number`                                      | No    | End to end latency in milliseconds.                                                                                                                |
+| `buffer`            | `Number`                                      | No    | Size of buffer, ahead of current position, in milliseconds.                                                                                        |
+| `playbackRate`      | `Number`                                      | Yes   | Playback rate (1 is normal).Emits: `rateChange`.                                                                                                   |
+| `playbackState`     | `String`                                      | No    | Playback state. BUFFERING / ENDED / FAST_FORWARD / PAUSED / PLAYING / REWIND / SEEKING / SLOW_MO Emits: `playbackChange`.                          |
+| `selectedQuality`   | [`Quality`](#player-media-quality)            | Yes   | Selected Media Quality. Emits: `selectedQualityChange`.                                                                                            |
+| `volume`            | `Number`                                      | Yes   | Audio volume, from 0.0 (silent) to 1.0 (loudest). Emits: `volumeChange`.                                                                           |
+| `streamType`        | `String`                                      | No    | Stream type. LIVE / ONDEMAND / UNKNOWN Computed: duration == Infinite => LIVE, Finite => ONDEMAND and NaN => UNKNOWN Changes on: `durationChange`. |
+| `timeOffset`        | `Number`                                      | No    | Local device time offset in milliseconds.                                                                                                          |
+| `qualities`         | `[Quality]`                                   | No    | Array of Available Media Qualities. Emits: `qualitiesChange`.                                                                                      |
+| `branded`           | `Boolean`                                     | Yes   | If true the Livery branding is visible (loading indicator, info dialog, etc).                                                                      |
+| `customLoadingView` | `UIView`                                      | Yes   | Custom loading indicator view                                                                                                                      |
+| `customControlView` | [`LiveryPlayerControlView`](#player-controls) | Yes   | Custom player controls view view                                                                                                                   |
 
 ## Player Methods
 
@@ -458,6 +460,41 @@ This overlay will become active on Player stall error and will be inactive when 
 ![Buffering overlay](https://lh4.googleusercontent.com/OQ1n2rMp4QtOF0Ym10IlSOilb3VshRf9_1lkLVcZu2wJzaySg-M5cbtzj813Ni8NL4vJPQxLjeqEhnLySGyFS1vf8nu8d2xeHSFlMg32SlfLIBt40l4Depbeu3kOraM034UK1XEF)
 
 This overlay is active as long as ​playbackState​ is ​BUFFERING
+
+## Customize
+
+Livery Player has three layers that you can customize. They are loading indicator, error overlay and player controls.
+
+### Loading Indicator
+
+To customize the loading indicator set the `customLoadingView` property with your own `UIView` implementation of it. This means that whenever the player is loading, this view will be shown.
+
+### Error Overlay
+
+### Player Controls
+
+To customize player controls create an `UIControl` that conforms to the `LiveryPlayerControlView` protocol below:
+
+```swift
+public protocol LiveryPlayerControlView where Self: UIControl {
+    var settingsButton: UIButton { get set }
+    var cameraButton: UIButton { get set }
+    var infoButton: UIButton { get set }
+    var airplayButton: UIButton { get set }
+    var fullscreenButton: UIButton { get set }
+    var muteButton: UIButton { get set }
+    var playButton: UIButton { get set }
+    var progressView: UIProgressView { get set }
+    var currentTimeLabel: UILabel { get set }
+    var totalTimeLabel: UILabel { get set }
+    var titleLabel: UILabel { get set }
+    var qualityLabel: UILabel { get set }
+    //Called on the initialization of the Control View
+    func setupUI()
+    //Called whenever it needs to update the Control View UI like when the device rotates
+    func updateUI()
+}
+```
 
 ## Analytics
 

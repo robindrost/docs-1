@@ -274,7 +274,8 @@ The following properties are exposed by Live Player instances:
 | `qualities`         | `[Quality]`                                   | No    | Array of Available Media Qualities. Emits: `qualitiesChange`.                                                                                      |
 | `branded`           | `Boolean`                                     | Yes   | If true the Livery branding is visible (loading indicator, info dialog, etc).                                                                      |
 | `customLoadingView` | `UIView`                                      | Yes   | Custom loading indicator view                                                                                                                      |
-| `customControlView` | [`LiveryPlayerControlView`](#player-controls) | Yes   | Custom player controls view view                                                                                                                   |
+| `customControlView` | [`LiveryPlayerControlView`](#player-controls) | Yes   | Custom player controls view                                                                                                                        |
+| `customErrorView`   | [`LiveryPlayerErrorView`](#error-overlay)     | Yes   | Custom error view                                                                                                                                  |
 
 ## Player Methods
 
@@ -471,9 +472,19 @@ To customize the loading indicator set the `customLoadingView` property with you
 
 ### Error Overlay
 
+To customize error overlay create an `UIView` that conforms to the `LiveryPlayerErrorView` protocol below and set the `customErrorView` property with it.
+
+```swift
+public protocol LiveryPlayerErrorView where Self: UIView {
+    var titleLabel: UILabel! { get set }
+    var messageLabel: UILabel! { get set }
+    var reloadButton: UIButton! { get set }
+}
+```
+
 ### Player Controls
 
-To customize player controls create an `UIControl` that conforms to the `LiveryPlayerControlView` protocol below:
+To customize player controls create an `UIControl` that conforms to the `LiveryPlayerControlView` protocol below and set the `customControlView` property with it.
 
 ```swift
 public protocol LiveryPlayerControlView where Self: UIControl {

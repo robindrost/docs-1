@@ -26,10 +26,10 @@ If you want to support Firefox and Edge, begin by loading polyfills:
 Livery can be loaded from [unpkg](https://unpkg.com):
 
 ```html
-<script src="https://unpkg.com/@exmg/livery@5.13.3"></script>
+<script src="https://unpkg.com/@exmg/livery@5.14.1"></script>
 ```
 
-?> Replace the version (`5.13.3`) above by the version of the SDK that you wish to use.
+?> Replace the version (`5.14.1`) above by the version of the SDK that you wish to use.
 
 ### NPM
 
@@ -135,7 +135,7 @@ This will not start playing until a `<livery-sdk>` element has been successfully
 | `controls`      | `controls`      | `string` \| `null` | `null`  | Which controls to enable (space separated; e.g. to enable all controls: `'error mute fullscreen quality'`).                               |
 | `loop`          | `loop`          | `boolean`          | `false` | If `true` then automatically seek back to the start upon reaching the end.                                                                |
 | `muted`         | `muted`         | `boolean`          | `false` | If `true` then audio is muted.<br />Dispatches: `livery-volume-change`.                                                                   |
-| `persistmuted`  | `persistMuted`  | `boolean`          | `false` | If `true` then persist muted state of player in localStorage with key `'muted'`.                                                          |
+| `persistmuted`  | `persistMuted`  | `boolean`          | `false` | If `true` then persist muted state of player in localStorage with key `'liveryMuted'`.                                                    |
 | `poster`        | `poster`        | `string` \| `null` | `null`  | A URL for an image to be shown while the video is downloading.                                                                            |
 | `preload`       | `preload`       | `string` \| `null` | `null`  | Whether to preload `'none'`, just `'metadata'` (default) or `'full'` media.                                                               |
 | `preroll`       | `preRoll`       | `string` \| `null` | `null`  | Source URL to play before the main sources.                                                                                               |

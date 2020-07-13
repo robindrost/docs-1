@@ -4,8 +4,6 @@ You can embed Livery in your website using an iframe like so:
 
 ?> Replace the Livery Demo stream `id` iframe `src` query parameter below by your own.
 
-?> You can optionally add a `poster` parameter to the `src` to specify a custom poster image.
-
 ```html
 <iframe
   width="560"

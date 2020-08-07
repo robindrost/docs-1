@@ -462,51 +462,6 @@ This overlay will become active on Player stall error and will be inactive when 
 
 This overlay is active as long as ​playbackState​ is ​BUFFERING
 
-## Customize
-
-Livery Player has three layers that you can customize. They are loading indicator, error overlay and player controls.
-
-### Loading Indicator
-
-To customize the loading indicator set the `customLoadingView` property with your own `UIView` implementation of it. This means that whenever the player is loading, this view will be shown.
-
-### Error Overlay
-
-To customize error overlay create an `UIView` that conforms to the `LiveryPlayerErrorView` protocol below and set the `customErrorView` property with it.
-
-```swift
-public protocol LiveryPlayerErrorView where Self: UIView {
-    var titleLabel: UILabel! { get set }
-    var messageLabel: UILabel! { get set }
-    var reloadButton: UIButton! { get set }
-}
-```
-
-### Player Controls
-
-To customize player controls create an `UIControl` that conforms to the `LiveryPlayerControlView` protocol below and set the `customControlView` property with it.
-
-```swift
-public protocol LiveryPlayerControlView where Self: UIControl {
-    var settingsButton: UIButton { get set }
-    var cameraButton: UIButton { get set }
-    var infoButton: UIButton { get set }
-    var airplayButton: UIButton { get set }
-    var fullscreenButton: UIButton { get set }
-    var muteButton: UIButton { get set }
-    var playButton: UIButton { get set }
-    var progressView: UIProgressView { get set }
-    var currentTimeLabel: UILabel { get set }
-    var totalTimeLabel: UILabel { get set }
-    var titleLabel: UILabel { get set }
-    var qualityLabel: UILabel { get set }
-    //Called on the initialization of the Control View
-    func setupUI()
-    //Called whenever it needs to update the Control View UI like when the device rotates
-    func updateUI()
-}
-```
-
 ## Analytics
 
 Our SDK makes use of [Amazon Pinpoint](https://aws.amazon.com/pinpoint/).
@@ -622,3 +577,4 @@ Check section above for app store validation
 | 0.10.2  | Fixed recovery timeout logic                                                                                                                                                                                                                                                                                                          |
 | 0.10.3  | SDK initialize with configURL is deprecated. Use the new initialize with streamId instead.<br> Remote config is fetched and updated each minute, if it was modified.<br> Added pause method.<br> Fixed sound hiccups.                                                                                                                 |
 | 0.10.4  | Fixed stalling issue when the player has zero latency.<br> Fixed issue regarding player not showing the video on iOS 13 simulator.<br> Added Poster property to the player options.<br> Added Buffer property to the player.<br> Improvements on ABR algorithm.<br> Analytics improvements.                                           |
+| 0.10.5  | Added player UI.<br> Improvements on ABR algorithm.<br> Bugs and Crash report improvements.<br> Analytics improvements.                                                                                                                                                                                                               |

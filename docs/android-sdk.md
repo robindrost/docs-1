@@ -49,8 +49,8 @@ Add these implementations inside **dependencies** to your app-level build.gradle
 ```groovy
 dependencies {
    //...
-   implementation 'tv.exmg.livery:livery:1.6.7'
-   implementation 'android.arch.core:runtime:1.1.1'
+   implementation 'tv.exmg.livery:livery:1.7.7'
+   //...
 }
 ```
 

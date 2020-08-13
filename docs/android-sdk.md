@@ -486,6 +486,20 @@ To customize the loading indicator, create a layout named `livery_player_loading
 
 For this layout, there are no IDs available. This means that whenever the player is loading, this layout will be shown.
 
+```xml
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" />
+
+</FrameLayout>
+```
+
 ### Error Overlay
 
 To customize error overlay, create a layout named `livery_player_error_view.xml`.

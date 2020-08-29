@@ -26,10 +26,10 @@ If you want to support Firefox and Edge, begin by loading polyfills:
 Livery can be loaded from [unpkg](https://unpkg.com):
 
 ```html
-<script src="https://unpkg.com/@exmg/livery@5.16.1"></script>
+<script src="https://unpkg.com/@exmg/livery@x.y.z"></script>
 ```
 
-?> Replace the version (`5.16.1`) above by the version of the SDK that you wish to use.
+?> Replace the version (`x.y.z`) above by the version of the SDK that you wish to use (e.g: update to latest stable release periodically).
 
 ### NPM
 

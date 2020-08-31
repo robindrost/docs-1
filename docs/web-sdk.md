@@ -1,7 +1,7 @@
 # Livery Web SDK
 
 [![NPM package](https://img.shields.io/npm/v/@exmg/livery)](https://www.npmjs.com/package/@exmg/livery)
-[![Changelog](https://img.shields.io/badge/unpkg-CHANGELOG-blue)](https://unpkg.com/browse/@exmg/livery/CHANGELOG.md)
+[![Changelog](https://img.shields.io/badge/docs-CHANGELOG-blue)](web-sdk-changelog.md)
 [![License](https://img.shields.io/npm/l/@exmg/livery)](https://unpkg.com/browse/@exmg/livery/LICENSE)
 [![Built with open-wc recommendations](https://img.shields.io/badge/built%20with-open--wc-blue.svg)](https://open-wc.org/)
 
@@ -29,7 +29,7 @@ Livery can be loaded from [unpkg](https://unpkg.com):
 <script src="https://unpkg.com/@exmg/livery@x.y.z"></script>
 ```
 
-?> Replace the version (`x.y.z`) above by the version of the SDK that you wish to use (e.g: update to latest stable release periodically).
+?> Replace the version (`x.y.z`) above by the version of the SDK that you wish to use. E.g: update to latest stable release periodically. Please see the [CHANGELOG](web-sdk-changelog.md) for details.
 
 ### NPM
 

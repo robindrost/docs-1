@@ -64,8 +64,36 @@ Response:
     "posterUrl": "streamName.com/poster.png",
     "interactiveLayerUrl": "interactive.example/5f2022df27b35d1ebfe17b78",
 
-    "encoderIds": ["5f2807dc4fd690da7238fd56", "5f2807e50dc1518c86e9cbf5"],
+    "settings": {
+      "targetLatency": 3.0
+    },
 
+    "encoders": [
+      {
+        "encoderId": "5f2807dc4fd690da7238fd56",
+        "encoderType": "MAIN",
+        "state": {
+          "encoderStatus": "ONLINE",
+          "streamingState": "STARTED",
+          "videoDevice": {
+            "id": "5f5614aefd9fb4ec7fb24d10",
+            "resolution": "1920x1080",
+            "frameRate": "59.97",
+            "signalState": "Locked",
+            "signalStatus": "Valid",
+            "type": "0x84",
+            "scanningType": "Progressive",
+            "colorDepth": "8 bits",
+            "colorEncoding": "Y/U/V 4:4:4"
+          },
+          "audioDevice": {
+            "id": "5f5614e848b6ed205b282380",
+            "format": "48000 Hz, 24 bit, LPCM"
+          }
+        }
+      }
+    ],
+    "encoderIds": ["5f2807dc4fd690da7238fd56", "5f2807e50dc1518c86e9cbf5"],
     "streamingState": "STARTED",
     "streamUrlType": "STATIC",
     "encoderPlatform": "CLOUD",

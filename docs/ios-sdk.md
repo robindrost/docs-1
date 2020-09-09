@@ -39,7 +39,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 source 'https://github.com/exmg/livery-sdk-ios-podspec.git'
 
 target 'MyProject' do
-  pod "Livery", "0.10.5"
+  pod "Livery", "0.10.6"
 end
 ```
 
@@ -574,3 +574,4 @@ Check section above for app store validation
 | 0.10.3  | SDK initialize with configURL is deprecated. Use the new initialize with streamId instead.<br> Remote config is fetched and updated each minute, if it was modified.<br> Added pause method.<br> Fixed sound hiccups.                                                                                                                 |
 | 0.10.4  | Fixed stalling issue when the player has zero latency.<br> Fixed issue regarding player not showing the video on iOS 13 simulator.<br> Added Poster property to the player options.<br> Added Buffer property to the player.<br> Improvements on ABR algorithm.<br> Analytics improvements.                                           |
 | 0.10.5  | Added player UI.<br> Improvements on ABR algorithm.<br> Bugs and Crash report improvements.<br> Analytics improvements.                                                                                                                                                                                                               |
+| 0.10.6  | Added handler for when a media segment is not yet available and the status code is 404                                                                                                                                                                                                                                                                                                      |

@@ -64,6 +64,8 @@ Response:
     "posterUrl": "streamName.com/poster.png",
     "interactiveLayerUrl": "interactive.example/5f2022df27b35d1ebfe17b78",
 
+    "lastStreamingStateChangeTimestamp": 1599749054566,
+
     "settings": {
       "targetLatency": 3.0
     },
@@ -93,7 +95,6 @@ Response:
         }
       }
     ],
-    "encoderIds": ["5f2807dc4fd690da7238fd56", "5f2807e50dc1518c86e9cbf5"],
     "streamingState": "STARTED",
     "streamUrlType": "STATIC",
     "encoderPlatform": "CLOUD",
@@ -103,6 +104,8 @@ Response:
       "https://example.com/cmaf/5f27c847e4b0716a97225f47/master.m3u8"
     ],
 
+    "videoStreamQualities": ["100000-H264-704x396-p25", "800k_360p"],
+    "audioStreamQualities": ["128Kbps", "96khz"],
     "remoteConfigUrl": "cdn.liveryvideo.com/remoteconfigs/5f2022df27b35d1ebfe17b78"
   }
 ]
@@ -133,8 +136,37 @@ Response example:
   "posterUrl": "streamName.com/poster.png",
   "interactiveLayerUrl": "interactive.example/5f2022df27b35d1ebfe17b78",
 
-  "encoderIds": ["5f2807dc4fd690da7238fd56", "5f2807e50dc1518c86e9cbf5"],
+  "lastStreamingStateChangeTimestamp": 1599749054566,
 
+  "settings": {
+    "targetLatency": 3.0
+  },
+
+  "encoders": [
+    {
+      "encoderId": "5f2807dc4fd690da7238fd56",
+      "encoderType": "MAIN",
+      "state": {
+        "encoderStatus": "ONLINE",
+        "streamingState": "STARTED",
+        "videoDevice": {
+          "id": "5f5614aefd9fb4ec7fb24d10",
+          "resolution": "1920x1080",
+          "frameRate": "59.97",
+          "signalState": "Locked",
+          "signalStatus": "Valid",
+          "type": "0x84",
+          "scanningType": "Progressive",
+          "colorDepth": "8 bits",
+          "colorEncoding": "Y/U/V 4:4:4"
+        },
+        "audioDevice": {
+          "id": "5f5614e848b6ed205b282380",
+          "format": "48000 Hz, 24 bit, LPCM"
+        }
+      }
+    }
+  ],
   "streamingState": "STARTED",
   "streamUrlType": "STATIC",
   "encoderPlatform": "CLOUD",
@@ -144,6 +176,8 @@ Response example:
     "https://example.com/cmaf/5f27c847e4b0716a97225f47/master.m3u8"
   ],
 
+  "videoStreamQualities": ["100000-H264-704x396-p25", "800k_360p"],
+  "audioStreamQualities": ["128Kbps", "96khz"],
   "remoteConfigUrl": "cdn.liveryvideo.com/remoteconfigs/5f2022df27b35d1ebfe17b78"
 }
 ```
@@ -166,23 +200,54 @@ Response example:
 
 ```json
 {
-  "streamId": "5e7a10bee4b046f00ad17245",
+  "streamId": "5f2022df27b35d1ebfe17b78",
   "customerId": "5c5468158f087748c233194f",
   "name": "streamName",
   "posterUrl": "streamName.com/poster.png",
   "interactiveLayerUrl": "interactive.example/5f2022df27b35d1ebfe17b78",
 
-  "encoderIds": ["5f2807dc4fd690da7238fd56", "5f2807e50dc1518c86e9cbf5"],
+  "lastStreamingStateChangeTimestamp": 1599749054566,
 
+  "settings": {
+    "targetLatency": 3.0
+  },
+
+  "encoders": [
+    {
+      "encoderId": "5f2807dc4fd690da7238fd56",
+      "encoderType": "MAIN",
+      "state": {
+        "encoderStatus": "ONLINE",
+        "streamingState": "STARTED",
+        "videoDevice": {
+          "id": "5f5614aefd9fb4ec7fb24d10",
+          "resolution": "1920x1080",
+          "frameRate": "59.97",
+          "signalState": "Locked",
+          "signalStatus": "Valid",
+          "type": "0x84",
+          "scanningType": "Progressive",
+          "colorDepth": "8 bits",
+          "colorEncoding": "Y/U/V 4:4:4"
+        },
+        "audioDevice": {
+          "id": "5f5614e848b6ed205b282380",
+          "format": "48000 Hz, 24 bit, LPCM"
+        }
+      }
+    }
+  ],
   "streamingState": "STOPPED",
   "streamUrlType": "STATIC",
   "encoderPlatform": "CLOUD",
 
   "streamUrls": [
-    "https://exmachina-ull-demo.akamaized.net/cmaf/live/5e7a10bee4b046f00ad17245/out.mpd",
-    "https://exmachina-ull-demo.akamaized.net/cmaf/live/5e7a10bee4b046f00ad17245/master.m3u8"
+    "https://example.com/cmaf/5f27c847e4b0716a97225f47/out.mpd",
+    "https://example.com/cmaf/5f27c847e4b0716a97225f47/master.m3u8"
   ],
 
-  "remoteConfigUrl": "cdn.liveryvideo.com/remoteconfigs/5e7a10bee4b046f00ad17245"
+  "videoStreamQualities": ["100000-H264-704x396-p25", "800k_360p"],
+  "audioStreamQualities": ["128Kbps", "96khz"],
+  "remoteConfigUrl": "cdn.liveryvideo.com/remoteconfigs/5f2022df27b35d1ebfe17b78"
 }
 ```

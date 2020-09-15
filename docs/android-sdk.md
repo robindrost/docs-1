@@ -49,7 +49,7 @@ Add these implementations inside **dependencies** to your app-level build.gradle
 ```groovy
 dependencies {
    //...
-   implementation 'tv.exmg.livery:livery:1.7.7'
+   implementation 'tv.exmg.livery:livery:1.7.8'
    //...
 }
 ```
@@ -552,6 +552,13 @@ For this layout, there are no IDs available. This means that whenever the player
 
 ## Change log
 
+### 1.7.8
+
+- New ABR algorithm
+- `livery_remote_config_url` was renamed to `livery_stream_id`
+- loading source url's from remote config
+- Send streamId to analytics
+
 ### 1.7.7
 
 - Fixed an issue which could occur if NTP is not available
@@ -560,6 +567,7 @@ For this layout, there are no IDs available. This means that whenever the player
 
 - Improved bitrate switching
 - Add ‘Casting’ feature.
+  - Player's Activity Theme needs to have a `colorPrimary` defined without opacity.
 - Change UI of player controls.
 - Add new fields to Player Controls Customizing documentation.
 - Change audio only indicator.

@@ -100,6 +100,8 @@ screen can turn off after an amount of time or not.
    android:keepScreenOn="true" />
 ```
 
+Due to the Cast feature the Player's Activity Theme needs to have a `colorPrimary` defined without opacity.
+
 ### Configure LiveryPlayerView
 
 Bind LiveryPlayerView to your layout file, then create the livery player with passing LiveryPlayerOptions object after activity or fragment is created.

@@ -39,7 +39,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 source 'https://github.com/exmg/livery-sdk-ios-podspec.git'
 
 target 'MyProject' do
-  pod "Livery", "0.10.7"
+  pod "Livery", "0.10.8"
 end
 ```
 
@@ -624,3 +624,4 @@ Check section above for app store validation
 | 0.10.5  | Added player UI.<br> Improvements on ABR algorithm.<br> Bugs and Crash report improvements.<br> Analytics improvements.                                                                                                                                                                                                               |
 | 0.10.6  | Added handler for when a media segment is not yet available and the status code is 404                                                                                                                                                                                                                                                                                                      |
 | 0.10.7  | Added customControlView, customErrorView and customLoadingView                                                                                                                                                                                                                                                                                                      |
+| 0.10.8  | Improvement on the source handler logic                                                                                                                                                                                                                                                                                                     |

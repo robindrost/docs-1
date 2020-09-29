@@ -17,18 +17,9 @@ More information can be found at: [liveryvideo.com](https://liveryvideo.com).
 
 Livery supports the last two major versions of these browsers:
 
-- Desktop
-  - Chrome
-  - Safari
-  - Edge
-  - Firefox
-- Android
-  - Samsung
-  - Chrome
-- iOS
-  - Safari
-- iPad OS
-  - Safari
+- Desktop: Chrome, Safari, Edge, Firefox
+- Android: Samsung, Chrome
+- iOS/iPad OS: Safari
 
 If you want to support Firefox and Edge, begin by loading polyfills:
 

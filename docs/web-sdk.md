@@ -11,15 +11,9 @@ Ex Machina Group Livery Web SDK, published as [@exmg/livery](https://www.npmjs.c
 
 More information can be found at: [liveryvideo.com](https://liveryvideo.com).
 
+This SDK supports the last two major versions of: Chrome, Safari, Edge, Firefox, Android Chrome, Samsung Internet and iOS/iPadOS Safari.
+
 ## Installation
-
-### Compatibility
-
-If you want to support Firefox and Edge, begin by loading polyfills:
-
-```html
-<script src="https://unpkg.com/@webcomponents/webcomponentsjs@latest/webcomponents-loader.js"></script>
-```
 
 ### CDN
 

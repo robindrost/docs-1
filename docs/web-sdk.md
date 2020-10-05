@@ -13,6 +13,8 @@ More information can be found at: [liveryvideo.com](https://liveryvideo.com).
 
 This SDK supports the last two major versions of: Chrome, Safari, Edge, Firefox, Android Chrome, Samsung Internet and iOS/iPadOS Safari.
 
+Please refer to the [Livery Management Portal](https://video-encoder-director.playtotv.com/) for stream configuration options.
+
 ## Installation
 
 ### CDN

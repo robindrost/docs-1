@@ -44,47 +44,23 @@ import '@exmg/livery';
 ?> Replace the Livery Demo stream id (`5ddb98f5e4b0937e6a4507f2`) below by your own.
 
 ```html
-<livery-sdk
-  config="https://cdn.playtotv.com/video-encoder/remoteconfigs/5ddb98f5e4b0937e6a4507f2.json"
-></livery-sdk>
-
-<livery-player
-  autoplaymuted
-  persistmuted
-  controls="error mute fullscreen"
-></livery-player>
-
-<!-- Optionally show buffer graph -->
-<livery-buffer-graph></livery-buffer-graph>
-
-<!-- Optionally show log -->
-<livery-log></livery-log>
-
-<script>
-  // Connect player to graph and log elements
-  const player = document.querySelector('livery-player');
-  const graph = document.querySelector('livery-buffer-graph');
-  const log = document.querySelector('livery-log');
-  graph.player = player;
-  log.player = player;
-</script>
+<livery-player streamid="5ddb98f5e4b0937e6a4507f2"></livery-player>
 ```
 
-### Video Fitting
+### CSS
 
-To control how the [LiveryPlayer](#liveryplayer) resizes the video contents to fit it's container you can specify [object-fit](https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit) and [object-position](https://developer.mozilla.org/en-US/docs/Web/CSS/object-position) properties just like on a `<video>` element. E.g. to have the player fit the full screen height and crop the left and right sides if necessary:
+You will most likely want to fix the size of the livery-player element for the video etc. to be fit inside, e.g. in your CSS include:
 
 ```css
 livery-player {
-  width: 100vw;
-  height: 100vh;
-  object-fit: cover;
+  width: 100%;
+  height: 50vh;
 }
 ```
 
 ## Exports
 
-When using the UMD bundle, these can be found as properties of `exmg.livery`.
+When using the UMD bundle, these can be found as properties of `livery` in the global namespace, e.g: `livery.version`.
 
 ### endpointId
 
@@ -94,72 +70,27 @@ String property specifying id used by this Livery endpoint.
 
 String property specifying version of Livery SDK.
 
-### LiverySdk
-
-Invisible element defined as `<livery-sdk>` which is used to initialize the Livery SDK.
-
-#### Attributes
-
-| Attribute  | Property   | Type                                                                    | Default  | Description                                                 |
-| ---------- | ---------- | ----------------------------------------------------------------------- | -------- | ----------------------------------------------------------- |
-| `bubbles`  | `bubbles`  | `boolean`                                                               | `false`  | If true then events dispatched by this element will bubble. |
-| `config`   | `config`   | `string`                                                                | `''`     | Remote config URL.                                          |
-| `loglevel` | `logLevel` | `'quiet'` \| `'error'` \| `'warn'` \| `'info'` \| `'debug'` \| `'spam'` | `'info'` | Log level.                                                  |
-
-#### Events
-
-| Event                                         | Description                                        |
-| --------------------------------------------- | -------------------------------------------------- |
-| [livery-error](#liveryerrorevent)             | Dispatched when an error occurs.                   |
-| [livery-initialized](#liveryinitializedevent) | Dispatched when SDK initialization was successful. |
-
 ### LiveryPlayer
 
-Element defined as `<livery-player>` which can be used like a `<video>` element to play a live video stream.
-One or more sources can be specified as child `<source>` elements, but your config should already provide these for you.
-This will not start playing until a `<livery-sdk>` element has been successfully initialized within the same `window`.
+Element defined as `<livery-player>` which can be used to play a livery video stream.
 
 #### Attributes
 
-| Attribute       | Property        | Type               | Default | Description                                                                                                                               |
-| --------------- | --------------- | ------------------ | ------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| `autoplay`      | `autoplay`      | `boolean`          | `false` | If `true` then automatically begin playback as soon as possible.<br />Note: Browser might prevent this if muted is false.                 |
-| `autoplaymuted` | `autoplayMuted` | `boolean`          | `false` | If `true` then automatically begin playback as soon as possible, falling back to muted autoplay if necessary.                             |
-| `bubbles`       | `bubbles`       | `boolean`          | `false` | If true then events dispatched by this element will bubble.                                                                               |
-| `controls`      | `controls`      | `string` \| `null` | `null`  | Which controls to enable (space separated; e.g. to enable all controls: `'error mute fullscreen quality'`).                               |
-| `loop`          | `loop`          | `boolean`          | `false` | If `true` then automatically seek back to the start upon reaching the end.                                                                |
-| `muted`         | `muted`         | `boolean`          | `false` | If `true` then audio is muted.<br />Dispatches: `livery-volume-change`.                                                                   |
-| `persistmuted`  | `persistMuted`  | `boolean`          | `false` | If `true` then persist muted state of player in localStorage with key `'liveryMuted'`.                                                    |
-| `poster`        | `poster`        | `string` \| `null` | `null`  | A URL for an image to be shown while the video is downloading.                                                                            |
-| `preload`       | `preload`       | `string` \| `null` | `null`  | Whether to preload `'none'`, just `'metadata'` (default) or `'full'` media.                                                               |
-| `preroll`       | `preRoll`       | `string` \| `null` | `null`  | Source URL to play before the main sources.                                                                                               |
-| `targetlatency` | `targetLatency` | `number` \| `null` | `null`  | Custom target live latency in seconds. If `null` then remote config or default latency is used. If `0` or `NaN` then syncing is disabled. |
-| `vumeter`       | `vuMeter`       | `boolean`          | `false` | Enable volume unit meter. Note: Will result in anonymous CORS requests.                                                                   |
+| Attribute  | Property   | Type      | Default | Description                                                                                                                                         |
+| ---------- | ---------- | --------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `bubbles`  | `bubbles`  | `boolean` | `false` | If true then events dispatched by this element will bubble.                                                                                         |
+| `loglevel` | `logLevel` | `string`  | `null`  | Log level (`'quiet'` \| `'error'` \| `'warn'` \| `'info'` \| `'debug'` \| `'spam'`). Defaults to `'info'` when value is null (attribute is absent). |
+| `muted`    | `muted`    | `boolean` | `false` | If `true` then audio is muted.<br />Dispatches: `livery-volume-change`.                                                                             |
+| `streamid` | `streamId` | `string`  | `null`  | Livery stream ID (required).                                                                                                                        |
+| `vumeter`  | `vuMeter`  | `boolean` | `false` | Enable volume unit meter. Note: Will result in anonymous CORS requests.                                                                             |
 
 #### Properties
 
-| Property          | R/W | Type                                                                                                                    | Default     | Description                                                                                                                                                                             |
-| ----------------- | --- | ----------------------------------------------------------------------------------------------------------------------- | ----------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `activeQuality`   | R   | `number`                                                                                                                | `-1`        | Index of active quality.<br />If `-1` then no quality or an audio and video quality pair that matches none of the qualities is active.<br />Dispatches: `livery-active-quality-change`. |
-| `buffer`          | R   | `number`                                                                                                                | `NaN`       | Size of buffer, ahead of current position, in seconds.<br />Changes on: `livery-progress`, `livery-time-update`.                                                                        |
-| `bufferEnd`       | R   | `number`                                                                                                                | `NaN`       | Buffer end position in seconds.<br />Dispatches: `livery-progress`.                                                                                                                     |
-| `currentSrc`      | R   | `string`                                                                                                                | `''`        | Current media source URL.                                                                                                                                                               |
-| `currentTime`     | R/W | `number`                                                                                                                | `0`         | Current playback time position in seconds.<br />Dispatches: `livery-time-update`.                                                                                                       |
-| `decodedFrames`   | R   | `number`                                                                                                                | `NaN`       | Number of video frames which have been decoded since the last time the media was loaded.<br />If not supported this will return `NaN`.                                                  |
-| `droppedFrames`   | R   | `number`                                                                                                                | `NaN`       | Number of video frames which have been dropped since the last time the media was loaded.<br />If not supported this will return `NaN`.                                                  |
-| `duration`        | R   | `number`                                                                                                                | `NaN`       | Media duration in seconds.<br />Dispatches: `livery-duration-change`.                                                                                                                   |
-| `engineName`      | R   | `string`                                                                                                                | `''`        | Current media engine name.                                                                                                                                                              |
-| `error`           | R   | `Error` \| `undefined`                                                                                                  | `undefined` | Most recent unrecovered error.<br />Dispatches: `livery-error`, `livery-recovered`.                                                                                                     |
-| `latency`         | R   | `number`                                                                                                                | `NaN`       | End to end latency in seconds.<br />Changes on: `livery-offset-change`, `livery-time-update`, `livery-zero-change`.                                                                     |
-| `playbackRate`    | R/W | `number`                                                                                                                | `1`         | Playback rate (1 is normal).<br />Dispatches: `livery-rate-change`.                                                                                                                     |
-| `playbackState`   | R   | `'BUFFERING'` \| `'ENDED'` \| `'FAST_FORWARD'` \| `'PAUSED'` \| `'PLAYING'` \| `'REWIND'` \| `'SEEKING'` \| `'SLOW_MO'` | `'PAUSED'`  | Playback state.<br />Dispatches: `livery-playback-change`.                                                                                                                              |
-| `qualities`       | R   | `LiveryQuality[]`                                                                                                       | `[]`        | Available qualities.<br />Dispatches: `livery-qualities-change`.                                                                                                                        |
-| `selectedQuality` | R/W | `number`                                                                                                                | `-1`        | Index of selected quality.<br />If `-1` then no quality is selected and automatic quality selection is used instead.<br />Dispatches: `livery-selected-quality-change`.                 |
-| `streamTimestamp` | R   | `number`                                                                                                                | `NaN`       | Stream time in milliseconds since 1/1/1970 UTC.<br />Changes on: `livery-time-update`, `livery-zero-change`.                                                                            |
-| `streamType`      | R   | `'UNKNOWN'` \| `'ONDEMAND'` \| `'LIVE'`                                                                                 | `'UNKNOWN'` | Stream type.<br />Changes on: `livery-duration-change`.                                                                                                                                 |
-| `timeOffset`      | R   | `number`                                                                                                                | `NaN`       | Local device time offset in milliseconds.<br />To be added to local time to get synchronized (e.g: server) time.<br />Dispatches: `livery-offset-change`.                               |
-| `volume`          | R/W | `number`                                                                                                                | `1`         | Audio volume, from 0.0 (silent) to 1.0 (loudest).<br />Dispatches: `livery-volume-change`.                                                                                              |
-| `zeroTimestamp`   | R   | `number`                                                                                                                | `NaN`       | Time in milliseconds since 1/1/1970 UTC at which currentTime would have been 0.<br />Dispatches: `livery-zero-change`.                                                                  |
+| Property        | R/W | Type                                                                                                                    | Default     | Description                                                                                                    |
+| --------------- | --- | ----------------------------------------------------------------------------------------------------------------------- | ----------- | -------------------------------------------------------------------------------------------------------------- |
+| `engine`        | R   | `Engine`                                                                                                                |             | Engine used for playback. Note: This is meant for debugging uses only. Use of the Engine API is not supported. |
+| `error`         | R   | `Error` \| `undefined`                                                                                                  | `undefined` | Most recent unrecovered error.<br />Dispatches: `livery-error`, `livery-recovered`.                            |
+| `playbackState` | R   | `'BUFFERING'` \| `'ENDED'` \| `'FAST_FORWARD'` \| `'PAUSED'` \| `'PLAYING'` \| `'REWIND'` \| `'SEEKING'` \| `'SLOW_MO'` | `'PAUSED'`  | Playback state.<br />Dispatches: `livery-playback-change`.                                                     |
 
 #### Methods
 
@@ -193,6 +124,21 @@ This will not start playing until a `<livery-sdk>` element has been successfully
 
 Element defined as `<livery-buffer-graph>` which renders a graph of the buffer size and latency of specified LiveryPlayer.
 
+#### Usage
+
+This needs to be connected to the player element like so:
+
+```html
+<livery-player streamid="5ddb98f5e4b0937e6a4507f2"></livery-player>
+<livery-buffer-graph></livery-buffer-graph>
+
+<script>
+  const player = document.querySelector('livery-player');
+  const graph = document.querySelector('livery-buffer-graph');
+  graph.player = player;
+</script>
+```
+
 #### Attributes
 
 | Attribute         | Property          | Type               | Default | Description                                                                                                                             |
@@ -225,6 +171,21 @@ Notes:
 
 - Only one livery-log element can be used (e.g: connected to DOM) at a time.
 - Previously logged messages will not be shown.
+
+#### Usage
+
+This needs to be connected to the player element like so:
+
+```html
+<livery-player streamid="5ddb98f5e4b0937e6a4507f2"></livery-player>
+<livery-log></livery-log>
+
+<script>
+  const player = document.querySelector('livery-player');
+  const log = document.querySelector('livery-log');
+  log.player = player;
+</script>
+```
 
 #### Attributes
 

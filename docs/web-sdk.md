@@ -49,6 +49,8 @@ import '@exmg/livery';
 <livery-player streamid="5ddb98f5e4b0937e6a4507f2"></livery-player>
 ```
 
+Please see the [LiveryPlayer](#liveryplayer) API documentation below for additional attributes etc.
+
 ### CSS
 
 You will most likely want to fix the size of the livery-player element for the video etc. to be fit inside, e.g. in your CSS include:
@@ -75,6 +77,10 @@ String property specifying version of Livery SDK.
 ### LiveryPlayer
 
 Element defined as `<livery-player>` which can be used to play a livery video stream.
+
+#### Usage
+
+See the general [Usage](#usage) section above.
 
 #### Attributes
 

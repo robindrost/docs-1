@@ -43,6 +43,8 @@ import '@exmg/livery';
 
 ## Usage
 
+### HTML
+
 ?> Replace the Livery Demo stream id (`5ddb98f5e4b0937e6a4507f2`) below by your own.
 
 ```html
@@ -53,7 +55,7 @@ Please see the [LiveryPlayer](#liveryplayer) API documentation below for additio
 
 ### CSS
 
-You will most likely want to fix the size of the livery-player element for the video etc. to be fit inside, e.g. in your CSS include:
+To fix the size of the livery-player element for the video etc. to be fit inside, use something like:
 
 ```css
 livery-player {

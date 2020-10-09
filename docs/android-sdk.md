@@ -49,7 +49,7 @@ Add these implementations inside **dependencies** to your app-level build.gradle
 ```groovy
 dependencies {
    //...
-   implementation 'tv.exmg.livery:livery:1.7.8'
+   implementation 'tv.exmg.livery:livery:1.7.9'
    //...
 }
 ```
@@ -74,16 +74,16 @@ For basic usage of the SDK following minimal steps are needed:
 
 ### Define Remote Config URL
 
-Add ‘livery_remote_config_url’ to your strings and pass the remote config URL or the customer ID as the value.
+Add `livery_stream_id` to your strings and pass the streamId as the value.
 
 ```xml
 <resources>
    <!--...-->
-   <string name="livery_remote_config_url">insert_remote_config_url_or_customer_id_here</string>
+   <string name="livery_stream_id">insert_stream_id_here</string>
 </resources>
 ```
 
-> You can also change remote config url on run-time. To do so, check [here](#Update-Remote-Config)
+> You can also change `stream_id` on run-time. To do so, check [here](#Update-Remote-Config)
 
 ### Add LiveryPlayerView
 
@@ -195,10 +195,10 @@ String pinpointUserId = LiverySDK.getInstance().getPinpointUserId();
 
 ### Update Remote Config
 
-Initial remote config is passed to the SDK via strings.xml, however there might be situations that remote config URL or customer ID needs to be changed later on during run-time. To achieve this, the code below can be used:
+Initial remote config is passed to the SDK via strings.xml, however there might be situations that the streamId needs to be changed later on during run-time. To achieve this, the code below can be used:
 
 ```java
-LiverySDK.getInstance().updateRemoteConfig("Remote Config URL or Customer ID");
+LiverySDK.getInstance().updateRemoteConfig("stream_id");
 ```
 
 ## Player Methods
@@ -553,6 +553,14 @@ To customize the loading indicator, create a layout named `livery_player_audio_o
 For this layout, there are no IDs available. This means that whenever the player is playing only audio, this layout will be shown.
 
 ## Change log
+
+### 1.7.9
+
+- It is no longer possible to create the player with a config URL. Please use the streamId (which is part of the config URL) instead
+- Use RemoteConfig to configure analytics
+- Change IP lookup
+- Improve CDN error handling
+- Use unbranded property from config
 
 ### 1.7.8
 

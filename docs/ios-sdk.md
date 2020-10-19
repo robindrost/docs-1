@@ -159,11 +159,11 @@ The SDK `createPlayer()` method depends on the `initialize()` method having been
 
 ```swift
 let options = playerOptions()
- options.autoplay = false
- options.targetLatency = 3
+options.autoplay = false
+options.targetLatency = 3
 
- /* Create the player */
- player = liveSDK.createPlayer(options: options)
+/* Create the player */
+player = liveSDK.createPlayer(options: options)
 ```
 
 ## Remote Config

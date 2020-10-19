@@ -65,10 +65,9 @@ let liveSDK = LiverySDK()
 liveSDK.initialize(streamId: "yourStreamId", completionQueue: .main) { result in
     switch result {
     case .success(let config):
-      // 2. Create playerOptions at least with a source URL of a DASH manifest
+      // 2. Create playerOptions
       let options = playerOptions()
       options.autoplay = false
-      options.sources = ["yourSourceUrl"]
       options.fit = .contain
 
       // 3. Create a player object with this playerOptions
@@ -154,15 +153,13 @@ extension LiverySDK {
 
 #### SDK Create Player
 
-The SDK `createPlayer()` method depends on the `initialize()` method having been called . If no options are given `createPlayer()` will throw an error.
+The SDK `createPlayer()` method depends on the `initialize()` method having been called. If no options are given `createPlayer()` will throw an error.
 
-`createPlayer()` in IOS SDK expects a `playerOptions` class and returns a Player instance
+`createPlayer()` in iOS SDK expects a `playerOptions` class and returns a Player instance
 
 ```swift
 let options = playerOptions()
  options.autoplay = false
- /* Giving a source is mandatory */
- options.sources = ["https://akamaibroadcasteruseast.akamaized.net/cmaf/live/657078/akasource/out.mpd"]
  options.targetLatency = 3
 
  /* Create the player */
@@ -254,24 +251,24 @@ The source protocol must be DASH for IOS SDK
 
 The following properties are exposed by Live Player instances:
 
-| Name              | Type                               | Write | Description                                                                                                                                        |
-| ----------------- | ---------------------------------- | ----- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `activeQuality`   | [`Quality`](#player-media-quality) | No    | Active Media Quality. Emits: `activeQualityChange`.                                                                                                |
-| `advanced`        | `AdvancedProperties`               | No    | Advanced properties.                                                                                                                               |
-| `currentSrc`      | `String`                           | No    | Current media source URL.                                                                                                                          |
-| `currentTime`     | `Number`                           | Yes   | Current playback time position in seconds. Emits: `timeUpdate`.                                                                                    |
-| `duration`        | `Number`                           | No    | Media duration in seconds. Used in `onDemand`. Emits: `durationChange`.                                                                            |
-| `error`           | `Error`                            | No    | Most recent unrecovered error. Emits: error, recovered.                                                                                            |
-| `muted`           | `Boolean`                          | Yes   | If true then audio is muted. Emits: `volumeChange`.                                                                                                |
-| `latency`         | `Number`                           | No    | End to end latency in milliseconds.                                                                                                                |
-| `buffer`          | `Number`                           | No    | Size of buffer, ahead of current position, in milliseconds.                                                                                        |
-| `playbackRate`    | `Number`                           | Yes   | Playback rate (1 is normal).Emits: `rateChange`.                                                                                                   |
-| `playbackState`   | `String`                           | No    | Playback state. BUFFERING / ENDED / FAST_FORWARD / PAUSED / PLAYING / REWIND / SEEKING / SLOW_MO Emits: `playbackChange`.                          |
-| `selectedQuality` | [`Quality`](#player-media-quality) | Yes   | Selected Media Quality. Emits: `selectedQualityChange`.                                                                                            |
-| `volume`          | `Number`                           | Yes   | Audio volume, from 0.0 (silent) to 1.0 (loudest). Emits: `volumeChange`.                                                                           |
-| `streamType`      | `String`                           | No    | Stream type. LIVE / ONDEMAND / UNKNOWN Computed: duration == Infinite => LIVE, Finite => ONDEMAND and NaN => UNKNOWN Changes on: `durationChange`. |
-| `timeOffset`      | `Number`                           | No    | Local device time offset in milliseconds.                                                                                                          |
-| `qualities`       | `[Quality]`                        | No    | Array of Available Media Qualities. Emits: `qualitiesChange`.                                                                                      |
+| Name                | Type                                          | Write | Description                                                                                                                                        |
+| ------------------- | --------------------------------------------- | ----- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `activeQuality`     | [`Quality`](#player-media-quality)            | No    | Active Media Quality. Emits: `activeQualityChange`.                                                                                                |
+| `advanced`          | `AdvancedProperties`                          | No    | Advanced properties.                                                                                                                               |
+| `currentSrc`        | `String`                                      | No    | Current media source URL.                                                                                                                          |
+| `currentTime`       | `Number`                                      | Yes   | Current playback time position in seconds. Emits: `timeUpdate`.                                                                                    |
+| `duration`          | `Number`                                      | No    | Media duration in seconds. Used in `onDemand`. Emits: `durationChange`.                                                                            |
+| `error`             | `Error`                                       | No    | Most recent unrecovered error. Emits: error, recovered.                                                                                            |
+| `muted`             | `Boolean`                                     | Yes   | If true then audio is muted. Emits: `volumeChange`.                                                                                                |
+| `latency`           | `Number`                                      | No    | End to end latency in milliseconds.                                                                                                                |
+| `buffer`            | `Number`                                      | No    | Size of buffer, ahead of current position, in milliseconds.                                                                                        |
+| `playbackRate`      | `Number`                                      | Yes   | Playback rate (1 is normal).Emits: `rateChange`.                                                                                                   |
+| `playbackState`     | `String`                                      | No    | Playback state. BUFFERING / ENDED / FAST_FORWARD / PAUSED / PLAYING / REWIND / SEEKING / SLOW_MO Emits: `playbackChange`.                          |
+| `selectedQuality`   | [`Quality`](#player-media-quality)            | Yes   | Selected Media Quality. Emits: `selectedQualityChange`.                                                                                            |
+| `volume`            | `Number`                                      | Yes   | Audio volume, from 0.0 (silent) to 1.0 (loudest). Emits: `volumeChange`.                                                                           |
+| `streamType`        | `String`                                      | No    | Stream type. LIVE / ONDEMAND / UNKNOWN Computed: duration == Infinite => LIVE, Finite => ONDEMAND and NaN => UNKNOWN Changes on: `durationChange`. |
+| `timeOffset`        | `Number`                                      | No    | Local device time offset in milliseconds.                                                                                                          |
+| `qualities`         | `[Quality]`                                   | No    | Array of Available Media Qualities. Emits: `qualitiesChange`.                                                                                      |
 | `customLoadingView` | `UIView`                                      | Yes   | Custom loading indicator view                                                                                                                      |
 | `customControlView` | [`LiveryPlayerControlView`](#player-controls) | Yes   | Custom player controls view                                                                                                                        |
 | `customErrorView`   | [`LiveryPlayerErrorView`](#error-overlay)     | Yes   | Custom error view                                                                                                                                  |
@@ -622,6 +619,6 @@ Check section above for app store validation
 | 0.10.3  | SDK initialize with configURL is deprecated. Use the new initialize with streamId instead.<br> Remote config is fetched and updated each minute, if it was modified.<br> Added pause method.<br> Fixed sound hiccups.                                                                                                                 |
 | 0.10.4  | Fixed stalling issue when the player has zero latency.<br> Fixed issue regarding player not showing the video on iOS 13 simulator.<br> Added Poster property to the player options.<br> Added Buffer property to the player.<br> Improvements on ABR algorithm.<br> Analytics improvements.                                           |
 | 0.10.5  | Added player UI.<br> Improvements on ABR algorithm.<br> Bugs and Crash report improvements.<br> Analytics improvements.                                                                                                                                                                                                               |
-| 0.10.6  | Added handler for when a media segment is not yet available and the status code is 404                                                                                                                                                                                                                                                                                                      |
-| 0.10.7  | Added customControlView, customErrorView and customLoadingView                                                                                                                                                                                                                                                                                                      |
-| 0.10.8  | Improvement on the source handler logic                                                                                                                                                                                                                                                                                                     |
+| 0.10.6  | Added handler for when a media segment is not yet available and the status code is 404                                                                                                                                                                                                                                                |
+| 0.10.7  | Added customControlView, customErrorView and customLoadingView                                                                                                                                                                                                                                                                        |
+| 0.10.8  | Improvement on the source handler logic                                                                                                                                                                                                                                                                                               |

@@ -356,14 +356,14 @@ LiveryPlayerOptions has these properties listed on the table below. These option
 
 class **_LiveryPlayerOptions_**
 
-| Name       | Type                    | Default                       | Description                                                                                                                                                       |
-| ---------- | ----------------------- | ----------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `autoPlay` | `Boolean`               | `false`                       | Determines whether video shall play immediately after [createPlayer](#creating-player).                                                                           |
-| `controls` | `LiveryControlsOptions` | `new LiveryControlsOptions()` | Provides access to [LiveryControlsOptions](#livery-controls-options). Player controls can be tweaked by this object.                                              |
-| `fit`      | `LiveryResizeMode`      | `CONTAIN`                     | Provides access to LiveryResizeMode. Video size inside the player view can be changed from here.                                                                  |
-| `loop`     | `Boolean`               | `false`                       | Determines whether the video should restart after it ends.                                                                                                        |
-| `muted`    | `Boolean`               | `false`                       | Determines whether media should be muted or not.                                                                                                                  |
-| `poster`   | `String`                | ``                            | Represents URL to poster image. When this property is not empty, the player will show a poster on creation.                                                       |
+| Name       | Type                    | Default                       | Description                                                                                                          |
+| ---------- | ----------------------- | ----------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| `autoPlay` | `Boolean`               | `false`                       | Determines whether video shall play immediately after [createPlayer](#creating-player).                              |
+| `controls` | `LiveryControlsOptions` | `new LiveryControlsOptions()` | Provides access to [LiveryControlsOptions](#livery-controls-options). Player controls can be tweaked by this object. |
+| `fit`      | `LiveryResizeMode`      | `CONTAIN`                     | Provides access to LiveryResizeMode. Video size inside the player view can be changed from here.                     |
+| `loop`     | `Boolean`               | `false`                       | Determines whether the video should restart after it ends.                                                           |
+| `muted`    | `Boolean`               | `false`                       | Determines whether media should be muted or not.                                                                     |
+| `poster`   | `String`                | ``                            | Represents URL to poster image. When this property is not empty, the player will show a poster on creation.          |
 
 ### Player Resize Mode
 

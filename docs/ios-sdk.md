@@ -229,15 +229,14 @@ class **_LiveryConfig_**
 
 These are the options to be passed to Players:
 
-| Name               | Type             | Default      | Description                                                                          |
-| ------------------ | ---------------- | ------------ | ------------------------------------------------------------------------------------ |
-| `autoplay`         | `Boolean`        | `false`      | Determines whether video shall play immediately after createPlayer.                  |
-| `muted`            | `Boolean`        | `false`      | Determines whether media should be muted or not.                                     |
-| `targetLatency`    | `Integer`        | `3`          | Target live latency in seconds. If 0 then syncing is disabled.                       |
-| `sources`          | `String[]`       | `<required>` | Array of media source URLs from which the first that can be played will be selected. |
-| `fit`              | `enum playerFit` | `.contain`   | Determines how the video will be scaled and cropped. See Section Player Fitting.     |
-| `minRecoveryDelay` | `Integer`        | `10`         | Minimum delay in seconds before starting automatic recovery.                         |
-| `maxRecoveryDelay` | `Integer`        | `90`         | Maximum delay in seconds between subsequent recovery attempts.                       |
+| Name               | Type             | Default    | Description                                                                      |
+| ------------------ | ---------------- | ---------- | -------------------------------------------------------------------------------- |
+| `autoplay`         | `Boolean`        | `false`    | Determines whether video shall play immediately after createPlayer.              |
+| `muted`            | `Boolean`        | `false`    | Determines whether media should be muted or not.                                 |
+| `targetLatency`    | `Integer`        | `3`        | Target live latency in seconds. If 0 then syncing is disabled.                   |
+| `fit`              | `enum playerFit` | `.contain` | Determines how the video will be scaled and cropped. See Section Player Fitting. |
+| `minRecoveryDelay` | `Integer`        | `10`       | Minimum delay in seconds before starting automatic recovery.                     |
+| `maxRecoveryDelay` | `Integer`        | `90`       | Maximum delay in seconds between subsequent recovery attempts.                   |
 
 ### Source Protocols
 

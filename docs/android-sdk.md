@@ -119,9 +119,6 @@ public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceStat
    LiveryPlayerOptions playerOptions = new LiveryPlayerOptions();
    playerOptions.autoPlay = true;
    playerOptions.controls.error = true;
-   ArrayList<String> src = new ArrayList<>();
-   src.add("target dash stream manifest url");
-   playerOptions.sources = src;
    playerView.createPlayer(playerOptions);
 }
 ```
@@ -367,7 +364,6 @@ class **_LiveryPlayerOptions_**
 | `loop`     | `Boolean`               | `false`                       | Determines whether the video should restart after it ends.                                                                                                        |
 | `muted`    | `Boolean`               | `false`                       | Determines whether media should be muted or not.                                                                                                                  |
 | `poster`   | `String`                | ``                            | Represents URL to poster image. When this property is not empty, the player will show a poster on creation.                                                       |
-| `sources`  | `List<String>`          | `new ArrayList<String>()`     | List of DASH manifest URLs to play. The player starts from the first element of this list, then iterates through it one by one if the current index doesn’t play. |
 
 ### Player Resize Mode
 

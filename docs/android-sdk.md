@@ -49,7 +49,7 @@ Add these implementations inside **dependencies** to your app-level build.gradle
 ```groovy
 dependencies {
    //...
-   implementation 'tv.exmg.livery:livery:1.7.12'
+   implementation 'tv.exmg.livery:livery:1.7.13'
    //...
 }
 ```
@@ -549,6 +549,10 @@ To customize the loading indicator, create a layout named `livery_player_audio_o
 For this layout, there are no IDs available. This means that whenever the player is playing only audio, this layout will be shown.
 
 ## Change log
+
+### 1.7.13
+
+- Improved time syncing in SDK initialization
 
 ### 1.7.12
 

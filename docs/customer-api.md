@@ -48,10 +48,11 @@ Returns a list of streams. This call can be used to retrieve streamIds which are
 GET api/1/services/streams?pageIndex=1&pageSize=100
 ```
 
-| Query parameter | Description                                             |
-| --------------- | ------------------------------------------------------- |
-| pageIndex       | The page index of the pagination. The first index is 1. |
-| pageSize        | The number of streams on a page                         |
+| Query parameter | Description                                                        |
+| --------------- | ------------------------------------------------------------------ |
+| pageIndex       | The page index of the pagination. The first index is 1.            |
+| pageSize        | The number of streams on a page                                    |
+| streamIds       | List of streamIds to be found, ignored when using a stream API key |
 
 Response:
 

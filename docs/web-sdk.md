@@ -11,9 +11,25 @@ Ex Machina Group Livery Web SDK, published as [@exmg/livery](https://www.npmjs.c
 
 More information can be found at: [liveryvideo.com](https://liveryvideo.com).
 
-This SDK supports the last two major versions of: Chrome, Safari, Edge, Firefox, Android Chrome, Samsung Internet and iOS/iPadOS Safari.
-
 Please refer to the [Livery Management Portal](https://video-encoder-director.playtotv.com/) for stream configuration options.
+
+## Support
+
+This package exports two bundles.
+
+The ES `module` bundle is targetted at modern browsers and tools supporting `ES2019`.
+
+The UMD `main` bundle (as used by unpkg below) supports the following browser versions and up:
+
+| Browser           | Version |
+| ----------------- | ------- |
+| Chrome            | 64      |
+| Safari            | 12      |
+| Edge              | 74      |
+| Firefox           | 60      |
+| Android Chrome    | 51      |
+| Samsung Internet  | 6.4     |
+| iOS/iPadOS Safari | 12      |
 
 ## Installation
 

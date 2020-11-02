@@ -113,11 +113,12 @@ In addition there is an `engine` property but that is meant for debugging purpos
 
 #### Events
 
-| Event                                                | Description                                         |
-| ---------------------------------------------------- | --------------------------------------------------- |
-| [livery-error](#liveryerrorevent)                    | Dispatched when an error occurs.                    |
-| [livery-playback-change](#liveryplaybackchangeevent) | Dispatched when `playbackState` has changed.        |
-| [livery-recovered](#liveryrecoveredevent)            | Dispatched when player has recovered from an error. |
+| Event                                                | Description                                           |
+| ---------------------------------------------------- | ----------------------------------------------------- |
+| [livery-error](#liveryerrorevent)                    | Dispatched when an error occurs.                      |
+| [livery-playback-change](#liveryplaybackchangeevent) | Dispatched when `playbackState` has changed.          |
+| [livery-recovered](#liveryrecoveredevent)            | Dispatched when player has recovered from an error.   |
+| [livery-volume-change](#liveryvolumechangeevent)     | Dispatched when `volume` and/or `muted` have changed. |
 
 ### LiveryBufferGraph
 
@@ -225,3 +226,12 @@ Dispatched with event type: `'livery-playback-change'` when `playbackState` has 
 #### LiveryRecoveredEvent
 
 Dispatched with event type: `'livery-recovered'` when player has recovered from an error.
+
+#### LiveryVolumeChangeEvent
+
+Dispatched with event type: `'livery-volume-change'` when `volume` and/or `muted` have changed.
+
+| Property | Type      | Description                                       |
+| -------- | --------- | ------------------------------------------------- |
+| `muted`  | `boolean` | If `true` then audio is muted.                    |
+| `volume` | `number`  | Audio volume, from 0.0 (silent) to 1.0 (loudest). |

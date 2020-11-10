@@ -19,9 +19,11 @@ This package exports two bundles.
 
 The ES `module` bundle is targetted at modern browsers and tools supporting `ES2019`.
 
-The UMD `main` bundle (as used by unpkg below) supports the following browser versions (and up):
+The UMD `main` bundle (as used by unpkg below) supports the last 2 major versions of the following browsers:
 
-Chrome v64, Safari v12, Edge v74, Firefox v60, Android Chrome v51, Samsung Internet v6.4 and iOS/iPadOS Safari v12.
+Chrome, Safari, Edge, Firefox, Android Chrome, Samsung Internet
+
+And iOS/iPadOS Safari v12 and up.
 
 ## Installation
 

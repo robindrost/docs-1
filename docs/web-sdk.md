@@ -13,13 +13,27 @@ More information can be found at: [liveryvideo.com](https://liveryvideo.com).
 
 Please refer to the [Livery Management Portal](https://video-encoder-director.playtotv.com/) for stream configuration options.
 
+## Basic Usage
+
+For the most basic usage of this SDK you can just use an HTML snippet like this:
+
+```html
+<script src="https://unpkg.com/@exmg/livery@x.y.z"></script>
+<livery-player
+  streamid="5ddb98f5e4b0937e6a4507f2"
+  style="width: 100%; height: 50vh;"
+></livery-player>
+```
+
+?> Replace the version, stream id and style by your own (see [CDN](#cdn), [HTML](#html) and [CSS](#css)).
+
 ## Support
 
 This package exports two bundles.
 
 The ES `module` bundle is targetted at modern browsers and tools supporting `ES2019`.
 
-The UMD `main` bundle (as used by unpkg below) supports the last 2 major versions of the following browsers:
+The UMD `main` bundle (as used by unpkg [CDN](#cdn)) supports the last 2 major versions of the following browsers:
 
 Chrome, Safari, Edge, Firefox, Android Chrome, Samsung Internet
 

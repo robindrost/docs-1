@@ -39,7 +39,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 source 'https://github.com/exmg/livery-sdk-ios-podspec.git'
 
 target 'MyProject' do
-  pod "Livery", "0.11.1"
+  pod "Livery", "0.11.2"
 end
 ```
 
@@ -623,3 +623,4 @@ Check section above for app store validation
 | 0.10.8  | Improvement on the source handler logic                                                                                                                                                                                                                                                                                                                      |
 | 0.11.0  | Changed ip lookup.<br> Improvements on ZAP Time.<br> Improvements on HTTP error handling.<br> Improvements on NTP error handling.<br> Improvements on the SDK initialization.<br> Fixed volume HUD taking too long to hide.<br> Fixed video stream stoping after receiving a call on iOS 14.<br> Fixed mute button not being in sync with the remote config. |
 | 0.11.1  | Fixed an issue regarding the player not recovering when the stream was stopped and started on the encoder side.<br> Improvements on the player recovery logic.<br> Improvements on Analytics.                                                                                                                                                                |
+| 0.11.2  | Fixed video stream stopping after receiving a call through FaceTime on an iPhone without SIM card.<br> Improvements on Analytics.                                                                                                                                                                |

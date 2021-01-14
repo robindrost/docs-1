@@ -271,7 +271,7 @@ The following properties are exposed by Live Player instances:
 | `customLoadingView` | `UIView`                                      | Yes   | Custom loading indicator view                                                                                                                      |
 | `customControlView` | [`LiveryPlayerControlView`](#player-controls) | Yes   | Custom player controls view                                                                                                                        |
 | `customErrorView`   | [`LiveryPlayerErrorView`](#error-overlay)     | Yes   | Custom error view                                                                                                                                  |
-| `interactiveURL`    | `URL`                                         | Yes   | Interactive URL                                                                                                                      |
+| `interactiveURL`    | `URL`                                         | Yes   | The interactive layer URL                                                                                                                      |
 
 ## Player Methods
 

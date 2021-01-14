@@ -271,7 +271,7 @@ The following properties are exposed by Live Player instances:
 | `customLoadingView` | `UIView`                                      | Yes   | Custom loading indicator view                                                                                                                      |
 | `customControlView` | [`LiveryPlayerControlView`](#player-controls) | Yes   | Custom player controls view                                                                                                                        |
 | `customErrorView`   | [`LiveryPlayerErrorView`](#error-overlay)     | Yes   | Custom error view                                                                                                                                  |
-| `interactiveURL`    | `URL`                                         | Yes   | Interactive URL view                                                                                                                      |
+| `interactiveURL`    | `URL`                                         | Yes   | Interactive URL                                                                                                                      |
 
 ## Player Methods
 
@@ -523,7 +523,7 @@ Note:
 - If your application already contains AWSPinpoint make sure its version matches the one used in the SDK, which is:
 
 ```
-  pod 'AWSPinpoint', '~> 2.12.1'
+  pod 'AWSPinpoint', '~> 2.18'
 ```
 
 ## Sample MediaPlayerLiveExample App

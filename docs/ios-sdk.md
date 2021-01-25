@@ -39,7 +39,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 source 'https://github.com/exmg/livery-sdk-ios-podspec.git'
 
 target 'MyProject' do
-  pod "Livery", "0.11.3"
+  pod "Livery", "0.11.4"
 end
 ```
 
@@ -628,3 +628,4 @@ Check section above for app store validation
 | 0.11.1  | Fixed an issue regarding the player not recovering when the stream was stopped and started on the encoder side.<br> Improvements on the player recovery logic.<br> Improvements on Analytics.                                                                                                                                                                |
 | 0.11.2  | Fixed video stream stopping after receiving a call through FaceTime on an iPhone without SIM card.<br> Improvements on Analytics.                                                                                                                                                                |
 | 0.11.3  | Added interactiveURL.                                                                                                                                                               |
+| 0.11.4  | Improvements on HTTP error handling.<br> Improvements on Analytics.                                                                                                                                                               |

@@ -271,7 +271,7 @@ The following properties are exposed by Live Player instances:
 | `customLoadingView` | `UIView`                                      | Yes   | Custom loading indicator view                                                                                                                      |
 | `customControlView` | [`LiveryPlayerControlView`](#player-controls) | Yes   | Custom player controls view                                                                                                                        |
 | `customErrorView`   | [`LiveryPlayerErrorView`](#error-overlay)     | Yes   | Custom error view                                                                                                                                  |
-| `interactiveURL`    | `URL`                                         | Yes   | The interactive layer URL                                                                                                                      |
+| `interactiveURL`    | `URL`                                         | Yes   | The interactive layer URL                                                                                                                          |
 
 ## Player Methods
 
@@ -562,7 +562,7 @@ See below how this is done in the sample application
   pod 'AWSPinpoint', '~> 2.18'
   pod 'TrueTime', '~> 5.0.3'
   pod 'Sentry', '~> 6.0'
-  
+
 ```
 
 - Run `pod install --repo-update` before you continue
@@ -626,6 +626,6 @@ Check section above for app store validation
 | 0.10.8  | Improvement on the source handler logic                                                                                                                                                                                                                                                                                                                      |
 | 0.11.0  | Changed ip lookup.<br> Improvements on ZAP Time.<br> Improvements on HTTP error handling.<br> Improvements on NTP error handling.<br> Improvements on the SDK initialization.<br> Fixed volume HUD taking too long to hide.<br> Fixed video stream stoping after receiving a call on iOS 14.<br> Fixed mute button not being in sync with the remote config. |
 | 0.11.1  | Fixed an issue regarding the player not recovering when the stream was stopped and started on the encoder side.<br> Improvements on the player recovery logic.<br> Improvements on Analytics.                                                                                                                                                                |
-| 0.11.2  | Fixed video stream stopping after receiving a call through FaceTime on an iPhone without SIM card.<br> Improvements on Analytics.                                                                                                                                                                |
-| 0.11.3  | Added interactiveURL.                                                                                                                                                               |
-| 0.11.4  | Improvements on HTTP error handling.<br> Improvements on Analytics.                                                                                                                                                               |
+| 0.11.2  | Fixed video stream stopping after receiving a call through FaceTime on an iPhone without SIM card.<br> Improvements on Analytics.                                                                                                                                                                                                                            |
+| 0.11.3  | Added interactiveURL.                                                                                                                                                                                                                                                                                                                                        |
+| 0.11.4  | Improvements on HTTP error handling.<br> Improvements on Analytics.                                                                                                                                                                                                                                                                                          |

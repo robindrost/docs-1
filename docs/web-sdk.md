@@ -116,7 +116,7 @@ See the general [Usage](#usage) section above.
 | `loglevel` | `logLevel` | `string`  | `null`  | Log level (`'quiet'` \| `'error'` \| `'warn'` \| `'info'` \| `'debug'` \| `'spam'`). Defaults to `'info'` when value is null (attribute is absent). |
 | `muted`    | `muted`    | `boolean` | `false` | If `true` then audio is muted.<br />Dispatches: `livery-volume-change`.                                                                             |
 | `streamid` | `streamId` | `string`  | `null`  | Livery stream ID (required).                                                                                                                        |
-| `vumeter`  | `vuMeter`  | `boolean` | `false` | Enable volume unit meter. Note: Will result in anonymous CORS requests.                                                                             |
+| `vumeter`  | `vuMeter`  | `boolean` | `false` | Enable volume unit meter.                                                                                                                           |
 
 #### Properties
 

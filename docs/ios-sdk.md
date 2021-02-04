@@ -39,7 +39,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 source 'https://github.com/exmg/livery-sdk-ios-podspec.git'
 
 target 'MyProject' do
-  pod "Livery", "0.11.4"
+  pod "Livery", "0.11.5"
 end
 ```
 
@@ -164,6 +164,41 @@ options.targetLatency = 3
 
 /* Create the player */
 player = liveSDK.createPlayer(options: options)
+```
+
+#### SDK Properties
+
+| Name              | Type   | Default | Description                                                  |
+| ----------------- | ------ | ------- | ------------------------------------------------------------ |
+| `enableSentrySDK` | `Bool` | `true`  | A Boolean whose enables the use of the `SentrySDK` instance. |
+
+If set to **true** Livery will use the `SentrySDK` instance to track events, handled errors and crashes.
+
+**Warning**: If your application uses Sentry too it will override its configuration.
+
+If set to **false** Livery will setup a custom `SentryHub` object that will only track events and handled errors.
+This will not override your Sentry configuration.
+
+| Name                   | Type                                     | Description                                      |
+| ---------------------- | ---------------------------------------- | ------------------------------------------------ |
+| `audioSessionSettings` | [`AudioSessionSettings`](#audio-session) | Property to store the `AVAudioSession` settings. |
+
+If it is not **nil** the `AVAudioSession.sharedInstance().setCategory` will be called when the `LiverySDK.initialize()` completes successfully.
+
+**Important:**<br>If it is **nil** your application is responsible to call `AVAudioSession.sharedInstance().setCategory`.
+
+Default settings are:
+
+```swift
+category = .playback
+mode = .spokenAudio
+options = []
+```
+
+If your application wants to play another audio, besides the one from the live stream, without stopping the live stream, you should set the `options` property to `[.mixWithOthers]`, as below:
+
+```swift
+liveSDK.audioSessionSettings?.options = [.mixWithOthers]
 ```
 
 ## Remote Config
@@ -429,7 +464,7 @@ The timeoutSeconds calculation is based on an exponential backoff algorithm. You
 The SDK provides fitting methods to scale and crop the video according to the specified ​fit​ option value.
 
 ```swift
-public  enum playerFit {
+public enum playerFit {
  case contain
  case cover
  case fill
@@ -502,6 +537,16 @@ public protocol LiveryPlayerControlView where Self: UIControl {
     func updateUI()
 }
 ```
+
+## Audio Session
+
+class **_AudioSessionSettings_**
+
+| Name       | Type                             | Default       | Description                                                                        |
+| ---------- | -------------------------------- | ------------- | ---------------------------------------------------------------------------------- |
+| `category` | `AVAudioSession.Category`        | `playback`    | Audio session category identifiers.                                                |
+| `mode`     | `AVAudioSession.Mode`            | `spokenAudio` | An object that communicates to the system how you intend to use audio in your app. |
+| `options`  | `AVAudioSession.CategoryOptions` | `[]`          | Constants that specify optional audio behaviors.                                   |
 
 ## Analytics
 
@@ -629,3 +674,4 @@ Check section above for app store validation
 | 0.11.2  | Fixed video stream stopping after receiving a call through FaceTime on an iPhone without SIM card.<br> Improvements on Analytics.                                                                                                                                                                                                                            |
 | 0.11.3  | Added interactiveURL.                                                                                                                                                                                                                                                                                                                                        |
 | 0.11.4  | Improvements on HTTP error handling.<br> Improvements on Analytics.                                                                                                                                                                                                                                                                                          |
+| 0.11.5  | Improvements on Analytics.<br> Improvements on DASH manifest parser.<br> Added enableSentrySDK and audioSessionSettings.                                                                                                                                                                                                                                     |

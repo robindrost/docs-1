@@ -13,8 +13,8 @@ This call accepts a couple different parameters:
 
 - from (**mandatory**: start date in millis)
 - until (**mandatory**: end date in millis)
-- metric (*optional*: currently only accepts "viewers". Defaults to viewers.)
-- dimension (*optional*: must be one of the following: PLATFORM, CONNECTION_TYPE, VIDEO_QUALITY, ENCODER_TYPE . Defaults to PLATFORM.)
+- metric (_optional_: currently only accepts "viewers". Defaults to viewers.)
+- dimension (_optional_: must be one of the following: PLATFORM, CONNECTION_TYPE, VIDEO_QUALITY, ENCODER_TYPE . Defaults to PLATFORM.)
 - minutesInterval (**mandatory (1/2)**: integer (1-1440). Minute intervals to split the data into. **Cannot be used along with the points parameter**)
 - points (**mandatory (2/2)**: positive integer (1+). The amount of points to split the data into. **Cannot be used along with the minutesInterval parameter**)
 
@@ -32,19 +32,25 @@ Which would return something like the following:
 
 ```json
 {
- "data": [{
-  "timestamp": 1606246100000,
-  "values": [{
-   "dimension": "android",
-   "value": 4699
-  }, {
-   "dimension": "UNKNOWN",
-   "value": 707
-  }, {
-   "dimension": "ios",
-   "value": 12
-  }]
- }]
+  "data": [
+    {
+      "timestamp": 1606246100000,
+      "values": [
+        {
+          "dimension": "android",
+          "value": 4699
+        },
+        {
+          "dimension": "UNKNOWN",
+          "value": 707
+        },
+        {
+          "dimension": "ios",
+          "value": 12
+        }
+      ]
+    }
+  ]
 }
 ```
 
@@ -58,33 +64,46 @@ Which would come back with something like:
 
 ```json
 {
- "data": [{
-  "timestamp": 1606242000000,
-  "values": [{
-   "dimension": "main",
-   "value": 1600
-  }, {
-   "dimension": "backup",
-   "value": 13
-  }]
- }, {
-  "timestamp": 1606242600000,
-  "values": [{
-   "dimension": "main",
-   "value": 5309
-  }, {
-   "dimension": "backup",
-   "value": 400
-  }]
- }, {
-  "timestamp": 1606243200000,
-  "values": [{
-   "dimension": "main",
-   "value": 4811
-  }, {
-   "dimension": "backup",
-   "value": 444
-  }]
- }]
+  "data": [
+    {
+      "timestamp": 1606242000000,
+      "values": [
+        {
+          "dimension": "main",
+          "value": 1600
+        },
+        {
+          "dimension": "backup",
+          "value": 13
+        }
+      ]
+    },
+    {
+      "timestamp": 1606242600000,
+      "values": [
+        {
+          "dimension": "main",
+          "value": 5309
+        },
+        {
+          "dimension": "backup",
+          "value": 400
+        }
+      ]
+    },
+    {
+      "timestamp": 1606243200000,
+      "values": [
+        {
+          "dimension": "main",
+          "value": 4811
+        },
+        {
+          "dimension": "backup",
+          "value": 444
+        }
+      ]
+    }
+  ]
 }
 ```

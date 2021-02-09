@@ -51,17 +51,11 @@ Make sure you do this on the scene and not on one of the sources within your sce
 
 ### Livery Console
 
-The cloud encoder can be controlled from the Livery console. After pressing the `start stream` button a cloud encoder will be provisioned.
+![Console cloud provisioned](encoder/console-cloud-proxy-stopped.png)
 
-![Console cloud start stream](encoder/console-cloud-start.png)
+The Livery Console shows information about a cloud stream. For example the ingest url can be copied and pasted in your streaming program (OBS/Wirecast/etc). Once you start streaming from there a cloud instance will be provisioned for your stream. This can take some time. Once the encoder is provisioned and streaming, a red bubble with the text `Streaming` will appear which indicates the stream is live.
 
-While the encoder is provisioned the `INGEST URL` field will show a loading spinner.
-
-![Console cloud provisioning](encoder/console-cloud-provisioning.png)
-
-After the encoder is fully provisioned the spinner is gone and the ingest url is shown. This URL can be copy/pasted into the streaming software (OBS/Wirecast/etc.).
-
-![Console cloud provisioned](encoder/console-cloud-provisioned.png)
+![Console cloud provisioned](encoder/console-cloud-proxy-started.png)
 
 ### Input signal
 

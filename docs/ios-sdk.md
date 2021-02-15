@@ -39,7 +39,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 source 'https://github.com/exmg/livery-sdk-ios-podspec.git'
 
 target 'MyProject' do
-  pod "Livery", "0.11.5"
+  pod "Livery", "0.11.6"
 end
 ```
 
@@ -675,3 +675,4 @@ Check section above for app store validation
 | 0.11.3  | Added interactiveURL.                                                                                                                                                                                                                                                                                                                                        |
 | 0.11.4  | Improvements on HTTP error handling.<br> Improvements on Analytics.                                                                                                                                                                                                                                                                                          |
 | 0.11.5  | Improvements on Analytics.<br> Improvements on DASH manifest parser.<br> Added enableSentrySDK and audioSessionSettings.                                                                                                                                                                                                                                     |
+| 0.11.6  | Changed interactive layer to allow automatic media playback and inline media playback.                                                                                                                                                                                                                                                                           |

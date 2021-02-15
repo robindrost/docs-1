@@ -98,6 +98,17 @@ At this point, the player will fetch the DASH manifest, start rendering by autom
 For more information about options, properties and methods please see relevant sections below.
 For a sample application code utilizing these minimal steps see the LiveryExample sample application section.
 
+## Life Cycle
+
+Your application needs to call the corresponding player methods for each iOS Application LifeCycle callback
+
+```swift
+public func onApplicationDidBecomeActive()
+public func onApplicationWillResignActive()
+public func onApplicationDidEnterBackground()
+public func onApplicationWillEnterForeground()
+```
+
 ### Livery SDK
 
 #### Methods
@@ -381,17 +392,6 @@ In other words, IOS SDK players behave always in sync once initialized, meaning 
 ## Error Handling
 
 To be updated with recovery options implementation in v 1.0.0
-
-## Life Cycle
-
-Your application needs to call the corresponding player methods for each IOS Application LifeCycle callback
-
-```swift
-public func onApplicationDidBecomeActive()
-public func onApplicationWillResignActive()
-public func onApplicationDidEnterBackground()
-public func onApplicationWillEnterForeground()
-```
 
 ## Player Fitting
 

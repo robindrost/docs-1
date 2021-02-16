@@ -10,7 +10,7 @@ More information can be found at: [liveryvideo.com](https://liveryvideo.com).
 
 ### Compatibility
 
-The Livery iOS SDK is compatible with iOS 12 of higher.
+The Livery iOS SDK is compatible with iOS 12 or higher.
 
 ### Configuration
 
@@ -98,7 +98,7 @@ At this point, the player will fetch the DASH manifest, start rendering by autom
 For more information about options, properties and methods please see relevant sections below.
 For a sample application code utilizing these minimal steps see the LiveryExample sample application section.
 
-## Life Cycle
+### Life Cycle
 
 Your application needs to call the corresponding player methods for each iOS Application LifeCycle callback
 
@@ -109,16 +109,16 @@ public func onApplicationDidEnterBackground()
 public func onApplicationWillEnterForeground()
 ```
 
-### Livery SDK
+## Livery SDK
 
-#### Methods
+### Methods
 
 | Name                                                | Returns  | Description                                                                       |
 | --------------------------------------------------- | -------- | --------------------------------------------------------------------------------- |
 | `initialize(streamId, completionQueue, completion)` | `void`   | Livery SDK initialization method.                                                 |
 | `createPlayer()`                                    | `Player` | Create a Live Player by combining specified options with the initialize() config. |
 
-#### SDK Initialize
+### SDK Initialize
 
 The SDK `initialize()` method has to be called on an sdk instance before Live Players are created.
 
@@ -136,7 +136,7 @@ The `completion` callback is a block that receives a `LiverySDK.ResultConfig` wi
 - In case of success it contains the fetched [`LiveryConfig`](#config).
 - In case of an error it contains an error of type `LiverySDK.Errors`.
 
-##### SDK Initialization Result
+#### SDK Initialization Result
 
 ```swift
 extension LiverySDK {
@@ -144,7 +144,7 @@ extension LiverySDK {
 }
 ```
 
-##### SDK Initialization Errors
+#### SDK Initialization Errors
 
 ```swift
 extension LiverySDK {
@@ -158,7 +158,7 @@ extension LiverySDK {
 }
 ```
 
-#### SDK Create Player
+### SDK Create Player
 
 The SDK `createPlayer()` method depends on the `initialize()` method having been called.
 
@@ -167,9 +167,10 @@ The SDK `createPlayer()` method depends on the `initialize()` method having been
 player = liveSDK.createPlayer()
 ```
 
-If you need to override the remote configurations of the player you can call `createPlayer(options: playerOptions)` with a `playerOptions` class. For more information about [`playerOptions`](#player-options) properties please see the corresponding section.
+If you need to override the remote configurations of the player you can call `createPlayer(options: playerOptions)` with a `playerOptions` object.<br>
+For more information about [`playerOptions`](#player-options) properties please see the corresponding section.
 
-#### SDK Properties
+### SDK Properties
 
 | Name              | Type   | Default | Description                                                  |
 | ----------------- | ------ | ------- | ------------------------------------------------------------ |
@@ -227,14 +228,6 @@ These are the options to be passed to Players:
 | `quality`          | `Boolean`                      | `false`    | Determines whether select quality button should be displayed or not on the [`Player Controls`](#player-controls). |
 | `sources`          | `String[]`                     | `[]`       | Array of media source URLs from which the first that can be played will be selected.                              |
 | `targetLatency`    | `Integer`                      | `3`        | Target live latency in seconds. If 0 then syncing is disabled.                                                    |
-
-### Source Protocols
-
-The source protocol must be DASH for IOS SDK
-
-| Extension | Protocol |
-| --------- | -------- |
-| .mpd      | DASH     |
 
 ## Player Properties
 
@@ -388,10 +381,6 @@ The player will receive the millisecond precision server time from the time urls
 `currentTime - targetLatency`
 
 In other words, IOS SDK players behave always in sync once initialized, meaning if audio packages or video frames are received later then their presentation timestamps due the network connections, they will be ignored or played back in a faster rate by the player.
-
-## Error Handling
-
-To be updated with recovery options implementation in v 1.0.0
 
 ## Player Fitting
 

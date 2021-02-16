@@ -1,6 +1,6 @@
 # Livery iOS SDK
 
-Ex Machina Group Livery iOS SDK, published as CocoaPods spec on Github: [livery-sdk-ios-podspec](https://github.com/exmg/livery-sdk-ios-podspec).
+Livery iOS SDK, published as CocoaPods spec on Github: [livery-sdk-ios-podspec](https://github.com/exmg/livery-sdk-ios-podspec).
 
 Documentation can be found at: [docs.liveryvideo.com/ios-sdk](https://docs.liveryvideo.com/ios-sdk).
 
@@ -10,13 +10,13 @@ More information can be found at: [liveryvideo.com](https://liveryvideo.com).
 
 ### Compatibility
 
-The Livery iOS SDK is compatible with iOS 12 of higher.
+The Livery iOS SDK is compatible with iOS 12 or higher.
 
 ### Configuration
 
 To install Livery SDK into your project, follow these steps below.
 
-You should request credentials from Ex Machina, then place them in your ~/.netrc as follows: (create if necessary)
+You should request credentials from Livery, then place them in your ~/.netrc as follows: (create if necessary)
 
 ```
 machine sdk-ios-binaries.liveryvideo.com
@@ -99,19 +99,31 @@ func play() {
 }
 ```
 
-At this point, the player will fetch the DASH manifest, start rendering by automatically synching to the targetLatency set in playerOptions (or 3 seconds default). For more information about options, properties and methods please see relevant sections below.
+At this point, the player will fetch the DASH manifest, start rendering by automatically synching to the targetLatency set in the remote config or the playerOptions (3 seconds default).
+For more information about options, properties and methods please see relevant sections below.
 For a sample application code utilizing these minimal steps see the LiveryExample sample application section.
 
-### Livery SDK
+### Life Cycle
 
-#### Methods
+Your application needs to call the corresponding player methods for each iOS Application LifeCycle callback
+
+```swift
+public func onApplicationDidBecomeActive()
+public func onApplicationWillResignActive()
+public func onApplicationDidEnterBackground()
+public func onApplicationWillEnterForeground()
+```
+
+## Livery SDK
+
+### Methods
 
 | Name                                                | Returns  | Description                                                                       |
 | --------------------------------------------------- | -------- | --------------------------------------------------------------------------------- |
 | `initialize(streamId, completionQueue, completion)` | `void`   | Livery SDK initialization method.                                                 |
 | `createPlayer(playerOptions)`                       | `Player` | Create a Live Player by combining specified options with the initialize() config. |
 
-#### SDK Initialize
+### SDK Initialize
 
 The SDK `initialize()` method has to be called on an sdk instance before Live Players are created.
 
@@ -129,7 +141,7 @@ The `completion` callback is a block that receives a `LiverySDK.ResultConfig` wi
 - In case of success it contains the fetched [`LiveryConfig`](#config).
 - In case of an error it contains an error of type `LiverySDK.Errors`.
 
-##### SDK Initialization Result
+#### SDK Initialization Result
 
 ```swift
 extension LiverySDK {
@@ -137,7 +149,7 @@ extension LiverySDK {
 }
 ```
 
-##### SDK Initialization Errors
+#### SDK Initialization Errors
 
 ```swift
 extension LiverySDK {
@@ -151,7 +163,7 @@ extension LiverySDK {
 }
 ```
 
-#### SDK Create Player
+### SDK Create Player
 
 The SDK `createPlayer()` method depends on the `initialize()` method having been called. If no options are given `createPlayer()` will throw an error.
 
@@ -160,13 +172,12 @@ The SDK `createPlayer()` method depends on the `initialize()` method having been
 ```swift
 let options = playerOptions()
 options.autoplay = false
-options.targetLatency = 3
 
 /* Create the player */
 player = liveSDK.createPlayer(options: options)
 ```
 
-#### SDK Properties
+### SDK Properties
 
 | Name              | Type   | Default | Description                                                  |
 | ----------------- | ------ | ------- | ------------------------------------------------------------ |
@@ -203,83 +214,27 @@ liveSDK.audioSessionSettings?.options = [.mixWithOthers]
 
 ## Remote Config
 
-Customer project environment specific remote configs in json format with properties described below can be used by the SDK to facilitate experiments and tweaking by Ex Machina.
-
-Below are sample config files with player sources property listed.
-
-- [https://media-player-demo.playtotv.com/live/exmg-testbox1.json](https://media-player-demo.playtotv.com/live/exmg-testbox1.json)
-
-- [https://media-player-demo.playtotv.com/live/exmg-testbox2.json](https://media-player-demo.playtotv.com/live/exmg-testbox2.json)
-
-### Advanced Config
-
-These are the options that can be specified under `advanced`:
-
-#### Analytics Config
-
-Amazon AWS Pinpoint Analytics options should be specified under `advanced.analytics`:
-
-| Name         | Type     | Default      | Description             |
-| ------------ | -------- | ------------ | ----------------------- |
-| `customerId` | `String` | `<required>` | Ex Machina Customer ID. |
-
-#### Stall Config
-
-Stall recovery options can be specified under `advanced.stall`:
-
-| Name               | Type     | Default | Description                                                        |
-| ------------------ | -------- | ------- | ------------------------------------------------------------------ |
-| `minRecoveryDelay` | `Number` | `10`    | Minimum delay in seconds before starting automatic recovery.       |
-| `maxRecoveryDelay` | `Number` | `90`    | The maximum delay in seconds between subsequent recovery attempts. |
-
-#### Sync Config
-
-Sync options can be specified under `advanced.sync`:
-
-| Name            | Type     | Default | Description                                                    |
-| --------------- | -------- | ------- | -------------------------------------------------------------- |
-| `targetLatency` | `Number` | `3`     | Target live latency in seconds. If 0 then syncing is disabled. |
-
-### Interactive Config
-
-Interactive options can be specified under `advanced.interactive`:
-
-| Name  | Type   | Default | Description                |
-| ----- | ------ | ------- | -------------------------- |
-| `url` | `URL?` | `nil`   | The interactive layer URL. |
-
-### Config
-
-class **_LiveryConfig_**
-
-| Name       | Type             | Description                                                                                   |
-| ---------- | ---------------- | --------------------------------------------------------------------------------------------- |
-| `sources`  | `String[]`       | Array of media source URLs from which the first that can be played will be selected.          |
-| `advanced` | `advancedConfig` | Advanced options.                                                                             |
-| `autoplay` | `Bool`           | Determines whether video shall play immediately after [`createPlayer`](#sdk-create-player).   |
-| `fit`      | `String`         | Determines how the video will be scaled and cropped. See: [`Player Fitting`](#player-fitting) |
-| `muted`    | `Bool`           | Determines whether media should be muted or not.                                              |
+The stream and the player should be configured in the Livery Management Portal. However, if needed, it's possible to override the remote config properties throught the [`playerOptions`](#player-options) object that can be passed when creating the player.
 
 ## Player Options
 
 These are the options to be passed to Players:
 
-| Name               | Type             | Default    | Description                                                                      |
-| ------------------ | ---------------- | ---------- | -------------------------------------------------------------------------------- |
-| `autoplay`         | `Boolean`        | `false`    | Determines whether video shall play immediately after createPlayer.              |
-| `muted`            | `Boolean`        | `false`    | Determines whether media should be muted or not.                                 |
-| `targetLatency`    | `Integer`        | `3`        | Target live latency in seconds. If 0 then syncing is disabled.                   |
-| `fit`              | `enum playerFit` | `.contain` | Determines how the video will be scaled and cropped. See Section Player Fitting. |
-| `minRecoveryDelay` | `Integer`        | `10`       | Minimum delay in seconds before starting automatic recovery.                     |
-| `maxRecoveryDelay` | `Integer`        | `90`       | Maximum delay in seconds between subsequent recovery attempts.                   |
-
-### Source Protocols
-
-The source protocol must be DASH for IOS SDK
-
-| Extension | Protocol |
-| --------- | -------- |
-| .mpd      | DASH     |
+| Name               | Type                           | Default    | Description                                                                                                       |
+| ------------------ | ------------------------------ | ---------- | ----------------------------------------------------------------------------------------------------------------- |
+| `autoplay`         | `Boolean`                      | `false`    | Determines whether video shall play immediately after [`createPlayer`](#sdk-create-player).                       |
+| `cast`             | `Boolean`                      | `false`    | Determines whether cast button should be displayed or not on the [`Player Controls`](#player-controls).           |
+| `error`            | `Boolean`                      | `false`    | Determines whether [`Error Overlay`](#error-overlay) should be displayed or not.                                  |
+| `fit`              | [`playerFit`](#player-fitting) | `.contain` | Determines how the video will be scaled and cropped. See: [`Player Fitting`](#player-fitting)                     |
+| `fullscreen`       | `Boolean`                      | `false`    | Determines whether full screen button should be displayed or not on the [`Player Controls`](#player-controls).    |
+| `maxRecoveryDelay` | `Integer`                      | `90`       | Maximum delay in seconds between subsequent recovery attempts.                                                    |
+| `minRecoveryDelay` | `Integer`                      | `10`       | Minimum delay in seconds before starting automatic recovery.                                                      |
+| `mute`             | `Boolean`                      | `false`    | Determines whether mute button should be displayed or not on the [`Player Controls`](#player-controls).           |
+| `muted`            | `Boolean`                      | `false`    | Determines whether media should be muted or not.                                                                  |
+| `poster`           | `String`                       | `""`       | URL for an image to be shown while the video is loading.                                                          |
+| `quality`          | `Boolean`                      | `false`    | Determines whether select quality button should be displayed or not on the [`Player Controls`](#player-controls). |
+| `sources`          | `String[]`                     | `[]`       | Array of media source URLs from which the first that can be played will be selected.                              |
+| `targetLatency`    | `Integer`                      | `3`        | Target live latency in seconds. If 0 then syncing is disabled.                                                    |
 
 ## Player Properties
 
@@ -434,31 +389,6 @@ The player will receive the millisecond precision server time from the time urls
 
 In other words, IOS SDK players behave always in sync once initialized, meaning if audio packages or video frames are received later then their presentation timestamps due the network connections, they will be ignored or played back in a faster rate by the player.
 
-## ABR (Adaptive BitRate)
-
-Current version players just select the highest quality video for ABR
-
-## Error Handling
-
-To be updated with recovery options implementation in v 1.0.0
-
-## Life Cycle
-
-Your application needs to call the corresponding player methods for each IOS Application LifeCycle callback
-
-```swift
-public func onApplicationDidBecomeActive()
-public func onApplicationWillResignActive()
-public func onApplicationDidEnterBackground()
-public func onApplicationWillEnterForeground()
-```
-
-## Player Stall Recovery
-
-When playback stalls (e.g: playbackState BUFFERING) for longer than calculated ​timeoutSeconds automatic recovery is attempted through calling the Player `load()` method.
-
-The timeoutSeconds calculation is based on an exponential backoff algorithm. You can determine the maximum and minimum thresholds via player options `minRecoveryDelay` and `maxRecoveryDelay` respectively.
-
 ## Player Fitting
 
 The SDK provides fitting methods to scale and crop the video according to the specified ​fit​ option value.
@@ -552,15 +482,6 @@ class **_AudioSessionSettings_**
 
 Our SDK makes use of [Amazon Pinpoint](https://aws.amazon.com/pinpoint/).
 
-For now, our SDK reports events to preset Exmachina AWS backend (i.e. appId , region and identityPoolId cannot be changed)
-
-Only the customerId property of `advanced.analytics` configuration are used for the necessary Pinpoint configuration.
-
-The `customerId` will be added to all pinpoint events as a property.
-
-In future releases, the appId, region and `identityPoolId` properties of `advanced.analytics` configuration will be used for the necessary Pinpoint configuration.
-Notice dependency to external AWSPinpoint SDK changes the build instructions for your custom app.
-
 If you are not using the AWSPinpoint in your own application there's no need to include this on your Podfile since this dependency is included in our SDK.
 
 Note:
@@ -568,7 +489,7 @@ Note:
 - If your application already contains AWSPinpoint make sure its version matches the one used in the SDK, which is:
 
 ```
-  pod 'AWSPinpoint', '~> 2.18'
+  pod 'AWSPinpoint', '~> 2.22'
 ```
 
 ## Sample MediaPlayerLiveExample App
@@ -578,26 +499,6 @@ Notes:
 - The release contains a sample application to demonstrate basic SDK usage.
 - The Application requires Xcode Version 10.2.1 and Swift Version 5 (Since the Livery SDK is built with Swift5 )
 - You will need to reset the bundle identifier and signage settings with your own Team in order to build and run the app
-
-Please check the framework and project setup within the sample app if you are developing your own application from scratch.
-
-## Developing Your Own Application From Scratch
-
-If you are developing your own application from scratch please make sure
-
-- You use Xcode Version 10.2.1 with Swift5 support . SDK binary is built with Swift5
-- You set minimum IOS DEPLOYMEN_TARGET at least 12.0
-- You remove existing copies of framework and libdash_ios.framework from your dev environment
-- You add new versions of both Livery SDK as well as libdash_ios.framework (released seperately now) to your Xcode project
-- You link with both Livery SDK as well as libdash_ios.framework (released seperately now) and add both to Embedded binaries section
-
-libdash_ios.framework is an internal dependency of the framework but you will still need to add it to Embedded Binaries section with Signing enabled on Copy to be able to deploy on a device (to avoid getting signing related errors)
-
-In the upcoming cocoapod SDK release, you will just add it as a cocoapod dependency
-
-See below how this is done in the sample application
-
-![libdash as Cocoapod dependency](https://lh5.googleusercontent.com/Z9sxhp9n2F8zUeEL1WRnXc1ZsEzpUuBmVzwPHnUfLGNB582Nk0Reh-fUdPn-6VazohEKIiJMngaEsxZYzgbo5VHK6EQYrtRFGgsFwtn4DKH9MREMl8e66Nv7ODEYsRSu6Vi6yBkt)
 
 ### Livery SDK dependencies
 
@@ -614,25 +515,6 @@ See below how this is done in the sample application
 - From now on use YOUR_PROJECT_NAME. xcworkspace file in Xcode to open your project
 - Finally import Livery to use the Framework in your codebase
 
-## App Store binary validation
-
-SDK release includes different builds of two binaries under 2 folders.
-
-universal/
-
-- libdash_ios.framework
-- Livery.framework
-
-iphoneos/
-
-- libdash_ios.framework
-- Livery.framework
-
-Universal binaries include both x86 and arm builds (i.e. fatlibs). This is for easy development setup and testing with the simulator.
-
-These binaries will not pass App Store validation since they include x86 architecture.
-You must use binaries under iphoneos/ folder, test your app once more on the device and then submit your product archive to the app store
-
 ### Too many symbols warning in AppStore validation
 
 Too many symbols error is reported when CocoaPod does not remove arm7 architecture from dependency Frameworks (i.e. Currently AWSPinpoint and AWSCore) . Apple reports this as a warning because for targets >=12.0 only needed architecture for IOS is arm64
@@ -648,11 +530,6 @@ end
 ```
 
 Please see example MediaPlayerLive example app’s Podfile and check [https://github.com/CocoaPods/CocoaPods/issues/7111](https://github.com/CocoaPods/CocoaPods/issues/7111) for more information.
-
-## Known Issues
-
-Also universal SDK release is a fat binary (including x86 simulator an arm64 architectures) for easy development with simulator and on device.
-Check section above for app store validation
 
 ## Revission History
 
@@ -675,4 +552,4 @@ Check section above for app store validation
 | 0.11.3  | Added interactiveURL.                                                                                                                                                                                                                                                                                                                                        |
 | 0.11.4  | Improvements on HTTP error handling.<br> Improvements on Analytics.                                                                                                                                                                                                                                                                                          |
 | 0.11.5  | Improvements on Analytics.<br> Improvements on DASH manifest parser.<br> Added enableSentrySDK and audioSessionSettings.                                                                                                                                                                                                                                     |
-| 0.11.6  | Changed interactive layer to allow automatic media playback and inline media playback.                                                                                                                                                                                                                                                                           |
+| 0.11.6  | Changed interactive layer to allow automatic media playback and inline media playback.                                                                                                                                                                                                                                                                       |

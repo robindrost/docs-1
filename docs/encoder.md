@@ -125,3 +125,9 @@ Next is the mixing software. See how to set the rendering resolution:
 ## Network
 
 It is recommended to use an internet connection which has at least twice the speed of the total bitrate that is going to be streamed as upload speed. For example if you have a 5Mbit and a 1Mbit video quality with a 96Kbit audio quality you would need an internet connection with an upload speed of at least 12.2Mbit. This extra internet speed is needed to be able to cope with fluctuations in the internet connection.
+
+## Revision History
+
+| Version | Description                                                                      |
+| ------- | -------------------------------------------------------------------------------- |
+| 0.5.0   | Added the ability to automatically update the encoder from the Management Portal |

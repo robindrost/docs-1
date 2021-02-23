@@ -110,13 +110,14 @@ See the general [Usage](#usage) section above.
 
 #### Attributes
 
-| Attribute  | Property   | Type      | Default | Description                                                                                                                                         |
-| ---------- | ---------- | --------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `bubbles`  | `bubbles`  | `boolean` | `false` | If true then events dispatched by this element will bubble.                                                                                         |
-| `loglevel` | `logLevel` | `string`  | `null`  | Log level (`'quiet'` \| `'error'` \| `'warn'` \| `'info'` \| `'debug'` \| `'spam'`). Defaults to `'info'` when value is null (attribute is absent). |
-| `muted`    | `muted`    | `boolean` | `false` | If `true` then audio is muted.<br />Dispatches: `livery-volume-change`.                                                                             |
-| `streamid` | `streamId` | `string`  | `null`  | Livery stream ID (required).                                                                                                                        |
-| `vumeter`  | `vuMeter`  | `boolean` | `false` | Enable volume unit meter.                                                                                                                           |
+| Attribute    | Property     | Type      | Default | Description                                                                                                                                         |
+| ------------ | ------------ | --------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `bubbles`    | `bubbles`    | `boolean` | `false` | If true then events dispatched by this element will bubble.                                                                                         |
+| `configtype` | `configType` | `string`  | `null`  | Type of stream config to use. Defaults to SDK platform (WEB).                                                                                       |
+| `loglevel`   | `logLevel`   | `string`  | `null`  | Log level (`'quiet'` \| `'error'` \| `'warn'` \| `'info'` \| `'debug'` \| `'spam'`). Defaults to `'info'` when value is null (attribute is absent). |
+| `muted`      | `muted`      | `boolean` | `false` | If `true` then audio is muted.<br />Dispatches: `livery-volume-change`.                                                                             |
+| `streamid`   | `streamId`   | `string`  | `null`  | Livery stream ID (required).                                                                                                                        |
+| `vumeter`    | `vuMeter`    | `boolean` | `false` | Enable volume unit meter.                                                                                                                           |
 
 #### Properties
 

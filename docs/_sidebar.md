@@ -2,6 +2,6 @@
 - [Android SDK](android-sdk.md 'Livery Android SDK')
 - [iOS SDK](ios-sdk.md 'Livery iOS SDK')
 - [Web SDK](web-sdk.md 'Livery Web SDK')
-- [Interactive SDK](interactive.md 'Livery Interactive SDK')
+- [Interactive SDK](interactive-sdk.md 'Livery Interactive SDK')
 - [Embed](embed.md 'Livery Embed')
 - [Analytics API](analytics-api.md 'Livery Analytics API')

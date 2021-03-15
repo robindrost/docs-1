@@ -4,4 +4,4 @@
 - [Web SDK](web-sdk.md 'Livery Web SDK')
 - [Interactive SDK](interactive.md 'Livery Interactive SDK')
 - [Embed](embed.md 'Livery Embed')
-- [Analytics API](livery-analytics-api.md 'Livery Analytics API')
+- [Analytics API](analytics-api.md 'Livery Analytics API')

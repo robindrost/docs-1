@@ -5,11 +5,9 @@
 [![License](https://img.shields.io/npm/l/@exmg/livery)](https://unpkg.com/browse/@exmg/livery/LICENSE)
 [![Built with open-wc recommendations](https://img.shields.io/badge/built%20with-open--wc-blue.svg)](https://open-wc.org/)
 
-Ex Machina Group Livery Web SDK, published as [@exmg/livery](https://www.npmjs.com/package/@exmg/livery).
+Ex Machina Group Livery Web SDK for use with Livery video streams.
 
 ?> Demo can be found at: [demo.liveryvideo.com](https://demo.liveryvideo.com) ([source](https://github.com/exmg/livery-demo-web)).
-
-More information can be found at: [liveryvideo.com](https://liveryvideo.com).
 
 Please refer to the [Livery Management Portal](https://video-encoder-director.playtotv.com/) for stream configuration options.
 
@@ -33,11 +31,7 @@ This package exports two bundles.
 
 The ES `module` bundle is targetted at modern browsers and tools supporting `ES2019`.
 
-The UMD `main` bundle (as used by unpkg [CDN](#cdn)) supports the last 2 major versions of the following browsers:
-
-Chrome, Safari, Edge, Firefox, Android Chrome, Samsung Internet
-
-And iOS/iPadOS Safari v12 and up.
+The UMD `main` bundle (as used by unpkg [CDN](#cdn)) supports iOS/iPadOS Safari v12 and up and the last 2 major versions of: Chrome, Safari, Edge, Firefox, Android Chrome and Samsung Internet.
 
 ## Installation
 

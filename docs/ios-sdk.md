@@ -65,20 +65,15 @@ let liveSDK = LiverySDK()
 liveSDK.initialize(streamId: "yourStreamId", completionQueue: .main) { result in
     switch result {
     case .success(let config):
-      // 2. Create playerOptions
-      let options = playerOptions()
-      options.autoplay = false
-      options.fit = .contain
-
-      // 3. Create a player object with this playerOptions
-      // (See SDK createPlayer() method below and playerOptions for a full list of supported options)
-      self.player = self.liveSDK.createPlayer(options: options)
+      // 2. Create a player object
+      // (See SDK createPlayer() method below for a full list of supported options)
+      self.player = self.liveSDK.createPlayer()
       if let player = self.player {
-        // 4. Set a UIView for the player to render into. (See Player Method setView() method below)
+        // 3. Set a UIView for the player to render into. (See Player Method setView() method below)
         player.setView(view: self.playerView)
       }
 
-      // 5. The player is now ready to play
+      // 4. The player is now ready to play
       play()
 
     case .failure(let error):
@@ -118,10 +113,10 @@ public func onApplicationWillEnterForeground()
 
 ### Methods
 
-| Name                                                | Returns  | Description                                                                       |
-| --------------------------------------------------- | -------- | --------------------------------------------------------------------------------- |
-| `initialize(streamId, completionQueue, completion)` | `void`   | Livery SDK initialization method.                                                 |
-| `createPlayer(playerOptions)`                       | `Player` | Create a Live Player by combining specified options with the initialize() config. |
+| Name                                                | Returns  | Description                                                                                                        |
+| --------------------------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------ |
+| `initialize(streamId, completionQueue, completion)` | `void`   | Livery SDK initialization method.                                                                                  |
+| `createPlayer()`                                    | `Player` | Create a Live Player. This method can receive specified options if you need to override the remote configurations. |
 
 ### SDK Initialize
 
@@ -165,17 +160,15 @@ extension LiverySDK {
 
 ### SDK Create Player
 
-The SDK `createPlayer()` method depends on the `initialize()` method having been called. If no options are given `createPlayer()` will throw an error.
-
-`createPlayer()` in iOS SDK expects a `playerOptions` class and returns a Player instance
+The SDK `createPlayer()` method depends on the `initialize()` method having been called.
 
 ```swift
-let options = playerOptions()
-options.autoplay = false
-
 /* Create the player */
-player = liveSDK.createPlayer(options: options)
+player = liveSDK.createPlayer()
 ```
+
+If you need to override the remote configurations of the player you can call `createPlayer(options: playerOptions)` with a `playerOptions` object.<br>
+For more information about [`playerOptions`](#player-options) properties please see the corresponding section.
 
 ### SDK Properties
 

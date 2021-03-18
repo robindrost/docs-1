@@ -25,6 +25,8 @@ For the most basic usage of this SDK you can just use an HTML snippet like this:
 
 ?> Replace the version, stream id and style by your own (see [CDN](#cdn), [HTML](#html) and [CSS](#css)).
 
+?> Use a specific size to prevent that from changing as the stream is loaded (see [CSS](#css) for details).
+
 ## Support
 
 This package exports two bundles.
@@ -81,6 +83,12 @@ livery-player {
   height: 50vh;
 }
 ```
+
+Use a specific extrinsic size to prevent that from changing intrinsically as the stream is loaded.
+
+E.g: Don't (just) use `min-height` but (also) specify `height` for the livery-player (directly or via its containing elements).
+
+See also: [MDN Sizing items in CSS](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Sizing_items_in_CSS)
 
 ## Exports
 

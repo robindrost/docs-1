@@ -75,3 +75,19 @@ bridge.getLatency().then(latency => window.alert(`latency: ${latency}`));
 | `subscribeOrientation(listener)`           | Returns promise of current LiveryPlayer window orientation (`'landscape' \| 'portrait'`) and calls back `listener` with any subsequent orientations.                                                              |
 | `subscribeStreamPhase(listener)`           | Returns promise of current LiveryPlayer stream phase (`'PRE' \| 'LIVE' \| 'POST'`) and calls back `listener` with any subsequent phases.                                                                          |
 | `unregisterCustomCommand(name)`            | Unregister custom command by name.                                                                                                                                                                                |
+
+### LiveryBridgeLog
+
+Element defined as `<livery-bridge-log>` which logs LiveryBridge and other window messages posted to this window.
+
+#### Usage
+
+```html
+<livery-bridge-log></livery-bridge-log>
+```
+
+#### Attributes
+
+| Attribute     | Property      | Type     | Default | Description                            |
+| ------------- | ------------- | -------- | ------- | -------------------------------------- |
+| `maxmessages` | `maxMessages` | `number` | `10`    | Maximum number of messages to display. |

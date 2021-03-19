@@ -233,28 +233,29 @@ These are the options to be passed to Players:
 
 The following properties are exposed by Live Player instances:
 
-| Name                | Type                                          | Write | Description                                                                                                                                        |
-| ------------------- | --------------------------------------------- | ----- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `activeQuality`     | [`Quality`](#player-media-quality)            | No    | Active Media Quality. Emits: `activeQualityChange`.                                                                                                |
-| `advanced`          | `AdvancedProperties`                          | No    | Advanced properties.                                                                                                                               |
-| `currentSrc`        | `String`                                      | No    | Current media source URL.                                                                                                                          |
-| `currentTime`       | `Number`                                      | Yes   | Current playback time position in seconds. Emits: `timeUpdate`.                                                                                    |
-| `duration`          | `Number`                                      | No    | Media duration in seconds. Used in `onDemand`. Emits: `durationChange`.                                                                            |
-| `error`             | `Error`                                       | No    | Most recent unrecovered error. Emits: error, recovered.                                                                                            |
-| `muted`             | `Boolean`                                     | Yes   | If true then audio is muted. Emits: `volumeChange`.                                                                                                |
-| `latency`           | `Number`                                      | No    | End to end latency in milliseconds.                                                                                                                |
-| `buffer`            | `Number`                                      | No    | Size of buffer, ahead of current position, in milliseconds.                                                                                        |
-| `playbackRate`      | `Number`                                      | Yes   | Playback rate (1 is normal).Emits: `rateChange`.                                                                                                   |
-| `playbackState`     | `String`                                      | No    | Playback state. BUFFERING / ENDED / FAST_FORWARD / PAUSED / PLAYING / REWIND / SEEKING / SLOW_MO Emits: `playbackChange`.                          |
-| `selectedQuality`   | [`Quality`](#player-media-quality)            | Yes   | Selected Media Quality. Emits: `selectedQualityChange`.                                                                                            |
-| `volume`            | `Number`                                      | Yes   | Audio volume, from 0.0 (silent) to 1.0 (loudest). Emits: `volumeChange`.                                                                           |
-| `streamType`        | `String`                                      | No    | Stream type. LIVE / ONDEMAND / UNKNOWN Computed: duration == Infinite => LIVE, Finite => ONDEMAND and NaN => UNKNOWN Changes on: `durationChange`. |
-| `timeOffset`        | `Number`                                      | No    | Local device time offset in milliseconds.                                                                                                          |
-| `qualities`         | `[Quality]`                                   | No    | Array of Available Media Qualities. Emits: `qualitiesChange`.                                                                                      |
-| `customLoadingView` | `UIView`                                      | Yes   | Custom loading indicator view                                                                                                                      |
-| `customControlView` | [`LiveryPlayerControlView`](#player-controls) | Yes   | Custom player controls view                                                                                                                        |
-| `customErrorView`   | [`LiveryPlayerErrorView`](#error-overlay)     | Yes   | Custom error view                                                                                                                                  |
-| `interactiveURL`    | `URL`                                         | Yes   | The interactive layer URL                                                                                                                          |
+| Name                        | Type                                                                  | Write | Description                                                                                                                                        |
+| --------------------------- | --------------------------------------------------------------------- | ----- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `activeQuality`             | [`Quality`](#player-media-quality)                                    | No    | Active Media Quality. Emits: `activeQualityChange`.                                                                                                |
+| `advanced`                  | `AdvancedProperties`                                                  | No    | Advanced properties.                                                                                                                               |
+| `currentSrc`                | `String`                                                              | No    | Current media source URL.                                                                                                                          |
+| `currentTime`               | `Number`                                                              | Yes   | Current playback time position in seconds. Emits: `timeUpdate`.                                                                                    |
+| `duration`                  | `Number`                                                              | No    | Media duration in seconds. Used in `onDemand`. Emits: `durationChange`.                                                                            |
+| `error`                     | `Error`                                                               | No    | Most recent unrecovered error. Emits: error, recovered.                                                                                            |
+| `muted`                     | `Boolean`                                                             | Yes   | If true then audio is muted. Emits: `volumeChange`.                                                                                                |
+| `latency`                   | `Number`                                                              | No    | End to end latency in milliseconds.                                                                                                                |
+| `buffer`                    | `Number`                                                              | No    | Size of buffer, ahead of current position, in milliseconds.                                                                                        |
+| `playbackRate`              | `Number`                                                              | Yes   | Playback rate (1 is normal).Emits: `rateChange`.                                                                                                   |
+| `playbackState`             | `String`                                                              | No    | Playback state. BUFFERING / ENDED / FAST_FORWARD / PAUSED / PLAYING / REWIND / SEEKING / SLOW_MO Emits: `playbackChange`.                          |
+| `selectedQuality`           | [`Quality`](#player-media-quality)                                    | Yes   | Selected Media Quality. Emits: `selectedQualityChange`.                                                                                            |
+| `volume`                    | `Number`                                                              | Yes   | Audio volume, from 0.0 (silent) to 1.0 (loudest). Emits: `volumeChange`.                                                                           |
+| `streamType`                | `String`                                                              | No    | Stream type. LIVE / ONDEMAND / UNKNOWN Computed: duration == Infinite => LIVE, Finite => ONDEMAND and NaN => UNKNOWN Changes on: `durationChange`. |
+| `timeOffset`                | `Number`                                                              | No    | Local device time offset in milliseconds.                                                                                                          |
+| `qualities`                 | `[Quality]`                                                           | No    | Array of Available Media Qualities. Emits: `qualitiesChange`.                                                                                      |
+| `customLoadingView`         | `UIView`                                                              | Yes   | Custom loading indicator view                                                                                                                      |
+| `customControlView`         | [`LiveryPlayerControlView`](#player-controls)                         | Yes   | Custom player controls view                                                                                                                        |
+| `customErrorView`           | [`LiveryPlayerErrorView`](#error-overlay)                             | Yes   | Custom error view                                                                                                                                  |
+| `interactiveURL`            | `URL`                                                                 | Yes   | The interactive layer URL                                                                                                                          |
+| `interactiveBridgeDelegate` | [`PlayerInteractiveBridgeDelegate`](#playerInteractiveBridgeDelegate) | Yes   | Protocol to implement to get custom messages from the interactive layer                                                                            |
 
 ## Player Methods
 
@@ -275,6 +276,7 @@ The following methods are exposed by Player instances:
 | `onApplicationDidEnterBackground()`                                                 | Call in your IOS Application Lifecycle callback `applicationDidEnterBackground()`  |
 | `onApplicationWillEnterForeground()`                                                | Call in your IOS Application Lifecycle callback `applicationWillEnterForeground()` |
 | `dispose()`                                                                         | Cleanup all resources and stop playback.                                           |
+| `sendCustomMessage(name: String, arg: Any?)`                                        | Sends a custom message to the interactive bridge.                                  |
 
 ## Player Events
 
@@ -470,6 +472,69 @@ class **_AudioSessionSettings_**
 | `category` | `AVAudioSession.Category`        | `playback`    | Audio session category identifiers.                                                |
 | `mode`     | `AVAudioSession.Mode`            | `spokenAudio` | An object that communicates to the system how you intend to use audio in your app. |
 | `options`  | `AVAudioSession.CategoryOptions` | `[]`          | Constants that specify optional audio behaviors.                                   |
+
+## Cast
+
+Our SDK is able to cast to AirPlay and Google Chromecast.
+
+### Google Chromecast
+
+To cast to Google Chromecast you need to add two items in your app's `Info.plist`:
+
+- Add `NSBonjourServices`
+
+Specify `NSBonjourServices`, like is shown below, in your `Info.plist` to allow local network discovery to succeed.
+
+```
+<key>NSBonjourServices</key>
+<array>
+  <string>_googlecast._tcp</string>
+  <string>_CC1AD845._googlecast._tcp</string>
+</array>
+```
+
+- Add `NSLocalNetworkUsageDescription`
+
+We recommend that you customize the message shown in the Local Network prompt by adding an app-specific permission string in your app's `Info.plist` file for the `NSLocalNetworkUsageDescription`, as show below.
+
+```
+<key>NSLocalNetworkUsageDescription</key>
+<string>${PRODUCT_NAME} uses the local network to discover Cast-enabled devices on your WiFi network.</string>
+```
+
+This message will appear as part of the iOS Local Network Access dialog when the user taps on the cast button.
+
+## Interactive Bridge
+
+On the interactive layer you can use the [Interactive SDK](/interactive-sdk?id=livery-interactive-sdk) to communicate with the Livery Player. Please see the [Interactive SDK](/interactive-sdk?id=livery-interactive-sdk) documentation for more details on how to use it on the interactive layer side.
+
+Besides the [methods](/interactive-sdk?id=methods) already definied on the Interactive SDK to get values like the player **latency**, device **orientation**, etc. you can get and send custom messages.
+
+### Custom Messages
+
+- To **GET** custom messages you should implement the `PlayerInteractiveBridgeDelegate` by calling:
+
+```swift
+player.interactiveBridgeDelegate = self //being self the class that conforms to the PlayerInteractiveBridgeDelegate protocol
+```
+
+#### PlayerInteractiveBridgeDelegate
+
+```swift
+public protocol PlayerInteractiveBridgeDelegate: class {
+    func getCustomMessageValue(message name: String, arg: Any?, completionHandler: @escaping (_ value: Any?) -> Void)
+}
+```
+
+There you will get the custom messages you sent through the bridge on the interactive layer. You can use the name and the arg paramenters to better recognize the message itself and act on it by calling the `completionHandler` with a value that will be send back to the interactive layer.
+
+- To **SEND** custom messages you should call:
+
+```swift
+player.sendCustomMessage(name: String, arg: Any?)
+```
+
+Those messages will be send to the interactive layer through the bridge. To get them on the interactive layer side you should first call the `registerCustomCommand(name, handler)` with the `name` matching the one used on the player. Please see Interactive SDK [methods](/interactive-sdk?id=methods) section for more details.
 
 ## Analytics
 

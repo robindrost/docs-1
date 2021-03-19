@@ -39,7 +39,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 source 'https://github.com/exmg/livery-sdk-ios-podspec.git'
 
 target 'MyProject' do
-  pod "Livery", "0.11.6"
+  pod "Livery", "0.12.0"
 end
 ```
 
@@ -563,9 +563,10 @@ Notes:
 - The `Podfile` that you configure to install the Livery SDK must contain:
 
 ```
-  pod 'AWSPinpoint', '~> 2.18'
+  pod 'AWSPinpoint', '~> 2.23'
   pod 'TrueTime', '~> 5.0.3'
-  pod 'Sentry', '~> 6.0'
+  pod 'Sentry', '~> 6.2'
+  pod 'google-cast-sdk-no-bluetooth', '~> 4.5'
 
 ```
 
@@ -611,3 +612,4 @@ Please see example MediaPlayerLive example app’s Podfile and check [https://gi
 | 0.11.4  | Improvements on HTTP error handling.<br> Improvements on Analytics.                                                                                                                                                                                                                                                                                          |
 | 0.11.5  | Improvements on Analytics.<br> Improvements on DASH manifest parser.<br> Added enableSentrySDK and audioSessionSettings.                                                                                                                                                                                                                                     |
 | 0.11.6  | Changed interactive layer to allow automatic media playback and inline media playback.                                                                                                                                                                                                                                                                       |
+| 0.12.0  | Added Cast.<br> Added Interactive Bridge.<br> Added Stream Phases.<br> Life Cycle methods are no longer needed.                                                                                                                                                                                                                                              |

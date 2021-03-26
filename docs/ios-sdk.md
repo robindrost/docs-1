@@ -550,15 +550,24 @@ Note:
   pod 'AWSPinpoint', '~> 2.22'
 ```
 
-## Sample MediaPlayerLiveExample App
+## Example App
+
+Example iOS application which demonstrates how to use the Livery iOS SDK.<br>
+You can find it on the following git repository: [Livery iOS SDK Example App](https://github.com/exmg/livery-sdk-ios-example)
 
 Notes:
 
-- The release contains a sample application to demonstrate basic SDK usage.
-- The Application requires Xcode Version 10.2.1 and Swift Version 5 (Since the Livery SDK is built with Swift5 )
-- You will need to reset the bundle identifier and signage settings with your own Team in order to build and run the app
+- Built using XCode 12.4 (12D4e) (Swift 5)
 
-### Livery SDK dependencies
+### How to run the app
+
+1. Clone this repo
+2. Go to the repo directory on the terminal and run `pod install`
+3. Open **livery-sdk-ios-example.xcworkspace**
+4. You will need to change the **Bundle Identifier** and the **Team** to your own team in order to build and run the app
+5. Run the project on selected device or simulator
+
+## Livery SDK dependencies
 
 - The `Podfile` that you configure to install the Livery SDK must contain:
 
@@ -574,7 +583,7 @@ Notes:
 - From now on use YOUR_PROJECT_NAME. xcworkspace file in Xcode to open your project
 - Finally import Livery to use the Framework in your codebase
 
-### Too many symbols warning in AppStore validation
+## Too many symbols warning in AppStore validation
 
 Too many symbols error is reported when CocoaPod does not remove arm7 architecture from dependency Frameworks (i.e. Currently AWSPinpoint and AWSCore) . Apple reports this as a warning because for targets >=12.0 only needed architecture for IOS is arm64
 

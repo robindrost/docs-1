@@ -324,7 +324,7 @@ Request body:
   "domainWhiteList": ["streamName.com", "video.streamName.com"],
 
   "settings": {
-    "targetLatency": 3.0;
+    "targetLatency": 3.0
   },
 
   "player": {

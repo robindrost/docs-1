@@ -56,77 +56,7 @@ GET api/1/services/streams?pageIndex=1&pageSize=100
 
 Response:
 
-```json
-[
-  {
-    "streamId": "5f2022df27b35d1ebfe17b78",
-    "customerId": "5c5468158f087748c233194f",
-    "name": "streamName",
-    "posterUrl": "streamName.com/poster.png",
-    "interactiveLayerUrl": "interactive.example/5f2022df27b35d1ebfe17b78",
-
-    "domainWhiteList": ["streamName.com", "video.streamName.com"],
-
-    "lastStreamingStateChangeTimestamp": 1599749054566,
-
-    "settings": {
-      "targetLatency": 3.0
-    },
-
-    "player": {
-      "fit": "COVER",
-      "preRoll": "streamName.com/preroll.mp4"
-    },
-
-    "controls": {
-      "cast": false,
-      "error": false,
-      "fullscreen": false,
-      "mute": false,
-      "quality": false,
-      "pip": false
-    },
-
-    "encoders": [
-      {
-        "encoderId": "5f2807dc4fd690da7238fd56",
-        "encoderType": "MAIN",
-        "state": {
-          "encoderStatus": "ONLINE",
-          "streamingState": "STARTED",
-          "videoDevice": {
-            "id": "5f5614aefd9fb4ec7fb24d10",
-            "resolution": "1920x1080",
-            "frameRate": "59.97",
-            "signalState": "Locked",
-            "signalStatus": "Valid",
-            "type": "0x84",
-            "scanningType": "Progressive",
-            "colorDepth": "8 bits",
-            "colorEncoding": "Y/U/V 4:4:4"
-          },
-          "audioDevice": {
-            "id": "5f5614e848b6ed205b282380",
-            "format": "48000 Hz, 24 bit, LPCM"
-          }
-        }
-      }
-    ],
-    "streamingState": "STARTED",
-    "streamUrlType": "STATIC",
-    "encoderPlatform": "CLOUD",
-
-    "streamUrls": [
-      "https://example.com/cmaf/5f27c847e4b0716a97225f47/out.mpd",
-      "https://example.com/cmaf/5f27c847e4b0716a97225f47/master.m3u8"
-    ],
-
-    "videoStreamQualities": ["100000-H264-704x396-p25", "800k_360p"],
-    "audioStreamQualities": ["128Kbps", "96khz"],
-    "remoteConfigUrl": "cdn.liveryvideo.com/remoteconfigs/5f2022df27b35d1ebfe17b78"
-  }
-]
-```
+[filename](_customer-api/example-multiple-StreamResponseDTO.md ':include')
 
 ### StartStream
 
@@ -145,75 +75,7 @@ PUT api/1/services/streams/start?id=5f2022df27b35d1ebfe17b78
 
 Response example:
 
-```json
-{
-  "streamId": "5f2022df27b35d1ebfe17b78",
-  "customerId": "5c5468158f087748c233194f",
-  "name": "streamName",
-  "posterUrl": "streamName.com/poster.png",
-  "interactiveLayerUrl": "interactive.example/5f2022df27b35d1ebfe17b78",
-
-  "domainWhiteList": ["streamName.com", "video.streamName.com"],
-
-  "lastStreamingStateChangeTimestamp": 1599749054566,
-
-  "settings": {
-    "targetLatency": 3.0
-  },
-
-  "player": {
-    "fit": "COVER",
-    "preRoll": "streamName.com/preroll.mp4"
-  },
-
-  "controls": {
-    "cast": false,
-    "error": false,
-    "fullscreen": false,
-    "mute": false,
-    "quality": false,
-    "pip": false
-  },
-
-  "encoders": [
-    {
-      "encoderId": "5f2807dc4fd690da7238fd56",
-      "encoderType": "MAIN",
-      "state": {
-        "encoderStatus": "ONLINE",
-        "streamingState": "STARTED",
-        "videoDevice": {
-          "id": "5f5614aefd9fb4ec7fb24d10",
-          "resolution": "1920x1080",
-          "frameRate": "59.97",
-          "signalState": "Locked",
-          "signalStatus": "Valid",
-          "type": "0x84",
-          "scanningType": "Progressive",
-          "colorDepth": "8 bits",
-          "colorEncoding": "Y/U/V 4:4:4"
-        },
-        "audioDevice": {
-          "id": "5f5614e848b6ed205b282380",
-          "format": "48000 Hz, 24 bit, LPCM"
-        }
-      }
-    }
-  ],
-  "streamingState": "STARTED",
-  "streamUrlType": "STATIC",
-  "encoderPlatform": "CLOUD",
-
-  "streamUrls": [
-    "https://example.com/cmaf/5f27c847e4b0716a97225f47/out.mpd",
-    "https://example.com/cmaf/5f27c847e4b0716a97225f47/master.m3u8"
-  ],
-
-  "videoStreamQualities": ["100000-H264-704x396-p25", "800k_360p"],
-  "audioStreamQualities": ["128Kbps", "96khz"],
-  "remoteConfigUrl": "cdn.liveryvideo.com/remoteconfigs/5f2022df27b35d1ebfe17b78"
-}
-```
+[filename](_customer-api/example-StreamResponseDTO.md ':include')
 
 ### StopStream
 
@@ -231,20 +93,41 @@ PUT api/1/services/streams/stop?id=5f2022df27b35d1ebfe17b78
 
 Response example:
 
+[filename](_customer-api/example-stopped-StreamResponseDTO.md ':include')
+
+### CreateStream
+
+Create a new stream
+
+```
+POST api/1/services/streams
+```
+
+Request body:
+
 ```json
 {
-  "streamId": "5f2022df27b35d1ebfe17b78",
-  "customerId": "5c5468158f087748c233194f",
   "name": "streamName",
+
+  "cdnRegionId": "6062e72ca1b0d8e93af985f9",
+
   "posterUrl": "streamName.com/poster.png",
-  "interactiveLayerUrl": "interactive.example/5f2022df27b35d1ebfe17b78",
+  "prePosterUrl": "streamName.com/poster-pre.png",
+  "postPosterUrl": "streamName.com/poster-post.png",
+  "interactiveLayerUrl": "streamName.com/poster.png",
 
-  "domainWhiteList": ["streamName.com", "video.streamName.com"],
-
-  "lastStreamingStateChangeTimestamp": 1599749054566,
+  "videoStreamQualities": [
+    "6062e81716bcd84ab3562cc1",
+    "6062e81716bcd84ab3562cc1"
+  ],
+  "audioStreamQualities": [
+    "6062e823f8cea49a7e2036f7",
+    "6062e82e40b0aaf95d6c634f"
+  ],
 
   "settings": {
-    "targetLatency": 3.0
+    "targetLatency": 3.0,
+    "segmentSizeInSeconds": 2.0
   },
 
   "player": {
@@ -261,45 +144,15 @@ Response example:
     "pip": false
   },
 
-  "encoders": [
-    {
-      "encoderId": "5f2807dc4fd690da7238fd56",
-      "encoderType": "MAIN",
-      "state": {
-        "encoderStatus": "ONLINE",
-        "streamingState": "STARTED",
-        "videoDevice": {
-          "id": "5f5614aefd9fb4ec7fb24d10",
-          "resolution": "1920x1080",
-          "frameRate": "59.97",
-          "signalState": "Locked",
-          "signalStatus": "Valid",
-          "type": "0x84",
-          "scanningType": "Progressive",
-          "colorDepth": "8 bits",
-          "colorEncoding": "Y/U/V 4:4:4"
-        },
-        "audioDevice": {
-          "id": "5f5614e848b6ed205b282380",
-          "format": "48000 Hz, 24 bit, LPCM"
-        }
-      }
-    }
-  ],
-  "streamingState": "STOPPED",
-  "streamUrlType": "STATIC",
-  "encoderPlatform": "CLOUD",
-
-  "streamUrls": [
-    "https://example.com/cmaf/5f27c847e4b0716a97225f47/out.mpd",
-    "https://example.com/cmaf/5f27c847e4b0716a97225f47/master.m3u8"
-  ],
-
-  "videoStreamQualities": ["100000-H264-704x396-p25", "800k_360p"],
-  "audioStreamQualities": ["128Kbps", "96khz"],
-  "remoteConfigUrl": "cdn.liveryvideo.com/remoteconfigs/5f2022df27b35d1ebfe17b78"
+  "cdn": {
+    "domainWhiteList": ["streamName.com", "video.streamName.com"]
+  }
 }
 ```
+
+Response example:
+
+[filename](_customer-api/example-StreamResponseDTO.md ':include')
 
 ### UpdateStream
 
@@ -318,13 +171,15 @@ Request body:
 ```json
 {
   "name": "streamName",
-  "posterUrl": "streamName.com/poster.png",
-  "interactiveLayerUrl": "interactive.example/5f2022df27b35d1ebfe17b78",
 
-  "domainWhiteList": ["streamName.com", "video.streamName.com"],
+  "posterUrl": "streamName.com/poster.png",
+  "prePosterUrl": "streamName.com/poster-pre.png",
+  "postPosterUrl": "streamName.com/poster-post.png",
+  "interactiveLayerUrl": "streamName.com/poster.png",
 
   "settings": {
-    "targetLatency": 3.0
+    "targetLatency": 3.0,
+    "segmentSizeInSeconds": 2.0
   },
 
   "player": {
@@ -339,78 +194,14 @@ Request body:
     "mute": false,
     "quality": false,
     "pip": false
+  },
+
+  "cdn": {
+    "domainWhiteList": ["streamName.com", "video.streamName.com"]
   }
 }
 ```
 
 Response example:
 
-```json
-{
-  "streamId": "5f2022df27b35d1ebfe17b78",
-  "customerId": "5c5468158f087748c233194f",
-  "name": "streamName",
-  "posterUrl": "streamName.com/poster.png",
-  "interactiveLayerUrl": "interactive.example/5f2022df27b35d1ebfe17b78",
-
-  "domainWhiteList": ["streamName.com", "video.streamName.com"],
-
-  "lastStreamingStateChangeTimestamp": 1599749054566,
-
-  "settings": {
-    "targetLatency": 3.0
-  },
-
-  "player": {
-    "fit": "COVER",
-    "preRoll": "streamName.com/preroll.mp4"
-  },
-
-  "controls": {
-    "cast": false,
-    "error": false,
-    "fullscreen": false,
-    "mute": false,
-    "quality": false,
-    "pip": false
-  },
-
-  "encoders": [
-    {
-      "encoderId": "5f2807dc4fd690da7238fd56",
-      "encoderType": "MAIN",
-      "state": {
-        "encoderStatus": "ONLINE",
-        "streamingState": "STARTED",
-        "videoDevice": {
-          "id": "5f5614aefd9fb4ec7fb24d10",
-          "resolution": "1920x1080",
-          "frameRate": "59.97",
-          "signalState": "Locked",
-          "signalStatus": "Valid",
-          "type": "0x84",
-          "scanningType": "Progressive",
-          "colorDepth": "8 bits",
-          "colorEncoding": "Y/U/V 4:4:4"
-        },
-        "audioDevice": {
-          "id": "5f5614e848b6ed205b282380",
-          "format": "48000 Hz, 24 bit, LPCM"
-        }
-      }
-    }
-  ],
-  "streamingState": "STOPPED",
-  "streamUrlType": "STATIC",
-  "encoderPlatform": "CLOUD",
-
-  "streamUrls": [
-    "https://example.com/cmaf/5f27c847e4b0716a97225f47/out.mpd",
-    "https://example.com/cmaf/5f27c847e4b0716a97225f47/master.m3u8"
-  ],
-
-  "videoStreamQualities": ["100000-H264-704x396-p25", "800k_360p"],
-  "audioStreamQualities": ["128Kbps", "96khz"],
-  "remoteConfigUrl": "cdn.liveryvideo.com/remoteconfigs/5f2022df27b35d1ebfe17b78"
-}
-```
+[filename](_customer-api/example-StreamResponseDTO.md ':include')

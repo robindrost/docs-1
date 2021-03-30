@@ -1,6 +1,6 @@
 # Livery iOS SDK
 
-Ex Machina Group Livery iOS SDK, published as CocoaPods spec on Github: [livery-sdk-ios-podspec](https://github.com/exmg/livery-sdk-ios-podspec).
+Livery iOS SDK, published as CocoaPods spec on Github: [livery-sdk-ios-podspec](https://github.com/exmg/livery-sdk-ios-podspec).
 
 Documentation can be found at: [docs.liveryvideo.com/ios-sdk](https://docs.liveryvideo.com/ios-sdk).
 
@@ -10,13 +10,13 @@ More information can be found at: [liveryvideo.com](https://liveryvideo.com).
 
 ### Compatibility
 
-The Livery iOS SDK is compatible with iOS 12 of higher.
+The Livery iOS SDK is compatible with iOS 12 or higher.
 
 ### Configuration
 
 To install Livery SDK into your project, follow these steps below.
 
-You should request credentials from Ex Machina, then place them in your ~/.netrc as follows: (create if necessary)
+You should request credentials from Livery, then place them in your ~/.netrc as follows: (create if necessary)
 
 ```
 machine sdk-ios-binaries.liveryvideo.com
@@ -39,7 +39,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 source 'https://github.com/exmg/livery-sdk-ios-podspec.git'
 
 target 'MyProject' do
-  pod "Livery", "0.10.8"
+  pod "Livery", "0.12.0"
 end
 ```
 
@@ -65,20 +65,15 @@ let liveSDK = LiverySDK()
 liveSDK.initialize(streamId: "yourStreamId", completionQueue: .main) { result in
     switch result {
     case .success(let config):
-      // 2. Create playerOptions
-      let options = playerOptions()
-      options.autoplay = false
-      options.fit = .contain
-
-      // 3. Create a player object with this playerOptions
-      // (See SDK createPlayer() method below and playerOptions for a full list of supported options)
-      self.player = self.liveSDK.createPlayer(options: options)
+      // 2. Create a player object
+      // (See SDK createPlayer() method below for a full list of supported options)
+      self.player = self.liveSDK.createPlayer()
       if let player = self.player {
-        // 4. Set a UIView for the player to render into. (See Player Method setView() method below)
+        // 3. Set a UIView for the player to render into. (See Player Method setView() method below)
         player.setView(view: self.playerView)
       }
 
-      // 5. The player is now ready to play
+      // 4. The player is now ready to play
       play()
 
     case .failure(let error):
@@ -99,19 +94,31 @@ func play() {
 }
 ```
 
-At this point, the player will fetch the DASH manifest, start rendering by automatically synching to the targetLatency set in playerOptions (or 3 seconds default). For more information about options, properties and methods please see relevant sections below.
+At this point, the player will fetch the DASH manifest, start rendering by automatically synching to the targetLatency set in the remote config or the playerOptions (3 seconds default).
+For more information about options, properties and methods please see relevant sections below.
 For a sample application code utilizing these minimal steps see the LiveryExample sample application section.
 
-### Livery SDK
+### Life Cycle
 
-#### Methods
+Your application needs to call the corresponding player methods for each iOS Application LifeCycle callback
 
-| Name                                                | Returns  | Description                                                                       |
-| --------------------------------------------------- | -------- | --------------------------------------------------------------------------------- |
-| `initialize(streamId, completionQueue, completion)` | `void`   | Livery SDK initialization method.                                                 |
-| `createPlayer(playerOptions)`                       | `Player` | Create a Live Player by combining specified options with the initialize() config. |
+```swift
+public func onApplicationDidBecomeActive()
+public func onApplicationWillResignActive()
+public func onApplicationDidEnterBackground()
+public func onApplicationWillEnterForeground()
+```
 
-#### SDK Initialize
+## Livery SDK
+
+### Methods
+
+| Name                                                | Returns  | Description                                                                                                        |
+| --------------------------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------ |
+| `initialize(streamId, completionQueue, completion)` | `void`   | Livery SDK initialization method.                                                                                  |
+| `createPlayer()`                                    | `Player` | Create a Live Player. This method can receive specified options if you need to override the remote configurations. |
+
+### SDK Initialize
 
 The SDK `initialize()` method has to be called on an sdk instance before Live Players are created.
 
@@ -129,7 +136,7 @@ The `completion` callback is a block that receives a `LiverySDK.ResultConfig` wi
 - In case of success it contains the fetched [`LiveryConfig`](#config).
 - In case of an error it contains an error of type `LiverySDK.Errors`.
 
-##### SDK Initialization Result
+#### SDK Initialization Result
 
 ```swift
 extension LiverySDK {
@@ -137,7 +144,7 @@ extension LiverySDK {
 }
 ```
 
-##### SDK Initialization Errors
+#### SDK Initialization Errors
 
 ```swift
 extension LiverySDK {
@@ -151,126 +158,104 @@ extension LiverySDK {
 }
 ```
 
-#### SDK Create Player
+### SDK Create Player
 
-The SDK `createPlayer()` method depends on the `initialize()` method having been called. If no options are given `createPlayer()` will throw an error.
-
-`createPlayer()` in iOS SDK expects a `playerOptions` class and returns a Player instance
+The SDK `createPlayer()` method depends on the `initialize()` method having been called.
 
 ```swift
-let options = playerOptions()
-options.autoplay = false
-options.targetLatency = 3
-
 /* Create the player */
-player = liveSDK.createPlayer(options: options)
+player = liveSDK.createPlayer()
+```
+
+If you need to override the remote configurations of the player you can call `createPlayer(options: playerOptions)` with a `playerOptions` object.<br>
+For more information about [`playerOptions`](#player-options) properties please see the corresponding section.
+
+### SDK Properties
+
+| Name              | Type   | Default | Description                                                  |
+| ----------------- | ------ | ------- | ------------------------------------------------------------ |
+| `enableSentrySDK` | `Bool` | `true`  | A Boolean whose enables the use of the `SentrySDK` instance. |
+
+If set to **true** Livery will use the `SentrySDK` instance to track events, handled errors and crashes.
+
+**Warning**: If your application uses Sentry too it will override its configuration.
+
+If set to **false** Livery will setup a custom `SentryHub` object that will only track events and handled errors.
+This will not override your Sentry configuration.
+
+| Name                   | Type                                     | Description                                      |
+| ---------------------- | ---------------------------------------- | ------------------------------------------------ |
+| `audioSessionSettings` | [`AudioSessionSettings`](#audio-session) | Property to store the `AVAudioSession` settings. |
+
+If it is not **nil** the `AVAudioSession.sharedInstance().setCategory` will be called when the `LiverySDK.initialize()` completes successfully.
+
+**Important:**<br>If it is **nil** your application is responsible to call `AVAudioSession.sharedInstance().setCategory`.
+
+Default settings are:
+
+```swift
+category = .playback
+mode = .spokenAudio
+options = []
+```
+
+If your application wants to play another audio, besides the one from the live stream, without stopping the live stream, you should set the `options` property to `[.mixWithOthers]`, as below:
+
+```swift
+liveSDK.audioSessionSettings?.options = [.mixWithOthers]
 ```
 
 ## Remote Config
 
-Customer project environment specific remote configs in json format with properties described below can be used by the SDK to facilitate experiments and tweaking by Ex Machina.
-
-Below are sample config files with player sources property listed.
-
-- [https://media-player-demo.playtotv.com/live/exmg-testbox1.json](https://media-player-demo.playtotv.com/live/exmg-testbox1.json)
-
-- [https://media-player-demo.playtotv.com/live/exmg-testbox2.json](https://media-player-demo.playtotv.com/live/exmg-testbox2.json)
-
-### Advanced Config
-
-These are the options that can be specified under `advanced`:
-
-#### Analytics Config
-
-Amazon AWS Pinpoint Analytics options should be specified under `advanced.analytics`:
-
-| Name         | Type     | Default      | Description             |
-| ------------ | -------- | ------------ | ----------------------- |
-| `customerId` | `String` | `<required>` | Ex Machina Customer ID. |
-
-#### Stall Config
-
-Stall recovery options can be specified under `advanced.stall`:
-
-| Name               | Type     | Default | Description                                                        |
-| ------------------ | -------- | ------- | ------------------------------------------------------------------ |
-| `minRecoveryDelay` | `Number` | `10`    | Minimum delay in seconds before starting automatic recovery.       |
-| `maxRecoveryDelay` | `Number` | `90`    | The maximum delay in seconds between subsequent recovery attempts. |
-
-#### Sync Config
-
-Sync options can be specified under `advanced.sync`:
-
-| Name            | Type     | Default | Description                                                    |
-| --------------- | -------- | ------- | -------------------------------------------------------------- |
-| `targetLatency` | `Number` | `3`     | Target live latency in seconds. If 0 then syncing is disabled. |
-
-### Interactive Config
-
-Interactive options can be specified under `advanced.interactive`:
-
-| Name  | Type   | Default | Description                |
-| ----- | ------ | ------- | -------------------------- |
-| `url` | `URL?` | `nil`   | The interactive layer URL. |
-
-### Config
-
-class **_LiveryConfig_**
-
-| Name       | Type             | Description                                                                                   |
-| ---------- | ---------------- | --------------------------------------------------------------------------------------------- |
-| `sources`  | `String[]`       | Array of media source URLs from which the first that can be played will be selected.          |
-| `advanced` | `advancedConfig` | Advanced options.                                                                             |
-| `autoplay` | `Bool`           | Determines whether video shall play immediately after [`createPlayer`](#sdk-create-player).   |
-| `fit`      | `String`         | Determines how the video will be scaled and cropped. See: [`Player Fitting`](#player-fitting) |
-| `muted`    | `Bool`           | Determines whether media should be muted or not.                                              |
+The stream and the player should be configured in the Livery Management Portal. However, if needed, it's possible to override the remote config properties throught the [`playerOptions`](#player-options) object that can be passed when creating the player.
 
 ## Player Options
 
 These are the options to be passed to Players:
 
-| Name               | Type             | Default    | Description                                                                      |
-| ------------------ | ---------------- | ---------- | -------------------------------------------------------------------------------- |
-| `autoplay`         | `Boolean`        | `false`    | Determines whether video shall play immediately after createPlayer.              |
-| `muted`            | `Boolean`        | `false`    | Determines whether media should be muted or not.                                 |
-| `targetLatency`    | `Integer`        | `3`        | Target live latency in seconds. If 0 then syncing is disabled.                   |
-| `fit`              | `enum playerFit` | `.contain` | Determines how the video will be scaled and cropped. See Section Player Fitting. |
-| `minRecoveryDelay` | `Integer`        | `10`       | Minimum delay in seconds before starting automatic recovery.                     |
-| `maxRecoveryDelay` | `Integer`        | `90`       | Maximum delay in seconds between subsequent recovery attempts.                   |
-
-### Source Protocols
-
-The source protocol must be DASH for IOS SDK
-
-| Extension | Protocol |
-| --------- | -------- |
-| .mpd      | DASH     |
+| Name               | Type                           | Default    | Description                                                                                                       |
+| ------------------ | ------------------------------ | ---------- | ----------------------------------------------------------------------------------------------------------------- |
+| `autoplay`         | `Boolean`                      | `false`    | Determines whether video shall play immediately after [`createPlayer`](#sdk-create-player).                       |
+| `cast`             | `Boolean`                      | `false`    | Determines whether cast button should be displayed or not on the [`Player Controls`](#player-controls).           |
+| `error`            | `Boolean`                      | `false`    | Determines whether [`Error Overlay`](#error-overlay) should be displayed or not.                                  |
+| `fit`              | [`playerFit`](#player-fitting) | `.contain` | Determines how the video will be scaled and cropped. See: [`Player Fitting`](#player-fitting)                     |
+| `fullscreen`       | `Boolean`                      | `false`    | Determines whether full screen button should be displayed or not on the [`Player Controls`](#player-controls).    |
+| `maxRecoveryDelay` | `Integer`                      | `90`       | Maximum delay in seconds between subsequent recovery attempts.                                                    |
+| `minRecoveryDelay` | `Integer`                      | `10`       | Minimum delay in seconds before starting automatic recovery.                                                      |
+| `mute`             | `Boolean`                      | `false`    | Determines whether mute button should be displayed or not on the [`Player Controls`](#player-controls).           |
+| `muted`            | `Boolean`                      | `false`    | Determines whether media should be muted or not.                                                                  |
+| `poster`           | `String`                       | `""`       | URL for an image to be shown while the video is loading.                                                          |
+| `quality`          | `Boolean`                      | `false`    | Determines whether select quality button should be displayed or not on the [`Player Controls`](#player-controls). |
+| `sources`          | `String[]`                     | `[]`       | Array of media source URLs from which the first that can be played will be selected.                              |
+| `targetLatency`    | `Integer`                      | `3`        | Target live latency in seconds. If 0 then syncing is disabled.                                                    |
 
 ## Player Properties
 
 The following properties are exposed by Live Player instances:
 
-| Name                | Type                                          | Write | Description                                                                                                                                        |
-| ------------------- | --------------------------------------------- | ----- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `activeQuality`     | [`Quality`](#player-media-quality)            | No    | Active Media Quality. Emits: `activeQualityChange`.                                                                                                |
-| `advanced`          | `AdvancedProperties`                          | No    | Advanced properties.                                                                                                                               |
-| `currentSrc`        | `String`                                      | No    | Current media source URL.                                                                                                                          |
-| `currentTime`       | `Number`                                      | Yes   | Current playback time position in seconds. Emits: `timeUpdate`.                                                                                    |
-| `duration`          | `Number`                                      | No    | Media duration in seconds. Used in `onDemand`. Emits: `durationChange`.                                                                            |
-| `error`             | `Error`                                       | No    | Most recent unrecovered error. Emits: error, recovered.                                                                                            |
-| `muted`             | `Boolean`                                     | Yes   | If true then audio is muted. Emits: `volumeChange`.                                                                                                |
-| `latency`           | `Number`                                      | No    | End to end latency in milliseconds.                                                                                                                |
-| `buffer`            | `Number`                                      | No    | Size of buffer, ahead of current position, in milliseconds.                                                                                        |
-| `playbackRate`      | `Number`                                      | Yes   | Playback rate (1 is normal).Emits: `rateChange`.                                                                                                   |
-| `playbackState`     | `String`                                      | No    | Playback state. BUFFERING / ENDED / FAST_FORWARD / PAUSED / PLAYING / REWIND / SEEKING / SLOW_MO Emits: `playbackChange`.                          |
-| `selectedQuality`   | [`Quality`](#player-media-quality)            | Yes   | Selected Media Quality. Emits: `selectedQualityChange`.                                                                                            |
-| `volume`            | `Number`                                      | Yes   | Audio volume, from 0.0 (silent) to 1.0 (loudest). Emits: `volumeChange`.                                                                           |
-| `streamType`        | `String`                                      | No    | Stream type. LIVE / ONDEMAND / UNKNOWN Computed: duration == Infinite => LIVE, Finite => ONDEMAND and NaN => UNKNOWN Changes on: `durationChange`. |
-| `timeOffset`        | `Number`                                      | No    | Local device time offset in milliseconds.                                                                                                          |
-| `qualities`         | `[Quality]`                                   | No    | Array of Available Media Qualities. Emits: `qualitiesChange`.                                                                                      |
-| `customLoadingView` | `UIView`                                      | Yes   | Custom loading indicator view                                                                                                                      |
-| `customControlView` | [`LiveryPlayerControlView`](#player-controls) | Yes   | Custom player controls view                                                                                                                        |
-| `customErrorView`   | [`LiveryPlayerErrorView`](#error-overlay)     | Yes   | Custom error view                                                                                                                                  |
+| Name                        | Type                                                                  | Write | Description                                                                                                                                        |
+| --------------------------- | --------------------------------------------------------------------- | ----- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `activeQuality`             | [`Quality`](#player-media-quality)                                    | No    | Active Media Quality. Emits: `activeQualityChange`.                                                                                                |
+| `advanced`                  | `AdvancedProperties`                                                  | No    | Advanced properties.                                                                                                                               |
+| `currentSrc`                | `String`                                                              | No    | Current media source URL.                                                                                                                          |
+| `currentTime`               | `Number`                                                              | Yes   | Current playback time position in seconds. Emits: `timeUpdate`.                                                                                    |
+| `duration`                  | `Number`                                                              | No    | Media duration in seconds. Used in `onDemand`. Emits: `durationChange`.                                                                            |
+| `error`                     | `Error`                                                               | No    | Most recent unrecovered error. Emits: error, recovered.                                                                                            |
+| `muted`                     | `Boolean`                                                             | Yes   | If true then audio is muted. Emits: `volumeChange`.                                                                                                |
+| `latency`                   | `Number`                                                              | No    | End to end latency in milliseconds.                                                                                                                |
+| `buffer`                    | `Number`                                                              | No    | Size of buffer, ahead of current position, in milliseconds.                                                                                        |
+| `playbackRate`              | `Number`                                                              | Yes   | Playback rate (1 is normal).Emits: `rateChange`.                                                                                                   |
+| `playbackState`             | `String`                                                              | No    | Playback state. BUFFERING / ENDED / FAST_FORWARD / PAUSED / PLAYING / REWIND / SEEKING / SLOW_MO Emits: `playbackChange`.                          |
+| `selectedQuality`           | [`Quality`](#player-media-quality)                                    | Yes   | Selected Media Quality. Emits: `selectedQualityChange`.                                                                                            |
+| `volume`                    | `Number`                                                              | Yes   | Audio volume, from 0.0 (silent) to 1.0 (loudest). Emits: `volumeChange`.                                                                           |
+| `streamType`                | `String`                                                              | No    | Stream type. LIVE / ONDEMAND / UNKNOWN Computed: duration == Infinite => LIVE, Finite => ONDEMAND and NaN => UNKNOWN Changes on: `durationChange`. |
+| `timeOffset`                | `Number`                                                              | No    | Local device time offset in milliseconds.                                                                                                          |
+| `qualities`                 | `[Quality]`                                                           | No    | Array of Available Media Qualities. Emits: `qualitiesChange`.                                                                                      |
+| `customLoadingView`         | `UIView`                                                              | Yes   | Custom loading indicator view                                                                                                                      |
+| `customControlView`         | [`LiveryPlayerControlView`](#player-controls)                         | Yes   | Custom player controls view                                                                                                                        |
+| `customErrorView`           | [`LiveryPlayerErrorView`](#error-overlay)                             | Yes   | Custom error view                                                                                                                                  |
+| `interactiveURL`            | `URL`                                                                 | Yes   | The interactive layer URL                                                                                                                          |
+| `interactiveBridgeDelegate` | [`PlayerInteractiveBridgeDelegate`](#playerInteractiveBridgeDelegate) | Yes   | Protocol to implement to get custom messages from the interactive layer                                                                            |
 
 ## Player Methods
 
@@ -291,6 +276,7 @@ The following methods are exposed by Player instances:
 | `onApplicationDidEnterBackground()`                                                 | Call in your IOS Application Lifecycle callback `applicationDidEnterBackground()`  |
 | `onApplicationWillEnterForeground()`                                                | Call in your IOS Application Lifecycle callback `applicationWillEnterForeground()` |
 | `dispose()`                                                                         | Cleanup all resources and stop playback.                                           |
+| `sendCustomMessage(name: String, arg: Any?)`                                        | Sends a custom message to the interactive bridge.                                  |
 
 ## Player Events
 
@@ -398,37 +384,12 @@ The player will receive the millisecond precision server time from the time urls
 
 In other words, IOS SDK players behave always in sync once initialized, meaning if audio packages or video frames are received later then their presentation timestamps due the network connections, they will be ignored or played back in a faster rate by the player.
 
-## ABR (Adaptive BitRate)
-
-Current version players just select the highest quality video for ABR
-
-## Error Handling
-
-To be updated with recovery options implementation in v 1.0.0
-
-## Life Cycle
-
-Your application needs to call the corresponding player methods for each IOS Application LifeCycle callback
-
-```swift
-public func onApplicationDidBecomeActive()
-public func onApplicationWillResignActive()
-public func onApplicationDidEnterBackground()
-public func onApplicationWillEnterForeground()
-```
-
-## Player Stall Recovery
-
-When playback stalls (e.g: playbackState BUFFERING) for longer than calculated ​timeoutSeconds automatic recovery is attempted through calling the Player `load()` method.
-
-The timeoutSeconds calculation is based on an exponential backoff algorithm. You can determine the maximum and minimum thresholds via player options `minRecoveryDelay` and `maxRecoveryDelay` respectively.
-
 ## Player Fitting
 
 The SDK provides fitting methods to scale and crop the video according to the specified ​fit​ option value.
 
 ```swift
-public  enum playerFit {
+public enum playerFit {
  case contain
  case cover
  case fill
@@ -502,18 +463,82 @@ public protocol LiveryPlayerControlView where Self: UIControl {
 }
 ```
 
+## Audio Session
+
+class **_AudioSessionSettings_**
+
+| Name       | Type                             | Default       | Description                                                                        |
+| ---------- | -------------------------------- | ------------- | ---------------------------------------------------------------------------------- |
+| `category` | `AVAudioSession.Category`        | `playback`    | Audio session category identifiers.                                                |
+| `mode`     | `AVAudioSession.Mode`            | `spokenAudio` | An object that communicates to the system how you intend to use audio in your app. |
+| `options`  | `AVAudioSession.CategoryOptions` | `[]`          | Constants that specify optional audio behaviors.                                   |
+
+## Cast
+
+Our SDK is able to cast to AirPlay and Google Chromecast.
+
+### Google Chromecast
+
+To cast to Google Chromecast you need to add two items in your app's `Info.plist`:
+
+- Add `NSBonjourServices`
+
+Specify `NSBonjourServices`, like is shown below, in your `Info.plist` to allow local network discovery to succeed.
+
+```
+<key>NSBonjourServices</key>
+<array>
+  <string>_googlecast._tcp</string>
+  <string>_CC1AD845._googlecast._tcp</string>
+</array>
+```
+
+- Add `NSLocalNetworkUsageDescription`
+
+We recommend that you customize the message shown in the Local Network prompt by adding an app-specific permission string in your app's `Info.plist` file for the `NSLocalNetworkUsageDescription`, as show below.
+
+```
+<key>NSLocalNetworkUsageDescription</key>
+<string>${PRODUCT_NAME} uses the local network to discover Cast-enabled devices on your WiFi network.</string>
+```
+
+This message will appear as part of the iOS Local Network Access dialog when the user taps on the cast button.
+
+## Interactive Bridge
+
+On the interactive layer you can use the [Interactive SDK](/interactive-sdk?id=livery-interactive-sdk) to communicate with the Livery Player. Please see the [Interactive SDK](/interactive-sdk?id=livery-interactive-sdk) documentation for more details on how to use it on the interactive layer side.
+
+Besides the [methods](/interactive-sdk?id=methods) already definied on the Interactive SDK to get values like the player **latency**, device **orientation**, etc. you can get and send custom messages.
+
+### Custom Messages
+
+- To **GET** custom messages you should implement the `PlayerInteractiveBridgeDelegate` by calling:
+
+```swift
+player.interactiveBridgeDelegate = self //being self the class that conforms to the PlayerInteractiveBridgeDelegate protocol
+```
+
+#### PlayerInteractiveBridgeDelegate
+
+```swift
+public protocol PlayerInteractiveBridgeDelegate: class {
+    func getCustomMessageValue(message name: String, arg: Any?, completionHandler: @escaping (_ value: Any?) -> Void)
+}
+```
+
+There you will get the custom messages you sent through the bridge on the interactive layer. You can use the name and the arg paramenters to better recognize the message itself and act on it by calling the `completionHandler` with a value that will be send back to the interactive layer.
+
+- To **SEND** custom messages you should call:
+
+```swift
+player.sendCustomMessage(name: String, arg: Any?)
+```
+
+Those messages will be send to the interactive layer through the bridge. To get them on the interactive layer side you should first call the `registerCustomCommand(name, handler)` with the `name` matching the one used on the player. Please see Interactive SDK [methods](/interactive-sdk?id=methods) section for more details.
+
 ## Analytics
 
 Our SDK makes use of [Amazon Pinpoint](https://aws.amazon.com/pinpoint/).
-
-For now, our SDK reports events to preset Exmachina AWS backend (i.e. appId , region and identityPoolId cannot be changed)
-
-Only the customerId property of `advanced.analytics` configuration are used for the necessary Pinpoint configuration.
-
-The `customerId` will be added to all pinpoint events as a property.
-
-In future releases, the appId, region and `identityPoolId` properties of `advanced.analytics` configuration will be used for the necessary Pinpoint configuration.
-Notice dependency to external AWSPinpoint SDK changes the build instructions for your custom app.
 
 If you are not using the AWSPinpoint in your own application there's no need to include this on your Podfile since this dependency is included in our SDK.
 
@@ -522,70 +547,43 @@ Note:
 - If your application already contains AWSPinpoint make sure its version matches the one used in the SDK, which is:
 
 ```
-  pod 'AWSPinpoint', '~> 2.12.1'
+  pod 'AWSPinpoint', '~> 2.22'
 ```
 
-## Sample MediaPlayerLiveExample App
+## Example App
+
+Example iOS application which demonstrates how to use the Livery iOS SDK.<br>
+You can find it on the following git repository: [Livery iOS SDK Example App](https://github.com/exmg/livery-sdk-ios-example)
 
 Notes:
 
-- The release contains a sample application to demonstrate basic SDK usage.
-- The Application requires Xcode Version 10.2.1 and Swift Version 5 (Since the Livery SDK is built with Swift5 )
-- You will need to reset the bundle identifier and signage settings with your own Team in order to build and run the app
+- Built using XCode 12.4 (12D4e) (Swift 5)
 
-Please check the framework and project setup within the sample app if you are developing your own application from scratch.
+### How to run the app
 
-## Developing Your Own Application From Scratch
+1. Clone this repo
+2. Go to the repo directory on the terminal and run `pod install`
+3. Open **livery-sdk-ios-example.xcworkspace**
+4. You will need to change the **Bundle Identifier** and the **Team** to your own team in order to build and run the app
+5. Run the project on selected device or simulator
 
-If you are developing your own application from scratch please make sure
-
-- You use Xcode Version 10.2.1 with Swift5 support . SDK binary is built with Swift5
-- You set minimum IOS DEPLOYMEN_TARGET at least 12.0
-- You remove existing copies of framework and libdash_ios.framework from your dev environment
-- You add new versions of both Livery SDK as well as libdash_ios.framework (released seperately now) to your Xcode project
-- You link with both Livery SDK as well as libdash_ios.framework (released seperately now) and add both to Embedded binaries section
-
-libdash_ios.framework is an internal dependency of the framework but you will still need to add it to Embedded Binaries section with Signing enabled on Copy to be able to deploy on a device (to avoid getting signing related errors)
-
-In the upcoming cocoapod SDK release, you will just add it as a cocoapod dependency
-
-See below how this is done in the sample application
-
-![libdash as Cocoapod dependency](https://lh5.googleusercontent.com/Z9sxhp9n2F8zUeEL1WRnXc1ZsEzpUuBmVzwPHnUfLGNB582Nk0Reh-fUdPn-6VazohEKIiJMngaEsxZYzgbo5VHK6EQYrtRFGgsFwtn4DKH9MREMl8e66Nv7ODEYsRSu6Vi6yBkt)
-
-### Livery SDK dependencies
+## Livery SDK dependencies
 
 - The `Podfile` that you configure to install the Livery SDK must contain:
 
 ```
-  pod 'AWSPinpoint', '~> 2.12.1'
+  pod 'AWSPinpoint', '~> 2.23'
   pod 'TrueTime', '~> 5.0.3'
+  pod 'Sentry', '~> 6.2'
+  pod 'google-cast-sdk-no-bluetooth', '~> 4.5'
+
 ```
 
 - Run `pod install --repo-update` before you continue
 - From now on use YOUR_PROJECT_NAME. xcworkspace file in Xcode to open your project
 - Finally import Livery to use the Framework in your codebase
 
-## App Store binary validation
-
-SDK release includes different builds of two binaries under 2 folders.
-
-universal/
-
-- libdash_ios.framework
-- Livery.framework
-
-iphoneos/
-
-- libdash_ios.framework
-- Livery.framework
-
-Universal binaries include both x86 and arm builds (i.e. fatlibs). This is for easy development setup and testing with the simulator.
-
-These binaries will not pass App Store validation since they include x86 architecture.
-You must use binaries under iphoneos/ folder, test your app once more on the device and then submit your product archive to the app store
-
-### Too many symbols warning in AppStore validation
+## Too many symbols warning in AppStore validation
 
 Too many symbols error is reported when CocoaPod does not remove arm7 architecture from dependency Frameworks (i.e. Currently AWSPinpoint and AWSCore) . Apple reports this as a warning because for targets >=12.0 only needed architecture for IOS is arm64
 
@@ -601,23 +599,26 @@ end
 
 Please see example MediaPlayerLive example app’s Podfile and check [https://github.com/CocoaPods/CocoaPods/issues/7111](https://github.com/CocoaPods/CocoaPods/issues/7111) for more information.
 
-## Known Issues
+## Revision History
 
-Also universal SDK release is a fat binary (including x86 simulator an arm64 architectures) for easy development with simulator and on device.
-Check section above for app store validation
-
-## Revission History
-
-| Version | Description                                                                                                                                                                                                                                                                                                                           |
-| ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 0.9.6   | Fixed issues with having to use a device or simulator version. You can now use the universal build. Made initialize call asynchronous, so it doesn’t block the main thread. The onSuccess and onError functions are called when initialization is completed. Library only works with Xcode 11 now, since it is compiled in Swift 5.1. |
-| 0.9.9   | Methods are now async.<br> Added interactive layer feature.<br> Using NTP as time source.<br> Fixed volume control.                                                                                                                                                                                                                   |
-| 0.10.0  | Livery class was renamed to LiverySDK to avoid build errors with `BUILD_LIBRARIES_FOR_DISTRIBUTION=YES`. This is a [known issue](https://developer.apple.com/documentation/xcode_release_notes/xcode_11_2_release_notes) present from Xcode 10.2.                                                                                     |
-| 0.10.1  | Battery life improvements.<br> New ABR algorithm.<br> Backup/main stream switching support.<br> Synchronization improvements for restricted networks.<br> Analytics improvements                                                                                                                                                      |
-| 0.10.2  | Fixed recovery timeout logic                                                                                                                                                                                                                                                                                                          |
-| 0.10.3  | SDK initialize with configURL is deprecated. Use the new initialize with streamId instead.<br> Remote config is fetched and updated each minute, if it was modified.<br> Added pause method.<br> Fixed sound hiccups.                                                                                                                 |
-| 0.10.4  | Fixed stalling issue when the player has zero latency.<br> Fixed issue regarding player not showing the video on iOS 13 simulator.<br> Added Poster property to the player options.<br> Added Buffer property to the player.<br> Improvements on ABR algorithm.<br> Analytics improvements.                                           |
-| 0.10.5  | Added player UI.<br> Improvements on ABR algorithm.<br> Bugs and Crash report improvements.<br> Analytics improvements.                                                                                                                                                                                                               |
-| 0.10.6  | Added handler for when a media segment is not yet available and the status code is 404                                                                                                                                                                                                                                                |
-| 0.10.7  | Added customControlView, customErrorView and customLoadingView                                                                                                                                                                                                                                                                        |
-| 0.10.8  | Improvement on the source handler logic                                                                                                                                                                                                                                                                                               |
+| Version | Description                                                                                                                                                                                                                                                                                                                                                  |
+| ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| 0.9.6   | Fixed issues with having to use a device or simulator version. You can now use the universal build. Made initialize call asynchronous, so it doesn’t block the main thread. The onSuccess and onError functions are called when initialization is completed. Library only works with Xcode 11 now, since it is compiled in Swift 5.1.                        |
+| 0.9.9   | Methods are now async.<br> Added interactive layer feature.<br> Using NTP as time source.<br> Fixed volume control.                                                                                                                                                                                                                                          |
+| 0.10.0  | Livery class was renamed to LiverySDK to avoid build errors with `BUILD_LIBRARIES_FOR_DISTRIBUTION=YES`. This is a [known issue](https://developer.apple.com/documentation/xcode_release_notes/xcode_11_2_release_notes) present from Xcode 10.2.                                                                                                            |
+| 0.10.1  | Battery life improvements.<br> New ABR algorithm.<br> Backup/main stream switching support.<br> Synchronization improvements for restricted networks.<br> Analytics improvements                                                                                                                                                                             |
+| 0.10.2  | Fixed recovery timeout logic                                                                                                                                                                                                                                                                                                                                 |
+| 0.10.3  | SDK initialize with configURL is deprecated. Use the new initialize with streamId instead.<br> Remote config is fetched and updated each minute, if it was modified.<br> Added pause method.<br> Fixed sound hiccups.                                                                                                                                        |
+| 0.10.4  | Fixed stalling issue when the player has zero latency.<br> Fixed issue regarding player not showing the video on iOS 13 simulator.<br> Added Poster property to the player options.<br> Added Buffer property to the player.<br> Improvements on ABR algorithm.<br> Analytics improvements.                                                                  |
+| 0.10.5  | Added player UI.<br> Improvements on ABR algorithm.<br> Bugs and Crash report improvements.<br> Analytics improvements.                                                                                                                                                                                                                                      |
+| 0.10.6  | Added handler for when a media segment is not yet available and the status code is 404                                                                                                                                                                                                                                                                       |
+| 0.10.7  | Added customControlView, customErrorView and customLoadingView                                                                                                                                                                                                                                                                                               |
+| 0.10.8  | Improvement on the source handler logic                                                                                                                                                                                                                                                                                                                      |
+| 0.11.0  | Changed ip lookup.<br> Improvements on ZAP Time.<br> Improvements on HTTP error handling.<br> Improvements on NTP error handling.<br> Improvements on the SDK initialization.<br> Fixed volume HUD taking too long to hide.<br> Fixed video stream stoping after receiving a call on iOS 14.<br> Fixed mute button not being in sync with the remote config. |
+| 0.11.1  | Fixed an issue regarding the player not recovering when the stream was stopped and started on the encoder side.<br> Improvements on the player recovery logic.<br> Improvements on Analytics.                                                                                                                                                                |
+| 0.11.2  | Fixed video stream stopping after receiving a call through FaceTime on an iPhone without SIM card.<br> Improvements on Analytics.                                                                                                                                                                                                                            |
+| 0.11.3  | Added interactiveURL.                                                                                                                                                                                                                                                                                                                                        |
+| 0.11.4  | Improvements on HTTP error handling.<br> Improvements on Analytics.                                                                                                                                                                                                                                                                                          |
+| 0.11.5  | Improvements on Analytics.<br> Improvements on DASH manifest parser.<br> Added enableSentrySDK and audioSessionSettings.                                                                                                                                                                                                                                     |
+| 0.11.6  | Changed interactive layer to allow automatic media playback and inline media playback.                                                                                                                                                                                                                                                                       |
+| 0.12.0  | Added Cast.<br> Added Interactive Bridge.<br> Added Stream Phases.<br> Life Cycle methods are no longer needed.                                                                                                                                                                                                                                              |

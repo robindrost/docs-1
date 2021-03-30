@@ -5,13 +5,27 @@
 [![License](https://img.shields.io/npm/l/@exmg/livery)](https://unpkg.com/browse/@exmg/livery/LICENSE)
 [![Built with open-wc recommendations](https://img.shields.io/badge/built%20with-open--wc-blue.svg)](https://open-wc.org/)
 
-Ex Machina Group Livery Web SDK, published as [@exmg/livery](https://www.npmjs.com/package/@exmg/livery).
+Ex Machina Group Livery Web SDK for use with Livery video streams.
 
 ?> Demo can be found at: [demo.liveryvideo.com](https://demo.liveryvideo.com) ([source](https://github.com/exmg/livery-demo-web)).
 
-More information can be found at: [liveryvideo.com](https://liveryvideo.com).
-
 Please refer to the [Livery Management Portal](https://video-encoder-director.playtotv.com/) for stream configuration options.
+
+## Basic Usage
+
+For the most basic usage of this SDK you can just use an HTML snippet like this:
+
+```html
+<script src="https://unpkg.com/@exmg/livery@x.y.z"></script>
+<livery-player
+  streamid="5ddb98f5e4b0937e6a4507f2"
+  style="width: 100%; height: 50vh;"
+></livery-player>
+```
+
+?> Replace the version, stream id and style by your own (see [CDN](#cdn), [HTML](#html) and [CSS](#css)).
+
+?> Use a specific size to prevent that from changing as the stream is loaded (see [CSS](#css) for details).
 
 ## Support
 
@@ -19,9 +33,7 @@ This package exports two bundles.
 
 The ES `module` bundle is targetted at modern browsers and tools supporting `ES2019`.
 
-The UMD `main` bundle (as used by unpkg below) supports the following browser versions (and up):
-
-Chrome v64, Safari v12, Edge v74, Firefox v60, Android Chrome v51, Samsung Internet v6.4 and iOS/iPadOS Safari v12.
+The UMD `main` bundle (as used by unpkg [CDN](#cdn)) supports iOS/iPadOS Safari v12 and up and the last 2 major versions of: Chrome, Safari, Edge, Firefox, Android Chrome and Samsung Internet.
 
 ## Installation
 
@@ -72,6 +84,12 @@ livery-player {
 }
 ```
 
+Use a specific extrinsic size to prevent that from changing intrinsically as the stream is loaded.
+
+E.g: Don't (just) use `min-height` but (also) specify `height` for the livery-player (directly or via its containing elements).
+
+See also: [MDN Sizing items in CSS](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Sizing_items_in_CSS)
+
 ## Exports
 
 When using the UMD bundle, these can be found as properties of `livery` in the global namespace, e.g: `livery.version`.
@@ -94,13 +112,14 @@ See the general [Usage](#usage) section above.
 
 #### Attributes
 
-| Attribute  | Property   | Type      | Default | Description                                                                                                                                         |
-| ---------- | ---------- | --------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `bubbles`  | `bubbles`  | `boolean` | `false` | If true then events dispatched by this element will bubble.                                                                                         |
-| `loglevel` | `logLevel` | `string`  | `null`  | Log level (`'quiet'` \| `'error'` \| `'warn'` \| `'info'` \| `'debug'` \| `'spam'`). Defaults to `'info'` when value is null (attribute is absent). |
-| `muted`    | `muted`    | `boolean` | `false` | If `true` then audio is muted.<br />Dispatches: `livery-volume-change`.                                                                             |
-| `streamid` | `streamId` | `string`  | `null`  | Livery stream ID (required).                                                                                                                        |
-| `vumeter`  | `vuMeter`  | `boolean` | `false` | Enable volume unit meter. Note: Will result in anonymous CORS requests.                                                                             |
+| Attribute    | Property     | Type      | Default | Description                                                                                                                                         |
+| ------------ | ------------ | --------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `bubbles`    | `bubbles`    | `boolean` | `false` | If true then events dispatched by this element will bubble.                                                                                         |
+| `configtype` | `configType` | `string`  | `null`  | Type of stream config to use. Defaults to SDK platform (WEB).                                                                                       |
+| `loglevel`   | `logLevel`   | `string`  | `null`  | Log level (`'quiet'` \| `'error'` \| `'warn'` \| `'info'` \| `'debug'` \| `'spam'`). Defaults to `'info'` when value is null (attribute is absent). |
+| `muted`      | `muted`      | `boolean` | `false` | If `true` then audio is muted.<br />Dispatches: `livery-volume-change`.                                                                             |
+| `streamid`   | `streamId`   | `string`  | `null`  | Livery stream ID (required).                                                                                                                        |
+| `vumeter`    | `vuMeter`    | `boolean` | `false` | Enable volume unit meter.                                                                                                                           |
 
 #### Properties
 

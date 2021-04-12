@@ -14,7 +14,7 @@ This call accepts a couple different parameters:
 - from (**mandatory**: start date in millis)
 - until (**mandatory**: end date in millis)
 - metric (_optional_: currently only accepts "viewers". Defaults to viewers.)
-- dimension (_optional_: must be one of the following: PLATFORM, CONNECTION_TYPE, VIDEO_QUALITY, ENCODER_TYPE . Defaults to PLATFORM.)
+- dimension (_optional_: must be one of the following: PLATFORM, CONNECTION_TYPE, VIDEO_QUALITY, ENCODER_TYPE, PACKAGE_NAME, DEVICE_MODEL . Defaults to PLATFORM.)
 - minutesInterval (**mandatory (1/2)**: integer (1-1440). Minute intervals to split the data into. **Cannot be used along with the points parameter**)
 - points (**mandatory (2/2)**: positive integer (1+). The amount of points to split the data into. **Cannot be used along with the minutesInterval parameter**)
 

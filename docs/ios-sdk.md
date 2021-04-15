@@ -39,7 +39,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 source 'https://github.com/exmg/livery-sdk-ios-podspec.git'
 
 target 'MyProject' do
-  pod "Livery", "0.12.0"
+  pod "Livery", "1.0.0"
 end
 ```
 
@@ -97,17 +97,6 @@ func play() {
 At this point, the player will fetch the DASH manifest, start rendering by automatically synching to the targetLatency set in the remote config or the playerOptions (3 seconds default).
 For more information about options, properties and methods please see relevant sections below.
 For a sample application code utilizing these minimal steps see the LiveryExample sample application section.
-
-### Life Cycle
-
-Your application needs to call the corresponding player methods for each iOS Application LifeCycle callback
-
-```swift
-public func onApplicationDidBecomeActive()
-public func onApplicationWillResignActive()
-public func onApplicationDidEnterBackground()
-public func onApplicationWillEnterForeground()
-```
 
 ## Livery SDK
 
@@ -233,106 +222,72 @@ These are the options to be passed to Players:
 
 The following properties are exposed by Live Player instances:
 
-| Name                        | Type                                                                  | Write | Description                                                                                                                                        |
-| --------------------------- | --------------------------------------------------------------------- | ----- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `activeQuality`             | [`Quality`](#player-media-quality)                                    | No    | Active Media Quality. Emits: `activeQualityChange`.                                                                                                |
-| `advanced`                  | `AdvancedProperties`                                                  | No    | Advanced properties.                                                                                                                               |
-| `currentSrc`                | `String`                                                              | No    | Current media source URL.                                                                                                                          |
-| `currentTime`               | `Number`                                                              | Yes   | Current playback time position in seconds. Emits: `timeUpdate`.                                                                                    |
-| `duration`                  | `Number`                                                              | No    | Media duration in seconds. Used in `onDemand`. Emits: `durationChange`.                                                                            |
-| `error`                     | `Error`                                                               | No    | Most recent unrecovered error. Emits: error, recovered.                                                                                            |
-| `muted`                     | `Boolean`                                                             | Yes   | If true then audio is muted. Emits: `volumeChange`.                                                                                                |
-| `latency`                   | `Number`                                                              | No    | End to end latency in milliseconds.                                                                                                                |
-| `buffer`                    | `Number`                                                              | No    | Size of buffer, ahead of current position, in milliseconds.                                                                                        |
-| `playbackRate`              | `Number`                                                              | Yes   | Playback rate (1 is normal).Emits: `rateChange`.                                                                                                   |
-| `playbackState`             | `String`                                                              | No    | Playback state. BUFFERING / ENDED / FAST_FORWARD / PAUSED / PLAYING / REWIND / SEEKING / SLOW_MO Emits: `playbackChange`.                          |
-| `selectedQuality`           | [`Quality`](#player-media-quality)                                    | Yes   | Selected Media Quality. Emits: `selectedQualityChange`.                                                                                            |
-| `volume`                    | `Number`                                                              | Yes   | Audio volume, from 0.0 (silent) to 1.0 (loudest). Emits: `volumeChange`.                                                                           |
-| `streamType`                | `String`                                                              | No    | Stream type. LIVE / ONDEMAND / UNKNOWN Computed: duration == Infinite => LIVE, Finite => ONDEMAND and NaN => UNKNOWN Changes on: `durationChange`. |
-| `timeOffset`                | `Number`                                                              | No    | Local device time offset in milliseconds.                                                                                                          |
-| `qualities`                 | `[Quality]`                                                           | No    | Array of Available Media Qualities. Emits: `qualitiesChange`.                                                                                      |
-| `customLoadingView`         | `UIView`                                                              | Yes   | Custom loading indicator view                                                                                                                      |
-| `customControlView`         | [`LiveryPlayerControlView`](#player-controls)                         | Yes   | Custom player controls view                                                                                                                        |
-| `customErrorView`           | [`LiveryPlayerErrorView`](#error-overlay)                             | Yes   | Custom error view                                                                                                                                  |
-| `interactiveURL`            | `URL`                                                                 | Yes   | The interactive layer URL                                                                                                                          |
-| `interactiveBridgeDelegate` | [`PlayerInteractiveBridgeDelegate`](#playerInteractiveBridgeDelegate) | Yes   | Protocol to implement to get custom messages from the interactive layer                                                                            |
+| Name                        | Type                                                                  | Write | Description                                                                            |
+| --------------------------- | --------------------------------------------------------------------- | ----- | -------------------------------------------------------------------------------------- |
+| `activeQuality`             | [`Quality`](#player-media-quality)                                    | No    | Active Media Quality. Emits: `activeQualityDidChange`                                  |
+| `buffer`                    | `Int`                                                                 | No    | Size of buffer, ahead of current position, in milliseconds. Emits: `progressDidChange` |
+| `currentSource`             | `URL`                                                                 | No    | Current media source. Emits: `sourceDidChange` URL.                                    |
+| `currentTime`               | `TimeInterval`                                                        | No    | Current playback time position in seconds. Emits: `timeDidUpdate`                      |
+| `customControlView`         | [`LiveryPlayerControlView`](#player-controls)                         | Yes   | Custom player controls view                                                            |
+| `customErrorView`           | [`LiveryPlayerErrorView`](#error-overlay)                             | Yes   | Custom error view                                                                      |
+| `customLoadingView`         | `UIView`                                                              | Yes   | Custom loading indicator view                                                          |
+| `delegate`                  | [`PlayerDelegate`](#player-events)                                    | Yes   | Protocol to implement to get player events                                             |
+| `error`                     | `Error`                                                               | No    | Most recent unrecovered error. Emits: `playerDidFail`, `playerDidRecover`              |
+| `interactiveBridgeDelegate` | [`PlayerInteractiveBridgeDelegate`](#playerInteractiveBridgeDelegate) | Yes   | Protocol to implement to get custom messages from the interactive layer                |
+| `interactiveURL`            | `URL`                                                                 | Yes   | The interactive layer URL                                                              |
+| `latency`                   | `Int`                                                                 | No    | End to end latency in milliseconds. Emits: `progressDidChange`                         |
+| `muted`                     | `Boolean`                                                             | Yes   | If true then audio is muted. Emits: `volumeDidChange`.                                 |
+| `playbackState`             | [`PlaybackState`](#player-types)                                      | No    | Playback state. BUFFERING / ENDED / PAUSED / PLAYING Emits: `playbackStateDidChange`.  |
+| `qualities`                 | `[Quality]`                                                           | No    | Array of Available Media Qualities. Emits: `qualitiesChange`.                          |
+| `selectedQuality`           | [`Quality`](#player-media-quality)                                    | Yes   | Selected Media Quality. Emits: `selectedQualityDidChange`                              |
+| `timeOffset`                | `Int`                                                                 | No    | Local device time offset in milliseconds.                                              |
+| `volume`                    | `Float`                                                               | Yes   | Audio volume, from 0.0 (silent) to 1.0 (loudest). Emits: `volumeDidChange`             |
 
 ## Player Methods
 
 The following methods are exposed by Player instances:
 
-| Name                                                                                | Description                                                                        |
-| ----------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `setView(view: UIView)`                                                             | Set the view for player to render.                                                 |
-| `play(completionQueue: DispatchQueue = .main, completion: (Player.Result) -> Void)` | Async call to start/resume media playback.                                         |
-| `play() -> Player.Result`                                                           | Sync call to start/resume media playback.                                          |
-| `pause(completionQueue: DispatchQueue = .main, completion: @escaping () -> Void)`   | Async call to pause media                                                          |
-| `stop(completionQueue: DispatchQueue = .main, completion: @escaping () -> Void)`    | Async call to stop media playback.                                                 |
-| `stop()`                                                                            | Sync call to stop media playback.                                                  |
-| `load()`                                                                            | Resets the media and selects the best available source again.                      |
-| `updateOptions(playerOptions)`                                                      | Update player options                                                              |
-| `onApplicationDidBecomeActive()`                                                    | Call in your IOS Application Lifecycle callback `applicationDidBecomeActive()`     |
-| `onApplicationWillResignActive()`                                                   | Call in your IOS Application Lifecycle callback `applicationWillResignActive()`    |
-| `onApplicationDidEnterBackground()`                                                 | Call in your IOS Application Lifecycle callback `applicationDidEnterBackground()`  |
-| `onApplicationWillEnterForeground()`                                                | Call in your IOS Application Lifecycle callback `applicationWillEnterForeground()` |
-| `dispose()`                                                                         | Cleanup all resources and stop playback.                                           |
-| `sendCustomMessage(name: String, arg: Any?)`                                        | Sends a custom message to the interactive bridge.                                  |
+| Name                                                                                                                      | Description                                                                                     |
+| ------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| `pause(completionQueue: DispatchQueue = .main, completion: @escaping () -> Void)`                                         | Async call to pause media                                                                       |
+| `play(completionQueue: DispatchQueue = .main, completion: (Player.Result) -> Void)`                                       | Async call to start/resume media playback.                                                      |
+| `reload(completionQueue: DispatchQueue = .main, completion: @escaping (Result) -> Void)`                                  | Reloads the player by stopping it, selecting the best available source and start playing again. |
+| `sendInteractiveBridgeCustomCommand(name: String, arg: Any?, completionHandler: @escaping (CustomCommandResult) -> Void)` | Sends a custom message to the interactive bridge.                                               |
+| `setView(view: UIView)`                                                                                                   | Set the view for player to render.                                                              |
+| `stop(completionQueue: DispatchQueue = .main, completion: @escaping () -> Void)`                                          | Async call to stop media playback.                                                              |
+| `updateOptions(playerOptions)`                                                                                            | Update player options                                                                           |
 
 ## Player Events
 
-The following events can be emitted by Player instances via Notification center:
+It might be important in some cases to receive player events and process the data for your needs. In order to receive player events, the PlayerDelegate must be implemented:
 
-| Name                    | Description                                                                            | Properties         |
-| ----------------------- | -------------------------------------------------------------------------------------- | ------------------ |
-| `activeQualityChange`   | Emitted when activeQuality has changed.                                                | `activeQuality`    |
-| `error`                 | Emitted when an error occurs with a reference to the platform specific Error instance. | `error`            |
-| `playbackChange`        | Emitted when playbackState has changed.                                                | `playbackState`    |
-| `qualitiesChange`       | Emitted when qualities have changed.                                                   | `qualities`        |
-| `selectedQualityChange` | Emitted when selectedQuality has changed.                                              | `selectedQuality`  |
-| `volumeChange`          | Emitted when volume or muted has changed.                                              | `muted` , `volume` |
-| `bandwidthTest`         | Emitted when trying to upgrade video bandwidth.                                        |
-| `didTapFullscreen`      | Emitted when user tapped full screen button.                                           | `player`           |
-
-See MediaPlayerLiveExample app to see how playback state change events are received via Notification center and check the below list for Notification names
-
-Below are the names for the Notifications to listen to
+protocol **_PlayerDelegate_**
 
 ```swift
-Notification.Name {
-  static var activeQualityChange: Notification.Name {
-    return .init(rawValue: "Livery.activeQualityChange")
-    }
-  static var error: Notification.Name {
-    return .init(rawValue: "Livery.error")
-    }
-  static var networkChange: Notification.Name {
-    return .init(rawValue: "Livery.networkChange")
-    }
-  static var playbackChange: Notification.Name {
-    return .init(rawValue: "Livery.playbackChange")
-    }
-  static var progress: Notification.Name {
-    return .init(rawValue: "Livery.progress")
-    }
-  static var qualitiesChange: Notification.Name {
-    return .init(rawValue: "Livery.qualitiesChange")
-    }
-  static var selectedQualityChange: Notification.Name {
-    return .init(rawValue: "Livery.selectedQualityChange")
-    }
-  static var volumeChange: Notification.Name {
-    return .init(rawValue: "Livery.volumeChange")
-    }
-  static var bandwidthTest: Notification.Name {
-    return Notification.Name("Livery.bandwidthTest")
-  }
-  static var didTapFullscreen: Notification.Name {
-    return Notification.Name("Livery.didTapFullscreen")
-  }
+public protocol PlayerDelegate: class {
+    func activeQualityDidChange(activeQuality: Quality?) // Emitted when activeQuality has changed
+    func bandwidthTest(result: Result<UInt32, Error>) // Emitted when trying to upgrade video bandwidth
+    func playbackStateDidChange(playbackState: Player.PlaybackState) // Emitted when playbackState has changed
+    func playerDidFail(error: Error) // Emitted when an error occurs
+    func playerDidRecover() // Emitted when player has recovered from an error
+    func progressDidChange(buffer: Int, latency: Int) // Emitted periodically to inform of progress downloading the media
+    func qualitiesDidChange(qualities: [Quality]) // Emitted when qualities have changed
+    func selectedQualityDidChange(selectedQuality: Quality?) // Emitted when selectedQuality has changed
+    func sourceDidChange(currentSource: URL?) // Emitted when currentSource has changed
+    func timeDidUpdate(currentTime: TimeInterval) // Emitted periodically to inform of current playback time changing
+    func volumeDidChange() // Emitted when volume or muted has changed
 }
 ```
 
-### Player Types
+To implement the `PlayerDelegate` you should do as follows:
+
+```swift
+player.delegate = //your class that implements the PlayerDelegate protocol
+```
+
+See [Livery iOS SDK Example App](https://github.com/exmg/livery-sdk-ios-example) to see how playback state change events are received via the `PlayerDelegate` implementation.
+
+## Player Types
 
 ```swift
 extension Player {
@@ -361,7 +316,7 @@ extension Player {
 }
 ```
 
-### Player Media Quality
+## Player Media Quality
 
 class **_Quality_**
 
@@ -389,7 +344,7 @@ In other words, IOS SDK players behave always in sync once initialized, meaning 
 The SDK provides fitting methods to scale and crop the video according to the specified ​fit​ option value.
 
 ```swift
-public enum playerFit {
+public enum PlayerFit {
  case contain
  case cover
  case fill
@@ -531,10 +486,17 @@ There you will get the custom messages you sent through the bridge on the intera
 - To **SEND** custom messages you should call:
 
 ```swift
-player.sendCustomMessage(name: String, arg: Any?)
+player.sendInteractiveBridgeCustomCommand(name: String, arg: Any?, completionHandler: @escaping (CustomCommandResult) -> Void)
 ```
 
 Those messages will be send to the interactive layer through the bridge. To get them on the interactive layer side you should first call the `registerCustomCommand(name, handler)` with the `name` matching the one used on the player. Please see Interactive SDK [methods](/interactive-sdk?id=methods) section for more details.
+
+```swift
+public enum CustomCommandResult {
+    case success(value: Any?)
+    case failure(error: String)
+}
+```
 
 ## Analytics
 
@@ -622,3 +584,4 @@ Please see example MediaPlayerLive example app’s Podfile and check [https://gi
 | 0.11.5  | Improvements on Analytics.<br> Improvements on DASH manifest parser.<br> Added enableSentrySDK and audioSessionSettings.                                                                                                                                                                                                                                     |
 | 0.11.6  | Changed interactive layer to allow automatic media playback and inline media playback.                                                                                                                                                                                                                                                                       |
 | 0.12.0  | Added Cast.<br> Added Interactive Bridge.<br> Added Stream Phases.<br> Life Cycle methods are no longer needed.                                                                                                                                                                                                                                              |
+| 1.0.0   | Improvements on media download.<br> Improvements on Player UI.<br> Added full screen implementation.<br> Removed Life Cycle methods.<br> Repalced Player Events through Notification Center with `PlayerDelegate` procotol.<br> Replace `duration` with `currentTime`.<br> Added `error` property to the Player.<br> Changed `sendCustomMessage` method to `sendInteractiveBridgeCustomCommand`.<br> Changed `airplayButton` to `castButton` on `LiveryPlayerControlView` protocol.                                                            |

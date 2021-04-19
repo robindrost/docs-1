@@ -237,6 +237,8 @@ It is possible to have more control of the LiveryPlayerView initialization. Ther
 The LiveryPlayerView can be configured with either remote or local configurations. When local configurations are set
 they will override the corresponding remote configurations.
 
+The remote configuration is automatically applied when calling createPlayer without parameters. This remote configuration can be set in the Livery Portal.
+
 ```java
    LiveryPlayerView playerView = ...
 
@@ -279,7 +281,7 @@ In some cases, getting the pinpoint user ID can be useful, i.e.: You would like 
 
 ```java
 String pinpointUserId = LiverySDK.getInstance().getPinpointUserId();
-
+```
 
 ## Player Methods
 
@@ -605,18 +607,7 @@ String url = ...
 playerView.setInteractiveUrl(url);
 ```
 
-### Methods
-
-The methods available in the Android LiverySDK to the interactive layer are explained in the following table:
-
-| Name | Description |
-| ---- | ---- |
-| `long getLatency()` | Returns the player's current latency value. |
-| `String subscribeOrientation()` | Returns the player orientation. |
-
-Although `subscribeOrientation` stars with _subscribe_ no subscription is done to the player's orientation changes
-because when the orientation changes the player is recreated and the layer reloaded. The method name follows both
-web and iOS SDKs.
+Besides the [methods](/interactive-sdk?id=methods) already definied on the Interactive SDK to get values like the player **latency**, device **orientation**, etc. you can get and send custom messages.
 
 
 ### Custom commands
@@ -698,7 +689,7 @@ where removed. Please use LiveryControlsOptions and LiveryPlayerOptions builders
 
 #### LiveryPlayerView
 
-Version 2.0 adds a few `createPlayer` overload methods. It is advice to use the default method:
+Version 2.0 adds a few `createPlayer` overload methods. It is adviced to use the default method:
 
 ```java
 LiveryPlayerView playerView = ...
@@ -738,7 +729,7 @@ to
 onProgressChanged(long buffer, long latency)
 ```
 
-The methods `onDurationChanged` nor `onVolumeChanged` were also removed.
+The methods `onDurationChanged` and `onVolumeChanged` were also removed.
 
 
 ####

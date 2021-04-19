@@ -28,8 +28,8 @@ allprojects {
        maven {
            url "https://exmg.bintray.com/livery"
            credentials {
-               username ‘received_username’
-               password 'bintray_API_key’
+               username 'received_username'
+               password 'bintray_API_key'
            }
        }
    }
@@ -49,7 +49,7 @@ Add these implementations inside **dependencies** to your app-level build.gradle
 ```groovy
 dependencies {
    //...
-   implementation 'tv.exmg.livery:livery:1.7.16'
+   implementation 'tv.exmg.livery:livery:2.0.0'
    //...
 }
 ```
@@ -72,7 +72,7 @@ android {
 
 For basic usage of the SDK following minimal steps are needed:
 
-### Define Remote Config URL
+### Configure SDK streamId
 
 Add `livery_stream_id` to your strings and pass the streamId as the value.
 
@@ -83,7 +83,13 @@ Add `livery_stream_id` to your strings and pass the streamId as the value.
 </resources>
 ```
 
-> You can also change `stream_id` on run-time. To do so, check [here](#Update-Remote-Config)
+The `LiverySDK` will initialize itself using the string resource `livery_stream_id` when the application starts.
+
+It is possible to know the LiverySDK State by calling:
+
+```java
+LiverySDK.State state = LiverySDK.getInstance().getState();
+```
 
 ### Add LiveryPlayerView
 
@@ -102,11 +108,9 @@ screen can turn off after an amount of time or not.
 
 Due to the Cast feature the Player's Activity Theme needs to have a `colorPrimary` defined without opacity.
 
-### Configure LiveryPlayerView
+### Setup LiveryPlayerView
 
-Bind LiveryPlayerView to your layout file, then create the livery player with passing LiveryPlayerOptions object after activity or fragment is created.
-
-> Please check [LiveryPlayerOptions](#Analytics) properties in order to have better control over the player.
+Bind LiveryPlayerView to your layout file, then call `createPlayer` to setup the LiveryPlayerView.
 
 ```java
 LiveryPlayerView playerView;
@@ -116,12 +120,14 @@ public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceStat
    super.onViewCreated(view, savedInstanceState);
 
    playerView = view.findViewById(R.id.liveryPlayer);
-   LiveryPlayerOptions playerOptions = new LiveryPlayerOptions();
-   playerOptions.autoPlay = true;
-   playerOptions.controls.error = true;
-   playerView.createPlayer(playerOptions);
+   playerView.createPlayer();
 }
 ```
+
+The player might not be initializaed right after `createPlayer` call. For example, it may be defer to after `LiverySDK`
+initialization finishes. [LiveryPlayerView.CreatePlayerListener and LiveryPlayerView.CreatePlayerErrorListener](#CreatePlayer-feedback)
+provide more information if the player was initialized or there was an error during initialization.
+
 
 ### Add Life-cycle methods
 
@@ -153,11 +159,106 @@ public void onDestroy() {
 }
 ```
 
+`LiveryPlayerView` implements `LifecycleObserver` and the methods mentioned above are already annotated with the corresponding lifecycle events.
+It is possible to register `LiveryPlayerView` in a `LifecycleOwner`, for example when using a `Fragment`:
+
+```java
+public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
+   super.onViewCreated(view, savedInstanceState);
+   ...
+   LiveryPlayerView playerView = view.findViewById(R.id.livery_player_view);
+   getLifecycle().addObserver(playerView);
+   ...
+}
+```
+
 #### 🎉 Done
 
 Congratulations! You have implemented Livery SDK successfully.
 
 To have more control over Livery SDK, next sections should provide you more knowledge.
+
+## Advance configuration
+
+### Manual SDK Configuration
+
+Defining the `streamId` via the resource string `livery_stream_id` as it is in [Configure SDK streamId](#configure-sdk-streamid)
+automatically initializes the SDK when the application starts.
+
+It is possible defer this initialization to a later point by doing it manually by defining the boolean
+resource `livery_sdk_auto_init` with `false` instead of `livery_stream_id`:
+
+```xml
+<resources>
+   <!--...-->
+    <bool name="livery_sdk_auto_init">false</bool>
+</resources>
+```
+
+and then use the `LiverySDK.initialize` method that allows to define a desied `streamId` and to have some feedback
+about the SDK initization process:
+
+```java
+   String streamId = ...
+   LiverySDK.getInstance().initialize(streamId, new LiverySDK.StateListener() {
+      @Override
+      public void stateChanged(LiverySDK.State state) {
+
+      }
+   });
+```
+
+### Configure LiveryPlayerView
+
+
+#### CreatePlayer feedback
+
+It is possible to have more control of the LiveryPlayerView initialization. There are 2 interfaces in
+`LiveryPlayerView` that allow to know when the player was configured or if there was an error during configuration:
+
+```java
+   LiveryPlayerView playerView = ...
+   playerView.createPlayer(new LiveryPlayerView.CreatePlayerListener() {
+      @Override
+      public void finished() {
+
+      }
+   }, new LiveryPlayerView.CreatePlayerErrorListener() {
+      @Override
+      public void onError(Exception error) {
+
+      }
+   });
+```
+
+
+#### LiveryPlayerView options
+
+The LiveryPlayerView can be configured with either remote or local configurations. When local configurations are set
+they will override the corresponding remote configurations.
+
+```java
+   LiveryPlayerView playerView = ...
+
+   LiveryControlsOptions controlsOptions = new LiveryControlsOptions.Builder()
+            .showFullscreen(true)
+            .showMute(true)
+            .showQuality(true)
+            .showError(true)
+            .build();
+
+   LiveryPlayerOptions playerOptions = new LiveryPlayerOptions.Builder()
+            .setAutoPlay(true)
+            .setControlsOptions(controlsOptions)
+            .setResizeMode(LiveryResizeMode.DEFAULT)
+            .build();
+
+   playerView.createPlayer(playerOptions);
+   // or
+   playerView.createPlayer(playerOptions, this::onPlayerCreated, this::onCreatePlayerError);
+
+```
+
 
 ## SDK Methods
 
@@ -172,31 +273,13 @@ You can get the instance with the line below:
 LiverySDK.getInstance();
 ```
 
-### Generic Player Options
-
-To generate player options to pass to the player quickly, use this method below:
-
-```java
-LiverySDK.getPlayerOptions("MPD Url");
-//Or
-LiverySDK.getPlayerOptions(mpdUrlsList);
-```
-
 ### Pinpoint User ID
 
 In some cases, getting the pinpoint user ID can be useful, i.e.: You would like to show the user their pinpoint user ID for analysis based on a specific user. To do so, here is how to get the pinpoint user ID:
 
 ```java
 String pinpointUserId = LiverySDK.getInstance().getPinpointUserId();
-```
 
-### Update Remote Config
-
-Initial remote config is passed to the SDK via strings.xml, however there might be situations that the streamId needs to be changed later on during run-time. To achieve this, the code below can be used:
-
-```java
-LiverySDK.getInstance().updateRemoteConfig("stream_id");
-```
 
 ## Player Methods
 
@@ -204,7 +287,7 @@ LiverySDK.getInstance().updateRemoteConfig("stream_id");
 
 ### Create Player
 
-By calling `createPlayer(LiveryPlayerOptions)` on LiveryPlayerView reference, a player instance will be created and initialized.
+By calling `createPlayer()` on LiveryPlayerView reference, a player instance will be created and initialized.
 
 ### Current Time
 
@@ -212,13 +295,6 @@ By calling `createPlayer(LiveryPlayerOptions)` on LiveryPlayerView reference, a 
 
 ```java
 long currentTime = playerView.getCurrentTime();
-```
-
-#### Set Current Time of the Media
-
-```java
-long positionInMs = 30 * 1000;
-playerView.setCurrentTime(positionInMs);
 ```
 
 ### Mute/Unmute
@@ -252,13 +328,6 @@ float volume = playerView.getVolume();
 ```
 
 ### Playback Rate
-
-#### Set Playback Rate
-
-```java
-float playBackRate = 1.5f; //Must be between 0.1 and 3.0
-playerView.setPlaybackRate(playBackRate);
-```
 
 #### Get Playback Rate
 
@@ -345,25 +414,36 @@ playerView.setDebugModeEnabled(isDebugMode);
 #### Get Debug Mode Status
 
 ```java
-boolean isDebugModeEnabled = playerView.getIsDebugModeEnabled();
+boolean isDebugModeEnabled = playerView.isDebugModeEnabled();
 ```
 
 ## Classes
 
+### LiverySDK State
+
+LiverySDK.State is used to provide LiverySDK state feedback either with [automatic initalization](#Configure-SDK-streamId)
+or [manual initialization](#Manual-SDK-Configuration).
+
+LiverySDK.State can be one of 3 values:
+
+- `LiverySDK.State.NOT_INITIALIZED`
+- `LiverySDK.State.INITIALIZED`
+- `LiverySDK.State.ERROR` where you can access the inner Exception via `LiverySDK.State.error` member.
+
 ### Player Options
 
-LiveryPlayerOptions has these properties listed on the table below. These options take effect only after [createPlayer](#creating-player) is called.
+LiveryPlayerOptions has these properties listed on the table below. These options take effect only after [createPlayer](#LiveryPlayerView-options) is called.
+Each of these properties can be defined individually via LiveryPlayerOptions.Builder.
 
 class **_LiveryPlayerOptions_**
 
 | Name       | Type                    | Default                       | Description                                                                                                          |
 | ---------- | ----------------------- | ----------------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| `autoPlay` | `Boolean`               | `false`                       | Determines whether video shall play immediately after [createPlayer](#creating-player).                              |
+| `autoPlay` | `Boolean`               | `true`                       | Determines whether video shall play immediately after [createPlayer](#creating-player).                              |
 | `controls` | `LiveryControlsOptions` | `new LiveryControlsOptions()` | Provides access to [LiveryControlsOptions](#livery-controls-options). Player controls can be tweaked by this object. |
 | `fit`      | `LiveryResizeMode`      | `CONTAIN`                     | Provides access to LiveryResizeMode. Video size inside the player view can be changed from here.                     |
-| `loop`     | `Boolean`               | `false`                       | Determines whether the video should restart after it ends.                                                           |
-| `muted`    | `Boolean`               | `false`                       | Determines whether media should be muted or not.                                                                     |
 | `poster`   | `String`                | ``                            | Represents URL to poster image. When this property is not empty, the player will show a poster on creation.          |
+| `sources`  | `String` or `Array<String>` | None                            | Defines the sources URLs. |
 
 ### Player Resize Mode
 
@@ -379,7 +459,9 @@ enum **_LiveryResizeMode_**
 
 ### Player Controls
 
-You can edit LiveryControlsOptions from controls property of LiveryPlayerOptions. Available controls are listed on the table below.
+You can edit LiveryControlsOptions from controls property of LiveryPlayerOptions.
+Each of these properties can be defined individually via LiveryControlsOptions.Builder.
+Available controls are listed on the table below.
 
 class **_LiveryControlsOptions_**
 
@@ -389,34 +471,8 @@ class **_LiveryControlsOptions_**
 | `mute`         | `Boolean` | `false` | Sets the visibility of the mute button.       |
 | `quality`      | `Boolean` | `false` | Sets the visibility of the quality button.    |
 | `error`        | `Boolean` | `false` | Sets the visibility of the error overlay.     |
-| `liveControls` | `Boolean` | `false` | Sets the visibility of the live controls.     |
 | `cast`         | `Boolean` | `false` | Sets the visibility of the cast feature.      |
 
-#### Fullscreen Button
-
-Default behavior of fullscreen button can be changed like shown below:
-
-```java
-playerView.overrideFullscreenButton(new View.OnClickListener() {
-   @Override
-   public void onClick(View v) {
-
-   }
-});
-```
-
-#### Quality Button
-
-Default behavior of quality button can be changed like shown below:
-
-```java
-playerView.overrideQualityButton(new View.OnClickListener() {
-   @Override
-   public void onClick(View v) {
-
-   }
-});
-```
 
 ### Player Events
 
@@ -427,15 +483,13 @@ class **_LiveryPlayerListener_**
 | Name                                                           | Description                                                                                                                                |
 | -------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
 | `onActiveQualityChanged(LiveryQuality quality)`                | Called when the active quality of the media being played has changed.                                                                      |
-| `onDurationChanged(long duration)`                             | Called when the duration of media has changed. (Not applicable to live streams.)                                                           |
 | `onPlayerError(Exception e)`                                   | Called when the player encounters an error.                                                                                                |
 | `onPlayerStateChanged(LiveryPlayerState playerState)`          | Called when the playback state of the player has changed.                                                                                  |
-| `onProgressChanged(long buffer, long bufferEnd, long latency)` | Called in short intervals while playing, buffer, buffered position and latency values in milliseconds can be actively retrieved from here. |
+| `onProgressChanged(long buffer, long latency)` | Called in short intervals while playing, buffer and latency values in milliseconds can be actively retrieved from here. |
 | `onQualitiesChanged(List<LiveryQuality> qualities)`            | Called when available qualities of media have changed.                                                                                     |
 | `onPlaybackRateChanged(float rate)`                            | Called when the playback rate of current media has changed.                                                                                |
 | `onRecovered()`                                                | Called when an error is recovered.                                                                                                         |
 | `onTimeUpdate(long currentTime)`                               | Called when the current time of media has changed.                                                                                         |
-| `onVolumeChanged(float volume)`                                | Called when the volume of the player has changed.                                                                                          |
 | `onSourceChanged(String source)`                               | Called when the media source URL of the player has changed.                                                                                |
 
 #### Registering Player Event Listener
@@ -548,7 +602,159 @@ To customize the loading indicator, create a layout named `livery_player_audio_o
 
 For this layout, there are no IDs available. This means that whenever the player is playing only audio, this layout will be shown.
 
+
+## Interactive Bridge
+
+It is possible to interact with LiveryPlayerView and the Interactive Layer using the [Interactive SDK](/interactive-sdk?id=livery-interactive-sdk).
+
+The interactive URL can be defined with:
+```java
+LiveryPlayerView playerView = ...
+String url = ...
+playerView.setInteractiveUrl(url);
+```
+
+### Methods
+
+The methods available in the Android LiverySDK to the interactive layer are explained in the following table:
+
+| Name | Description |
+| ---- | ---- |
+| `long getLatency()` | Returns the player's current latency value. |
+| `String subscribeOrientation()` | Returns the player orientation. |
+
+Although `subscribeOrientation` stars with _subscribe_ no subscription is done to the player's orientation changes
+because when the orientation changes the player is recreated and the layer reloaded. The method name follows both
+web and iOS SDKs.
+
+
+### Custom commands
+
+From the Android LiveryPlayerView it is possible to send and receive custom command to/from the interactive layer.
+
+A custom command with a specific `name` and `argument` can be sent with the `sendInteractiveBridgeCustomCommand` method:
+```java
+String name = ...
+String argument = ...
+playerView.sendInteractiveBridgeCustomCommand(name, argument, new LiveryInteractiveBridge.CustomCommandResponseCallback() {
+   @Override
+   public void result(@Nullable Object response, @Nullable String error) {
+
+   }
+});
+```
+
+To receive callbacks from the interactive layer a `LiveryInteractiveBridge.CustomCommandListener` object needs to be
+register with the `setInteractiveBridgeCustomCommandListener`
+method.
+The commands are received on `onMessage` with the `name`, `argument` and a `callback`
+that allows to sent back to the interactive layer a result Object:
+
+```java
+playerView.setInteractiveBridgeCustomCommandListener(new LiveryInteractiveBridge.CustomCommandListener() {
+   @Override
+   public void onMessage(@NonNull String name, @Nullable String argument, @Nullable LiveryInteractiveBridge.CustomCommandResultCallback callback) {
+      ...
+      Object result = ...
+      callback.result(result);
+   }
+});
+```
+
+
+
+## Sentry Integration
+
+Livery uses Sentry for error reporting. In other to setup sentry.io with the correct DNS LiverySDK forces its initialization to manual
+by setting `false` to [io.sentry.auto-init](https://docs.sentry.io/platforms/android/configuration/manual-init/) meta-data key.
+
+To enable sentry.io auto initialization please add the following to the Application AndroidManifest.xml
+
+```xml
+<meta-data android:name="io.sentry.auto-init" android:value="true" tools:replace="android:value" />
+```
+
+
+## Migration Guide
+
+### Migration from 1.7 to 2.0
+
+#### LiverySDK initialization
+
+With version 2.0 we provide more control over LiverySDK initialization and more feedback.
+
+The method in LiverySDK:
+```java
+public void updateRemoteConfig(String streamID);
+```
+was replaced with
+```java
+public void initialize(String streamId, StateListener listener)
+```
+
+where initialization feedback is given via the `LiverySDK.StateListener` callback.
+
+Although you can call `initialize(String, StateListener)` regardless of LiverySDK being automatic or manually initialized
+it is adviced to setup LiverySDK manually by setting the boolean resource `livery_sdk_auto_init` to `false` like as it is
+in [Manual SDK Configuration](#Manual-SDK-Configuration) section.
+
+The methods
+```java
+LiverySDK.getPlayerOptions()
+```
+where removed. Please use LiveryControlsOptions and LiveryPlayerOptions builders as is explained in
+[LiveryPlayerView options](#LiveryPlayerView-options)
+
+#### LiveryPlayerView
+
+Version 2.0 adds a few `createPlayer` overload methods. It is advice to use the default method:
+
+```java
+LiveryPlayerView playerView = ...
+playerView.createPlayer();
+// or
+playerView.createPlayer(this::onPlayerCreated, this::onCreatePlayerError);
+```
+
+although the `createPlayer(LiveryPlayerOptions)` still [exist](#LiveryPlayerView-options).
+
+The method
+```java
+LiveryPlayerView.loadInteractiveLayer(String);
+```
+was renamed to
+```java
+LiveryPlayerView.setInteractiveUrl(String);
+```
+
+
+#### LiveryPlayerOptions and LiveryControlsOptions
+
+`LiveryPlayerOptions` and `LiveryControlsOptions` should now be defined with the corresponding Builder class.
+See [LiveryPlayerView options](#LiveryPlayerView-options) section as an example.
+
+#### LiveryPlayerListener
+
+LiveryPlayerListener now have a no-op default implementation so there is no need to implement all methods.
+
+LiveryPlayerListener.onProgressChanged was changed from
+
+```java
+onProgressChanged(long buffer, long bufferEnd, long latency)
+```
+to
+```java
+onProgressChanged(long buffer, long latency)
+```
+
+The methods `onDurationChanged` nor `onVolumeChanged` were also removed.
+
+
+####
+
 ## Change log
+
+### 2.0.0
 
 ### 1.7.16
 

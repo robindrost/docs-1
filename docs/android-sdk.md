@@ -738,6 +738,23 @@ The methods `onDurationChanged` and `onVolumeChanged` were also removed.
 
 ### 2.0.0
 
+- Added bridge calls for interactive layer
+- Added isPlayerInitialized property
+- Added the ability to use ExoPlayer next to the LiveryPlayer
+- Improved full screen experience
+- Improved initialization process and added opportunities receive error feedback
+- Improved main/backup switching
+- Better IPv6 support
+- Fixed several crashes that could occur in edge cases
+- currentTime property is made read-only
+- Renamed loadInteractiveLayer to setInteractiveUrl and currentSrc to currentSource
+- Removed the need to manually set the player to unbranded
+- Removed muted and loop player options
+- Removed overrideFullscreenButton and overrideQualityButton methods
+- Removed all exoplayer methods
+- Removed bufferEnd, zeroTimestamp, streamTimestamp, decodedFrames, droppedFrames, setPlaybackRate, getStreamType, videoType, onDurationChanged
+
+
 ### 1.7.16
 
 - Fixed initialization issues

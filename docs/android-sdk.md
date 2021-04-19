@@ -573,28 +573,19 @@ Available IDs and their corresponding view types are listed below, ID names are 
 
 | Name                         | ID                                    | Type               |
 | ---------------------------- | ------------------------------------- | ------------------ |
-| Previous Button              | `livery_prev`                         | `View`             |
-| Next Button                  | `livery_next`                         | `View`             |
 | Play Button                  | `livery_play`                         | `View`             |
 | Pause Button                 | `livery_pause`                        | `View`             |
-| Fast Forward Button          | `livery_ffwd`                         | `View`             |
-| Rewind Button                | `livery_rew`                          | `View`             |
 | Mute Button                  | `livery_mute`                         | `View`             |
 | Unmute Button                | `livery_unmute`                       | `View`             |
 | Quality Button               | `livery_quality`                      | `View`             |
 | Fullscreen Button            | `livery_fullscreen`                   | `View`             |
-| Shuffle Button               | `livery_shuffle`                      | `View`             |
-| Video Camera Button          | `livery_videocam`                     | `View`             |
 | Live Circle View             | `livery_live_circle`                  | `View`             |
 | Quality Indicator Background | `livery_quality_indicator_background` | `View`             |
+| Quality Indicator Text       | `livery_quality_indicator_text`       | `TextView`         |
 | Cast Button                  | `livery_cast`                         | `MediaRouteButton` |
 | Time bar                     | `livery_progress`                     | `TimeBar`          |
-| Repeat Toggle Button         | `livery_repeat_toggle`                | `ImageView`        |
-| Duration Text                | `livery_duration`                     | `TextView`         |
-| Position Text                | `livery_position`                     | `TextView`         |
 | Time Separator Text          | `livery_time_separator`               | `TextView`         |
 | Live Text                    | `livery_live_text`                    | `TextView`         |
-| Quality Indicator Text       | `livery_quality_indicator_text`       | `TextView`         |
 
 ### Audio Only Stream Indicator
 

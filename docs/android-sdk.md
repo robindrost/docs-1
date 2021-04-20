@@ -647,7 +647,7 @@ playerView.setInteractiveBridgeCustomCommandListener(new LiveryInteractiveBridge
 
 ## Sentry Integration
 
-Livery uses Sentry for error reporting. In other to setup sentry.io with the correct DNS LiverySDK forces its initialization to manual
+Livery uses Sentry for error reporting. In order to setup sentry.io with the correct DNS LiverySDK forces its initialization to manual
 by setting `false` to [io.sentry.auto-init](https://docs.sentry.io/platforms/android/configuration/manual-init/) meta-data key.
 
 To enable sentry.io auto initialization please add the following to the Application AndroidManifest.xml

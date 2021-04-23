@@ -66,15 +66,15 @@ bridge.getLatency().then(latency => window.alert(`latency: ${latency}`));
 
 #### Methods
 
-| Method                                     | Description                                                                                                                                                                                                       |
-| ------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `constructor(targetOrigin)`                | Constructs InteractiveBridge with `window.parent` as target window and with specified target origin.                                                                                                              |
-| `getLatency()`                             | Returns promise of current LiveryPlayer latency in seconds.                                                                                                                                                       |
-| `registerCustomCommand(name, handler)`     | Register `handler` function to be called with `arg` and `listener` when `sendCustomCommand()` is called on LiveryPlayer with matching `name`.                                                                     |
-| `sendCustomCommand(name, arg?, listener?)` | Returns promise of value returned by LiveryPlayer custom command handler with matching `name` that is passed `arg`. Any `handler` `listener` calls will subsequently also be bridged to this `listener` callback. |
-| `subscribeOrientation(listener)`           | Returns promise of current LiveryPlayer window orientation (`'landscape' \| 'portrait'`) and calls back `listener` with any subsequent orientations.                                                              |
-| `subscribeStreamPhase(listener)`           | Returns promise of current LiveryPlayer stream phase (`'PRE' \| 'LIVE' \| 'POST'`) and calls back `listener` with any subsequent phases.                                                                          |
-| `unregisterCustomCommand(name)`            | Unregister custom command by name.                                                                                                                                                                                |
+| Method                                      | Description                                                                                                                                                                                                       |
+| ------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `constructor(targetOrigin)`                 | Constructs InteractiveBridge with `window.parent` as target window and with specified target origin.                                                                                                              |
+| `getLatency()`                              | Returns promise of current LiveryPlayer latency in seconds.                                                                                                                                                       |
+| `registerInteractiveCommand(name, handler)` | Register `handler` function to be called with `arg` and `listener` when `sendInteractiveCommand()` is called on LiveryPlayer with matching `name`.                                                                |
+| `sendPlayerCommand(name, arg?, listener?)`  | Returns promise of value returned by LiveryPlayer custom command handler with matching `name` that is passed `arg`. Any `handler` `listener` calls will subsequently also be bridged to this `listener` callback. |
+| `subscribeOrientation(listener)`            | Returns promise of current LiveryPlayer window orientation (`'landscape' \| 'portrait'`) and calls back `listener` with any subsequent orientations.                                                              |
+| `subscribeStreamPhase(listener)`            | Returns promise of current LiveryPlayer stream phase (`'PRE' \| 'LIVE' \| 'POST'`) and calls back `listener` with any subsequent phases.                                                                          |
+| `unregisterInteractiveCommand(name)`        | Unregister custom interactive command by name.                                                                                                                                                                    |
 
 ### LiveryBridgeLog
 

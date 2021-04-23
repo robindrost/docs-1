@@ -74,7 +74,7 @@ bridge.getLatency().then(latency => window.alert(`latency: ${latency}`));
 | `sendPlayerCommand(name, arg?, listener?)`  | Returns promise of value returned by LiveryPlayer custom command handler with matching `name` that is passed `arg`. Any `handler` `listener` calls will subsequently also be bridged to this `listener` callback. |
 | `subscribeOrientation(listener)`            | Returns promise of current LiveryPlayer window orientation (`'landscape' \| 'portrait'`) and calls back `listener` with any subsequent orientations.                                                              |
 | `subscribeStreamPhase(listener)`            | Returns promise of current LiveryPlayer stream phase (`'PRE' \| 'LIVE' \| 'POST'`) and calls back `listener` with any subsequent phases.                                                                          |
-| `unregisterInteractiveCommand(name)`        | Unregister custom command by name.                                                                                                                                                                                |
+| `unregisterInteractiveCommand(name)`        | Unregister custom interactive command by name.                                                                                                                                                                    |
 
 ### LiveryBridgeLog
 

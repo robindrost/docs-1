@@ -121,15 +121,6 @@ See the general [Usage](#usage) section above.
 | `streamid`   | `streamId`   | `string`  | `null`  | Livery stream ID (required).                                                                                                                        |
 | `vumeter`    | `vuMeter`    | `boolean` | `false` | Enable volume unit meter.                                                                                                                           |
 
-#### Methods
-
-| Method                                          | Description                                                                                                                                                                                                                                                                                                                                                                                                                                    |
-| ----------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-|                                                 |
-| `registerPlayerCommand(name, handler)`          | Register custom player bridge command `handler` by `name`. The `handler` will be called with `arg` and `listener` when `sendPlayerCommand()` is called from the interactive layer bridge side with matching `name`. The value or Promise returned by `handler` will be passed back and returned by that interactive bridge call. Any `listener` calls here will similarly result in the interactive `listener` being called with those values. |
-| `sendInteractiveCommand(name, arg?, listener?)` | Send command to interactive layer and return promise of value returned by the interactive bridge's custom command handler with matching `name` that is passed `arg`. Any `handler` `listener` calls will subsequently also be bridged to this `listener` callback.                                                                                                                                                                             |
-| `unregisterPlayerCommand(name)`                 | Unregister custom player command by `name`.                                                                                                                                                                                                                                                                                                                                                                                                    |
-
 #### Properties
 
 | Property        | R/W | Type                                                                                                                    | Default     | Description                                                                         |
@@ -140,6 +131,15 @@ See the general [Usage](#usage) section above.
 | `streamPhase`   | R   | `'PRE'` \| `'LIVE'` \| `'POST'`                                                                                         | `'PRE'`     | Stream phase.<br />Dispatches: `livery-phase-change`.                               |
 
 In addition there is an `engine` property but that is meant for debugging purposes only. It's use is not supported.
+
+#### Methods
+
+| Method                                          | Description                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| ----------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|                                                 |
+| `registerPlayerCommand(name, handler)`          | Register custom player bridge command `handler` by `name`. The `handler` will be called with `arg` and `listener` when `sendPlayerCommand()` is called from the interactive layer bridge side with matching `name`. The value or Promise returned by `handler` will be passed back and returned by that interactive bridge call. Any `listener` calls here will similarly result in the interactive `listener` being called with those values. |
+| `sendInteractiveCommand(name, arg?, listener?)` | Send command to interactive layer and return promise of value returned by the interactive bridge's custom command handler with matching `name` that is passed `arg`. Any `handler` `listener` calls will subsequently also be bridged to this `listener` callback.                                                                                                                                                                             |
+| `unregisterPlayerCommand(name)`                 | Unregister custom player command by `name`.                                                                                                                                                                                                                                                                                                                                                                                                    |
 
 #### Events
 

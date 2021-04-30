@@ -38,7 +38,10 @@
   },
 
   "cdn": {
-    "domainWhiteList": ["streamName.com", "video.streamName.com"]
+    "domainWhiteList": [
+      "https://streamName.com",
+      "https://video.streamName.com"
+    ]
   },
 
   "encoders": [

@@ -145,7 +145,10 @@ Request body:
   },
 
   "cdn": {
-    "domainWhiteList": ["streamName.com", "video.streamName.com"]
+    "domainWhiteList": [
+      "https://streamName.com",
+      "https://video.streamName.com"
+    ]
   }
 }
 ```
@@ -197,7 +200,10 @@ Request body:
   },
 
   "cdn": {
-    "domainWhiteList": ["streamName.com", "video.streamName.com"]
+    "domainWhiteList": [
+      "https://streamName.com",
+      "https://video.streamName.com"
+    ]
   }
 }
 ```

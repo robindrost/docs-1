@@ -130,4 +130,5 @@ It is recommended to use an internet connection which has at least twice the spe
 
 | Version | Description                                                                      |
 | ------- | -------------------------------------------------------------------------------- |
+| 0.6.0   | Secure ingest<br> Use audio delay setting from the backend                       |
 | 0.5.0   | Added the ability to automatically update the encoder from the Management Portal |

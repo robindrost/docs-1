@@ -65,10 +65,26 @@ Response:
     "posterUrl": "streamName.com/poster.png",
     "interactiveLayerUrl": "interactive.example/5f2022df27b35d1ebfe17b78",
 
+    "domainWhiteList": ["streamName.com", "video.streamName.com"],
+
     "lastStreamingStateChangeTimestamp": 1599749054566,
 
     "settings": {
       "targetLatency": 3.0
+    },
+
+    "player": {
+      "fit": "COVER",
+      "preRoll": "streamName.com/preroll.mp4"
+    },
+
+    "controls": {
+      "cast": false,
+      "error": false,
+      "fullscreen": false,
+      "mute": false,
+      "quality": false,
+      "pip": false
     },
 
     "encoders": [
@@ -137,10 +153,26 @@ Response example:
   "posterUrl": "streamName.com/poster.png",
   "interactiveLayerUrl": "interactive.example/5f2022df27b35d1ebfe17b78",
 
+  "domainWhiteList": ["streamName.com", "video.streamName.com"],
+
   "lastStreamingStateChangeTimestamp": 1599749054566,
 
   "settings": {
     "targetLatency": 3.0
+  },
+
+  "player": {
+    "fit": "COVER",
+    "preRoll": "streamName.com/preroll.mp4"
+  },
+
+  "controls": {
+    "cast": false,
+    "error": false,
+    "fullscreen": false,
+    "mute": false,
+    "quality": false,
+    "pip": false
   },
 
   "encoders": [
@@ -207,10 +239,140 @@ Response example:
   "posterUrl": "streamName.com/poster.png",
   "interactiveLayerUrl": "interactive.example/5f2022df27b35d1ebfe17b78",
 
+  "domainWhiteList": ["streamName.com", "video.streamName.com"],
+
   "lastStreamingStateChangeTimestamp": 1599749054566,
 
   "settings": {
     "targetLatency": 3.0
+  },
+
+  "player": {
+    "fit": "COVER",
+    "preRoll": "streamName.com/preroll.mp4"
+  },
+
+  "controls": {
+    "cast": false,
+    "error": false,
+    "fullscreen": false,
+    "mute": false,
+    "quality": false,
+    "pip": false
+  },
+
+  "encoders": [
+    {
+      "encoderId": "5f2807dc4fd690da7238fd56",
+      "encoderType": "MAIN",
+      "state": {
+        "encoderStatus": "ONLINE",
+        "streamingState": "STARTED",
+        "videoDevice": {
+          "id": "5f5614aefd9fb4ec7fb24d10",
+          "resolution": "1920x1080",
+          "frameRate": "59.97",
+          "signalState": "Locked",
+          "signalStatus": "Valid",
+          "type": "0x84",
+          "scanningType": "Progressive",
+          "colorDepth": "8 bits",
+          "colorEncoding": "Y/U/V 4:4:4"
+        },
+        "audioDevice": {
+          "id": "5f5614e848b6ed205b282380",
+          "format": "48000 Hz, 24 bit, LPCM"
+        }
+      }
+    }
+  ],
+  "streamingState": "STOPPED",
+  "streamUrlType": "STATIC",
+  "encoderPlatform": "CLOUD",
+
+  "streamUrls": [
+    "https://example.com/cmaf/5f27c847e4b0716a97225f47/out.mpd",
+    "https://example.com/cmaf/5f27c847e4b0716a97225f47/master.m3u8"
+  ],
+
+  "videoStreamQualities": ["100000-H264-704x396-p25", "800k_360p"],
+  "audioStreamQualities": ["128Kbps", "96khz"],
+  "remoteConfigUrl": "cdn.liveryvideo.com/remoteconfigs/5f2022df27b35d1ebfe17b78"
+}
+```
+
+### UpdateStream
+
+Update the settings of a stream.
+
+```
+PUT api/1/services/streams?id=5f2022df27b35d1ebfe17b78
+```
+
+| Query parameter | Description                                                     |
+| --------------- | --------------------------------------------------------------- |
+| id              | The stream identifier. Required when not using a Stream API Key |
+
+Request body:
+
+```json
+{
+  "name": "streamName",
+  "posterUrl": "streamName.com/poster.png",
+  "interactiveLayerUrl": "interactive.example/5f2022df27b35d1ebfe17b78",
+
+  "domainWhiteList": ["streamName.com", "video.streamName.com"],
+
+  "settings": {
+    "targetLatency": 3.0
+  },
+
+  "player": {
+    "fit": "COVER",
+    "preRoll": "streamName.com/preroll.mp4"
+  },
+
+  "controls": {
+    "cast": false,
+    "error": false,
+    "fullscreen": false,
+    "mute": false,
+    "quality": false,
+    "pip": false
+  }
+}
+```
+
+Response example:
+
+```json
+{
+  "streamId": "5f2022df27b35d1ebfe17b78",
+  "customerId": "5c5468158f087748c233194f",
+  "name": "streamName",
+  "posterUrl": "streamName.com/poster.png",
+  "interactiveLayerUrl": "interactive.example/5f2022df27b35d1ebfe17b78",
+
+  "domainWhiteList": ["streamName.com", "video.streamName.com"],
+
+  "lastStreamingStateChangeTimestamp": 1599749054566,
+
+  "settings": {
+    "targetLatency": 3.0
+  },
+
+  "player": {
+    "fit": "COVER",
+    "preRoll": "streamName.com/preroll.mp4"
+  },
+
+  "controls": {
+    "cast": false,
+    "error": false,
+    "fullscreen": false,
+    "mute": false,
+    "quality": false,
+    "pip": false
   },
 
   "encoders": [

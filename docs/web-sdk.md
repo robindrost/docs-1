@@ -126,9 +126,19 @@ See the general [Usage](#usage) section above.
 | Property        | R/W | Type                                                                                                                    | Default     | Description                                                                         |
 | --------------- | --- | ----------------------------------------------------------------------------------------------------------------------- | ----------- | ----------------------------------------------------------------------------------- |
 | `error`         | R   | `Error` \| `undefined`                                                                                                  | `undefined` | Most recent unrecovered error.<br />Dispatches: `livery-error`, `livery-recovered`. |
+| `latency`       | R   | `number`                                                                                                                | `NaN`       | End to end latency in seconds.                                                      |
 | `playbackState` | R   | `'BUFFERING'` \| `'ENDED'` \| `'FAST_FORWARD'` \| `'PAUSED'` \| `'PLAYING'` \| `'REWIND'` \| `'SEEKING'` \| `'SLOW_MO'` | `'PAUSED'`  | Playback state.<br />Dispatches: `livery-playback-change`.                          |
+| `streamPhase`   | R   | `'PRE'` \| `'LIVE'` \| `'POST'`                                                                                         | `'PRE'`     | Stream phase.<br />Dispatches: `livery-phase-change`.                               |
 
 In addition there is an `engine` property but that is meant for debugging purposes only. It's use is not supported.
+
+#### Methods
+
+| Method                                          | Description                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| ----------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `registerPlayerCommand(name, handler)`          | Register custom player bridge command `handler` by `name`. The `handler` will be called with `arg` and `listener` when `sendPlayerCommand()` is called from the interactive layer bridge side with matching `name`. The value or Promise returned by `handler` will be passed back and returned by that interactive bridge call. Any `listener` calls here will similarly result in the interactive `listener` being called with those values. |
+| `sendInteractiveCommand(name, arg?, listener?)` | Send command to interactive layer and return promise of value returned by the interactive bridge's custom command handler with matching `name` that is passed `arg`. Any `handler` `listener` calls will subsequently also be bridged to this `listener` callback.                                                                                                                                                                             |
+| `unregisterPlayerCommand(name)`                 | Unregister custom player command by `name`.                                                                                                                                                                                                                                                                                                                                                                                                    |
 
 #### Events
 
@@ -136,6 +146,7 @@ In addition there is an `engine` property but that is meant for debugging purpos
 | ---------------------------------------------------- | ----------------------------------------------------- |
 | [livery-error](#liveryerrorevent)                    | Dispatched when an error occurs.                      |
 | [livery-playback-change](#liveryplaybackchangeevent) | Dispatched when `playbackState` has changed.          |
+| [livery-phase-change](#liveryphasechangeevent)       | Dispatched when `streamPhase` has changed.            |
 | [livery-recovered](#liveryrecoveredevent)            | Dispatched when player has recovered from an error.   |
 | [livery-volume-change](#liveryvolumechangeevent)     | Dispatched when `volume` and/or `muted` have changed. |
 
@@ -241,6 +252,14 @@ Dispatched with event type: `'livery-playback-change'` when `playbackState` has 
 | Property        | Type                                                                                                                    | Description     |
 | --------------- | ----------------------------------------------------------------------------------------------------------------------- | --------------- |
 | `playbackState` | `'BUFFERING'` \| `'ENDED'` \| `'FAST_FORWARD'` \| `'PAUSED'` \| `'PLAYING'` \| `'REWIND'` \| `'SEEKING'` \| `'SLOW_MO'` | Playback state. |
+
+#### LiveryPhaseChangeEvent
+
+Dispatched with event type: `livery-phase-change` when `streamPhase` has changed.
+
+| Property | Type                            | Description   |
+| -------- | ------------------------------- | ------------- |
+| `phase`  | `'PRE'` \| `'LIVE'` \| `'POST'` | Stream phase. |
 
 #### LiveryRecoveredEvent
 

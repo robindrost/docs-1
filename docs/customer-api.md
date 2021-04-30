@@ -27,17 +27,28 @@ This section explains how this API can be used.
 GET api/1/services/analytics/{streamId}/dimensions
 ```
 
-| Parameter       | Type  | Mandatory | Description                                                                                                                             |
-| --------------- | ----- | --------- | --------------------------------------------------------------------------------------------------------------------------------------- |
-| streamId        | Path  | Yes       | The stream identifier.                                                                                                                  |
-| from            | Query | Yes       | Start date in milliseconds                                                                                                              |
-| until           | Query | Yes       | End date in milliseconds                                                                                                                |
-| metric          | Query | No        | Currently only accepts "viewers". Defaults to viewers                                                                                   |
-| dimension       | Query | No        | Must be one of the following: PLATFORM, CONNECTION_TYPE, VIDEO_QUALITY, ENCODER_TYPE, PACKAGE_NAME, DEVICE_MODEL. Defaults to PLATFORM) |
-| minutesInterval | Query | No        | Minute intervals to split the data into as integer (1-1440). **Cannot be used along with the points parameter**                         |
-| points          | Query | No        | The amount of points to split the data into as positive integer (1+). **Cannot be used along with the minutesInterval parameter**       |
+| Parameter       | Type  | Mandatory | Description                                                                                                                       |
+| --------------- | ----- | --------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| streamId        | Path  | Yes       | The stream identifier                                                                                                             |
+| from            | Query | Yes       | Start date in milliseconds                                                                                                        |
+| until           | Query | Yes       | End date in milliseconds                                                                                                          |
+| metric          | Query | No        | Currently only accepts "viewers". Defaults to viewers                                                                             |
+| dimension       | Query | No        | Which type of data to query, see info below                                                                                       |
+| minutesInterval | Query | No        | Minute intervals to split the data into as integer (1-1440). **Cannot be used along with the points parameter**                   |
+| points          | Query | No        | The amount of points to split the data into as positive integer (1+). **Cannot be used along with the minutesInterval parameter** |
 
 The minimum range to fetch data for is one minute, the maximum range is currently one week.
+
+These are the dimensions that are supported:
+
+| Dimension       | Description                                                                                                        |
+| --------------- | ------------------------------------------------------------------------------------------------------------------ |
+| PLATFORM        | The type of SDK that is being used. This will be either android, iOS or web                                        |
+| CONNECTION_TYPE | The type of internet connection that viewers used, only available with the Android or iOS SDK                      |
+| VIDEO_QUALITY   | The video quality that viewers watched                                                                             |
+| ENCODER_TYPE    | Shows if viewers were watching the stream of the MAIN or the BACKUP encoder                                        |
+| PACKAGE_NAME    | This is the package name of the native app or the domain name of the website that viewers used to watch the stream |
+| DEVICE_MODEL    | The type of device that viewers were using to watch the stream                                                     |
 
 For example, to get viewer data per platform in a single point:
 

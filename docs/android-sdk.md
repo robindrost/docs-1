@@ -128,7 +128,6 @@ The player might not be initializaed right after `createPlayer` call. For exampl
 initialization finishes. [LiveryPlayerView.CreatePlayerListener and LiveryPlayerView.CreatePlayerErrorListener](#CreatePlayer-feedback)
 provide more information if the player was initialized or there was an error during initialization.
 
-
 ### Add Life-cycle methods
 
 It is critical to implement the lifecycle methods of Livery Player. Otherwise, you can notice the playback is still going on when an activity is paused, stopped or destroyed. Therefore add these lifecycle methods on your activity or fragment’s onDestroy, onStop, onPause and onResume blocks.
@@ -210,7 +209,6 @@ about the SDK initization process:
 
 ### Configure LiveryPlayerView
 
-
 #### CreatePlayer feedback
 
 It is possible to have more control of the LiveryPlayerView initialization. There are 2 interfaces in
@@ -230,7 +228,6 @@ It is possible to have more control of the LiveryPlayerView initialization. Ther
       }
    });
 ```
-
 
 #### LiveryPlayerView options
 
@@ -260,7 +257,6 @@ The remote configuration is automatically applied when calling createPlayer with
    playerView.createPlayer(playerOptions, this::onPlayerCreated, this::onCreatePlayerError);
 
 ```
-
 
 ## SDK Methods
 
@@ -439,13 +435,13 @@ Each of these properties can be defined individually via LiveryPlayerOptions.Bui
 
 class **_LiveryPlayerOptions_**
 
-| Name       | Type                    | Default                       | Description                                                                                                          |
-| ---------- | ----------------------- | ----------------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| `autoPlay` | `Boolean`               | `true`                       | Determines whether video shall play immediately after [createPlayer](#creating-player).                              |
-| `controls` | `LiveryControlsOptions` | `new LiveryControlsOptions()` | Provides access to [LiveryControlsOptions](#livery-controls-options). Player controls can be tweaked by this object. |
-| `fit`      | `LiveryResizeMode`      | `CONTAIN`                     | Provides access to LiveryResizeMode. Video size inside the player view can be changed from here.                     |
-| `poster`   | `String`                | ``                            | Represents URL to poster image. When this property is not empty, the player will show a poster on creation.          |
-| `sources`  | `String` or `Array<String>` | None                            | Defines the sources URLs. |
+| Name       | Type                        | Default                       | Description                                                                                                          |
+| ---------- | --------------------------- | ----------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| `autoPlay` | `Boolean`                   | `true`                        | Determines whether video shall play immediately after [createPlayer](#creating-player).                              |
+| `controls` | `LiveryControlsOptions`     | `new LiveryControlsOptions()` | Provides access to [LiveryControlsOptions](#livery-controls-options). Player controls can be tweaked by this object. |
+| `fit`      | `LiveryResizeMode`          | `CONTAIN`                     | Provides access to LiveryResizeMode. Video size inside the player view can be changed from here.                     |
+| `poster`   | `String`                    | ``                            | Represents URL to poster image. When this property is not empty, the player will show a poster on creation.          |
+| `sources`  | `String` or `Array<String>` | None                          | Defines the sources URLs.                                                                                            |
 
 ### Player Resize Mode
 
@@ -467,14 +463,13 @@ Available controls are listed on the table below.
 
 class **_LiveryControlsOptions_**
 
-| Name           | Type      | Default | Description                                   |
-| -------------- | --------- | ------- | --------------------------------------------- |
-| `fullscreen`   | `Boolean` | `false` | Sets the visibility of the fullscreen button. |
-| `mute`         | `Boolean` | `false` | Sets the visibility of the mute button.       |
-| `quality`      | `Boolean` | `false` | Sets the visibility of the quality button.    |
-| `error`        | `Boolean` | `false` | Sets the visibility of the error overlay.     |
-| `cast`         | `Boolean` | `false` | Sets the visibility of the cast feature.      |
-
+| Name         | Type      | Default | Description                                   |
+| ------------ | --------- | ------- | --------------------------------------------- |
+| `fullscreen` | `Boolean` | `false` | Sets the visibility of the fullscreen button. |
+| `mute`       | `Boolean` | `false` | Sets the visibility of the mute button.       |
+| `quality`    | `Boolean` | `false` | Sets the visibility of the quality button.    |
+| `error`      | `Boolean` | `false` | Sets the visibility of the error overlay.     |
+| `cast`       | `Boolean` | `false` | Sets the visibility of the cast feature.      |
 
 ### Player Events
 
@@ -482,17 +477,17 @@ It might be important in some cases to receive player events and process the dat
 
 class **_LiveryPlayerListener_**
 
-| Name                                                           | Description                                                                                                                                |
-| -------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
-| `onActiveQualityChanged(LiveryQuality quality)`                | Called when the active quality of the media being played has changed.                                                                      |
-| `onPlayerError(Exception e)`                                   | Called when the player encounters an error.                                                                                                |
-| `onPlayerStateChanged(LiveryPlayerState playerState)`          | Called when the playback state of the player has changed.                                                                                  |
-| `onProgressChanged(long buffer, long latency)` | Called in short intervals while playing, buffer and latency values in milliseconds can be actively retrieved from here. |
-| `onQualitiesChanged(List<LiveryQuality> qualities)`            | Called when available qualities of media have changed.                                                                                     |
-| `onPlaybackRateChanged(float rate)`                            | Called when the playback rate of current media has changed.                                                                                |
-| `onRecovered()`                                                | Called when an error is recovered.                                                                                                         |
-| `onTimeUpdate(long currentTime)`                               | Called when the current time of media has changed.                                                                                         |
-| `onSourceChanged(String source)`                               | Called when the media source URL of the player has changed.                                                                                |
+| Name                                                  | Description                                                                                                             |
+| ----------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| `onActiveQualityChanged(LiveryQuality quality)`       | Called when the active quality of the media being played has changed.                                                   |
+| `onPlayerError(Exception e)`                          | Called when the player encounters an error.                                                                             |
+| `onPlayerStateChanged(LiveryPlayerState playerState)` | Called when the playback state of the player has changed.                                                               |
+| `onProgressChanged(long buffer, long latency)`        | Called in short intervals while playing, buffer and latency values in milliseconds can be actively retrieved from here. |
+| `onQualitiesChanged(List<LiveryQuality> qualities)`   | Called when available qualities of media have changed.                                                                  |
+| `onPlaybackRateChanged(float rate)`                   | Called when the playback rate of current media has changed.                                                             |
+| `onRecovered()`                                       | Called when an error is recovered.                                                                                      |
+| `onTimeUpdate(long currentTime)`                      | Called when the current time of media has changed.                                                                      |
+| `onSourceChanged(String source)`                      | Called when the media source URL of the player has changed.                                                             |
 
 #### Registering Player Event Listener
 
@@ -595,12 +590,12 @@ To customize the loading indicator, create a layout named `livery_player_audio_o
 
 For this layout, there are no IDs available. This means that whenever the player is playing only audio, this layout will be shown.
 
-
 ## Interactive Bridge
 
 It is possible to interact with LiveryPlayerView and the Interactive Layer using the [Interactive SDK](/interactive-sdk?id=livery-interactive-sdk).
 
 The interactive URL can be defined with:
+
 ```java
 LiveryPlayerView playerView = ...
 String url = ...
@@ -609,12 +604,12 @@ playerView.setInteractiveUrl(url);
 
 Besides the [methods](/interactive-sdk?id=methods) already definied on the Interactive SDK to get values like the player **latency**, device **orientation**, etc. you can get and send custom messages.
 
-
 ### Custom commands
 
 From the Android LiveryPlayerView it is possible to send and receive custom command to/from the interactive layer.
 
 A custom command with a specific `name` and `argument` can be sent with the `sendInteractiveBridgeCustomCommand` method:
+
 ```java
 String name = ...
 String argument = ...
@@ -643,8 +638,6 @@ playerView.setInteractiveBridgeCustomCommandListener(new LiveryInteractiveBridge
 });
 ```
 
-
-
 ## Sentry Integration
 
 Livery uses Sentry for error reporting. In order to setup sentry.io with the correct DNS LiverySDK forces its initialization to manual
@@ -656,7 +649,6 @@ To enable sentry.io auto initialization please add the following to the Applicat
 <meta-data android:name="io.sentry.auto-init" android:value="true" tools:replace="android:value" />
 ```
 
-
 ## Migration Guide
 
 ### Migration from 1.7 to 2.0
@@ -666,10 +658,13 @@ To enable sentry.io auto initialization please add the following to the Applicat
 With version 2.0 we provide more control over LiverySDK initialization and more feedback.
 
 The method in LiverySDK:
+
 ```java
 public void updateRemoteConfig(String streamID);
 ```
+
 was replaced with
+
 ```java
 public void initialize(String streamId, StateListener listener)
 ```
@@ -681,9 +676,11 @@ it is adviced to setup LiverySDK manually by setting the boolean resource `liver
 in [Manual SDK Configuration](#Manual-SDK-Configuration) section.
 
 The methods
+
 ```java
 LiverySDK.getPlayerOptions()
 ```
+
 where removed. Please use LiveryControlsOptions and LiveryPlayerOptions builders as is explained in
 [LiveryPlayerView options](#LiveryPlayerView-options)
 
@@ -701,14 +698,16 @@ playerView.createPlayer(this::onPlayerCreated, this::onCreatePlayerError);
 although the `createPlayer(LiveryPlayerOptions)` still [exist](#LiveryPlayerView-options).
 
 The method
+
 ```java
 LiveryPlayerView.loadInteractiveLayer(String);
 ```
+
 was renamed to
+
 ```java
 LiveryPlayerView.setInteractiveUrl(String);
 ```
-
 
 #### LiveryPlayerOptions and LiveryControlsOptions
 
@@ -724,15 +723,14 @@ LiveryPlayerListener.onProgressChanged was changed from
 ```java
 onProgressChanged(long buffer, long bufferEnd, long latency)
 ```
+
 to
+
 ```java
 onProgressChanged(long buffer, long latency)
 ```
 
 The methods `onDurationChanged` and `onVolumeChanged` were also removed.
-
-
-####
 
 ## Change log
 
@@ -753,7 +751,6 @@ The methods `onDurationChanged` and `onVolumeChanged` were also removed.
 - Removed overrideFullscreenButton and overrideQualityButton methods
 - Removed all exoplayer methods
 - Removed bufferEnd, zeroTimestamp, streamTimestamp, decodedFrames, droppedFrames, setPlaybackRate, getStreamType, videoType, onDurationChanged
-
 
 ### 1.7.16
 

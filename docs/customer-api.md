@@ -17,6 +17,114 @@ There are two types of API Keys: Customer API keys and Stream API keys.
 
 ## API Calls
 
+### GetAnalytics
+
+The Livery analytics API allows customers to get insights in the performance of their streams.
+The API consist of a single REST call with a number of query parameters.
+This section explains how this API can be used.
+
+```
+GET api/1/services/analytics/{streamId}/dimensions
+```
+
+| Parameter       | Type  | Mandatory | Description                                                                                                                             |
+| --------------- | ----- | --------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| streamId        | Path  | Yes       | The stream identifier.                                                                                                                  |
+| from            | Query | Yes       | Start date in milliseconds                                                                                                              |
+| until           | Query | Yes       | End date in milliseconds                                                                                                                |
+| metric          | Query | No        | Currently only accepts "viewers". Defaults to viewers                                                                                   |
+| dimension       | Query | No        | Must be one of the following: PLATFORM, CONNECTION_TYPE, VIDEO_QUALITY, ENCODER_TYPE, PACKAGE_NAME, DEVICE_MODEL. Defaults to PLATFORM) |
+| minutesInterval | Query | No        | Minute intervals to split the data into as integer (1-1440). **Cannot be used along with the points parameter**                         |
+| points          | Query | No        | The amount of points to split the data into as positive integer (1+). **Cannot be used along with the minutesInterval parameter**       |
+
+The minimum range to fetch data for is one minute, the maximum range is currently one week.
+
+For example, to get viewer data per platform in a single point:
+
+```
+GET api/1/services/analytics/{streamId}/dimensions?from=1606246100000&until=1606247300000&points=1
+```
+
+Response example:
+
+```json
+{
+  "data": [
+    {
+      "timestamp": 1606246100000,
+      "values": [
+        {
+          "dimension": "android",
+          "value": 4699
+        },
+        {
+          "dimension": "web",
+          "value": 707
+        },
+        {
+          "dimension": "ios",
+          "value": 12
+        }
+      ]
+    }
+  ]
+}
+```
+
+Or to retrieve the ENCODER_TYPE dimension in 10 minute intervals:
+
+```
+GET api/1/services/analytics/{streamId}/dimensions?from=1606246100000&until=1606247300000&dimension=ENCODER_TYPE&minutesInterval=10
+```
+
+Response example:
+
+```json
+{
+  "data": [
+    {
+      "timestamp": 1606242000000,
+      "values": [
+        {
+          "dimension": "main",
+          "value": 1600
+        },
+        {
+          "dimension": "backup",
+          "value": 13
+        }
+      ]
+    },
+    {
+      "timestamp": 1606242600000,
+      "values": [
+        {
+          "dimension": "main",
+          "value": 5309
+        },
+        {
+          "dimension": "backup",
+          "value": 400
+        }
+      ]
+    },
+    {
+      "timestamp": 1606243200000,
+      "values": [
+        {
+          "dimension": "main",
+          "value": 4811
+        },
+        {
+          "dimension": "backup",
+          "value": 444
+        }
+      ]
+    }
+  ]
+}
+```
+
 ### GetCustomer
 
 Returns the customer data that is available for a given customerId.

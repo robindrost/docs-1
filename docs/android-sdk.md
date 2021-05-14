@@ -12,6 +12,10 @@ Livery Android SDK is compatible with Android 5.0 (API level 21) or higher.
 
 ### Configure Gradle
 
+From version 2.0.0 onwards Livery SDK is published via [jitpack.io](https://jitpack.io).
+
+You can still use bintray repository and credentials, please follow the steps in [here](#Installation-from-bintray).
+
 To install Livery SDK into your project, follow these steps below.
 
 #### Resolve Repositories
@@ -21,26 +25,21 @@ In your project level build.gradle file, add these closures to **allprojects** >
 ```groovy
 allprojects {
    repositories {
-       //...
-       google()
-       jcenter()
-       maven { url 'https://jitpack.io' }
-       maven {
-           url "https://exmg.bintray.com/livery"
-           credentials {
-               username 'received_username'
-               password 'bintray_API_key'
-           }
-       }
+      //...
+      google()
+      jcenter()
+      maven {
+         url 'https://jitpack.io'
+         credentials { username '<your access token>' }
+      }
    }
 }
 ```
 
-You can get the Bintray API key by following these steps below:
+To retrieve your access token log into http://jitpack.io with your GitHub account and go to https://jitpack.io/w/user.
 
-1. Navigate to [Bintray Login](https://bintray.com/login) then login with the credentials given to you.
-2. After logging in, go to [Edit Profile](https://bintray.com/profile/edit) from the menu on top right which is shown by clicking to your username.
-3. Once you land to Edit Profile page, you should be able to see more menu items on the left. Click to 'API Key' and you will be asked to input your password. After verifying the password, API Key will be shown.
+Your GitHub account has to be granted access to the packages.
+If you are unable to access the packages please ask your support contact to grant you access.
 
 #### Add Implementations
 
@@ -49,7 +48,8 @@ Add these implementations inside **dependencies** to your app-level build.gradle
 ```groovy
 dependencies {
    //...
-   implementation 'tv.exmg.livery:livery:2.0.0'
+   def livery_sdk_version = '2.0.0'
+   implementation "com.liveryvideo:livery-sdk-android:$livery_sdk_version"
    //...
 }
 ```
@@ -731,6 +731,50 @@ onProgressChanged(long buffer, long latency)
 ```
 
 The methods `onDurationChanged` and `onVolumeChanged` were also removed.
+
+## Installation from bintray
+
+It is still possible to use bintray repository/credentials for until version 2.0.0.
+
+#### Resolve Repositories
+
+In your project level build.gradle file, add these closures to **allprojects** > **repositories**.
+
+```groovy
+allprojects {
+   repositories {
+       //...
+       google()
+       jcenter()
+       maven { url 'https://jitpack.io' }
+       maven {
+           url "https://exmg.bintray.com/livery"
+           credentials {
+               username 'received_username'
+               password 'bintray_API_key'
+           }
+       }
+   }
+}
+```
+
+You can get the Bintray API key by following these steps below:
+
+1. Navigate to [Bintray Login](https://bintray.com/login) then login with the credentials given to you.
+2. After logging in, go to [Edit Profile](https://bintray.com/profile/edit) from the menu on top right which is shown by clicking to your username.
+3. Once you land to Edit Profile page, you should be able to see more menu items on the left. Click to 'API Key' and you will be asked to input your password. After verifying the password, API Key will be shown.
+
+#### Add Implementations
+
+Add these implementations inside **dependencies** to your app-level build.gradle.
+
+```groovy
+dependencies {
+   //...
+   implementation 'tv.exmg.livery:livery:2.0.0'
+   //...
+}
+```
 
 ## Change log
 

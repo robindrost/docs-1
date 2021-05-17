@@ -177,7 +177,7 @@ Congratulations! You have implemented Livery SDK successfully.
 
 To have more control over Livery SDK, next sections should provide you more knowledge.
 
-## Advance configuration
+## Advanced configuration
 
 ### Manual SDK Configuration
 
@@ -206,6 +206,29 @@ about the SDK initization process:
       }
    });
 ```
+
+When choosing the manual initialization neither LiverySDK nor LiveryPlayerView will automatically retry to initialize in
+case or errors. Error handling and retry needs to be done manually.
+
+```java
+void initializeSdk(String streamId) {
+   LiverySDK.getInstance().initialize(streamId, new LiverySDK.StateListener() {
+      @Override
+      public void stateChanged(LiverySDK.State state) {
+         if (LiverySDK.State.INITIALIZED.equals(state)) {
+               // continue
+         } else {
+               // handle error
+               Exception error = state.error;
+               // retry
+               requireView().post(() -> initializeSdk(streamId));
+         }
+      }
+   });
+}
+```
+
+LiveryPlayerView `createPlayer` should only be called after LiverySDK is initialized, otherwise this method will fail.
 
 ### Configure LiveryPlayerView
 

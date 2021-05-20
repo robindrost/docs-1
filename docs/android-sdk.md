@@ -48,7 +48,7 @@ Add these implementations inside **dependencies** to your app-level build.gradle
 ```groovy
 dependencies {
    //...
-   def livery_sdk_version = '2.0.0'
+   def livery_sdk_version = '2.1.0'
    implementation "com.liveryvideo:livery-sdk-android:$livery_sdk_version"
    //...
 }
@@ -800,6 +800,17 @@ dependencies {
 ```
 
 ## Change log
+
+### 2.1.0
+
+- Improved server error handling
+- Fixed LiveryPlayerView.getActiveQuality() when quality was set manually
+- LiveryPlayerView.createPlayer callback methods are now also called when SDK is not initialized
+- Allow analytics and Sentry sampling
+- Added remote config update interval
+- Added subscribeOrientation
+- Updated Sentry to v3.1.3
+
 
 ### 2.0.0
 

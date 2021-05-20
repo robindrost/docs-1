@@ -808,7 +808,7 @@ dependencies {
 - LiveryPlayerView.createPlayer callback methods are now also called when SDK is not initialized
 - Allow analytics and Sentry sampling
 - Added remote config update interval
-- Added subscribeOrientation
+- Added subscribeOrientation to interactive layer
 - Updated Sentry to v3.1.3
 
 

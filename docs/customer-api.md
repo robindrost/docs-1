@@ -2,6 +2,20 @@
 
 This document describes the API calls that are available to customers. These calls can be used by application developers that are using the Livery streaming solution and want to control the stream from within their own software instead of relying on the Livery producer console.
 
+The paths in this document should be concatenated to the domain name of a environment to make the full URL for a request.
+The domain name for the production environment is `backend.video-encoder.playtotv.com`.
+So if the streamId is 1234 and the documentation mentions this API call:
+
+```
+GET api/1/services/analytics/{streamId}/dimensions
+```
+
+The URL for the API call would be:
+
+```
+https://backend.video-encoder.playtotv.com/api/1/services/analytics/1234/dimensions`
+```
+
 ## Authorization
 
 Access to the API calls is restricted to authorized users only. Authorization is done with API Keys.
@@ -53,7 +67,7 @@ These are the dimensions that are supported:
 For example, to get viewer data per platform in a single point:
 
 ```
-GET api/1/services/analytics/{streamId}/dimensions?from=1606246100000&until=1606247300000&points=1
+GET api/1/services/analytics/{streamId}/dimensions?from=1606246100000&until=1606247300000&dimension=PLATFORM&points=1
 ```
 
 Response example:
@@ -134,6 +148,22 @@ Response example:
     }
   ]
 }
+```
+
+### Test data
+
+There is a dev environment that allows you to test the analytics API calls before you have had any live streams.
+
+| Field       | Description                                                                                                                                    |
+| ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| Domain name | backend.video-encoder-dev.playtotv.com                                                                                                         |
+| streamId    | 5e7a10bee4b046f00ad17248                                                                                                                       |
+| API key     | 1568285122117_c0fa8dc13a4c104b673b4b2aa664341200ef81fbde330b03404621f178f9e158eae47d1e9b071d20f7ddd8ae9ba4f1df858081f31b43b809bbef920c04459951 |
+
+For example this API call can be used to retrieve a mocked version of the viewers per platform:
+
+```
+curl -H "X-PlayToTV-ApiKey: 1568285122117_c0fa8dc13a4c104b673b4b2aa664341200ef81fbde330b03404621f178f9e158eae47d1e9b071d20f7ddd8ae9ba4f1df858081f31b43b809bbef920c04459951" https://backend.video-encoder-dev.playtotv.com/api/1/services/analytics/5e7a10bee4b046f00ad17248/dimensions?dimension=PLATFORM&from=1606246100000&until=1606247300000&points=1
 ```
 
 ### GetCustomer

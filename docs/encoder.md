@@ -2,6 +2,17 @@
 
 ## Hardware encoder
 
+The hardware encoder accepts a HDMI or SDI feed and uploads it to the CDN.
+The two most important benefits of this device over the cloud encoder are:
+The first is that the video only needs to be encoded once instead of twice.
+This means using the hardware encoder will result in better video quality.
+And the second is that the hardware encoder sends out metrics to our backend.
+This allows us to diagnose issues when they occur on the internet connection between the encoder and the CDN.
+
+The hardware encoder needs to communicate over the internet so send out metrics and allow remote diagnosis.
+For this it's required that the encoder can make outbound connections on port 443 and port 22.
+Please make sure to open up these 2 ports if the encoder is deployed in an environment with a firewall.
+
 ### Input signal
 
 Livery provides hardware encoders with two types of input connectors.

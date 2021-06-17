@@ -519,7 +519,7 @@ Note:
 ## Example App
 
 Example iOS application which demonstrates how to use the Livery iOS SDK.<br>
-You can find it on the following git repository: [Livery iOS SDK Example App](https://github.com/exmg/livery-sdk-ios-example)
+You can find it on the following git repository: [Livery iOS SDK Example App](https://github.com/liveryvideo/livery-sdk-ios-example)
 
 Notes:
 

@@ -3,7 +3,7 @@
 [![NPM package](https://img.shields.io/npm/v/@exmg/livery)](https://www.npmjs.com/package/@exmg/livery)
 [![Changelog](https://img.shields.io/badge/docs-CHANGELOG-blue)](web-sdk-changelog.md)
 [![License](https://img.shields.io/npm/l/@exmg/livery)](https://unpkg.com/browse/@exmg/livery/LICENSE)
-[![Built with open-wc recommendations](https://img.shields.io/badge/built%20with-open--wc-blue.svg)](https://open-wc.org/)
+[![Build with Lit](https://img.shields.io/badge/build%20with-Lit-blue.svg)](https://lit.dev/)
 
 Ex Machina Group Livery Web SDK for use with Livery video streams.
 

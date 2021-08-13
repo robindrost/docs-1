@@ -61,6 +61,29 @@ And then loaded in your JavaScript and bundled as you like:
 import '@exmg/livery';
 ```
 
+#### Using with Next.js
+Next.js makes use of server side rendering, which the Livery Web SDK does not currently support. However, users of Next.js can still use the SDK by making use of Next.js’s support for [dynamic imports](https://nextjs.org/docs/advanced-features/dynamic-import), which ensure the module being imported is evaluated at runtime on the client. The code below illustrates basic usage with Next.js. 
+
+```javascript
+// do not import('@exmg/livery') here
+
+function MyComponent() {
+ useEffect(
+   () => {
+     import('@exmg/livery')
+   },
+   [] // tell react to only use this effect on mount
+ )
+ return (
+   <livery-player
+     streamid="5ddb98f5e4b0937e6a4507f2"
+     style="width: 100%; height: 50vh;"
+   ></livery-player>
+ )
+}
+```
+
+
 ## Usage
 
 ### HTML

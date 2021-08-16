@@ -48,7 +48,7 @@ Add these implementations inside **dependencies** to your app-level build.gradle
 ```groovy
 dependencies {
    //...
-   def livery_sdk_version = '2.1.0'
+   def livery_sdk_version = '2.1.1'
    implementation "com.liveryvideo:livery-sdk-android:$livery_sdk_version"
    //...
 }
@@ -800,6 +800,9 @@ dependencies {
 ```
 
 ## Change log
+
+### 2.1.1
+- Fix crash with devices using Android API level 25 or lower
 
 ### 2.1.0
 

@@ -521,7 +521,7 @@ Note:
 - If your application already contains AWSPinpoint make sure its version matches the one used in the SDK, which is:
 
 ```
-  pod 'AWSPinpoint', '~> 2.22'
+  pod 'AWSPinpoint', '~> 2.24'
 ```
 
 ## Example App

@@ -39,7 +39,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 source 'https://github.com/exmg/livery-sdk-ios-podspec.git'
 
 target 'MyProject' do
-  pod "Livery", "1.1.0"
+  pod "Livery", "1.2.0"
 end
 ```
 
@@ -108,7 +108,7 @@ For a sample application code utilizing these minimal steps see the LiveryExampl
 
 | Name                                                | Returns  | Description                                                                                                        |
 | --------------------------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------ |
-| `initialize(streamId, completionQueue, completion)` | `void`   | Livery SDK initialization method.                                                                                  |
+| `initialize(streamId, configType, completionQueue, completion)` | `void`   | Livery SDK initialization method.                                                                                  |
 | `createPlayer()`                                    | `Player` | Create a Live Player. This method can receive specified options if you need to override the remote configurations. |
 
 ### SDK Initialize
@@ -117,10 +117,12 @@ The SDK `initialize()` method has to be called on an sdk instance before Live Pl
 
 ```swift
 let liveSDK = LiverySDK()
-liveSDK.initialize(streamId: String, completionQueue: DispatchQueue = .main, completion: (LiverySDK.ResultConfig) -> Void)
+liveSDK.initialize(streamId: String, configType: String = LiverySDK.defaultConfigType, completionQueue: DispatchQueue = .main, completion: (LiverySDK.ResultConfig) -> Void)
 ```
 
-The streamId is used to determine the remote configuration url and is fetched from it. If the remote configuration fails to be fetched the SDK will fail to initialize.
+The `streamId` is used to determine the remote configuration url and is fetched from it. If the remote configuration fails to be fetched the SDK will fail to initialize.
+
+The `configType` defines the type of the remote conconfiguration that would be requested on the initialization. The `LiverySDK.defaultConfigType` is `IOS`.
 
 The `completionQueue` defines the `DispatchQueue` in which the `completion` callback is called.
 
@@ -217,8 +219,10 @@ These are the options to be passed to Players:
 | `minRecoveryDelay` | `Integer`                      | `10`       | Minimum delay in seconds before starting automatic recovery.                                                      |
 | `mute`             | `Boolean`                      | `false`    | Determines whether mute button should be displayed or not on the [`Player Controls`](#player-controls).           |
 | `muted`            | `Boolean`                      | `false`    | Determines whether media should be muted or not.                                                                  |
+| `play`             | `Boolean`                      | `false`    | Determines whether play button should be displayed or not on the [`Player Controls`](#player-controls).                              |
 | `poster`           | `String`                       | `""`       | URL for an image to be shown while the video is loading.                                                          |
 | `quality`          | `Boolean`                      | `false`    | Determines whether select quality button should be displayed or not on the [`Player Controls`](#player-controls). |
+| `scrubber`         | `Boolean`                      | `false`    | Determines whether scrubber / progress bar view should be displayed or not on the [`Player Controls`](#player-controls).                              |
 | `sources`          | `String[]`                     | `[]`       | Array of media source URLs from which the first that can be played will be selected.                              |
 | `targetLatency`    | `Integer`                      | `3`        | Target live latency in seconds. If 0 then syncing is disabled.                                                    |
 
@@ -269,17 +273,21 @@ protocol **_PlayerDelegate_**
 
 ```swift
 public protocol PlayerDelegate: class {
-    func activeQualityDidChange(activeQuality: Quality?) // Emitted when activeQuality has changed
+    func activeQualityDidChange(activeQuality: Quality?) // This method is deprecated and will be removed on the next version
+    func activeQualityDidChange(activeQuality: Quality?, auto: Bool) // Emitted when activeQuality has changed. 
+                                                                    // Auto is 'true' when it was changed through the ABR and 'false' when it was changed manually
     func bandwidthTest(result: Result<UInt32, Error>) // Emitted when trying to upgrade video bandwidth
     func playbackStateDidChange(playbackState: Player.PlaybackState) // Emitted when playbackState has changed
     func playerDidFail(error: Error) // Emitted when an error occurs
     func playerDidRecover() // Emitted when player has recovered from an error
     func progressDidChange(buffer: Int, latency: Int) // Emitted periodically to inform of progress downloading the media
     func qualitiesDidChange(qualities: [Quality]) // Emitted when qualities have changed
-    func selectedQualityDidChange(selectedQuality: Quality?) // Emitted when selectedQuality has changed
+    func selectedQualityDidChange(selectedQuality: Quality?) // This method is deprecated and will be removed on the next version. 
+                                                            // Use the new 'activeQualityDidChange(activeQuality: Quality?, auto: Bool)'
     func sourceDidChange(currentSource: URL?) // Emitted when currentSource has changed
     func timeDidUpdate(currentTime: TimeInterval) // Emitted periodically to inform of current playback time changing
     func volumeDidChange() // Emitted when volume or muted has changed
+    func playbackRateDidChange(playbackRate: Float) // Emitted when playbackRate has changed
 }
 ```
 
@@ -538,10 +546,10 @@ Notes:
 - The `Podfile` that you configure to install the Livery SDK must contain:
 
 ```
-  pod 'AWSPinpoint', '~> 2.23'
+  pod 'AWSPinpoint', '~> 2.24'
   pod 'TrueTime', '~> 5.0.3'
   pod 'Sentry', '~> 6.2'
-  pod 'google-cast-sdk-no-bluetooth', '~> 4.5'
+  pod 'google-cast-sdk-no-bluetooth-dynamic-ios', '~> 4.4'
 
 ```
 
@@ -569,6 +577,7 @@ Please see example MediaPlayerLive example app’s Podfile and check [https://gi
 
 | Version | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1.2.0   | Improvements on file download speed measurement.<br> Improvements on how the player goes to full screen mode.<br> Added `scrubber` and `play` controls options.<br> Added `configType` to the LiverySDK initialize method to setup the type of the remote conconfiguration file.<br> Added `playbackRateDidChange(playbackRate: Float)` to PlayerDelegate.<br> PlayerDelegate Fixed `Quality` and `FullScreen` controls showing up when options set them to not show.<br> Fixed crash caused by the `PingService`.<br> Deprecate PlayerDelegate's `activeQualityDidChange(activeQuality: Quality?)` and `selectedQualityDidChange(selectedQuality: Quality?)`.<br>|
 | 1.1.0   | Improvements on ABR algorithm.<br> Implemented sampling of analytics events.<br> Implemented remote config update interval.<br> Fixed bitcode archiving error.<br> Fixed crash on segment data processor.<br> Fixed crash on source switching.<br> Fixed crash on audio render.<br> |
 | 1.0.0   | Improvements on media download.<br> Improvements on Player UI.<br> Improved touch detection on Interactive Layer.<br> Added full screen implementation.<br> Added `error` and `currentSource` properties to the Player.<br> Added response callback to `sendInteractiveBridgeCustomCommand`.<br> Added `timeDidUpdate`, `sourceDidChange`, `progressDidChange`, `playerDidRecover` and `playerDidFail` to Player Events (aka `PlayerDelegate`).<br> Changed `sendCustomMessage` method to `sendInteractiveBridgeCustomCommand`.<br> Changed `airplayButton` to `castButton` on `LiveryPlayerControlView` protocol.<br> Replaced `load()` to `reload()`.<br> Replaced `duration` with `currentTime`.<br> Replaced Player Events through Notification Center with `PlayerDelegate` protocol.<br> Removed deprecated synchronous player methods.<br> Removed Life Cycle methods.<br> Removed `muted` and `loop` player options.<br> Removed `dispose`, `addListener`, `renderStatusDidChange`, `durationChange`, `playbackRate`, `streamType` and `videoType`.<br> Fixed a crash in segment data processor.<br> Fixed a crash when a device has no space left.<br> |
 | 0.12.0  | Added Cast.<br> Added Interactive Bridge.<br> Added Stream Phases.<br> Life Cycle methods are no longer needed.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |

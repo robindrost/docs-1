@@ -48,7 +48,7 @@ Add these implementations inside **dependencies** to your app-level build.gradle
 ```groovy
 dependencies {
    //...
-   def livery_sdk_version = '2.1.1'
+   def livery_sdk_version = '2.1.2'
    implementation "com.liveryvideo:livery-sdk-android:$livery_sdk_version"
    //...
 }
@@ -801,7 +801,12 @@ dependencies {
 
 ## Change log
 
+### 2.1.2
+
+- Analytics fix
+
 ### 2.1.1
+
 - Fix crash with devices using Android API level 25 or lower
 
 ### 2.1.0
@@ -813,7 +818,6 @@ dependencies {
 - Added remote config update interval
 - Added subscribeOrientation to interactive layer
 - Updated Sentry to v3.1.3
-
 
 ### 2.0.0
 

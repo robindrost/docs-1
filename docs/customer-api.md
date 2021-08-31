@@ -360,3 +360,15 @@ Request body:
 Response example:
 
 [filename](_customer-api/_example-StreamResponseDTO.md ':include')
+
+### RemoveStream
+
+Remove a stream.
+
+```
+DELETE api/1/services/streams?id=5f2022df27b35d1ebfe17b78
+```
+
+| Query parameter | Description                                                     |
+| --------------- | --------------------------------------------------------------- |
+| id              | The stream identifier. Required when not using a Stream API Key |

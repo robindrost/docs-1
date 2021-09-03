@@ -1,14 +1,14 @@
-# Livery Interactive SDK
+# Livery Video Interactive SDK
 
-[![GitHub last commit](https://img.shields.io/github/last-commit/exmg/livery-interactive)](https://github.com/exmg/livery-interactive)
-[![NPM package](https://img.shields.io/npm/v/@exmg/livery-interactive)](https://www.npmjs.com/package/@exmg/livery-interactive)
+[![GitHub last commit](https://img.shields.io/github/last-commit/liveryvideo/interactive)](https://github.com/liveryvideo/interactive)
+[![NPM package](https://img.shields.io/npm/v/@liveryvideo/interactive)](https://www.npmjs.com/package/@liveryvideo/interactive)
 [![Changelog](https://img.shields.io/badge/docs-CHANGELOG-blue)](interactive-sdk-changelog.md)
-[![License](https://img.shields.io/npm/l/@exmg/livery-interactive)](https://unpkg.com/browse/@exmg/livery-interactive/LICENSE)
-[![Built with open-wc recommendations](https://img.shields.io/badge/built%20with-open--wc-blue.svg)](https://open-wc.org/)
+[![License](https://img.shields.io/npm/l/@liveryvideo/interactive)](https://unpkg.com/browse/@liveryvideo/interactive/LICENSE)
+[![Build with Lit](https://img.shields.io/badge/build%20with-Lit-blue.svg)](https://lit.dev/)
 
-Ex Machina Group Livery Interactive SDK for use with LiveryPlayer interactive layer pages.
+Interactive SDK for use on Livery Video Player interactive layer pages.
 
-?> Demo page for use by LiveryPlayer: [interactive.liveryvideo.com](https://interactive.liveryvideo.com)
+?> Demo page for use by Livery Video Player: [interactive.liveryvideo.com](https://interactive.liveryvideo.com)
 
 ?> Demo page with mock player bridge: [interactive.liveryvideo.com/mock.html](https://interactive.liveryvideo.com/mock.html)
 
@@ -27,7 +27,7 @@ The UMD `main` bundle (as used by unpkg [CDN](#cdn)) supports iOS/iPadOS Safari 
 Install using NPM:
 
 ```bash
-npm install @exmg/livery-interactive
+npm install @liveryvideo/interactive
 ```
 
 ### CDN
@@ -35,7 +35,7 @@ npm install @exmg/livery-interactive
 Or load from [unpkg](https://unpkg.com):
 
 ```html
-<script src="https://unpkg.com/@exmg/livery-interactive@x.y.z"></script>
+<script src="https://unpkg.com/@liveryvideo/interactive@x.y.z"></script>
 ```
 
 ?> Replace the version (`x.y.z`) above by the version of the SDK that you wish to use. E.g: update to latest stable release periodically. Please see the [CHANGELOG](interactive-sdk-changelog.md) for details.
@@ -55,7 +55,7 @@ Can be used on Livery interactive layer pages to communicate with the surroundin
 #### Usage
 
 ```JS
-import { InteractiveBridge } from '@exmg/livery-interactive';
+import { InteractiveBridge } from '@liveryvideo/interactive';
 
 const bridge = new InteractiveBridge('*');
 

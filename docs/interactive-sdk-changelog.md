@@ -1,3 +1,3 @@
-# [Livery Interactive SDK](interactive-sdk.md) - CHANGELOG <!-- {docsify-ignore-all} -->
+# [Livery Video Interactive SDK](interactive-sdk.md) - CHANGELOG <!-- {docsify-ignore-all} -->
 
-[filename](https://unpkg.com/@exmg/livery-interactive/CHANGELOG.md ':include')
+[filename](https://unpkg.com/@liveryvideo/interactive/CHANGELOG.md ':include')

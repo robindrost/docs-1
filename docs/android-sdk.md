@@ -1,6 +1,4 @@
-# Livery Android SDK
-
-Ex Machina Group Livery Android SDK.
+# Livery Video Android SDK
 
 More information can be found at: [liveryvideo.com](https://liveryvideo.com).
 

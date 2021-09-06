@@ -277,9 +277,10 @@ Dispatched with event type: `'livery-volume-change'` when `volume` and/or `muted
 ## Integrations
 
 ### Next.js
+
 Next.js makes use of server side rendering, which the Livery Web SDK does not currently support. However, users of Next.js can still use the SDK by making use of Next.js’s support for [dynamic imports](https://nextjs.org/docs/advanced-features/dynamic-import) inside a [React Effect Hook](https://reactjs.org/docs/hooks-effect.html) or in a [React class component's `componentDidMount` lifecycle method](https://reactjs.org/docs/react-component.html#componentdidmount). When used in combination, this ensures the module being imported is evaluated at runtime on the client.
 
-Note that many of the examples that Next.js provides use a statement of the form `dynamic( import(...) )`. The `dynamic()` function is used for importing React components and is not used for importing `@liveryvideo/player`. The code below illustrates basic usage with Next.js. 
+Note that many of the examples that Next.js provides use a statement of the form `dynamic( import(...) )`. The `dynamic()` function is used for importing React components and is not used for importing `@liveryvideo/player`. The code below illustrates basic usage with Next.js.
 
 ```javascript
 // do not import('@liveryvideo/player') here

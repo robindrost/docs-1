@@ -1,16 +1,16 @@
-# Livery Video Interactive SDK
+# Livery Video Interactive Bridge
 
-[![GitHub last commit](https://img.shields.io/github/last-commit/liveryvideo/interactive)](https://github.com/liveryvideo/interactive)
-[![NPM package](https://img.shields.io/npm/v/@liveryvideo/interactive)](https://www.npmjs.com/package/@liveryvideo/interactive)
-[![Changelog](https://img.shields.io/badge/docs-CHANGELOG-blue)](interactive-sdk-changelog.md)
-[![License](https://img.shields.io/npm/l/@liveryvideo/interactive)](https://unpkg.com/browse/@liveryvideo/interactive/LICENSE)
+[![GitHub last commit](https://img.shields.io/github/last-commit/liveryvideo/interactive-bridge)](https://github.com/liveryvideo/interactive-bridge)
+[![NPM package](https://img.shields.io/npm/v/@liveryvideo/interactive-bridge)](https://www.npmjs.com/package/@liveryvideo/interactive-bridge)
+[![Changelog](https://img.shields.io/badge/docs-CHANGELOG-blue)](interactive-bridge-changelog.md)
+[![License](https://img.shields.io/npm/l/@liveryvideo/interactive-bridge)](https://unpkg.com/browse/@liveryvideo/interactive-bridge/LICENSE)
 [![Build with Lit](https://img.shields.io/badge/build%20with-Lit-blue.svg)](https://lit.dev/)
 
-Interactive SDK for use on Livery Video Player interactive layer pages.
+Bridge for communicating between a Livery Video Player and the interactive layer page shown within that.
 
-?> Demo page for use by Livery Video Player: [interactive.liveryvideo.com](https://interactive.liveryvideo.com)
+?> Demo page for use by Livery Video Player: [interactive-bridge.liveryvideo.com](https://interactive-bridge.liveryvideo.com)
 
-?> Demo page with mock player bridge: [interactive.liveryvideo.com/mock.html](https://interactive.liveryvideo.com/mock.html)
+?> Demo page with mock player bridge: [interactive-bridge.liveryvideo.com/mock.html](https://interactive-bridge.liveryvideo.com/mock.html)
 
 ## Support
 
@@ -27,7 +27,7 @@ The UMD `main` bundle (as used by unpkg [CDN](#cdn)) supports iOS/iPadOS Safari 
 Install using NPM:
 
 ```bash
-npm install @liveryvideo/interactive
+npm install @liveryvideo/interactive-bridge
 ```
 
 ### CDN
@@ -35,10 +35,10 @@ npm install @liveryvideo/interactive
 Or load from [unpkg](https://unpkg.com):
 
 ```html
-<script src="https://unpkg.com/@liveryvideo/interactive@x.y.z"></script>
+<script src="https://unpkg.com/@liveryvideo/interactive-bridge@x.y.z"></script>
 ```
 
-?> Replace the version (`x.y.z`) above by the version of the SDK that you wish to use. E.g: update to latest stable release periodically. Please see the [CHANGELOG](interactive-sdk-changelog.md) for details.
+?> Replace the version (`x.y.z`) above by the version of the SDK that you wish to use. E.g: update to latest stable release periodically. Please see the [CHANGELOG](interactive-bridge-changelog.md) for details.
 
 ## Exports
 
@@ -46,7 +46,7 @@ When using the UMD bundle, these can be found as properties of `livery` in the g
 
 ### version
 
-String property specifying version of Livery Interactive SDK.
+String property specifying version of Livery Video Interactive Bridge.
 
 ### InteractiveBridge
 
@@ -55,7 +55,7 @@ Can be used on Livery interactive layer pages to communicate with the surroundin
 #### Usage
 
 ```JS
-import { InteractiveBridge } from '@liveryvideo/interactive';
+import { InteractiveBridge } from '@liveryvideo/interactive-bridge';
 
 const bridge = new InteractiveBridge('*');
 

@@ -2,6 +2,6 @@
 - [Android SDK](android-sdk.md 'Livery Video Android SDK')
 - [iOS SDK](ios-sdk.md 'Livery Video iOS SDK')
 - [Web Player](web-player.md 'Livery Video Web Player')
-- [Interactive SDK](interactive-sdk.md 'Livery Video Interactive SDK')
+- [Interactive Bridge](interactive-bridge.md 'Livery Video Interactive Bridge')
 - [Embed](embed.md 'Livery Video Embed')
 - [Customer API](customer-api.md 'Livery Video Customer API')

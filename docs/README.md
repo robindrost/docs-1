@@ -1,7 +1,7 @@
-# Livery Docs
+# Livery Video Docs
 
-Ex Machina Group Livery documentation.
+Livery Video documentation.
 
 ?> Please find links to documentation of our SDKs and other components in the sidebar.
 
-More information can be found at: [liveryvideo.com](https://liveryvideo.com)
+More information can be found at: [liveryvideo.com](https://liveryvideo.com).

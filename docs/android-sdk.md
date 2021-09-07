@@ -1,6 +1,4 @@
-# Livery Android SDK
-
-Ex Machina Group Livery Android SDK.
+# Livery Video Android SDK
 
 More information can be found at: [liveryvideo.com](https://liveryvideo.com).
 
@@ -615,7 +613,7 @@ For this layout, there are no IDs available. This means that whenever the player
 
 ## Interactive Bridge
 
-It is possible to interact with LiveryPlayerView and the Interactive Layer using the [Interactive SDK](/interactive-sdk?id=livery-interactive-sdk).
+It is possible to interact with LiveryPlayerView and the Interactive Layer using the [Interactive Bridge](/interactive-bridge).
 
 The interactive URL can be defined with:
 
@@ -625,7 +623,7 @@ String url = ...
 playerView.setInteractiveUrl(url);
 ```
 
-Besides the [methods](/interactive-sdk?id=methods) already definied on the Interactive SDK to get values like the player **latency**, device **orientation**, etc. you can get and send custom messages.
+Besides the [methods](/interactive-bridge?id=methods) already definied on the Interactive Bridge to get values like the player **latency**, device **orientation**, etc. you can get and send custom messages.
 
 ### Custom commands
 

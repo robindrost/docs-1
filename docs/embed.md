@@ -1,4 +1,4 @@
-# Livery Embed
+# Livery Video Embed
 
 You can embed Livery in your website using an iframe like so:
 
@@ -16,7 +16,7 @@ You can embed Livery in your website using an iframe like so:
 ```
 
 !> Note: Embedding with an iframe like this will result in fullscreen support being unavailable in some browsers and is generally _not_ recommended.
-You should be able to embed the [Livery Web SDK](web-sdk.md 'Livery Web SDK') in your page directly just as easily (e.g: using a few lines of HTML).
+You should be able to embed the [Livery Video Web Player](web-player.md) in your page directly just as easily (e.g: using a few lines of HTML).
 
 ## Example
 

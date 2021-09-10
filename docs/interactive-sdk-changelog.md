@@ -1,3 +1,3 @@
-# Livery Video Interactive SDK - CHANGELOG
+# [Livery Interactive SDK](interactive-sdk.md) - CHANGELOG <!-- {docsify-ignore-all} -->
 
-This page is deprecated, please refer to [Livery Video Interactive Bridge - CHANGELOG](interactive-bridge-changelog.md) instead.
+[filename](https://unpkg.com/@exmg/livery-interactive/CHANGELOG.md ':include')

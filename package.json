@@ -1,11 +1,11 @@
 {
-  "name": "@liveryvideo/docs",
+  "name": "livery-docs",
   "version": "1.0.0",
-  "description": "Documentation for Livery Video.",
-  "author": "Livery Video",
+  "description": "Documentation for Ex Machina Group Livery.",
+  "author": "Ex Machina Group",
   "homepage": "https://docs.liveryvideo.com",
   "license": "MIT",
-  "repository": "github:liveryvideo/docs",
+  "repository": "github:exmg/livery-docs",
   "scripts": {
     "format": "markdownlint \"**/*.md\" --fix && prettier \"**/*.{html,md}\" --write",
     "lint": "markdownlint \"**/*.md\" && prettier \"**/*.{html,md}\" --check",

@@ -1,4 +1,4 @@
-# Livery Video Customer API
+# Customer API
 
 This document describes the API calls that are available to customers. These calls can be used by application developers that are using the Livery streaming solution and want to control the stream from within their own software instead of relying on the Livery producer console.
 

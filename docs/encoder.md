@@ -1,4 +1,4 @@
-# Livery Video Encoder
+# Encoder
 
 ## Hardware encoder
 

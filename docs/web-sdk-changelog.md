@@ -1,3 +1,3 @@
-# [Livery Web SDK](web-sdk.md) - CHANGELOG <!-- {docsify-ignore-all} -->
+# Livery Video Web SDK - CHANGELOG
 
-[filename](https://unpkg.com/@exmg/livery/CHANGELOG.md ':include')
+This page is deprecated, please refer to [Livery Video Web Player - CHANGELOG](web-player-changelog.md) instead.

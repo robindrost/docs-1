@@ -1,4 +1,4 @@
-# Livery Docs
+# Livery Video Docs
 
 This repository contains the Markdown files that are converted to the [online documentation](https://docs.liveryvideo.com).
 

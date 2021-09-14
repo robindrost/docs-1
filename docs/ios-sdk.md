@@ -1,6 +1,6 @@
-# Livery iOS SDK
+# Livery Video iOS SDK
 
-Livery iOS SDK, published as CocoaPods spec on Github: [livery-sdk-ios-podspec](https://github.com/exmg/livery-sdk-ios-podspec).
+Livery Video iOS SDK, published as CocoaPods spec on Github: [livery-sdk-ios-podspec](https://github.com/exmg/livery-sdk-ios-podspec).
 
 Documentation can be found at: [docs.liveryvideo.com/ios-sdk](https://docs.liveryvideo.com/ios-sdk).
 
@@ -473,9 +473,9 @@ This message will appear as part of the iOS Local Network Access dialog when the
 
 ## Interactive Bridge
 
-On the interactive layer you can use the [Interactive SDK](/interactive-sdk?id=livery-interactive-sdk) to communicate with the Livery Player. Please see the [Interactive SDK](/interactive-sdk?id=livery-interactive-sdk) documentation for more details on how to use it on the interactive layer side.
+On the interactive layer you can use the [Interactive Bridge](/interactive-bridge) to communicate with the Livery Player. Please see the [Interactive Bridge](/interactive-bridge) documentation for more details on how to use it on the interactive layer side.
 
-Besides the [methods](/interactive-sdk?id=methods) already definied on the Interactive SDK to get values like the player **latency**, device **orientation**, etc. you can get and send custom messages.
+Besides the [methods](/interactive-bridge?id=methods) already definied on the Interactive Bridge to get values like the player **latency**, device **orientation**, etc. you can get and send custom messages.
 
 ### Custom Messages
 
@@ -501,7 +501,7 @@ There you will get the custom messages you sent through the bridge on the intera
 player.sendInteractiveBridgeCustomCommand(name: String, arg: Any?, completionHandler: @escaping (CustomCommandResult) -> Void)
 ```
 
-Those messages will be send to the interactive layer through the bridge. To get them on the interactive layer side you should first call the `registerCustomCommand(name, handler)` with the `name` matching the one used on the player. Please see Interactive SDK [methods](/interactive-sdk?id=methods) section for more details.
+Those messages will be send to the interactive layer through the bridge. To get them on the interactive layer side you should first call the `registerCustomCommand(name, handler)` with the `name` matching the one used on the player. Please see Interactive Bridge [methods](/interactive-bridge?id=methods) section for more details.
 
 ```swift
 public enum CustomCommandResult {

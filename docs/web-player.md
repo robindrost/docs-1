@@ -7,7 +7,7 @@
 
 Livery video player for use in web browsers.
 
-?> Demo can be found at: [demo.liveryvideo.com](https://demo.liveryvideo.com) ([source](https://github.com/liveryvideo/player-demo-web)).
+?> Demo can be found at: [demo.liveryvideo.com](https://demo.liveryvideo.com) ([source](https://github.com/liveryvideo/demo-web)).
 
 Please refer to the [Livery Management Portal](https://video-encoder-director.playtotv.com/) for stream configuration options.
 
@@ -286,17 +286,17 @@ Note that many of the examples that Next.js provides use a statement of the form
 // do not import('@liveryvideo/player') here
 
 function MyComponent() {
- useEffect(
-   () => {
-     import('@liveryvideo/player')
-   },
-   [] // tell react to only use this effect on mount
- )
- return (
-   <livery-player
-     streamid="5ddb98f5e4b0937e6a4507f2"
-     style="width: 100%; height: 50vh;"
-   ></livery-player>
- )
+  useEffect(
+    () => {
+      import('@liveryvideo/player');
+    },
+    [], // tell react to only use this effect on mount
+  );
+  return (
+    <livery-player
+      streamid="5ddb98f5e4b0937e6a4507f2"
+      style="width: 100%; height: 50vh;"
+    ></livery-player>
+  );
 }
 ```

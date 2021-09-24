@@ -39,7 +39,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 source 'https://github.com/exmg/livery-sdk-ios-podspec.git'
 
 target 'MyProject' do
-  pod "Livery", "1.2.3"
+  pod "Livery", "1.2.4"
 end
 ```
 
@@ -577,6 +577,7 @@ Please see example MediaPlayerLive example app’s Podfile and check [https://gi
 
 | Version | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1.2.4   | Improvements on media download error handling.<br> Improvements on Analytics.<br> Improvements on ABR logic for devices with low battery levels.<br> |
 | 1.2.3   | Fixed crash caused by the `BandwidthTester`.<br> |
 | 1.2.2   | Fixed crash caused by the `BandwidthTester`.<br> Fixed crash on `dataReceived` method.<br> Fixed `PingService` not re-starting when app returns from the background.<br> Fixed crash on `NtpClient`.<br> |
 | 1.2.1   | Fixed crash caused by the `BandwidthTester`.<br> |

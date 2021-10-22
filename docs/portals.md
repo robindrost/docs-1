@@ -60,8 +60,7 @@ One or more Encoders can be linked to a stream to create a redundant setup. The 
 |Role|Description|
 |-----|-----------|
 |Main|The main encoder for the stream, the majority of the user will be connected with the main encoder.|
-|Backup|
-The backup encoder for the stream. When the player(s) detect a possible issue it will switch to the backup encoder.|
+|Backup|The backup encoder for the stream. When the player(s) detect a possible issue it will switch to the backup encoder.|
 |Standby|The players will not connect to an encoder in “Standby”. It is important to prevent a situation where a standby encoders is linked to a stream.|
 
 
@@ -70,6 +69,7 @@ The backup encoder for the stream. When the player(s) detect a possible issue it
 The settings linked to a stream are managed in the stream setting. Any change in the stream settings are automatically picked up by the players. It might take up-to 60 seconds before a change becomes available for all viewers.
 
 |Field|Description|
+|-----|-----------|
 |Name|The stream "Name" is used as reference in the system.|
 |Target Latency|The Livery Platform adjusts glass-to-glass latency based on the set target latency.|
 |Poster image|Each phase can have it's own poster image, shown when the stream loads or when no stream is active. The poster image can be set by uploading an image or adding an image UR. An image with the same ratio as the stream settings is recommended.|

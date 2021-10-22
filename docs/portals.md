@@ -114,12 +114,13 @@ The statistics dashboard contains an overview of basic statistics, which are upd
 
 Besides the dashboard, customers can also access the statistics via an API integration. Please see the GetAnalytics section in the [API section](customer-api.md 'GetAnalytics') for more info.
 
-\\ # Interactive Portal
-\\ TBA
-\\ ##Create broadcast
-\\ TBA
-\\ ##Broadcast interactions
-\\ TBA
+<!--  # Interactive Portal
+ TBA
+##Create broadcast
+TBA
+##Broadcast interactions
+TBA
+--> 
 
 # Livery Portals Revision History
 ## 1.0.43

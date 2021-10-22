@@ -128,7 +128,7 @@ TBA
 
 # Livery Portals Q&A
 
-- **How to link an on-prem Encoder to a different stream?**
+### **How to link an on-prem Encoder to a different stream?**
 
 *One or more on-prem encoders could be linked to a stream. To unlink an encoder from a stream you need to select “Remove Encoder” from the stream menu (accessible via the 3 dotted button on the right side of the stream). When the encoder is successfully removed the encoder ID is no longer listed in the Encoders column.*
 

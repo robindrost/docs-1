@@ -192,7 +192,9 @@ Video|
 ### Streamaxia (iOS and Android SDK)
 
 ?> https://www.streamaxia.com/
+
 ?> SRT is not supported
+
 ?> On-Prem is not supported
 
 #### RTMP 

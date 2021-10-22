@@ -98,6 +98,7 @@ The settings linked to a stream are managed in the stream setting. Any change in
 The settings linked to one or more Encoders are managed in the encoder setting. The encoder settings determine how the incoming video is encoded and transcoded. A stream needs to be stopped before any of the encoder settings can be changed. 
 
 |Field|Description|
+|-----|-----------|
 |Video Quality|The Video quality can be set by selecting one or multiple video bitrates. The name of the bitrates contains the information about the configuration of the video quality. The players will use the ABR algorithm when multiple bitrates have been selected.|
 |Audio Quality|The Audio quality can be set by selecting one audio bitrate.|
 |Segment Size|Determines the size in seconds of the video segments.|

@@ -81,7 +81,7 @@ The settings linked to a stream are managed in the stream setting. Any change in
 - Cover, The content is sized to maintain its aspect ratio while filling the entire container.
 - Fill, The content is sized to fill the container. The entire object will completely fill the container.|
 |Domain Whitelisting|One or more domains can be whitelisted when domain whitelisting is enabled. Only players hosted on these domains will be able to watch the stream. If this field is empty, any player can watch the stream.|
-|Player configuration|The player settings determine the availability of the different player functions. Each of the settings can be turned ON or OFF. The following settings are available
+|Player configuration|The player settings determine the availability of the different player functions. Each of the settings can be turned ON or OFF. The following settings are available;
 - Unbranded, determines if the Livery branding is shown in the players.
 - Casting determines if the Google Cast and Apple Airplay features are accessible to the end-user.
 - Error determines if the errors are shown in the players.

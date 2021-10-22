@@ -26,7 +26,7 @@ Make sure to also check the Advanced display settings to make sure Active signal
 
 On macOS open Displays to alter the settings. Use the Gather Windows button to see the settings window of both monitor outputs. For the 1080P/30FPS we could set it up like this: 
 
-![Display Settings](encoder/mac-display-settings.png)
+![Display Settings](encoder/mac-display-ssettings.png)
 
 <!--- Mixer soft- & hardware resolution and FPS 
 NEED MORE DETAILS --->
@@ -79,7 +79,7 @@ Assign the on-prem encoder as an external monitor of the computer. Set OBS to St
 ![Stream Settings](encoder/obs-stream-settings.png)
 ![Output Settings](encoder/obs-output-settings.png)
 ![Video Settings](encoder/obs-video-settings.png)
-![Onprem Settings](encoder/obs-onprem-settings.png)
+![Onprem Settings](encoder/obs-onprem-fullscreen.png)
 <!-- tabs:end -->
 
 ### vMixer
@@ -192,9 +192,7 @@ Video|
 ### Streamaxia (iOS and Android SDK)
 
 ?> https://www.streamaxia.com/
-
 ?> SRT is not supported
-
 ?> On-Prem is not supported
 
 #### RTMP 

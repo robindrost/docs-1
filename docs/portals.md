@@ -47,7 +47,7 @@ The Livery platform knows 3 stream phases; Pre, Live and Post broadcast. The sel
 
 The Stream Phases dropdown allows you to change the phase of the stream. Please contact the Livery team if you want to use the Stream Phase feature and the option is not listed in the portal. 
 
-?>A phase change takes about 20-60 seconds to become effective for all viewers.
+?> A phase change takes about 20-60 seconds to become effective for all viewers.
 
 ![Streams](portal/stream_line_item.png)
 
@@ -90,7 +90,7 @@ The settings linked to a stream are managed in the stream setting. Any change in
 - Quality determines if the quality selection is shown in the players.
 - Autoplay determines if the video automatically starts when the player is loaded. It is not always possible to Autoplay unmuted, due to browser restrictions.|
 
-![Edit Stream](portal/stream_setup.png)
+![Edit Stream](portal/stream_settings.png)
 
 ### Encoder settings
 

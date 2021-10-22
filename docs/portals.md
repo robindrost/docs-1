@@ -1,4 +1,4 @@
-#Livery Portals
+# Livery Portals
 
 Both the Livery Video & Interaction solution are fully manageable by their own online portals. The portals can be used together or as separate solutions. 
 
@@ -11,7 +11,8 @@ The Livery customers portal allows our customers to manage their streams. The po
 
 The core video features are accessible via a direct API implementation. Allowing our customers to merge the Livery Video solution in their own platform. More information about the API implementation can be found in the [API section.] (customer-api.md 'Livery Video Customer API')
 
-###Create a stream
+### Create a stream
+
 Additional streams can be added via the “+Stream” button in the top right corner of the portal. The required information needs to be added in the panel. 
 
 ![Add Stream](portal/add_stream.png)
@@ -26,7 +27,8 @@ Additional streams can be added via the “+Stream” button in the top right co
 |Audio Quality|The Audio quality can be set by selecting one audio bitrate.|
 
 
-###Stream & Encoder Overview
+### Stream & Encoder Overview
+
 All streams connected to the account are listed in the stream overview. The basic information is listed in the row of a stream. Additional information and settings can be found in the menu on the right side of the row. 
 The StreamID is used to link a stream to a player implementation. More information about the players and the integration of the player SDK’s can be found on [docs.liveryvideo.com] (index.md 'Main page')
 
@@ -63,7 +65,7 @@ The backup encoder for the stream. When the player(s) detect a possible issue it
 |Standby|The players will not connect to an encoder in “Standby”. It is important to prevent a situation where a standby encoders is linked to a stream.|
 
 
-###Stream settings
+### Stream settings
 
 The settings linked to a stream are managed in the stream setting. Any change in the stream settings are automatically picked up by the players. It might take up-to 60 seconds before a change becomes available for all viewers.
 
@@ -90,7 +92,7 @@ The settings linked to a stream are managed in the stream setting. Any change in
 
 ![Edit Stream](portal/stream_setup.png)
 
-###Encoder settings
+### Encoder settings
 
 The settings linked to one or more Encoders are managed in the encoder setting. The encoder settings determine how the incoming video is encoded and transcoded. A stream needs to be stopped before any of the encoder settings can be changed. 
 
@@ -100,11 +102,11 @@ The settings linked to one or more Encoders are managed in the encoder setting. 
 |Segment Size|Determines the size in seconds of the video segments.|
 |Crop Method|The "Crop Method" determines how the encoder is allowed to crop the video content to meet the set resolution. This is especially used when the ingest is in landscape and the stream in portrait. When manual is selected an X/Y offset is to be entered, calculated for the top left corner.|
 
-###Stream History
+### Stream History
 
 The stream history which can be accessed via the top right menu, contains a list of all streaming moments. The overview contains a basic list with details to provide insights in each of the streaming moments. When a redundant setup with multiple encoders is configured, each encoder is listed as a separate streaming moment. 
 
-###Statistics Dashboard
+### Statistics Dashboard
 The statistics dashboard contains an overview of basic statistics, which are updated every 60 seconds. A customer is able to see his statistics for the past 14 days. Please contact the Livery team for specific stats, which are not listed in the dashboard. 
 
 Besides the dashboard, customers can also access the statistics via an API integration. Please see the GetAnalytics section in the [API section.] (customer-api.md 'Livery Video Customer API') for more info. 

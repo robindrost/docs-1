@@ -113,3 +113,24 @@ The stream history which can be accessed via the top right menu, contains a list
 The statistics dashboard contains an overview of basic statistics, which are updated every 60 seconds. A customer is able to see his statistics for the past 14 days. Please contact the Livery team for specific stats, which are not listed in the dashboard. 
 
 Besides the dashboard, customers can also access the statistics via an API integration. Please see the GetAnalytics section in the [API section](customer-api.md 'GetAnalytics') for more info.
+
+\\ # Interactive Portal
+\\ TBA
+\\ ##Create broadcast
+\\ TBA
+\\ ##Broadcast interactions
+\\ TBA
+
+# Livery Portals Revision History
+## 1.0.43
+- Map improvements stats dashboard. 
+
+# Livery Portals Q&A
+
+**How to link an on-prem Encoder to a different stream?**
+*One or more on-prem encoders could be linked to a stream. To unlink an encoder from a stream you need to select “Remove Encoder” from the stream menu (accessible via the 3 dotted button on the right side of the stream). When the encoder is successfully removed the encoder ID is no longer listed in the Encoders column. 
+
+You can now add the removed encoder to a different stream, by clicking “Add Encoder to stream” from the stream menu. You need to select the specific encoder from the dropdown menu.
+
+All encoders (linked or unlinked) are listed in the encoder overview tab.*
+

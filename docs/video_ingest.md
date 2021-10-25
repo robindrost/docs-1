@@ -129,6 +129,11 @@ SRT is supported via a workaround
 |vMix Display settings|Output Size|1920x1080|
 | |Display| 2 (The display port used by the encoder)|
 |vMix Main screen|Fullscreen|Press Fullscreen to start outputting the video to the selected display port.|
+
+![Stream Settings](encoder/vmix-stream-settings.png)
+![Video Settings](encoder/vmix-video-settings.png)
+![Display Settings](encoder/vmix-display-settings.png)
+![Fullscreen](encoder/vmix-fullscreen.png)
 <!-- tabs:end -->
 
 ### StreamYard
@@ -145,6 +150,9 @@ SRT is supported via a workaround
 | |Stream Key|The Stream Key is a mandatory value in Streamyard, the last part if the stream ID can be added as Stream Key; 12a34b56c78d90e|
 |Settings|Broadcast Quality|1080p|
 
+![Stream Settings](encoder/streamyard-stream-settings.png)
+![Display Settings](encoder/streamyard-display-settings.png)
+
 ### Re-stream.IO
 
 ?> https://try.restream.io/
@@ -159,6 +167,9 @@ SRT is supported via a workaround
 | |RTMP URL|Ingest URL for example rtmp://ingest.liveryvideo.com/app/12a34b56c78d90e|
 | |Stream Key|Stream Key optional value for example vYm5X669xxdk|
 |Settings|Broadcast Quality|1080p|
+
+![Stream Settings](encoder/restream-stream-settings.png)
+![Video Settings](encoder/restream-video-settings.png)
 
 ### Softvelum (iOS and Android SDK)
 
@@ -187,6 +198,9 @@ Video|
 | |Resolution1920x1080|
 | |Keyframe frequency|2 seconds|
 | |Codec|H264|
+
+![Stream Settings](encoder/larix-stream-settings.png)
+![Video Settings](encoder/larix-video-settings.png)
 <!-- tabs:end -->
 
 ### Streamaxia (iOS and Android SDK)
@@ -203,3 +217,4 @@ Video|
 | |Server Authentication|Stream Key optional value for example vYm5X669xxdk|
 | |Resolution|1920x1080|
 
+![Stream Settings](encoder/streamaxia-stream-settings.png)

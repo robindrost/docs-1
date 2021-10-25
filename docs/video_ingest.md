@@ -10,7 +10,7 @@ The livery encoder can crop the video that it is receiving before it encodes the
 
 Cropping on the encoder works as follows. The encoder uses the output resolution aspect ratio to determine the size of the cropping area. We can provide a position from where to do the cropping. Usually this will be either at the complete left or exactly centered. This is an example for a portrait stream with a 9:16 aspect ratio. The input resolution is 1920x1080 and we have set the encoder to do centered cropping.
 
-![Cropping](encoder/cropping.png|width=100px)
+![Cropping](encoder/cropping.png)
 
 The yellow plane is the input image and the blue plane is the part of that image that the encoder will use. The encoder will use a plane of 603 pixels wide and 1072 pixels in height. It takes this weird nr of pixels to get a perfect aspect ratio of 9/16.
 
@@ -18,7 +18,7 @@ The yellow plane is the input image and the blue plane is the part of that image
 
 If a computer is used as the video source there are usually 2 places where we have to set the resolution and refresh rate. In order to achieve the best possible image quality these settings must match the encoder settings (or the other way around). The first place is the monitor settings and the second place is the mixing software settings. Let’s say we want to stream a landscape video in 16/9 format where the highest quality we want to stream is 1080P/30FPS. If possible the framerate should be 30FPS or exactly double the target framerate. So 60FPS in this case. On Windows we can change the display settings like this:
 
-![Display Settings](encoder/windows-display-settings-1.png | width=100)
+![Display Settings](encoder/windows-display-settings-1.png)
 
 Make sure to also check the Advanced display settings to make sure Active signal resolution is set correctly.
 

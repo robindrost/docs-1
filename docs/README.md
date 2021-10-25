@@ -28,7 +28,7 @@ It is recommended to use an internet connection which has at least twice the spe
 
 When users view a stream, data is used. The following calcualtion shows the expacted data consumption for a 1 hour stream. This is an indication, the actual data usages is slightly higher due to additational overhead (analytics, audio, config, ect).
 
-***((Bitrate / 8) * 60) * duration in minutes ***
+___((Bitrate / 8) * 60) * duration in minutes___
 
 - 0.8 mbps = 0.360 gigabyte (360 megabyte)
 - 1.5 mbps = 0.675 gigabyte (675 megabyte)

@@ -18,7 +18,7 @@ The yellow plane is the input image and the blue plane is the part of that image
 
 If a computer is used as the video source there are usually 2 places where we have to set the resolution and refresh rate. In order to achieve the best possible image quality these settings must match the encoder settings (or the other way around). The first place is the monitor settings and the second place is the mixing software settings. Let’s say we want to stream a landscape video in 16/9 format where the highest quality we want to stream is 1080P/30FPS. If possible the framerate should be 30FPS or exactly double the target framerate. So 60FPS in this case. On Windows we can change the display settings like this:
 
-![Display Settings](encoder/windows-display-settings-1.png)
+![Display Settings](encoder/windows-display-settings-1.png | width=100)
 
 Make sure to also check the Advanced display settings to make sure Active signal resolution is set correctly.
 

@@ -11,6 +11,11 @@ The following documentation helps you to get up-and-running with different compo
 
 More information can be found at: [liveryvideo.com](https://liveryvideo.com).
 
+
+
+
+
+
 ## Livery Requirements
 
 The following list contains a number of important requirments for the usages of the Livery platform. 
@@ -23,7 +28,7 @@ It is recommended to use an internet connection which has at least twice the spe
 
 When users view a stream, data is used. The following calcualtion shows the expacted data consumption for a 1 hour stream. This is an indication, the actual data usages is slightly higher due to additational overhead (analytics, audio, config, ect).
 
-***((Bitrate / 8) * 60) * duration in minutes
+***((Bitrate / 8) * 60) * duration in minutes ***
 
 - 0.8 mbps = 0.360 gigabyte (360 megabyte)
 - 1.5 mbps = 0.675 gigabyte (675 megabyte)

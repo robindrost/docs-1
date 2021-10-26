@@ -10,7 +10,8 @@ The following documentation helps you to get up-and-running with different compo
 ?> Please find links to documentation of our SDKs and other components in the sidebar.
 
 More information can be found at: [liveryvideo.com](https://liveryvideo.com).
-For support questions please reach via email or phone:
+
+For support questions please contact us via email or phone:
 
 <p align="left">
 <img width="256" src="support.png">

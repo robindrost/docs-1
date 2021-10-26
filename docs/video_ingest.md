@@ -1,18 +1,11 @@
 # Livery Video Ingest
 
-<!--Network
-Image Settings-->
+Video can be ingested via an encoder. Livery provides reliable encoder technology fully integrated in the Livery ecosystem. The Livery encoder is built from the ground up to provide the highest video quality with the lowest possible latency, all in perfect sync. Based on the needs and preferences, encoding can be handled an on-premise hardware encoder or our cloud encoder solution.
 
 ## Cloud encoder
 
 ### Input Signal
-The cloud encoder currently expects a resolution of 1920x1080. It can receive this input signal over RTMP or SRT. The URL that is used for the video ingest can be found in the Livery console. The encoder does not support a stream key or authentication. For the mixing software, see the RTMP or SRT URL stream and output settings (contact us if your prefered streaming software is not included)
-
-Livery Video Portal
-
-The Livery Console shows information about a cloud stream. For example the ingest url can be copied and pasted in your streaming program (OBS/Wirecast/etc). Once you start streaming from there a cloud instance will be provisioned for your stream. This can take some timem 20-30 seconds when no cloud available cloud encoders are actie. Once the encoder is provisioned and streaming, a red bubble with the text Streaming will appear which indicates the stream is live.
-
-When the ingest to the cloud encoder has been stopped, the could encoder shutters down. 
+The cloud encoder currently expects a resolution of 1920x1080. It can receive this input signal over RTMP or SRT. The URL that is used for the video ingest can be found in the Livery console. The encoder does not support a stream key or authentication. For the mixing software, see the RTMP or SRT URL stream and output settings (contact us if your prefered streaming software is not included).
 
 ## On-prem encoder
 The hardware encoder accepts a HDMI or SDI feed and uploads it to the CDN. The two most important benefits of this device over the cloud encoder are: The first is that the video only needs to be encoded once instead of twice. This means using the hardware encoder will result in better video quality. And the second is that the hardware encoder sends out metrics to our backend. This allows us to diagnose issues when they occur on the internet connection between the encoder and the CDN.
@@ -48,10 +41,22 @@ Both Windows and Mac OS allow the play audio over multiple outputs at the same t
 On Windows this can be achieved by enabling “Stereo Mix” via the audio settings. Navigate to the audio icon in your system tray, right-click it, and select “Open Sound settings” and the “Sound Control Panel”.
 Navigate to the “Recording” tab and make sure both “Show Disabled Devices” and “Show Disconnected Devices” options are checked.  The “Stereo Mix” setting is now visible. 
 
+<p align="center">
+<img width="512" src="encoder/windows-sound-settings.png">
+</p>
+
 Right-click on “Stereo Mix” and click “Enable” to be able to use it and select “Properties”. In the “Listen” tab of the properties panel, the proper audio device can be selected. 
 On Mac OS this can be achieved by using the App "Audio MIDI Setup" in /Applications/Utilities. When opening the app, a list of all audio devices in the list to the left. With the "+" button at the bottom a new “Aggregate Device” or a “Multi-Output Device” can be added. 
 
+<p align="center">
+<img width="512" src="encoder/mac-audio-settings.png">
+</p>
+
 Check the required devices from the overview. The created device shows up as normal audio devices in the system preferences' "Sound" settings. 
+
+<p align="center">
+<img width="512" src="encoder/mac-sound-settings.png">
+</p>
 
 ## Cropping
 

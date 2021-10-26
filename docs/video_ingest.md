@@ -20,15 +20,22 @@ The yellow plane is the input image and the blue plane is the part of that image
 
 If a computer is used as the video source there are usually 2 places where we have to set the resolution and refresh rate. In order to achieve the best possible image quality these settings must match the encoder settings (or the other way around). The first place is the monitor settings and the second place is the mixing software settings. Let’s say we want to stream a landscape video in 16/9 format where the highest quality we want to stream is 1080P/30FPS. If possible the framerate should be 30FPS or exactly double the target framerate. So 60FPS in this case. On Windows we can change the display settings like this:
 
-![Display Settings](encoder/windows-display-settings-1.png)
+<p align="center">
+<img width="512" src="encoder/windows-display-settings-1.png">
+</p>
 
 Make sure to also check the Advanced display settings to make sure Active signal resolution is set correctly.
 
-![Display Settings](encoder/windows-display-settings-2.png)
+<p align="center">
+<img width="512" src="encoder/windows-display-settings-2.png">
+</p>
 
 On macOS open Displays to alter the settings. Use the Gather Windows button to see the settings window of both monitor outputs. For the 1080P/30FPS we could set it up like this: 
 
-![Display Settings](encoder/mac-display-ssettings.png)
+<p align="center">
+<img width="512" src="encoder/mac-display-ssettings.png">
+</p>
+
 
 <!--- Mixer soft- & hardware resolution and FPS 
 NEED MORE DETAILS --->
@@ -78,10 +85,19 @@ The following overview contains an overview of the most common video mixing tool
 ### On-prem
 Assign the on-prem encoder as an external monitor of the computer. Set OBS to Studio Mode, and select the encoder as the “Fullscreen Projector”. 
 
-![Stream Settings](encoder/obs-stream-settings.png)
-![Output Settings](encoder/obs-output-settings.png)
-![Video Settings](encoder/obs-video-settings.png)
-![Onprem Settings](encoder/obs-onprem-fullscreen.png)
+<p align="center">
+<img width="512" src="encoder/obs-stream-settings.png">
+</p>
+<p align="center">
+<img width="512" src="encoder/obs-output-settings.png">
+</p>
+<p align="center">
+<img width="512" src="encoder/obs-video-settings.png">
+</p>
+<p align="center">
+<img width="512" src="encoder/obs-onprem-fullscreen.png">
+</p>
+
 <!-- tabs:end -->
 
 ### vMixer
@@ -132,10 +148,19 @@ SRT is supported via a workaround
 | |Display| 2 (The display port used by the encoder)|
 |vMix Main screen|Fullscreen|Press Fullscreen to start outputting the video to the selected display port.|
 
-![Stream Settings](encoder/vmix-stream-settings.png)
-![Video Settings](encoder/vmix-video-settings.png)
-![Display Settings](encoder/vmix-display-settings.png)
-![Fullscreen](encoder/vmix-fullscreen.png)
+<p align="center">
+<img width="512" src="encoder/vmix-stream-settings.png)">
+</p>
+<p align="center">
+<img width="512" src="encoder/vmix-video-settings.png">
+</p>
+<p align="center">
+<img width="512" src="encoder/vmix-display-settings.png">
+</p>
+<p align="center">
+<img width="512" src="encoder/vmix-fullscreen.png">
+</p>
+
 <!-- tabs:end -->
 
 ### StreamYard
@@ -152,8 +177,12 @@ SRT is supported via a workaround
 | |Stream Key|The Stream Key is a mandatory value in Streamyard, the last part if the stream ID can be added as Stream Key; 12a34b56c78d90e|
 |Settings|Broadcast Quality|1080p|
 
-![Stream Settings](encoder/streamyard-stream-settings.png)
-![Display Settings](encoder/streamyard-display-settings.png)
+<p align="center">
+<img width="512" src="encoder/streamyard-stream-settings.png">
+</p>
+<p align="center">
+<img width="512" src="encoder/streamyard-display-settings.png">
+</p>
 
 ### Re-stream.IO
 
@@ -170,8 +199,13 @@ SRT is supported via a workaround
 | |Stream Key|Stream Key optional value for example vYm5X669xxdk|
 |Settings|Broadcast Quality|1080p|
 
-![Stream Settings](encoder/restream-stream-settings.png)
-![Video Settings](encoder/restream-video-settings.png)
+<p align="center">
+<img width="512" src="encoder/restream-stream-settings.png">
+</p>
+<p align="center">
+<img width="512" src="encoder/restream-video-settings.png">
+</p>
+
 
 ### Softvelum (iOS and Android SDK)
 
@@ -201,8 +235,12 @@ Video|
 | |Keyframe frequency|2 seconds|
 | |Codec|H264|
 
-![Stream Settings](encoder/larix-stream-settings.png)
-![Video Settings](encoder/larix-video-settings.png)
+<p align="center">
+<img width="512" src="encoder/larix-stream-settings.png">
+</p>
+<p align="center">
+<img width="512" src="encoder/larix-video-settings.png">
+</p>
 <!-- tabs:end -->
 
 ### Streamaxia (iOS and Android SDK)
@@ -219,4 +257,7 @@ Video|
 | |Server Authentication|Stream Key optional value for example vYm5X669xxdk|
 | |Resolution|1920x1080|
 
-![Stream Settings](encoder/streamaxia-stream-settings.png)
+<p align="center">
+<img width="512" src="encoder/streamaxia-stream-settings.png">
+</p>
+

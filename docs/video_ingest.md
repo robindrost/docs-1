@@ -49,7 +49,6 @@ The following overview contains an overview of the most common video mixing tool
 
 ?> https://obsproject.com/nl
 
-<!-- tabs:start -->
 #### RTMP
 |Menu|Item Property|Value|
 |-----|-----|-----------|
@@ -84,7 +83,7 @@ The following overview contains an overview of the most common video mixing tool
 
 ### On-prem
 Assign the on-prem encoder as an external monitor of the computer. Set OBS to Studio Mode, and select the encoder as the “Fullscreen Projector”. 
-
+<!-- tabs:start -->
 <p align="center">
 <img width="512" src="encoder/obs-stream-settings.png">
 </p>
@@ -97,14 +96,12 @@ Assign the on-prem encoder as an external monitor of the computer. Set OBS to St
 <p align="center">
 <img width="512" src="encoder/obs-onprem-fullscreen.png">
 </p>
-
 <!-- tabs:end -->
 
 ### vMixer
 
 ?> https://www.vmix.com/
 
-<!-- tabs:start -->
 #### RTMP
 
 |Menu Item|Property|Value|
@@ -148,7 +145,7 @@ SRT is supported via a workaround
 |vMix Display settings|Output Size|1920x1080|
 | |Display| 2 (The display port used by the encoder)|
 |vMix Main screen|Fullscreen|Press Fullscreen to start outputting the video to the selected display port.|
-
+<!-- tabs:start -->
 <p align="center">
 <img width="512" src="encoder/vmix-stream-settings.png)">
 </p>
@@ -161,7 +158,6 @@ SRT is supported via a workaround
 <p align="center">
 <img width="256" src="encoder/vmix-fullscreen.png">
 </p>
-
 <!-- tabs:end -->
 
 ### StreamYard
@@ -177,14 +173,14 @@ SRT is supported via a workaround
 | |RTMP Server URL|Streamyard requers the ingest URL and stream key to be separated. The stream ID should be removed from the Ingest URL rtmp://ingest.liveryvideo.com/app/|
 | |Stream Key|The Stream Key is a mandatory value in Streamyard, the last part if the stream ID can be added as Stream Key; 12a34b56c78d90e|
 |Settings|Broadcast Quality|1080p|
-
+<!-- tabs:start -->
 <p align="center">
 <img width="512" src="encoder/streamyard-stream-settings.png">
 </p>
 <p align="center">
 <img width="512" src="encoder/streamyard-display-settings.png">
 </p>
-
+<!-- tabs:end -->
 ### Re-stream.IO
 
 ?> https://try.restream.io/
@@ -199,21 +195,20 @@ SRT is supported via a workaround
 | |RTMP URL|Ingest URL for example rtmp://ingest.liveryvideo.com/app/12a34b56c78d90e|
 | |Stream Key|Stream Key optional value for example vYm5X669xxdk|
 |Settings|Broadcast Quality|1080p|
-
+<!-- tabs:start -->
 <p align="center">
 <img width="512" src="encoder/restream-stream-settings.png">
 </p>
 <p align="center">
 <img width="512" src="encoder/restream-video-settings.png">
 </p>
-
+<!-- tabs:end -->
 
 ### Softvelum (iOS and Android SDK)
 
 ?> https://softvelum.com/larix/
 ?> On-Prem is not supported
 
-<!-- tabs:start -->
 #### RTMP
 
 |Menu Item|Property|Value|
@@ -235,7 +230,7 @@ Video|
 | |Resolution1920x1080|
 | |Keyframe frequency|2 seconds|
 | |Codec|H264|
-
+<!-- tabs:start -->
 <p align="center">
 <img width="512" src="encoder/larix-stream-settings.png">
 </p>

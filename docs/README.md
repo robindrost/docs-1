@@ -14,6 +14,8 @@ More information can be found at: [liveryvideo.com](https://liveryvideo.com).
 For support questions please contact us via email or phone:
 
 <img align="left" width="256" src="support.png">
+<br>
+<br>
 
 
 ## Livery Requirements

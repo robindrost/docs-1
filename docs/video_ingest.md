@@ -10,9 +10,9 @@ The livery encoder can crop the video that it is receiving before it encodes the
 
 Cropping on the encoder works as follows. The encoder uses the output resolution aspect ratio to determine the size of the cropping area. We can provide a position from where to do the cropping. Usually this will be either at the complete left or exactly centered. This is an example for a portrait stream with a 9:16 aspect ratio. The input resolution is 1920x1080 and we have set the encoder to do centered cropping.
 
-<img align="center" width="100" src="encoder/cropping.png">
-
-![Cropping](encoder/cropping.png)
+<p align="center">
+<img width="512" src="encoder/cropping.png">
+</p>
 
 The yellow plane is the input image and the blue plane is the part of that image that the encoder will use. The encoder will use a plane of 603 pixels wide and 1072 pixels in height. It takes this weird nr of pixels to get a perfect aspect ratio of 9/16.
 

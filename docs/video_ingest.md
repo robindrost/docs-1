@@ -143,6 +143,7 @@ SRT is supported via a workaround
 ### On-prem
 
 |Destination|Service|Custom|
+|-----|-----|-----------|
 |Windows Display settings|Multiple displays|Extend these displays|
 |vMix Display settings|Output Size|1920x1080|
 | |Display| 2 (The display port used by the encoder)|
@@ -158,7 +159,7 @@ SRT is supported via a workaround
 <img width="512" src="encoder/vmix-display-settings.png">
 </p>
 <p align="center">
-<img width="512" src="encoder/vmix-fullscreen.png">
+<img width="256" src="encoder/vmix-fullscreen.png">
 </p>
 
 <!-- tabs:end -->

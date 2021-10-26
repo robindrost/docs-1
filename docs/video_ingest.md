@@ -310,21 +310,20 @@ Video|
  
 |Version|Description|
 |-----|-----|
-|0.6.0|Secure ingest
-Use audio delay setting from the backend |
+|0.6.0|Secure ingest<br>Use audio delay setting from the backend |
 |0.5.0|Added the ability to automatically update the encoder from the Management Portal|
 
 
 # Livery Video Ingest Q&A
-I see the video but I'm not able to get audio via the output of the computer?
-Make sure the audio is sent along with the video single via the HDMI or SDI cable. This can be achieved via the audio output settings.  
-I can hear the audio in the stream, but I’m no longer able to hear the audio via my studio headphone/speakers.
+### I see the video but I'm not able to get audio via the output of the computer?
+*Make sure the audio is sent along with the video single via the HDMI or SDI cable. This can be achieved via the audio output settings.*
+### I can hear the audio in the stream, but I’m no longer able to hear the audio via my studio headphone/speakers.
 Configure the audio settings, so the audio is played on both audio outputs. See Multi Audio output for more information.
-The cloud encoder keeps on restarting.
-Make sure a 1080p video is ingested via the RTMP or SRT URL. 
-The stream is unstable or the video buffer is low.
-Make sure the mixer software is set to “Zero Latency” in the encoder settings. 
-I want to ingest in portrait mode to the cloud encoder (1080x1920px).
-Please contact the Livery team to make the additional changes. 
-I want to ingest in 4k to the cloud encoder (3840x2160px).
-Please contact the Livery team to make the additional changes. 
+### The cloud encoder keeps on restarting.
+*Make sure a 1080p video is ingested via the RTMP or SRT URL.* 
+### The stream is unstable or the video buffer is low.
+*Make sure the mixer software is set to “Zero Latency” in the encoder settings.* 
+### I want to ingest in portrait mode to the cloud encoder (1080x1920px).
+*Please contact the Livery team to make the additional changes.*
+### I want to ingest in 4k to the cloud encoder (3840x2160px).
+*Please contact the Livery team to make the additional changes.*

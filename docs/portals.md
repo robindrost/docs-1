@@ -36,6 +36,7 @@ The StreamID is used to link a stream to a player implementation. More informati
 The ID of the linked encoders is visible in the row. The cloud encoder ID only shows while streaming. The on-prem encoders, when linked, are always visible. An on-prem encoder, when available, can be linked to a stream via the “Add Encoder to Stream” option in the stream menu.  
 
 The Livery Console shows information about a cloud stream. For example the ingest url (SRT or RTMP) can be copied and pasted in your streaming program (OBS/Wirecast/etc). Please see [Mixer Soft- and Hardware section](encoder.md 'Main page') for more info. Once you start streaming from there a cloud instance will be provisioned for your stream. This can take some timem 20-30 seconds when no cloud available cloud encoders are actie. Once the encoder is provisioned and streaming, a red bubble with the text Streaming will appear which indicates the stream is live.
+When the ingest to the cloud encoder has been stopped, the could encoder shutters down. 
 
 The Livery platform knows 3 stream phases; Pre, Live and Post broadcast. The selected phase determines the behaviour of the integrated player. 
 

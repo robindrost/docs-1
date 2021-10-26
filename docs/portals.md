@@ -28,14 +28,14 @@ Additional streams can be added via the “+Stream” button in the top right co
 |Audio Quality|The Audio quality can be set by selecting one audio bitrate.|
 
 
-### Stream & Encoder Overview
+### Stream Overview
 
 All streams connected to the account are listed in the stream overview. The basic information is listed in the row of a stream. Additional information and settings can be found in the menu on the right side of the row. 
 The StreamID is used to link a stream to a player implementation. More information about the players and the integration of the player SDK’s can be found on [docs.liveryvideo.com] (index.md 'Main page')
 
 The ID of the linked encoders is visible in the row. The cloud encoder ID only shows while streaming. The on-prem encoders, when linked, are always visible. An on-prem encoder, when available, can be linked to a stream via the “Add Encoder to Stream” option in the stream menu.  
 
-An RTMP and/or SRT ingest URL is indicated for a Cloud stream. The URL needs to be configured in the mixer of choose. Please see [Mixer Soft- and Hardware section](encoder.md 'Main page') for more info. 
+The Livery Console shows information about a cloud stream. For example the ingest url (SRT or RTMP) can be copied and pasted in your streaming program (OBS/Wirecast/etc). Please see [Mixer Soft- and Hardware section](encoder.md 'Main page') for more info. Once you start streaming from there a cloud instance will be provisioned for your stream. This can take some timem 20-30 seconds when no cloud available cloud encoders are actie. Once the encoder is provisioned and streaming, a red bubble with the text Streaming will appear which indicates the stream is live.
 
 The Livery platform knows 3 stream phases; Pre, Live and Post broadcast. The selected phase determines the behaviour of the integrated player. 
 
@@ -52,6 +52,7 @@ The Stream Phases dropdown allows you to change the phase of the stream. Please 
 
 ![Streams](portal/stream_line_item.png)
 
+### Encoder Overview
 One or more encoders can be linked to a customer account. The encoders are listed in the encoder overview. Encoders can be linked or unlinked to a stream, this allows the customer to rotate a single on-prem encoder between multiple streams.
 
 ![Encoders](portal/encoder_line_item.png)

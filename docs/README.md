@@ -3,7 +3,7 @@
 
 Livery offers a complete, end-to-end interactive live streaming solution.  
 
-The Livery player is the best way to bring low latency interactive video project to your end users. Our player SDK’s can be integrated on iOS, Android and web in a matter of minutes. The built-in interactive layer in combinatoin with our interaction engine (or you own) brings true interactive video within everyone’s reach. All managed via an easy-to-use online portal. 
+The Livery player is the best way to bring low-latency interactive video project to your end users. Our player SDK’s can be integrated on iOS, Android and web in a matter of minutes. The built-in interactive layer in combination with our interaction engine (or you own) brings true interactive video within everyone’s reach. All managed via an easy-to-use online portal. 
 
 The following documentation helps you to get up-and-running with different components of the Livery platform. 
 
@@ -20,7 +20,7 @@ For support questions please contact us via email or phone:
 
 ## Livery Requirements
 
-The following list contains a number of important requirments for the usages of the Livery platform. 
+The following list contains a number of important requirements for the usages of the Livery platform. 
 
 ### Connection Speed
 
@@ -28,7 +28,7 @@ It is recommended to use an internet connection which has at least twice the spe
 
 ### Data Usages
 
-When users view a stream, data is used. The following calcualtion shows the expacted data consumption for a 1 hour stream. This is an indication, the actual data usages is slightly higher due to additational overhead (analytics, audio, config, ect).
+When users view a stream, data is used. The following calculation shows the expected data consumption for a 1 hour stream. This is an indication, the actual data usages is slightly higher due to additional overhead (analytics, audio, config, ect).
 
 ___((Bitrate / 8) * 60) * duration in minutes___
 
@@ -39,10 +39,10 @@ ___((Bitrate / 8) * 60) * duration in minutes___
 
 ### Browser and OS Support
 
-The Livery players (iOS, Android and Web). Are tested on the 2 latest major OS and browser versions (iOS, Android, Chrome, Safari, Edge, Firefox, Android Chrome and Samsung Internet.). Lower version are not officaly supported.
+The Livery players (iOS, Android and Web). Are tested on the 2 latest major OS and browser versions (iOS, Android, Chrome, Safari, Edge, Firefox, Android Chrome and Samsung Internet.). Lower versions are not officially supported.
 
 ### Domain Whitelisting
-The Livery players connect with the following domains. The domains need to be whitelisted for the best possible user experiance. 
+The Livery players connect with the following domains. The domains need to be whitelisted for the best possible user experience.
 
 - akamai.com
 - akamaized.net
@@ -54,11 +54,8 @@ The Livery players connect with the following domains. The domains need to be wh
 
 ### Livery Port configuration
 
-The hardware encoder needs to communicate over the internet so send out metrics and allow remote diagnosis. For this it’s required that the encoder can make outbound connections on port 443 and port 22. Please make sure to open up these 2 ports if the encoder is deployed in an environment with a firewall.
-In order to stream to the cloud encoder one of these ports needs to be open for outbound connections. When using RTMP, port 1935 should be opened. When using SRT, port 9998 should be opened.
+The hardware encoder needs to communicate over the internet so send out metrics and allow remote diagnosis. For this it’s required that the encoder can make outbound connections on port 443 and port 22. Please make sure to open up these 2 ports if the encoder is deployed in an environment with a firewall. In order to stream to the cloud encoder one of these ports needs to be open for outbound connections. When using RTMP, port 1935 should be opened. When using SRT, port 9998 should be opened.
 
 ### Proxy
-
-Some viewers view the stream via a (corporate) proxy. The Livery video solution uses HTTP/1.1 Chunked Video Transfer. Most proxies do not have a limitation for HTTP/1.1 traffic, allowing our stream to function. Proxies accommodate the option to set addition rules about data usages, domains, ports, ect. The additional rules might have an impact on the performance of the stream.
-A proxy needs to be ready for high amounts of data, especially with multiple viewers. 2.500 mbps of data passesthrough a proxy when 500 viewers watch a 5 mbps stream. 
+Some viewers view the stream via a (corporate) proxy. The Livery video solution uses HTTP/1.1 Chunked transfer encoding. Most proxies do not have a limitation for HTTP/1.1 traffic, allowing our stream to function. Proxies accommodate the option to set additional rules about data usages, domains, ports, ect. The additional rules might have an impact on the performance of the stream. A proxy needs to be ready for high amounts of data, especially with multiple viewers. 2.500 mbps of data passesthrough a proxy when 500 viewers watch a 5 mbps stream.
 

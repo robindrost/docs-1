@@ -1,5 +1,5 @@
 - [Portals](portals.md 'Livery Management Portals')
-- [Video Ingest](video-ingest.md 'Livery Video Ingest')
+- [Video Ingest](video_ingest.md 'Livery Video Ingest')
 - [Android SDK](android-sdk.md 'Livery Video Android SDK')
 - [iOS SDK](ios-sdk.md 'Livery Video iOS SDK')
 - [Web Player](web-player.md 'Livery Video Web Player')

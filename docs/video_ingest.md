@@ -99,12 +99,12 @@ A soft- and or hardware mixer is often used to output one or more broadcast stre
 
 The following overview contains an overview of the most common video mixing tools and the configuration needed live stream using Livery Video.
 
-<!-- tabs:start -->
+
 ### OBS
 
 ?> https://obsproject.com/nl
-
-#### RTMP
+<!-- tabs:start -->
+#### **RTMP**
 |Menu|Item Property|Value|
 |-----|-----|-----------|
 |Stream|Service|Custom|
@@ -120,7 +120,7 @@ The following overview contains an overview of the most common video mixing tool
 |Video|Output Resolution|1920x1080px Please reachout to us when an alternative resolution is requested.|
 | |Common FPS Values|25 PAL It is strongly recommended to use the same FPS throughout the complete workflow, to prevent audio/video sync issues.|
 
-#### SRT
+#### **SRT**
 |Menu|Item Property|Value|
 |-----|-----|-----------|
 |Stream|Service|Custom|
@@ -136,10 +136,10 @@ The following overview contains an overview of the most common video mixing tool
 |Video|Output Resolution|1920x1080px Please reachout to us when an alternative resolution is requested.|
 | |Common FPS Values|25 PAL It is strongly recommended to use the same FPS throughout the complete workflow, to prevent audio/video sync issues.|
 
-#### On-prem
+#### **On-prem**
 Assign the on-prem encoder as an external monitor of the computer. Set OBS to Studio Mode, and select the encoder as the “Fullscreen Projector”. 
 
-#### Screenshots
+#### **Screenshots**
 <p align="center">
 <img width="512" src="encoder/obs-stream-settings.png">
 </p>
@@ -157,8 +157,8 @@ Assign the on-prem encoder as an external monitor of the computer. Set OBS to St
 ### vMixer
 
 ?> https://www.vmix.com/
-
-#### RTMP
+<!-- tabs:start -->
+#### **RTMP**
 
 |Menu Item|Property|Value|
 |-----|-----|-----------|
@@ -175,7 +175,7 @@ Assign the on-prem encoder as an external monitor of the computer. Set OBS to St
 | |Network Buffer|5 Seconds|
 | |Strict CBR| Checked|
 
-#### SRT
+#### **SRT**
 SRT is supported via a workaround
 
 |Menu Item|Property|Value|
@@ -193,7 +193,7 @@ SRT is supported via a workaround
 | |Network Buffer|5 Seconds|
 | |Strict CBR| Checked|
 
-### On-prem
+### **On-prem**
 
 |Destination|Service|Custom|
 |-----|-----|-----------|
@@ -201,7 +201,7 @@ SRT is supported via a workaround
 |vMix Display settings|Output Size|1920x1080|
 | |Display| 2 (The display port used by the encoder)|
 |vMix Main screen|Fullscreen|Press Fullscreen to start outputting the video to the selected display port.|
-<!-- tabs:start -->
+### **Screenshots**
 <p align="center">
 <img width="512" src="encoder/vmix-stream-settings.png)">
 </p>
@@ -220,8 +220,8 @@ SRT is supported via a workaround
 ?> https://streamyard.com/
 ?> A Professional Streamyard account is required to make the required changes to stream using the Livery platform. 
 ?> SRT is not supported
-
-#### RTMP
+<!-- tabs:start -->
+#### **RTMP**
 
 |Menu Item|Property|Value|
 |-----|-----|-----------|
@@ -229,7 +229,7 @@ SRT is supported via a workaround
 | |RTMP Server URL|Streamyard requers the ingest URL and stream key to be separated. The stream ID should be removed from the Ingest URL rtmp://ingest.liveryvideo.com/app/|
 | |Stream Key|The Stream Key is a mandatory value in Streamyard, the last part if the stream ID can be added as Stream Key; 12a34b56c78d90e|
 |Settings|Broadcast Quality|1080p|
-<!-- tabs:start -->
+#### **Screenshots**
 <p align="center">
 <img width="512" src="encoder/streamyard-stream-settings.png">
 </p>
@@ -242,8 +242,8 @@ SRT is supported via a workaround
 ?> https://try.restream.io/
 ?> SRT is not supported
 ?> On-Prem is not supported
-
-#### RTMP
+<!-- tabs:start -->
+#### **RTMP**
 
 |Menu Item|Property|Value|
 |-----|-----|-----------|
@@ -251,7 +251,8 @@ SRT is supported via a workaround
 | |RTMP URL|Ingest URL for example rtmp://ingest.liveryvideo.com/app/12a34b56c78d90e|
 | |Stream Key|Stream Key optional value for example vYm5X669xxdk|
 |Settings|Broadcast Quality|1080p|
-<!-- tabs:start -->
+
+#### **Screenshots**
 <p align="center">
 <img width="512" src="encoder/restream-stream-settings.png">
 </p>
@@ -302,7 +303,7 @@ Video|
 ?> SRT is not supported
 ?> On-Prem is not supported
 <!-- tabs:start -->
-#### RTMP 
+#### **RTMP** 
 
 |Menu Item|Property|Value|
 |-----|-----|-----------|

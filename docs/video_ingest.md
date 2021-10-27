@@ -1,31 +1,5 @@
 # Livery Video Ingest
 
-<!-- tabs:start -->
-
-#### **OBS**
-
-Note that the rtmp url is an example!
-
-![OBS rtmp](encoder/obs-rtmp.png)
-
-Sending the video to the cloud encoder adds a bit of latency. In OBS there is a setting for x264 called Tune=zerolatency that helps lowering this latency:
-
-![OBS zerolatency](encoder/obs-zerolatency.png)
-
-#### **Streamlabs OBS**
-
-Note that the rtmp url is an example!
-
-![Streamlabs OBS rtmp](encoder/streamlabs-obs-rtmp.png)
-
-Sending the video to the cloud encoder adds a bit of latency. In Streamlabs OBS there is a setting for x264 called Tune=zerolatency that helps lowering this latency:
-
-![Streamlabs OBS zerolatency](encoder/streamlabs-obs-zerolatency.png)
-
-<!-- tabs:end -->
-
-
-
 Video can be ingested via an encoder. Livery provides reliable encoder technology fully integrated in the Livery ecosystem. The Livery encoder is built from the ground up to provide the highest video quality with the lowest possible latency, all in perfect sync. Based on the needs and preferences, encoding can be handled an on-premise hardware encoder or our cloud encoder solution.
 
 ## Cloud encoder

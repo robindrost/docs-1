@@ -113,11 +113,12 @@ TBA
 TBA
 --> 
 
-# Livery Portals Revision History
-## 1.0.43
-- Map improvements stats dashboard. 
+## Livery Portals Revision History
+|version|Desciription|
+|----|----|
+|1.0.43|- Map improvements stats dashboard.|
 
-# Livery Portals Q&A
+## Livery Portals Q&A
 
 ### **How to link an on-prem Encoder to a different stream?**
 

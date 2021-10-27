@@ -797,144 +797,30 @@ dependencies {
 }
 ```
 
-## Change log
+## Android SDK Revision History
 
-### 2.1.4
-
-- Improvements on Player stability and error handling
-- Improvements on Analytics
-
-### 2.1.3
-
-- Fix for crash related to unavailable stream sources.
-
-### 2.1.2
-
-- Analytics fix
-
-### 2.1.1
-
-- Fix crash with devices using Android API level 25 or lower
-
-### 2.1.0
-
-- Improved server error handling
-- Fixed LiveryPlayerView.getActiveQuality() when quality was set manually
-- LiveryPlayerView.createPlayer callback methods are now also called when SDK is not initialized
-- Allow analytics and Sentry sampling
-- Added remote config update interval
-- Added subscribeOrientation to interactive layer
-- Updated Sentry to v3.1.3
-
-### 2.0.0
-
-- Added bridge calls for interactive layer
-- Added isPlayerInitialized property
-- Added the ability to use ExoPlayer next to the LiveryPlayer
-- Improved full screen experience
-- Improved initialization process and added opportunities receive error feedback
-- Improved main/backup switching
-- Better IPv6 support
-- Fixed several crashes that could occur in edge cases
-- currentTime property is made read-only
-- Renamed loadInteractiveLayer to setInteractiveUrl and currentSrc to currentSource
-- Removed the need to manually set the player to unbranded
-- Removed muted and loop player options
-- Removed overrideFullscreenButton and overrideQualityButton methods
-- Removed all exoplayer methods
-- Removed bufferEnd, zeroTimestamp, streamTimestamp, decodedFrames, droppedFrames, setPlaybackRate, getStreamType, videoType, onDurationChanged
-
-### 1.7.16
-
-- Fixed initialization issues
-- Disabled NTP
-
-### 1.7.13
-
-- Improved time syncing in SDK initialization
-
-### 1.7.12
-
-- Improved loading of streams without specifying sources
-
-### 1.7.11
-
-- Fixed streamId in analytics
-
-### 1.7.10
-
-- Fixed a crash on a number of old devices
-
-### 1.7.9
-
-- It is no longer possible to create the player with a config URL. Please use the streamId (which is part of the config URL) instead
-- Use RemoteConfig to configure analytics
-- Change IP lookup
-- Improve CDN error handling
-- Use unbranded property from config
-
-### 1.7.8
-
-- New ABR algorithm
-- `livery_remote_config_url` was renamed to `livery_stream_id`
-- loading source url's from remote config
-- Send streamId to analytics
-
-### 1.7.7
-
-- Fixed an issue which could occur if NTP is not available
-
-### 1.7.6
-
-- Improved bitrate switching
-- Add ‘Casting’ feature.
-  - Player's Activity Theme needs to have a `colorPrimary` defined without opacity.
-- Change UI of player controls.
-- Add new fields to Player Controls Customizing documentation.
-- Change audio only indicator.
-
-### 1.7.1
-
-- Add the possibility to initialize SDK only with customer ID.
-- Fix a crash issue on null media source.
-- Refactor the way loading view worked, add extra parameters for switching qualities.
-- Added an algorithm to fetch and check the cache of remote config each minute.
-
-### 1.7.0
-
-- Reset dropped frames each progress event.
-- Fix bitrate sorting issue.
-- Fix invalid stall durations and wrong end session event reports.
-
-### 1.6.9
-
-- Fix an issue where branded version error view could be overridden.
-- Fix an issue where min or max buffer would be reported below zero.
-- Refactor stall reporting mechanism.
-- Fix an issue where the player would not recover.
-- Save muted or unmuted state to keep it after recovering.
-
-### 1.6.8
-
-- Remove load function.
-- Add toggle method for play/pause actions.
-- Fix a crash issue on playerStateChanged when playerOptions was passed null.
-- Fix pause method so it won't skip frames on paused state.
-
-### 1.6.7
-
-- Added "Error" event for analytics.
-- Added "PinPointID" to Sentry tags.
-- Added missing fields to "Connection Change" and "Switch Bitrate" events.
-
-### 1.6.6
-
-- Fixed paid version of SDK was not using default error overlay.
-
-### 1.6.5
-
-- Fixed analytics values (EdgeServer, VideoURL) not being reported sometimes.
-
-### 1.6.4
-
-- Fixed a crash occured when player.dispose() method was called due to uiElementsHandler not being able to find the player instance.
+| Version | Description|
+|-----|----------|
+|2.1.4|- Improvements on Player stability and error handling <br>- Improvements on Analytics|
+|2.1.3|- Fix for crash related to unavailable stream sources.|
+|2.1.2|- Analytics fix|
+|2.1.1|- Fix crash with devices using Android API level 25 or lower|
+|2.1.0|- Improved server error handling <br>- Fixed LiveryPlayerView.getActiveQuality() when quality was set manually <br>- LiveryPlayerView.createPlayer callback methods are now also called when SDK is not initialized <br>- Allow analytics and Sentry sampling <br>- Added remote config update interval <br>- Added subscribeOrientation to interactive layer <br>- Updated Sentry to v3.1.3|
+|2.0.0|- Added bridge calls for interactive layer <br>- Added isPlayerInitialized property <br>- Added the ability to use ExoPlayer next to the LiveryPlayer <br>- Improved full screen experience <br>- Improved initialization process and added opportunities receive error feedback <br>- Improved main/backup switching <br>- Better IPv6 support <br>- Fixed several crashes that could occur in edge cases <br>- currentTime property is made read-only <br>- Renamed loadInteractiveLayer to setInteractiveUrl and currentSrc to currentSource <br>- Removed the need to manually set the player to unbranded <br>- Removed muted and loop player options <br>- Removed overrideFullscreenButton and overrideQualityButton methods <br>- Removed all exoplayer methods <br>- Removed bufferEnd, zeroTimestamp, streamTimestamp, decodedFrames, droppedFrames, setPlaybackRate, getStreamType, videoType, onDurationChanged|
+|1.7.16|- Fixed initialization issues <br>- Disabled NTP|
+|1.7.13|- Improved time syncing in SDK initialization|
+|1.7.12|- Improved loading of streams without specifying sources|
+|1.7.11|- Fixed streamId in analytics|
+|1.7.10|- Fixed a crash on a number of old devices|
+|1.7.9|- It is no longer possible to create the player with a config URL. Please use the streamId (which is part of the config URL) instead <br>- Use RemoteConfig to configure analytics <br>- Change IP lookup <br>- Improve CDN error handling <br>- Use unbranded property from config|
+|1.7.8|- New ABR algorithm <br>- `livery_remote_config_url` was renamed to `livery_stream_id` <br>- loading source url's from remote config <br>- Send streamId to analytics
+|1.7.7|- Fixed an issue which could occur if NTP is not available|
+|1.7.6|- Improved bitrate switching <br>- Add ‘Casting’ feature. <br>- Player's Activity Theme needs to have a `colorPrimary` defined without opacity. <br>- Change UI of player controls. <br>- Add new fields to Player Controls Customizing documentation. <br>- Change audio only indicator.|
+|1.7.1|- Add the possibility to initialize SDK only with customer ID. <br>- Fix a crash issue on null media source. <br>- Refactor the way loading view worked, add extra parameters for switching qualities. <br>- Added an algorithm to fetch and check the cache of remote config each minute.|
+|1.7.0|- Reset dropped frames each progress event. <br>- Fix bitrate sorting issue. <br>- Fix invalid stall durations and wrong end session event reports.|
+|1.6.9|- Fix an issue where branded version error view could be overridden. <br>- Fix an issue where min or max buffer would be reported below zero. <br>- Refactor stall reporting mechanism. <br>- Fix an issue where the player would not recover. <br>- Save muted or unmuted state to keep it after recovering.
+|1.6.8|- Remove load function. <br>- Add toggle method for play/pause actions. <br>- Fix a crash issue on playerStateChanged when playerOptions was passed null. <br>- Fix pause method so it won't skip frames on paused state.|
+|1.6.7|- Added "Error" event for analytics. <br>- Added "PinPointID" to Sentry tags. <br>- Added missing fields to "Connection Change" and "Switch Bitrate" events.|
+|1.6.6|- Fixed paid version of SDK was not using default error overlay.|
+|1.6.5|- Fixed analytics values (EdgeServer, VideoURL) not being reported sometimes.|
+|1.6.4|- Fixed a crash occured when player.dispose() method was called due to uiElementsHandler not being able to find the player instance.|

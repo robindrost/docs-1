@@ -265,6 +265,28 @@ SRT is supported via a workaround
 </p>
 <!-- tabs:end -->
 
+### Streamaxia (iOS and Android SDK)
+
+?> https://www.streamaxia.com/
+
+?> SRT is not supported
+
+?> On-Prem is not supported
+<!-- tabs:start -->
+#### **RTMP**
+
+|Menu Item|Property|Value|
+|-----|-----|-----------|
+|Settings|Server URL|Ingest URL for example rtmp://ingest.liveryvideo.com/app/12a34b56c78d90e|
+| |Server Authentication|Stream Key optional value for example vYm5X669xxdk|
+| |Resolution|1920x1080|
+
+#### **Screenshots**
+<p align="center">
+<img width="512" src="encoder/streamaxia-stream-settings.png">
+</p>
+<!-- tabs:end -->
+
 ### Softvelum (iOS and Android SDK)
 
 ?> https://softvelum.com/larix/
@@ -302,27 +324,7 @@ Video|
 </p>
 <!-- tabs:end -->
 
-### Streamaxia (iOS and Android SDK)
 
-?> https://www.streamaxia.com/
-
-?> SRT is not supported
-
-?> On-Prem is not supported
-<!-- tabs:start -->
-#### **RTMP**
-
-|Menu Item|Property|Value|
-|-----|-----|-----------|
-|Settings|Server URL|Ingest URL for example rtmp://ingest.liveryvideo.com/app/12a34b56c78d90e|
-| |Server Authentication|Stream Key optional value for example vYm5X669xxdk|
-| |Resolution|1920x1080|
-
-#### **Screenshots**
-<p align="center">
-<img width="512" src="encoder/streamaxia-stream-settings.png">
-</p>
-<!-- tabs:end -->
 
 # Livery Video Ingest Revision History
  

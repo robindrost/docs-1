@@ -218,7 +218,9 @@ SRT is supported via a workaround
 
 ### StreamYard
 ?> https://streamyard.com/
+
 ?> A Professional Streamyard account is required to make the required changes to stream using the Livery platform. 
+
 ?> SRT is not supported
 <!-- tabs:start -->
 #### **RTMP**
@@ -240,7 +242,9 @@ SRT is supported via a workaround
 ### Re-stream.IO
 
 ?> https://try.restream.io/
+
 ?> SRT is not supported
+
 ?> On-Prem is not supported
 <!-- tabs:start -->
 #### **RTMP**
@@ -264,6 +268,7 @@ SRT is supported via a workaround
 ### Softvelum (iOS and Android SDK)
 
 ?> https://softvelum.com/larix/
+
 ?> On-Prem is not supported
 <!-- tabs:start -->
 #### **RTMP**
@@ -300,7 +305,9 @@ Video|
 ### Streamaxia (iOS and Android SDK)
 
 ?> https://www.streamaxia.com/
+
 ?> SRT is not supported
+
 ?> On-Prem is not supported
 <!-- tabs:start -->
 #### **RTMP** 

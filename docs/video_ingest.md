@@ -99,12 +99,12 @@ A soft- and or hardware mixer is often used to output one or more broadcast stre
 
 The following overview contains an overview of the most common video mixing tools and the configuration needed live stream using Livery Video.
 
-<!-- tabs:start -->
+
 ### OBS
 
 ?> https://obsproject.com/nl
-
-#### RTMP
+<!-- tabs:start -->
+#### **RTMP**
 |Menu|Item Property|Value|
 |-----|-----|-----------|
 |Stream|Service|Custom|
@@ -120,7 +120,7 @@ The following overview contains an overview of the most common video mixing tool
 |Video|Output Resolution|1920x1080px Please reachout to us when an alternative resolution is requested.|
 | |Common FPS Values|25 PAL It is strongly recommended to use the same FPS throughout the complete workflow, to prevent audio/video sync issues.|
 
-#### SRT
+#### **SRT**
 |Menu|Item Property|Value|
 |-----|-----|-----------|
 |Stream|Service|Custom|
@@ -136,10 +136,10 @@ The following overview contains an overview of the most common video mixing tool
 |Video|Output Resolution|1920x1080px Please reachout to us when an alternative resolution is requested.|
 | |Common FPS Values|25 PAL It is strongly recommended to use the same FPS throughout the complete workflow, to prevent audio/video sync issues.|
 
-#### On-prem
+#### **On-prem**
 Assign the on-prem encoder as an external monitor of the computer. Set OBS to Studio Mode, and select the encoder as the “Fullscreen Projector”. 
 
-#### Screenshots
+#### **Screenshots**
 <p align="center">
 <img width="512" src="encoder/obs-stream-settings.png">
 </p>

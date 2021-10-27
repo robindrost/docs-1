@@ -310,7 +310,7 @@ Video|
 
 ?> On-Prem is not supported
 <!-- tabs:start -->
-#### **RTMP** 
+#### **RTMP**
 
 |Menu Item|Property|Value|
 |-----|-----|-----------|

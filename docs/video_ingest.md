@@ -99,12 +99,12 @@ A soft- and or hardware mixer is often used to output one or more broadcast stre
 
 The following overview contains an overview of the most common video mixing tools and the configuration needed live stream using Livery Video.
 
-
+<!-- tabs:start -->
 ### OBS
 
 ?> https://obsproject.com/nl
-<!-- tabs:start -->
-#### **RTMP**
+
+#### RTMP
 |Menu|Item Property|Value|
 |-----|-----|-----------|
 |Stream|Service|Custom|
@@ -120,7 +120,7 @@ The following overview contains an overview of the most common video mixing tool
 |Video|Output Resolution|1920x1080px Please reachout to us when an alternative resolution is requested.|
 | |Common FPS Values|25 PAL It is strongly recommended to use the same FPS throughout the complete workflow, to prevent audio/video sync issues.|
 
-#### **SRT**
+#### SRT
 |Menu|Item Property|Value|
 |-----|-----|-----------|
 |Stream|Service|Custom|
@@ -136,10 +136,10 @@ The following overview contains an overview of the most common video mixing tool
 |Video|Output Resolution|1920x1080px Please reachout to us when an alternative resolution is requested.|
 | |Common FPS Values|25 PAL It is strongly recommended to use the same FPS throughout the complete workflow, to prevent audio/video sync issues.|
 
-#### **On-prem**
+#### On-prem
 Assign the on-prem encoder as an external monitor of the computer. Set OBS to Studio Mode, and select the encoder as the “Fullscreen Projector”. 
 
-#### **Screenshots**
+#### Screenshots
 <p align="center">
 <img width="512" src="encoder/obs-stream-settings.png">
 </p>
@@ -264,8 +264,8 @@ SRT is supported via a workaround
 
 ?> https://softvelum.com/larix/
 ?> On-Prem is not supported
-
-#### RTMP
+<!-- tabs:start -->
+#### **RTMP**
 
 |Menu Item|Property|Value|
 |-----|-----|-----------|
@@ -276,7 +276,7 @@ Video|
 | |Keyframe frequency|2 seconds|
 | |Codec|H264|
 
-#### SRT
+#### **SRT**
 
 |Menu Item|Property|Value|
 |-----|-----|-----------|
@@ -286,7 +286,8 @@ Video|
 | |Resolution1920x1080|
 | |Keyframe frequency|2 seconds|
 | |Codec|H264|
-<!-- tabs:start -->
+
+#### **Screenshots**
 <p align="center">
 <img width="512" src="encoder/larix-stream-settings.png">
 </p>
@@ -300,7 +301,7 @@ Video|
 ?> https://www.streamaxia.com/
 ?> SRT is not supported
 ?> On-Prem is not supported
-
+<!-- tabs:start -->
 #### RTMP 
 
 |Menu Item|Property|Value|
@@ -309,10 +310,11 @@ Video|
 | |Server Authentication|Stream Key optional value for example vYm5X669xxdk|
 | |Resolution|1920x1080|
 
+#### **Screenshots**
 <p align="center">
 <img width="512" src="encoder/streamaxia-stream-settings.png">
 </p>
-
+<!-- tabs:end -->
 # Livery Video Ingest Revision History
  
 |Version|Description|

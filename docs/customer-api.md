@@ -329,6 +329,8 @@ Request body:
   "postPosterUrl": "streamName.com/poster-post.png",
   "interactiveLayerUrl": "streamName.com/poster.png",
 
+  "streamPhase": "PRE",
+
   "settings": {
     "targetLatency": 3.0,
     "segmentSizeInSeconds": 2.0

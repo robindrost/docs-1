@@ -7,6 +7,7 @@
   "name": "streamName",
 
   "streamingState": "STARTED",
+  "streamPhase": "LIVE",
   "streamUrlType": "STATIC",
   "encoderPlatform": "CLOUD",
 
@@ -74,6 +75,8 @@
     "https://example.com/cmaf/5f27c847e4b0716a97225f47/out.mpd",
     "https://example.com/cmaf/5f27c847e4b0716a97225f47/master.m3u8"
   ],
+
+  "ingestUrls": ["rtmp://some-rtmp-url", "srt://some-srt-url:9998"],
 
   "videoStreamQualities": [
     "6062e81716bcd84ab3562cc1",

@@ -323,6 +323,7 @@ Video|
 <img width="512" src="encoder/streamaxia-stream-settings.png">
 </p>
 <!-- tabs:end -->
+
 # Livery Video Ingest Revision History
  
 |Version|Description|

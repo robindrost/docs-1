@@ -824,3 +824,4 @@ dependencies {
 |1.6.6|- Fixed paid version of SDK was not using default error overlay.|
 |1.6.5|- Fixed analytics values (EdgeServer, VideoURL) not being reported sometimes.|
 |1.6.4|- Fixed a crash occured when player.dispose() method was called due to uiElementsHandler not being able to find the player instance.|
+## Android SDK Q&A

@@ -114,7 +114,7 @@ TBA
 --> 
 
 ## Livery Portals Revision History
-|version|Desciription|
+|Version|Desciription|
 |----|----|
 |1.0.43|- Map improvements stats dashboard.|
 

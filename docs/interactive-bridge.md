@@ -69,10 +69,17 @@ bridge.getLatency().then(latency => window.alert(`latency: ${latency}`));
 | Method                                      | Description                                                                                                                                                                                                       |
 | ------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `constructor(targetOrigin)`                 | Constructs InteractiveBridge with `window.parent` as target window and with specified target origin.                                                                                                              |
+| `getAppName()` | Returns promise of LiveryPlayer application name. |
+| `getCustomerId()` | Returns promise of LiveryPlayer customer id. |
+| `getEndpointId()` | Returns promise of LiveryPlayer Pinpoint analytics endpoint id. |
 | `getLatency()`                              | Returns promise of current LiveryPlayer latency in seconds.                                                                                                                                                       |
+| `getPlayerVersion()` | Returns promise of LiveryPlayer version. |
+| `getStreamId()` | Returns promise of LiveryPlayer stream id. |
 | `registerInteractiveCommand(name, handler)` | Register `handler` function to be called with `arg` and `listener` when `sendInteractiveCommand()` is called on LiveryPlayer with matching `name`.                                                                |
 | `sendPlayerCommand(name, arg?, listener?)`  | Returns promise of value returned by LiveryPlayer custom command handler with matching `name` that is passed `arg`. Any `handler` `listener` calls will subsequently also be bridged to this `listener` callback. |
+| `subscribeFullscreen(listener)` | Returns promise of current LiveryPlayer fullscreen state and calls back `listener` with any subsequent state changes. |
 | `subscribeOrientation(listener)`            | Returns promise of current LiveryPlayer window orientation (`'landscape' \| 'portrait'`) and calls back `listener` with any subsequent orientations.                                                              |
+| `subscribeQuality(listener)` | Returns promise of current LiveryPlayer playback quality and calls back `listener` with any subsequent quality changes. |
 | `subscribeStreamPhase(listener)`            | Returns promise of current LiveryPlayer stream phase (`'PRE' \| 'LIVE' \| 'POST'`) and calls back `listener` with any subsequent phases.                                                                          |
 | `unregisterInteractiveCommand(name)`        | Unregister custom interactive command by name.                                                                                                                                                                    |
 

@@ -106,6 +106,8 @@ String property specifying version of Livery SDK.
 
 Element defined as `<livery-player>` which can be used to play a livery video stream.
 
+By default the player will attempt to start playback unmuted and fall back to muted auto play if necessary. When the muted attribute is specified to the player element on creation it will start muted. When the user mutes the audio by clicking on the mute control that is persisted to local storage and on subsequent player loads it will then remain muted.
+
 #### Usage
 
 See the general [Usage](#usage) section above.
@@ -115,20 +117,23 @@ See the general [Usage](#usage) section above.
 | Attribute    | Property     | Type      | Default | Description                                                                                                                                         |
 | ------------ | ------------ | --------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `bubbles`    | `bubbles`    | `boolean` | `false` | If true then events dispatched by this element will bubble.                                                                                         |
-| `configtype` | `configType` | `string`  | `null`  | Type of stream config to use. Defaults to SDK platform (WEB).                                                                                       |
+| `configtype` | `configType` | `string`  | `null`  | Type of stream config to use. Defaults to SDK platform (WEB) when value is null (attribute is absent).                                              |
+| `fullscreen` | `fullscreen` | `boolean` | `false` | If true then player is fullscreen.<br />Dispatches: `livery-fullscreen-change`                                                                      |
 | `loglevel`   | `logLevel`   | `string`  | `null`  | Log level (`'quiet'` \| `'error'` \| `'warn'` \| `'info'` \| `'debug'` \| `'spam'`). Defaults to `'info'` when value is null (attribute is absent). |
-| `muted`      | `muted`      | `boolean` | `false` | If `true` then audio is muted.<br />Dispatches: `livery-volume-change`.                                                                             |
+| `muted`      | `muted`      | `boolean` | `false` | If `true` then audio is muted.<br />Dispatches: `livery-volume-change`                                                                              |
 | `streamid`   | `streamId`   | `string`  | `null`  | Livery stream ID (required).                                                                                                                        |
 | `vumeter`    | `vuMeter`    | `boolean` | `false` | Enable volume unit meter.                                                                                                                           |
 
 #### Properties
 
-| Property        | R/W | Type                                                                                                                    | Default     | Description                                                                         |
-| --------------- | --- | ----------------------------------------------------------------------------------------------------------------------- | ----------- | ----------------------------------------------------------------------------------- |
-| `error`         | R   | `Error` \| `undefined`                                                                                                  | `undefined` | Most recent unrecovered error.<br />Dispatches: `livery-error`, `livery-recovered`. |
-| `latency`       | R   | `number`                                                                                                                | `NaN`       | End to end latency in seconds.                                                      |
-| `playbackState` | R   | `'BUFFERING'` \| `'ENDED'` \| `'FAST_FORWARD'` \| `'PAUSED'` \| `'PLAYING'` \| `'REWIND'` \| `'SEEKING'` \| `'SLOW_MO'` | `'PAUSED'`  | Playback state.<br />Dispatches: `livery-playback-change`.                          |
-| `streamPhase`   | R   | `'PRE'` \| `'LIVE'` \| `'POST'`                                                                                         | `'PRE'`     | Stream phase.<br />Dispatches: `livery-phase-change`.                               |
+| Property        | R/W | Type                                                                                                                    | Default     | Description                                                                        |
+| --------------- | --- | ----------------------------------------------------------------------------------------------------------------------- | ----------- | ---------------------------------------------------------------------------------- |
+| `customerId`    | R   | `string`                                                                                                                | `null`      | Livery customer ID.                                                                |
+| `error`         | R   | `Error` \| `undefined`                                                                                                  | `undefined` | Most recent unrecovered error.<br />Dispatches: `livery-error`, `livery-recovered` |
+| `latency`       | R   | `number`                                                                                                                | `NaN`       | End to end latency in seconds.                                                     |
+| `playbackState` | R   | `'BUFFERING'` \| `'ENDED'` \| `'FAST_FORWARD'` \| `'PAUSED'` \| `'PLAYING'` \| `'REWIND'` \| `'SEEKING'` \| `'SLOW_MO'` | `'PAUSED'`  | Playback state.<br />Dispatches: `livery-playback-change`                          |
+| `quality`       | R   | `string`                                                                                                                | `null`      | Active quality label.<br />Dispatches: `livery-quality-change`                     |
+| `streamPhase`   | R   | `'PRE'` \| `'LIVE'` \| `'POST'`                                                                                         | `'PRE'`     | Stream phase.<br />Dispatches: `livery-phase-change`                               |
 
 In addition there is an `engine` property but that is meant for debugging purposes only. It's use is not supported.
 
@@ -142,13 +147,17 @@ In addition there is an `engine` property but that is meant for debugging purpos
 
 #### Events
 
-| Event                                                | Description                                           |
-| ---------------------------------------------------- | ----------------------------------------------------- |
-| [livery-error](#liveryerrorevent)                    | Dispatched when an error occurs.                      |
-| [livery-playback-change](#liveryplaybackchangeevent) | Dispatched when `playbackState` has changed.          |
-| [livery-phase-change](#liveryphasechangeevent)       | Dispatched when `streamPhase` has changed.            |
-| [livery-recovered](#liveryrecoveredevent)            | Dispatched when player has recovered from an error.   |
-| [livery-volume-change](#liveryvolumechangeevent)     | Dispatched when `volume` and/or `muted` have changed. |
+| Event                                                    | Description                                           |
+| -------------------------------------------------------- | ----------------------------------------------------- |
+| [livery-error](#liveryerrorevent)                        | Dispatched when an error occurs.                      |
+| [livery-fullscreen-change](#liveryfullscreenchangeevent) | Dispatched when `fullscreen` has changed.             |
+| [livery-phase-change](#liveryphasechangeevent)           | Dispatched when `streamPhase` has changed.            |
+| [livery-playback-change](#liveryplaybackchangeevent)     | Dispatched when `playbackState` has changed.          |
+| [livery-quality-change](#liveryqualitychangeevent)       | Dispatched when `quality` has changed.                |
+| [livery-recovered](#liveryrecoveredevent)                | Dispatched when player has recovered from an error.   |
+| [livery-volume-change](#liveryvolumechangeevent)         | Dispatched when `volume` and/or `muted` have changed. |
+
+In addition there is a `livery-engine-change` event but that is meant for debugging purposes only. It’s use is not supported.
 
 ### LiveryBufferGraph
 
@@ -245,13 +254,13 @@ Dispatched with event type: `'livery-error'` when an error occurs in an element.
 | -------- | ------- | ------------------------------- |
 | `error`  | `Error` | Error that occurred in element. |
 
-#### LiveryPlaybackChangeEvent
+#### LiveryFullscreenChangeEvent
 
-Dispatched with event type: `'livery-playback-change'` when `playbackState` has changed.
+Dispatched with event type: `livery-fullscreen-change` when `fullscreen` has changed.
 
-| Property        | Type                                                                                                                    | Description     |
-| --------------- | ----------------------------------------------------------------------------------------------------------------------- | --------------- |
-| `playbackState` | `'BUFFERING'` \| `'ENDED'` \| `'FAST_FORWARD'` \| `'PAUSED'` \| `'PLAYING'` \| `'REWIND'` \| `'SEEKING'` \| `'SLOW_MO'` | Playback state. |
+| Property     | Type      | Description                                        |
+| ------------ | --------- | -------------------------------------------------- |
+| `fullscreen` | `boolean` | True if player became fullscreen, false otherwise. |
 
 #### LiveryPhaseChangeEvent
 
@@ -260,6 +269,22 @@ Dispatched with event type: `livery-phase-change` when `streamPhase` has changed
 | Property | Type                            | Description   |
 | -------- | ------------------------------- | ------------- |
 | `phase`  | `'PRE'` \| `'LIVE'` \| `'POST'` | Stream phase. |
+
+#### LiveryPlaybackChangeEvent
+
+Dispatched with event type: `'livery-playback-change'` when `playbackState` has changed.
+
+| Property        | Type                                                                                                                    | Description     |
+| --------------- | ----------------------------------------------------------------------------------------------------------------------- | --------------- |
+| `playbackState` | `'BUFFERING'` \| `'ENDED'` \| `'FAST_FORWARD'` \| `'PAUSED'` \| `'PLAYING'` \| `'REWIND'` \| `'SEEKING'` \| `'SLOW_MO'` | Playback state. |
+
+#### LiveryQualityChangeEvent
+
+Dispatched with event type: `livery-quality-change` when `quality` has changed.
+
+| Property  | Type     | Description                          |
+| --------- | -------- | ------------------------------------ |
+| `quality` | `string` | Label of quality that became active. |
 
 #### LiveryRecoveredEvent
 

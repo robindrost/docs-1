@@ -46,7 +46,7 @@ Add these implementations inside **dependencies** to your app-level build.gradle
 ```groovy
 dependencies {
    //...
-   def livery_sdk_version = '2.1.4'
+   def livery_sdk_version = '2.1.5'
    implementation "com.liveryvideo:livery-sdk-android:$livery_sdk_version"
    //...
 }
@@ -801,6 +801,7 @@ dependencies {
 
 | Version | Description|
 |-----|----------|
+|2.1.5|- Update SDK version|
 |2.1.4|- Improvements on Player stability and error handling <br>- Improvements on Analytics|
 |2.1.3|- Fix for crash related to unavailable stream sources.|
 |2.1.2|- Analytics fix|

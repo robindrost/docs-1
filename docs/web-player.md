@@ -325,3 +325,15 @@ function MyComponent() {
   );
 }
 ```
+
+## Livery Web Player Q&A
+
+**Why do stream started muted on some devices?**
+
+*With chrome://media-engagement/ you can check the ranking of the page and if it is allowed to start unmuted. When “is high” is YES that site is allowed to autoplay unmuted.*
+
+**Autoplay does not work on mobile?**
+
+*The autoplay feature is blocked by the browser when the device in low-power mode. Check if the device is in low-power mode.* 
+
+ 

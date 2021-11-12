@@ -39,7 +39,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 source 'https://github.com/exmg/livery-sdk-ios-podspec.git'
 
 target 'MyProject' do
-  pod "Livery", "1.2.5"
+  pod "Livery", "1.3.0"
 end
 ```
 
@@ -48,6 +48,14 @@ Then run
 ```
 $ pod install
 ```
+
+#### Swift Package Manager
+
+Swift Package Manager is distributed with Xcode. To add the Livery SDK to your iOS project, do as follows:
+
+1. Open your project in Xcode and select File > Add Packages
+2. Enter the URL for the Swift Package Manager Livery SDK repo (<https://github.com/liveryvideo/livery-sdk-ios-spm>) into the search bar and click "Add Package"
+3. Then on the Dependency Rule menu select the "Exact Version" - 1.3.0 or "Branch" - main to have the latest release
 
 ## Usage
 
@@ -577,6 +585,7 @@ Please see example MediaPlayerLive example app’s Podfile and check [https://gi
 
 | Version | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1.3.0   | Analytics improvements.<br> High latency sync improvements.<br> Player deinitialization improvements.<br> Swift Package Manager SDK.<br> |
 | 1.2.5   | Improvements on Player stability and error handling.<br> Improvements on Analytics.<br> |
 | 1.2.4   | Improvements on media download error handling.<br> Improvements on Analytics.<br> Improvements on ABR logic for devices with low battery levels.<br> |
 | 1.2.3   | Fixed crash caused by the `BandwidthTester`.<br> |
@@ -593,4 +602,5 @@ Please see example MediaPlayerLive example app’s Podfile and check [https://gi
 | 0.11.2  | Fixed video stream stopping after receiving a call through FaceTime on an iPhone without SIM card.<br> Improvements on Analytics.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 | 0.11.1  | Fixed an issue regarding the player not recovering when the stream was stopped and started on the encoder side.<br> Improvements on the player recovery logic.<br> Improvements on Analytics.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 | 0.11.0  | Changed ip lookup.<br> Improvements on ZAP Time.<br> Improvements on HTTP error handling.<br> Improvements on NTP error handling.<br> Improvements on the SDK initialization.<br> Fixed volume HUD taking too long to hide.<br> Fixed video stream stoping after receiving a call on iOS 14.<br> Fixed mute button not being in sync with the remote config.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+
 ## iOS SDK Q&A

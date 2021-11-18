@@ -18,7 +18,22 @@ To install Livery SDK into your project, follow these steps below.
 
 #### Resolve Repositories
 
-In your project level build.gradle file, add these closures to **allprojects** > **repositories**.
+For new projects created with Android Studio Arctic Fox 2020.3.1 go to settings.gradle and add:
+
+```groovy
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        .....
+        maven {
+            url "https://jitpack.io"
+            credentials { username authToken }
+        }
+    }
+}
+```
+
+For existing projects go to your project level build.gradle file, add these closures to **allprojects** > **repositories**.
 
 ```groovy
 allprojects {
@@ -46,7 +61,7 @@ Add these implementations inside **dependencies** to your app-level build.gradle
 ```groovy
 dependencies {
    //...
-   def livery_sdk_version = '2.1.5'
+   def livery_sdk_version = '2.2.0'
    implementation "com.liveryvideo:livery-sdk-android:$livery_sdk_version"
    //...
 }
@@ -801,6 +816,7 @@ dependencies {
 
 | Version | Description|
 |-----|----------|
+|2.2.0|- implement stream phase<br>- add subscribeStreamPhase to interactive layer<br>- implement smooth bitrate downgrade<br>- use different downgrade thresholds according to current bitrate<br>- fix controls sometimes not appearing due to multiple events from interactive layer<br>Internal:<br>- disable bust requests when downloading manifest<br>- handle play/scrubber from RemoteConfig.controls<br>- disable cast<br>- add reason/description to bitrate switch analytics event<br>- improve player startup and synchronization logic|
 |2.1.5|- Update SDK version|
 |2.1.4|- Improvements on Player stability and error handling <br>- Improvements on Analytics|
 |2.1.3|- Fix for crash related to unavailable stream sources.|

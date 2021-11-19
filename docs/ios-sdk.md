@@ -454,6 +454,8 @@ Our SDK is able to cast to AirPlay and Google Chromecast.
 
 ### Google Chromecast
 
+**Note:** Google Chromecast does not have support for Swift Package Manager or the simulator on the M1, so as a consequence, Livery SDK does not include Google Chromecast in any of those cases.
+
 To cast to Google Chromecast you need to add two items in your app's `Info.plist`:
 
 - Add `NSBonjourServices`

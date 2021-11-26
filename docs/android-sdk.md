@@ -49,7 +49,7 @@ allprojects {
 }
 ```
 
-To retrieve your access token log into http://jitpack.io with your GitHub account and go to https://jitpack.io/w/user.
+To retrieve your access token log into <http://jitpack.io> with your GitHub account and go to <https://jitpack.io/w/user>.
 
 Your GitHub account has to be granted access to the packages.
 If you are unable to access the packages please ask your support contact to grant you access.
@@ -772,7 +772,7 @@ The methods `onDurationChanged` and `onVolumeChanged` were also removed.
 
 It is still possible to use bintray repository/credentials for until version 2.0.0.
 
-#### Resolve Repositories
+### Resolve Repositories
 
 In your project level build.gradle file, add these closures to **allprojects** > **repositories**.
 
@@ -800,7 +800,7 @@ You can get the Bintray API key by following these steps below:
 2. After logging in, go to [Edit Profile](https://bintray.com/profile/edit) from the menu on top right which is shown by clicking to your username.
 3. Once you land to Edit Profile page, you should be able to see more menu items on the left. Click to 'API Key' and you will be asked to input your password. After verifying the password, API Key will be shown.
 
-#### Add Implementations
+### Add Implementations
 
 Add these implementations inside **dependencies** to your app-level build.gradle.
 
@@ -841,4 +841,5 @@ dependencies {
 |1.6.6|- Fixed paid version of SDK was not using default error overlay.|
 |1.6.5|- Fixed analytics values (EdgeServer, VideoURL) not being reported sometimes.|
 |1.6.4|- Fixed a crash occured when player.dispose() method was called due to uiElementsHandler not being able to find the player instance.|
+
 ## Android SDK Q&A

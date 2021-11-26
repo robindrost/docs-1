@@ -334,6 +334,4 @@ function MyComponent() {
 
 **Autoplay does not work on mobile?**
 
-*The autoplay feature is blocked by the browser when the device in low-power mode. Check if the device is in low-power mode.* 
-
- 
+*The autoplay feature is blocked by the browser when the device in low-power mode. Check if the device is in low-power mode.*

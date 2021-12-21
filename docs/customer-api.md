@@ -29,6 +29,12 @@ There are two types of API Keys: Customer API keys and Stream API keys.
 | Customer     | authorized to do all documented customer requests & all stream request for streams owned by the customer which the API key belongs to. |
 | Stream       | authorized to do all documented stream requests that involve a single stream.                                                          |
 
+## Rate limits
+
+The API calls are rate limited to 30 calls per minute per customer.
+This means that it combines the request count for all streams of a customer.
+If this limit is exceded the server will return a response with a 429 HTTP status code.
+
 ## API Calls
 
 ### GetAnalytics

@@ -58,9 +58,16 @@ The Livery players connect with the following domains. The domains need to be wh
 - unpkg.com
 
 #### Region dependent
-- cognito-identity.eu-west-1.amazonaws.com
+##### Europe
 - livery-ull-test.akamaized.net
-- pinpoint.eu-west-1.amazonaws.com
+##### South America
+- livery-sa2.akamaized.net
+##### United States of America General
+- livery-us.akamaized.net
+##### United States of America East Cost
+- livery-us-east.akamaized.net
+##### Asia Pacific and Japan
+- livery-apj.akamaized.net
 
 #### RTMP/SRT
 - ingest.liveryvideo.com

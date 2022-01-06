@@ -63,16 +63,16 @@ The Livery players connect with the following domains. The domains need to be wh
 - pinpoint.eu-west-1.amazonaws.com
 
 #### RTMP/SRT
-ingest.liveryvideo.com
+- ingest.liveryvideo.com
 
 #### portal
-video-encoder-director.playtotv.com
-maps.googleapis.com
-maps.gstatic.com
-fonts.gstatic.com
-fonts.googleapis.com
-director.video-encoder.playtotv.com
-sentry.io
+- video-encoder-director.playtotv.com
+- maps.googleapis.com
+- maps.gstatic.com
+- fonts.gstatic.com
+- fonts.googleapis.com
+- director.video-encoder.playtotv.com
+- sentry.io
 
 ### Livery Port configuration
 

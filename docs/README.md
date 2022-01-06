@@ -45,7 +45,7 @@ The Livery players (iOS, Android and Web). Are tested on the 2 latest major OS a
 
 The Livery players connect with the following domains. The domains need to be whitelisted for the best possible user experience. All requests are done over HTTPS.
 
-#### generic
+#### Generic
 - time.akamai.com
 - cdn.liveryvideo.com
 - ip.liveryvideo.com
@@ -57,7 +57,7 @@ The Livery players connect with the following domains. The domains need to be wh
 - embed.liveryvideo.com
 - unpkg.com
 
-#### region dependent
+#### Region dependent
 - cognito-identity.eu-west-1.amazonaws.com
 - livery-ull-test.akamaized.net
 - pinpoint.eu-west-1.amazonaws.com
@@ -65,7 +65,7 @@ The Livery players connect with the following domains. The domains need to be wh
 #### RTMP/SRT
 - ingest.liveryvideo.com
 
-#### portal
+#### Portal
 - video-encoder-director.playtotv.com
 - maps.googleapis.com
 - maps.gstatic.com

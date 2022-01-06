@@ -43,15 +43,36 @@ The Livery players (iOS, Android and Web). Are tested on the 2 latest major OS a
 
 ### Domain Whitelisting
 
-The Livery players connect with the following domains. The domains need to be whitelisted for the best possible user experience.
+The Livery players connect with the following domains. The domains need to be whitelisted for the best possible user experience. All requests are done over HTTPS.
 
-- akamai.com
-- akamaized.net
-- amazonaws.com
+#### generic
+- time.akamai.com
+- cdn.liveryvideo.com
+- ip.liveryvideo.com
+
+#### When using unpkg
 - unpkg.com
-- liveryvideo.com
-- playtotv.com
-- Sentry.io
+
+#### When using embed
+- embed.liveryvideo.com
+- unpkg.com
+
+#### region dependent
+- cognito-identity.eu-west-1.amazonaws.com
+- livery-ull-test.akamaized.net
+- pinpoint.eu-west-1.amazonaws.com
+
+#### RTMP/SRT
+ingest.liveryvideo.com
+
+#### portal
+video-encoder-director.playtotv.com
+maps.googleapis.com
+maps.gstatic.com
+fonts.gstatic.com
+fonts.googleapis.com
+director.video-encoder.playtotv.com
+sentry.io
 
 ### Livery Port configuration
 

@@ -4,7 +4,7 @@ Both the Livery Video & Interaction solution are fully manageable by their own o
 
 Livery Video: <https://video-encoder-director.playtotv.com/>
 
-Livery Interactive: <https://livery-videoextension-{customer}-director.playtotv.com/>
+Livery Interactive: <https://{customer}-director.interactive.liveryvideo.com/>
 
 ## Livery Video Portal
 
@@ -128,7 +128,7 @@ TBA
 
 **I don't see the interactive elements ontop of the live stream?**
 
-*The interactive layer of the Livery video player loads the interactive URL. You can find the input field in the [Stream settings](portals.md 'Stream settings'). It takes 10-60 seconds before the URL become active in the interactive layer.* 
+*The interactive layer of the Livery video player loads the interactive URL. You can find the input field in the [Stream Settings](#stream settings) . It takes 10-60 seconds before the URL become active in the interactive layer.* 
 *When the Livery Interactive powers the interactie layer, an URL similare to the following: ...interactive.liveryvideo.com, is set in the Interactive URL field of the stream settings. The interaction list/schedule can be managed via the Livery Interactive portal. The interaction only show when the broadcast is set to LIVE, in the Livery Interactive portal.* 
 
 

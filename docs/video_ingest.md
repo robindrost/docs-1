@@ -314,8 +314,7 @@ SRT is supported via a workaround
 |Menu Item|Property|Value|
 |-----|-----|-----------|
 |Destination|URL|Larix requires the ingest URL and stream key to be separated. The stream ID should be removed from the Ingest URL rtmp://ingest.liveryvideo.com/app/|
-| |Stream Key|The Stream Key is a mandatory value in Larix the last part if the stream ID can be added as Stream Key; 12a34b56c78d90e
-Video|
+| |Stream Key|The Stream Key is a mandatory value in Larix the last part if the stream ID can be added as Stream Key; 12a34b56c78d90e|
 | |Resolution1920x1080|
 | |Keyframe frequency|2 seconds|
 | |Codec|H264|
@@ -325,9 +324,8 @@ Video|
 |Menu Item|Property|Value|
 |-----|-----|-----------|
 |Destination|URL|Larix requires the ingest URL and stream key to be separated. The stream ID should as well as the 'pkt_size=1316&streamid=' be removed from the Ingest URL srt://ingest.liveryvideo.com:9998
-| |Stream Key|The Stream Key is a mandatory value in Larix the last part if the stream ID can be added as Stream Key; 12a34b56c78d90e
-Video|
-| |Resolution1920x1080|
+| |Stream Key|The Stream Key is a mandatory value in Larix the last part if the stream ID can be added as Stream Key; 12a34b56c78d90e|
+| |Resolution|1920x1080|
 | |Keyframe frequency|2 seconds|
 | |Codec|H264|
 
@@ -352,8 +350,7 @@ Select a custom RTMP source
 |Menu Item|Property|Value|
 |-----|-----|-----------|
 |Destination|URL|LiveU requires the ingest URL and stream key to be separated. The stream ID should be removed from the Ingest URL rtmp://ingest.liveryvideo.com/app/|
-| |Stream Key|The Stream Key is a mandatory value. The last part of the URL, the stream ID, can be added as Stream Key; 12a34b56c78d90e
-Video|
+| |Stream Key|The Stream Key is a mandatory value. The last part of the URL, the stream ID, can be added as Stream Key; 12a34b56c78d90e|
 
 #### **Screenshots**
 
@@ -373,8 +370,7 @@ Select a custom RTMP source
 |Menu Item|Property|Value|
 |-----|-----|-----------|
 |Streaming Server|URL|Magewell requires the ingest URL and stream key to be separated. The stream ID should be removed from the Ingest URL rtmp://ingest.liveryvideo.com/app/|
-| |Stream Key|The Stream Key is a mandatory value. The last part of the URL, the stream ID, can be added as Stream Key; 12a34b56c78d90e
-Video|
+| |Stream Key|The Stream Key is a mandatory value. The last part of the URL, the stream ID, can be added as Stream Key; 12a34b56c78d90e|
 | |Keyframe Interval|2 seconds|
 | |Codec type|H264|
 
@@ -400,8 +396,7 @@ Select a custom RTMP source
 |Menu Item|Property|Value|
 |-----|-----|-----------|
 |Streaming Server|URL|Magewell requires the ingest URL and stream key to be separated. The stream ID should be removed from the Ingest URL rtmp://ingest.liveryvideo.com/app/|
-| |Stream Key|The Stream Key is a mandatory value. The last part of the URL, the stream ID, can be added as Stream Key; 12a34b56c78d90e
-Video|
+| |Stream Key|The Stream Key is a mandatory value. The last part of the URL, the stream ID, can be added as Stream Key; 12a34b56c78d90e|
 |Encodering Parameters|Keyframe Interval|2 seconds|
 | |Codec type|H264|
 
@@ -413,8 +408,7 @@ Select a custom Caller source
 |Streaming Server|address|Magewell requires the ingest URL and stream key to be separated. The stream ID should be removed from the Ingest URL ingest.liveryvideo.com|
 | |Port|9998|
 | |Latency|30ms (as low as possible)|
-| |Stream ID|The Stream Key is a mandatory value. The last part of the URL, the stream ID, can be added as Stream Key; 12a34b56c78d90e
-Video|
+| |Stream ID|The Stream Key is a mandatory value. The last part of the URL, the stream ID, can be added as Stream Key; 12a34b56c78d90e|
 |Encodering Parameters|Keyframe frequency|2 seconds|
 | |Codec|H264|
 
@@ -443,8 +437,7 @@ Select a custom RTMP source
 |-----|-----|-----------|
 |Broadcast|Mode|RTMP/RTMPS|
 | |CRTMP/RTMPS Server URL|Teradek requires the ingest URL and stream key to be separated. The stream ID should be removed from the Ingest URL rtmp://ingest.liveryvideo.com/app/|
-| |Stream|The Stream Key is a mandatory value. The last part of the URL, the stream ID, can be added as Stream Key; 12a34b56c78d90e
-Video|
+| |Stream|The Stream Key is a mandatory value. The last part of the URL, the stream ID, can be added as Stream Key; 12a34b56c78d90e|
 
 #### **Screenshots**
 

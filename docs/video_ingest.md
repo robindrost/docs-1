@@ -341,10 +341,124 @@ Video|
 </p>
 <!-- tabs:end -->
 
+### LiveU
+
+?> <https://www.liveu.tv/>
+
+?> Go to https://solo.liveu.tv/ to change any settings
+<!-- tabs:start -->
+#### **RTMP**
+Select a custom RTMP source
+|Menu Item|Property|Value|
+|-----|-----|-----------|
+|Destination|URL|LiveU requires the ingest URL and stream key to be separated. The stream ID should be removed from the Ingest URL rtmp://ingest.liveryvideo.com/app/|
+| |Stream Key|The Stream Key is a mandatory value. The last part of the URL, the stream ID, can be added as Stream Key; 12a34b56c78d90e
+Video|
+
+#### **Screenshots**
+
+<p align="center">
+<img width="512" src="encoder/liveu-rtmp-settings.png">
+</p>
+
+<!-- tabs:end -->
+
+### Magewell Ultra Stream
+
+?> <https://www.magewell.com/ultra-stream>
+
+<!-- tabs:start -->
+#### **RTMP**
+Select a custom RTMP source
+|Menu Item|Property|Value|
+|-----|-----|-----------|
+|Streaming Server|URL|Magewell requires the ingest URL and stream key to be separated. The stream ID should be removed from the Ingest URL rtmp://ingest.liveryvideo.com/app/|
+| |Stream Key|The Stream Key is a mandatory value. The last part of the URL, the stream ID, can be added as Stream Key; 12a34b56c78d90e
+Video|
+| |Keyframe Interval|2 seconds|
+| |Codec type|H264|
+
+
+#### **Screenshots**
+
+<p align="center">
+<img width="512" src="encoder/magewellultrastream-rtmp-settings.png">
+</p>
+<p align="center">
+<img width="512" src="encoder/magewellultrastream-stream-settings.png">
+</p>
+<!-- tabs:end -->
+
+### Magewell Ultra Encode
+
+?> <https://www.magewell.com/ultra-encode>
+
+<!-- tabs:start -->
+#### **RTMP**
+
+Select a custom RTMP source
+|Menu Item|Property|Value|
+|-----|-----|-----------|
+|Streaming Server|URL|Magewell requires the ingest URL and stream key to be separated. The stream ID should be removed from the Ingest URL rtmp://ingest.liveryvideo.com/app/|
+| |Stream Key|The Stream Key is a mandatory value. The last part of the URL, the stream ID, can be added as Stream Key; 12a34b56c78d90e
+Video|
+|Encodering Parameters|Keyframe Interval|2 seconds|
+| |Codec type|H264|
+
+#### **SRT**
+
+Select a custom Caller source
+|Menu Item|Property|Value|
+|-----|-----|-----------|
+|Streaming Server|address|Magewell requires the ingest URL and stream key to be separated. The stream ID should be removed from the Ingest URL ingest.liveryvideo.com|
+| |Port|9998|
+| |Latency|30ms (as low as possible)|
+| |Stream ID|The Stream Key is a mandatory value. The last part of the URL, the stream ID, can be added as Stream Key; 12a34b56c78d90e
+Video|
+|Encodering Parameters|Keyframe frequency|2 seconds|
+| |Codec|H264|
+
+#### **Screenshots**
+
+<p align="center">
+<img width="512" src="encoder/magewellultraencoder-rtmp-settings.png">
+</p>
+<p align="center">
+<img width="512" src="encoder/magewellultraencoder-srt-settings.png">
+</p>
+<p align="center">
+<img width="512" src="encoder/magewellultraencoder-stream-settings.png">
+</p>
+<!-- tabs:end -->
+
+###Teradek Vidiu
+
+?> <https://teradek.com/pages/vidiu-x>
+
+<!-- tabs:start -->
+#### **RTMP**
+
+Select a custom RTMP source
+|Menu Item|Property|Value|
+|-----|-----|-----------|
+|Broadcast|Mode|RTMP/RTMPS|
+| |CRTMP/RTMPS Server URL|Teradek requires the ingest URL and stream key to be separated. The stream ID should be removed from the Ingest URL rtmp://ingest.liveryvideo.com/app/|
+| |Stream|The Stream Key is a mandatory value. The last part of the URL, the stream ID, can be added as Stream Key; 12a34b56c78d90e
+Video|
+
+#### **Screenshots**
+
+<p align="center">
+<img width="512" src="encoder/vidiu-rtmp-settings.png">
+</p>
+
+<!-- tabs:end -->
+
 # Livery Video Ingest Revision History
 
 |Version|Description|
 |-----|-----|
+|docs update|Ingest info added for LiveU, Magewell Ultra & Teradek Vidiu|
 |0.6.0|Secure ingest<br>Use audio delay setting from the backend |
 |0.5.0|Added the ability to automatically update the encoder from the Management Portal|
 
@@ -364,11 +478,7 @@ Configure the audio settings, so the audio is played on both audio outputs. See 
 
 **The stream is unstable or the video buffer is low.**
 
-*Make sure the mixer software is set to “Zero Latency” in the encoder settings.*
-
-**I want to ingest in portrait mode to the cloud encoder (1080x1920px).**
-
-*Please contact the Livery team to make the additional changes.*
+*Check your internet connection; make sure the upload speed is double the combined total of the different qualities and you don't have any package loss.  <br>https://packetlosstest.com/<br>https://www.speedtest.net/ <br> If possible set the encoder/mixer to “Zero Latency” in the encoder settings.*
 
 **I want to ingest in 4k to the cloud encoder (3840x2160px).**
 

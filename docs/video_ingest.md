@@ -347,6 +347,7 @@ SRT is supported via a workaround
 <!-- tabs:start -->
 #### **RTMP**
 Select a custom RTMP source
+
 |Menu Item|Property|Value|
 |-----|-----|-----------|
 |Destination|URL|LiveU requires the ingest URL and stream key to be separated. The stream ID should be removed from the Ingest URL rtmp://ingest.liveryvideo.com/app/|
@@ -367,6 +368,7 @@ Select a custom RTMP source
 <!-- tabs:start -->
 #### **RTMP**
 Select a custom RTMP source
+
 |Menu Item|Property|Value|
 |-----|-----|-----------|
 |Streaming Server|URL|Magewell requires the ingest URL and stream key to be separated. The stream ID should be removed from the Ingest URL rtmp://ingest.liveryvideo.com/app/|
@@ -393,6 +395,7 @@ Select a custom RTMP source
 #### **RTMP**
 
 Select a custom RTMP source
+
 |Menu Item|Property|Value|
 |-----|-----|-----------|
 |Streaming Server|URL|Magewell requires the ingest URL and stream key to be separated. The stream ID should be removed from the Ingest URL rtmp://ingest.liveryvideo.com/app/|
@@ -403,6 +406,7 @@ Select a custom RTMP source
 #### **SRT**
 
 Select a custom Caller source
+
 |Menu Item|Property|Value|
 |-----|-----|-----------|
 |Streaming Server|address|Magewell requires the ingest URL and stream key to be separated. The stream ID should be removed from the Ingest URL ingest.liveryvideo.com|

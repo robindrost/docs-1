@@ -346,7 +346,7 @@ SRT is supported via a workaround
 ?> Go to https://solo.liveu.tv/ to change any settings
 <!-- tabs:start -->
 #### **RTMP**
-Select a custom RTMP source
+Select a custom RTMP source<br>
 
 |Menu Item|Property|Value|
 |-----|-----|-----------|
@@ -367,7 +367,7 @@ Select a custom RTMP source
 
 <!-- tabs:start -->
 #### **RTMP**
-Select a custom RTMP source
+Select a custom RTMP source<br>
 
 |Menu Item|Property|Value|
 |-----|-----|-----------|
@@ -405,7 +405,7 @@ Select a custom RTMP source<br>
 
 #### **SRT**
 
-Select a custom Caller source
+Select a custom Caller source<br>
 
 |Menu Item|Property|Value|
 |-----|-----|-----------|
@@ -436,7 +436,7 @@ Select a custom Caller source
 <!-- tabs:start -->
 #### **RTMP**
 
-Select a custom RTMP source
+Select a custom RTMP source<br>
 |Menu Item|Property|Value|
 |-----|-----|-----------|
 |Broadcast|Mode|RTMP/RTMPS|

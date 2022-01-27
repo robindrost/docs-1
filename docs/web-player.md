@@ -13,19 +13,16 @@ Please refer to the [Livery Management Portal](https://video-encoder-director.pl
 
 ## Basic Usage
 
-For the most basic usage of this SDK you can just use an HTML snippet like this:
+If you're not bundling your own JS you can just use an HTML snippet like this:
 
 ```html
 <script src="https://unpkg.com/@liveryvideo/player@x.y.z"></script>
-<livery-player
-  streamid="5ddb98f5e4b0937e6a4507f2"
-  style="width: 100%; height: 50vh;"
-></livery-player>
+<livery-player streamid="5ddb98f5e4b0937e6a4507f2"></livery-player>
 ```
 
-?> Replace the version, stream id and style by your own (see [CDN](#cdn), [HTML](#html) and [CSS](#css)).
+?> Replace the player version and stream id by your own, see: [CDN](#cdn), [HTML](#html) and [CSS](#css) for details below.
 
-?> Use a specific size to prevent that from changing as the stream is loaded (see [CSS](#css) for details).
+?> If this does not work you can fall back to embedding the player in an iframe instead, see: [Livery Video Embed](embed.md).
 
 ## Support
 
@@ -39,17 +36,17 @@ The UMD `main` bundle (as used by unpkg [CDN](#cdn)) supports iOS/iPadOS Safari 
 
 ### CDN
 
-Livery can be loaded from [unpkg](https://unpkg.com):
+The player can be loaded from [unpkg](https://unpkg.com):
 
 ```html
 <script src="https://unpkg.com/@liveryvideo/player@x.y.z"></script>
 ```
 
-?> Replace the version (`x.y.z`) above by the version of the SDK that you wish to use. E.g: update to latest stable release periodically. Please see the [CHANGELOG](web-player-changelog.md) for details.
+?> Replace the version (`x.y.z`) above by the player version that you wish to use. E.g: update to latest stable release periodically. Please see the [CHANGELOG](web-player-changelog.md) for details.
 
 ### NPM
 
-Or Livery can be installed using NPM:
+Or the player can be installed using NPM:
 
 ```bash
 npm install @liveryvideo/player
@@ -65,30 +62,33 @@ import '@liveryvideo/player';
 
 ### HTML
 
-?> Replace the Livery Demo stream id (`5ddb98f5e4b0937e6a4507f2`) below by your own.
-
 ```html
 <livery-player streamid="5ddb98f5e4b0937e6a4507f2"></livery-player>
 ```
+
+?> Replace the Livery Demo stream id (`5ddb98f5e4b0937e6a4507f2`) above by your own.
 
 Please see the [LiveryPlayer](#liveryplayer) API documentation below for additional attributes etc.
 
 ### CSS
 
-To fix the size of the livery-player element for the video etc. to be fit inside, use something like:
+The livery-player element is displayed as a `block`, i.e: using the full width available by default.
+
+If no height is specified it will use the video aspect ratio (default `16:9`) to determine the height intrinsically.
+
+Alternatively you can specify the size extrinsically, to prevent it from changing as the stream is loaded, e.g:
 
 ```css
 livery-player {
-  width: 100%;
   height: 50vh;
 }
 ```
 
-Use a specific extrinsic size to prevent that from changing intrinsically as the stream is loaded.
-
-E.g: Don't (just) use `min-height` but (also) specify `height` for the livery-player (directly or via its containing elements).
-
 See also: [MDN Sizing items in CSS](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Sizing_items_in_CSS)
+
+When you use a fixed height like this the video contents of the player will be fitted inside the available space based on the `Fit` mode configured in the Livery Portal for this stream (e.g: `CONTAIN` or `COVER` or ..).
+
+See also: [MDN object-fit](https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit)
 
 ## Exports
 
@@ -96,15 +96,15 @@ When using the UMD bundle, these can be found as properties of `livery` in the g
 
 ### endpointId
 
-String property specifying id used by this Livery endpoint.
+String property specifying the Livery endpoint id used by this player (e.g: for analytics).
 
 ### version
 
-String property specifying version of Livery SDK.
+String property specifying the Livery video web player version.
 
 ### LiveryPlayer
 
-Element defined as `<livery-player>` which can be used to play a livery video stream.
+Element defined as `<livery-player>` which can be used to play a Livery video stream.
 
 By default the player will attempt to start playback unmuted and fall back to muted auto play if necessary. When the muted attribute is specified to the player element on creation it will start muted. When the user mutes the audio by clicking on the mute control that is persisted to local storage and on subsequent player loads it will then remain muted.
 
@@ -317,12 +317,7 @@ function MyComponent() {
     },
     [], // tell react to only use this effect on mount
   );
-  return (
-    <livery-player
-      streamid="5ddb98f5e4b0937e6a4507f2"
-      style="width: 100%; height: 50vh;"
-    ></livery-player>
-  );
+  return <livery-player streamid="5ddb98f5e4b0937e6a4507f2"></livery-player>;
 }
 ```
 

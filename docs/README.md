@@ -2,7 +2,7 @@
 
 ![Livery Experience](title_screen.png)
 
-Livery offers a complete, end-to-end interactive live streaming solution.  
+Livery offers a complete, end-to-end interactive live streaming solution.
 
 The Livery player is the best way to bring low-latency interactive video project to your end users. Our player SDK’s can be integrated on iOS, Android and web in a matter of minutes. The built-in interactive layer in combination with our interaction engine (or you own) brings true interactive video within everyone’s reach. All managed via an easy-to-use online portal.
 
@@ -30,11 +30,11 @@ It is recommended to use an internet connection which has at least twice the spe
 
 When users view a stream, data is used. The following calculation shows the expected data consumption for a 1 hour stream. This is an indication, the actual data usages is slightly higher due to additional overhead (analytics, audio, config, ect).
 
-___((Bitrate / 8) * 60) * duration in minutes___
+**_((Bitrate / 8) * 60) * duration in minutes_**
 
 - 0.8 mbps = 0.360 gigabyte (360 megabyte)
 - 1.5 mbps = 0.675 gigabyte (675 megabyte)
-- 3 mbps =  1.35 gigabyte (1,350 megabyte)
+- 3 mbps = 1.35 gigabyte (1,350 megabyte)
 - 5 mbps = 2.25 gigabyte (2,250 megabyte)
 
 ### Browser and OS Support
@@ -46,33 +46,48 @@ The Livery players (iOS, Android and Web). Are tested on the 2 latest major OS a
 The Livery players connect with the following domains. The domains need to be whitelisted for the best possible user experience. All requests are done over HTTPS.
 
 #### Generic
+
 - time.akamai.com
 - cdn.liveryvideo.com
 - ip.liveryvideo.com
 
 #### When using unpkg
+
 - unpkg.com
 
 #### When using embed
+
 - embed.liveryvideo.com
 - unpkg.com
 
 #### Region dependent
+
 ##### Europe
+
 - livery-ull-test.akamaized.net
+
 ##### South America
+
 - livery-sa2.akamaized.net
+
 ##### United States of America General
+
 - livery-us.akamaized.net
+
 ##### United States of America East Cost
+
 - livery-us-east.akamaized.net
+
 ##### Asia Pacific and Japan
+
 - livery-apj.akamaized.net
 
 #### RTMP/SRT
+
 - ingest.liveryvideo.com
 
 #### Portal
+
 - video-encoder-director.playtotv.com
 - maps.googleapis.com
 - maps.gstatic.com

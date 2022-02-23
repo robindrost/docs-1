@@ -43,7 +43,7 @@ There are some things to consider when using a hardware encoder in combination w
 Both Windows and Mac OS allow the play audio over multiple outputs at the same time, including audio received by a microphone.
 
 On Windows this can be achieved by enabling “Stereo Mix” via the audio settings. Navigate to the audio icon in your system tray, right-click it, and select “Open Sound settings” and the “Sound Control Panel”.
-Navigate to the “Recording” tab and make sure both “Show Disabled Devices” and “Show Disconnected Devices” options are checked.  The “Stereo Mix” setting is now visible.
+Navigate to the “Recording” tab and make sure both “Show Disabled Devices” and “Show Disconnected Devices” options are checked. The “Stereo Mix” setting is now visible.
 
 <p align="center">
 <img width="512" src="encoder/windows-sound-settings.png">
@@ -100,47 +100,49 @@ It is recommended to use an internet connection which has at least twice the spe
 
 ## Mixer Soft- and Hardware
 
-A soft- and or hardware mixer is often used to output one or more broadcast streams. All video sources are connected with the Mixer, from which the broadcast stream is ingested in either the Cloud or On-premis encoder.  
+A soft- and or hardware mixer is often used to output one or more broadcast streams. All video sources are connected with the Mixer, from which the broadcast stream is ingested in either the Cloud or On-premis encoder.
 
 The following overview contains an overview of the most common video mixing tools and the configuration needed live stream using Livery Video.
 
 ### OBS
 
 ?> <https://obsproject.com/nl>
+
 <!-- tabs:start -->
+
 #### **RTMP**
 
-|Menu|Item Property|Value|
-|-----|-----|-----------|
-|Stream|Service|Custom|
-| |Server|Ingest URL for example rtmp://ingest.liveryvideo.com/app/12a34b56c78d90e|
-| |Stream Key|Stream Key optional value for example vYm5X669xxdk|
-|Output|Output Mode|Advanced|
-| |Encoder|x264|
-| |Rate Control|CBR|
-| |Bitrate|A higher value as the max bitrate configured in the Livery Encoder settings|
-| |Keyframe interval|Recommended setting is 2. The value should match the segment size set in the Livery Encoder settings|
-| |CPU Usages Preset|Veryfast|
-| |Tune|Zerolatency|
-|Video|Output Resolution|1920x1080px Please reachout to us when an alternative resolution is requested.|
-| |Common FPS Values|25 PAL It is strongly recommended to use the same FPS throughout the complete workflow, to prevent audio/video sync issues.|
+| Menu   | Item Property     | Value                                                                                                                       |
+| ------ | ----------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| Stream | Service           | Custom                                                                                                                      |
+|        | Server            | Ingest URL for example rtmp://ingest.liveryvideo.com/app/12a34b56c78d90e                                                    |
+|        | Stream Key        | Stream Key optional value for example vYm5X669xxdk                                                                          |
+| Output | Output Mode       | Advanced                                                                                                                    |
+|        | Encoder           | x264                                                                                                                        |
+|        | Rate Control      | CBR                                                                                                                         |
+|        | Bitrate           | A higher value as the max bitrate configured in the Livery Encoder settings                                                 |
+|        | Keyframe interval | Recommended setting is 2. The value should match the segment size set in the Livery Encoder settings                        |
+|        | CPU Usages Preset | Veryfast                                                                                                                    |
+|        | Tune              | Zerolatency                                                                                                                 |
+| Video  | Output Resolution | 1920x1080px Please reachout to us when an alternative resolution is requested.                                              |
+|        | Common FPS Values | 25 PAL It is strongly recommended to use the same FPS throughout the complete workflow, to prevent audio/video sync issues. |
 
 #### **SRT**
 
-|Menu|Item Property|Value|
-|-----|-----|-----------|
-|Stream|Service|Custom|
-| |Server|Ingest URL for example srt://ingest.liveryvideo.com:9998?pkt_size=1316&streamid=12a34b56c78d90e|
-| |Stream Key|Stream Key optional value for example vYm5X669xxdk|
-|Output|Output Mode|Advanced|
-| |Encoder|x264|
-| |Rate Control|CBR|
-| |Bitrate|A higher value as the max bitrate configured in the Livery Encoder settings|
-| |Keyframe interval|Recommended setting is 2. The value should match the segment size set in the Livery Encoder settings|
-| |CPU Usages Preset|Veryfast|
-| |Tune|Zerolatency|
-|Video|Output Resolution|1920x1080px Please reachout to us when an alternative resolution is requested.|
-| |Common FPS Values|25 PAL It is strongly recommended to use the same FPS throughout the complete workflow, to prevent audio/video sync issues.|
+| Menu   | Item Property     | Value                                                                                                                       |
+| ------ | ----------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| Stream | Service           | Custom                                                                                                                      |
+|        | Server            | Ingest URL for example srt://ingest.liveryvideo.com:9998?pkt_size=1316&streamid=12a34b56c78d90e                             |
+|        | Stream Key        | Stream Key optional value for example vYm5X669xxdk                                                                          |
+| Output | Output Mode       | Advanced                                                                                                                    |
+|        | Encoder           | x264                                                                                                                        |
+|        | Rate Control      | CBR                                                                                                                         |
+|        | Bitrate           | A higher value as the max bitrate configured in the Livery Encoder settings                                                 |
+|        | Keyframe interval | Recommended setting is 2. The value should match the segment size set in the Livery Encoder settings                        |
+|        | CPU Usages Preset | Veryfast                                                                                                                    |
+|        | Tune              | Zerolatency                                                                                                                 |
+| Video  | Output Resolution | 1920x1080px Please reachout to us when an alternative resolution is requested.                                              |
+|        | Common FPS Values | 25 PAL It is strongly recommended to use the same FPS throughout the complete workflow, to prevent audio/video sync issues. |
 
 #### **On-prem**
 
@@ -165,51 +167,53 @@ Assign the on-prem encoder as an external monitor of the computer. Set OBS to St
 ### vMixer
 
 ?> <https://www.vmix.com/>
+
 <!-- tabs:start -->
+
 #### **RTMP**
 
-|Menu Item|Property|Value|
-|-----|-----|-----------|
-|Destination|Service|Custom|
-| |URL|Ingest URL for example rtmp://ingest.liveryvideo.com/app/12a34b56c78d90e|
-| |Stream Key|Stream Key optional value for example vYm5X669xxdk|
-| |Quality|Custom via the gear icon|
-|Streaming Quality|Encode Size|1920x1080|
-| |Profile|Main|
-| |Level|3.1|
-| |Preset|Ultrafast|
-| |Aspect Ratio/Crop|Original|
-| |Keyframe Frequency|2 seconds|
-| |Network Buffer|5 Seconds|
-| |Strict CBR| Checked|
+| Menu Item         | Property           | Value                                                                    |
+| ----------------- | ------------------ | ------------------------------------------------------------------------ |
+| Destination       | Service            | Custom                                                                   |
+|                   | URL                | Ingest URL for example rtmp://ingest.liveryvideo.com/app/12a34b56c78d90e |
+|                   | Stream Key         | Stream Key optional value for example vYm5X669xxdk                       |
+|                   | Quality            | Custom via the gear icon                                                 |
+| Streaming Quality | Encode Size        | 1920x1080                                                                |
+|                   | Profile            | Main                                                                     |
+|                   | Level              | 3.1                                                                      |
+|                   | Preset             | Ultrafast                                                                |
+|                   | Aspect Ratio/Crop  | Original                                                                 |
+|                   | Keyframe Frequency | 2 seconds                                                                |
+|                   | Network Buffer     | 5 Seconds                                                                |
+|                   | Strict CBR         | Checked                                                                  |
 
 #### **SRT**
 
 SRT is supported via a workaround
 
-|Menu Item|Property|Value|
-|-----|-----|-----------|
-|Destination|Service|Custom|
-| |URL|Ingest URL for example rtmp://ingest.liveryvideo.com/app/12a34b56c78d90e|
-| |Stream Key|Stream Key optional value for example vYm5X669xxdk|
-| |Quality|Custom via the gear icon|
-|Streaming Quality|Encode Size|1920x1080|
-| |Profile|Main|
-| |Level|3.1|
-| |Preset|Ultrafast|
-| |Aspect Ratio/Crop|Original|
-| |Keyframe Frequency|2 seconds|
-| |Network Buffer|5 Seconds|
-| |Strict CBR| Checked|
+| Menu Item         | Property           | Value                                                                    |
+| ----------------- | ------------------ | ------------------------------------------------------------------------ |
+| Destination       | Service            | Custom                                                                   |
+|                   | URL                | Ingest URL for example rtmp://ingest.liveryvideo.com/app/12a34b56c78d90e |
+|                   | Stream Key         | Stream Key optional value for example vYm5X669xxdk                       |
+|                   | Quality            | Custom via the gear icon                                                 |
+| Streaming Quality | Encode Size        | 1920x1080                                                                |
+|                   | Profile            | Main                                                                     |
+|                   | Level              | 3.1                                                                      |
+|                   | Preset             | Ultrafast                                                                |
+|                   | Aspect Ratio/Crop  | Original                                                                 |
+|                   | Keyframe Frequency | 2 seconds                                                                |
+|                   | Network Buffer     | 5 Seconds                                                                |
+|                   | Strict CBR         | Checked                                                                  |
 
 ### **On-prem**
 
-|Destination|Service|Custom|
-|-----|-----|-----------|
-|Windows Display settings|Multiple displays|Extend these displays|
-|vMix Display settings|Output Size|1920x1080|
-| |Display| 2 (The display port used by the encoder)|
-|vMix Main screen|Fullscreen|Press Fullscreen to start outputting the video to the selected display port.|
+| Destination              | Service           | Custom                                                                       |
+| ------------------------ | ----------------- | ---------------------------------------------------------------------------- |
+| Windows Display settings | Multiple displays | Extend these displays                                                        |
+| vMix Display settings    | Output Size       | 1920x1080                                                                    |
+|                          | Display           | 2 (The display port used by the encoder)                                     |
+| vMix Main screen         | Fullscreen        | Press Fullscreen to start outputting the video to the selected display port. |
 
 ### **Screenshots**
 
@@ -234,15 +238,17 @@ SRT is supported via a workaround
 ?> A Professional Streamyard account is required to make the required changes to stream using the Livery platform.
 
 ?> SRT is not supported
+
 <!-- tabs:start -->
+
 #### **RTMP**
 
-|Menu Item|Property|Value|
-|-----|-----|-----------|
-|Destination|Service|Custom|
-| |RTMP Server URL|Streamyard requers the ingest URL and stream key to be separated. The stream ID should be removed from the Ingest URL rtmp://ingest.liveryvideo.com/app/|
-| |Stream Key|The Stream Key is a mandatory value in Streamyard, the last part if the stream ID can be added as Stream Key; 12a34b56c78d90e|
-|Settings|Broadcast Quality|1080p|
+| Menu Item   | Property          | Value                                                                                                                                                    |
+| ----------- | ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Destination | Service           | Custom                                                                                                                                                   |
+|             | RTMP Server URL   | Streamyard requers the ingest URL and stream key to be separated. The stream ID should be removed from the Ingest URL rtmp://ingest.liveryvideo.com/app/ |
+|             | Stream Key        | The Stream Key is a mandatory value in Streamyard, the last part if the stream ID can be added as Stream Key; 12a34b56c78d90e                            |
+| Settings    | Broadcast Quality | 1080p                                                                                                                                                    |
 
 #### **Screenshots**
 
@@ -260,15 +266,17 @@ SRT is supported via a workaround
 ?> SRT is not supported
 
 ?> On-Prem is not supported
+
 <!-- tabs:start -->
+
 #### **RTMP**
 
-|Menu Item|Property|Value|
-|-----|-----|-----------|
-|Channel|Service|Custom|
-| |RTMP URL|Ingest URL for example rtmp://ingest.liveryvideo.com/app/12a34b56c78d90e|
-| |Stream Key|Stream Key optional value for example vYm5X669xxdk|
-|Settings|Broadcast Quality|1080p|
+| Menu Item | Property          | Value                                                                    |
+| --------- | ----------------- | ------------------------------------------------------------------------ |
+| Channel   | Service           | Custom                                                                   |
+|           | RTMP URL          | Ingest URL for example rtmp://ingest.liveryvideo.com/app/12a34b56c78d90e |
+|           | Stream Key        | Stream Key optional value for example vYm5X669xxdk                       |
+| Settings  | Broadcast Quality | 1080p                                                                    |
 
 #### **Screenshots**
 
@@ -287,14 +295,16 @@ SRT is supported via a workaround
 ?> SRT is not supported
 
 ?> On-Prem is not supported
+
 <!-- tabs:start -->
+
 #### **RTMP**
 
-|Menu Item|Property|Value|
-|-----|-----|-----------|
-|Settings|Server URL|Ingest URL for example rtmp://ingest.liveryvideo.com/app/12a34b56c78d90e|
-| |Server Authentication|Stream Key optional value for example vYm5X669xxdk|
-| |Resolution|1920x1080|
+| Menu Item | Property              | Value                                                                    |
+| --------- | --------------------- | ------------------------------------------------------------------------ |
+| Settings  | Server URL            | Ingest URL for example rtmp://ingest.liveryvideo.com/app/12a34b56c78d90e |
+|           | Server Authentication | Stream Key optional value for example vYm5X669xxdk                       |
+|           | Resolution            | 1920x1080                                                                |
 
 #### **Screenshots**
 
@@ -308,26 +318,28 @@ SRT is supported via a workaround
 ?> <https://softvelum.com/larix/>
 
 ?> On-Prem is not supported
+
 <!-- tabs:start -->
+
 #### **RTMP**
 
-|Menu Item|Property|Value|
-|-----|-----|-----------|
-|Destination|URL|Larix requires the ingest URL and stream key to be separated. The stream ID should be removed from the Ingest URL rtmp://ingest.liveryvideo.com/app/|
-| |Stream Key|The Stream Key is a mandatory value in Larix the last part if the stream ID can be added as Stream Key; 12a34b56c78d90e|
-| |Resolution1920x1080|
-| |Keyframe frequency|2 seconds|
-| |Codec|H264|
+| Menu Item   | Property            | Value                                                                                                                                                |
+| ----------- | ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Destination | URL                 | Larix requires the ingest URL and stream key to be separated. The stream ID should be removed from the Ingest URL rtmp://ingest.liveryvideo.com/app/ |
+|             | Stream Key          | The Stream Key is a mandatory value in Larix the last part if the stream ID can be added as Stream Key; 12a34b56c78d90e                              |
+|             | Resolution1920x1080 |
+|             | Keyframe frequency  | 2 seconds                                                                                                                                            |
+|             | Codec               | H264                                                                                                                                                 |
 
 #### **SRT**
 
-|Menu Item|Property|Value|
-|-----|-----|-----------|
-|Destination|URL|Larix requires the ingest URL and stream key to be separated. The stream ID should as well as the 'pkt_size=1316&streamid=' be removed from the Ingest URL srt://ingest.liveryvideo.com:9998
-| |Stream Key|The Stream Key is a mandatory value in Larix the last part if the stream ID can be added as Stream Key; 12a34b56c78d90e|
-| |Resolution|1920x1080|
-| |Keyframe frequency|2 seconds|
-| |Codec|H264|
+| Menu Item   | Property           | Value                                                                                                                                                                                        |
+| ----------- | ------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Destination | URL                | Larix requires the ingest URL and stream key to be separated. The stream ID should as well as the 'pkt_size=1316&streamid=' be removed from the Ingest URL srt://ingest.liveryvideo.com:9998 |
+|             | Stream Key         | The Stream Key is a mandatory value in Larix the last part if the stream ID can be added as Stream Key; 12a34b56c78d90e                                                                      |
+|             | Resolution         | 1920x1080                                                                                                                                                                                    |
+|             | Keyframe frequency | 2 seconds                                                                                                                                                                                    |
+|             | Codec              | H264                                                                                                                                                                                         |
 
 #### **Screenshots**
 
@@ -343,15 +355,18 @@ SRT is supported via a workaround
 
 ?> <https://www.liveu.tv/>
 
-?> Go to https://solo.liveu.tv/ to change any settings
+?> Go to <https://solo.liveu.tv/> to change any settings
+
 <!-- tabs:start -->
+
 #### **RTMP**
+
 Select a custom RTMP source<br>
 
-|Menu Item|Property|Value|
-|-----|-----|-----------|
-|Destination|URL|LiveU requires the ingest URL and stream key to be separated. The stream ID should be removed from the Ingest URL rtmp://ingest.liveryvideo.com/app/|
-| |Stream Key|The Stream Key is a mandatory value. The last part of the URL, the stream ID, can be added as Stream Key; 12a34b56c78d90e|
+| Menu Item   | Property   | Value                                                                                                                                                |
+| ----------- | ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Destination | URL        | LiveU requires the ingest URL and stream key to be separated. The stream ID should be removed from the Ingest URL rtmp://ingest.liveryvideo.com/app/ |
+|             | Stream Key | The Stream Key is a mandatory value. The last part of the URL, the stream ID, can be added as Stream Key; 12a34b56c78d90e                            |
 
 #### **Screenshots**
 
@@ -366,16 +381,17 @@ Select a custom RTMP source<br>
 ?> <https://www.magewell.com/ultra-stream>
 
 <!-- tabs:start -->
+
 #### **RTMP**
+
 Select a custom RTMP source<br>
 
-|Menu Item|Property|Value|
-|-----|-----|-----------|
-|Streaming Server|URL|Magewell requires the ingest URL and stream key to be separated. The stream ID should be removed from the Ingest URL rtmp://ingest.liveryvideo.com/app/|
-| |Stream Key|The Stream Key is a mandatory value. The last part of the URL, the stream ID, can be added as Stream Key; 12a34b56c78d90e|
-| |Keyframe Interval|2 seconds|
-| |Codec type|H264|
-
+| Menu Item        | Property          | Value                                                                                                                                                   |
+| ---------------- | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Streaming Server | URL               | Magewell requires the ingest URL and stream key to be separated. The stream ID should be removed from the Ingest URL rtmp://ingest.liveryvideo.com/app/ |
+|                  | Stream Key        | The Stream Key is a mandatory value. The last part of the URL, the stream ID, can be added as Stream Key; 12a34b56c78d90e                               |
+|                  | Keyframe Interval | 2 seconds                                                                                                                                               |
+|                  | Codec type        | H264                                                                                                                                                    |
 
 #### **Screenshots**
 
@@ -392,29 +408,30 @@ Select a custom RTMP source<br>
 ?> <https://www.magewell.com/ultra-encode>
 
 <!-- tabs:start -->
+
 #### **RTMP**
 
 Select a custom RTMP source<br>
 
-|Menu Item|Property|Value|
-|-----|-----|-----------|
-|Streaming Server|URL|Magewell requires the ingest URL and stream key to be separated. The stream ID should be removed from the Ingest URL rtmp://ingest.liveryvideo.com/app/|
-| |Stream Key|The Stream Key is a mandatory value. The last part of the URL, the stream ID, can be added as Stream Key; 12a34b56c78d90e|
-|Encodering Parameters|Keyframe Interval|2 seconds|
-| |Codec type|H264|
+| Menu Item             | Property          | Value                                                                                                                                                   |
+| --------------------- | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Streaming Server      | URL               | Magewell requires the ingest URL and stream key to be separated. The stream ID should be removed from the Ingest URL rtmp://ingest.liveryvideo.com/app/ |
+|                       | Stream Key        | The Stream Key is a mandatory value. The last part of the URL, the stream ID, can be added as Stream Key; 12a34b56c78d90e                               |
+| Encodering Parameters | Keyframe Interval | 2 seconds                                                                                                                                               |
+|                       | Codec type        | H264                                                                                                                                                    |
 
 #### **SRT**
 
 Select a custom Caller source<br>
 
-|Menu Item|Property|Value|
-|-----|-----|-----------|
-|Streaming Server|address|Magewell requires the ingest URL and stream key to be separated. The stream ID should be removed from the Ingest URL ingest.liveryvideo.com|
-| |Port|9998|
-| |Latency|30ms (as low as possible)|
-| |Stream ID|The Stream Key is a mandatory value. The last part of the URL, the stream ID, can be added as Stream Key; 12a34b56c78d90e|
-|Encodering Parameters|Keyframe frequency|2 seconds|
-| |Codec|H264|
+| Menu Item             | Property           | Value                                                                                                                                       |
+| --------------------- | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| Streaming Server      | address            | Magewell requires the ingest URL and stream key to be separated. The stream ID should be removed from the Ingest URL ingest.liveryvideo.com |
+|                       | Port               | 9998                                                                                                                                        |
+|                       | Latency            | 30ms (as low as possible)                                                                                                                   |
+|                       | Stream ID          | The Stream Key is a mandatory value. The last part of the URL, the stream ID, can be added as Stream Key; 12a34b56c78d90e                   |
+| Encodering Parameters | Keyframe frequency | 2 seconds                                                                                                                                   |
+|                       | Codec              | H264                                                                                                                                        |
 
 #### **Screenshots**
 
@@ -434,15 +451,16 @@ Select a custom Caller source<br>
 ?> <https://teradek.com/pages/vidiu-x>
 
 <!-- tabs:start -->
+
 #### **RTMP**
 
 Select a custom RTMP source<br>
 
-|Menu Item|Property|Value|
-|-----|-----|-----------|
-|Broadcast|Mode|RTMP/RTMPS|
-| |CRTMP/RTMPS Server URL|Teradek requires the ingest URL and stream key to be separated. The stream ID should be removed from the Ingest URL rtmp://ingest.liveryvideo.com/app/|
-| |Stream|The Stream Key is a mandatory value. The last part of the URL, the stream ID, can be added as Stream Key; 12a34b56c78d90e|
+| Menu Item | Property               | Value                                                                                                                                                  |
+| --------- | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Broadcast | Mode                   | RTMP/RTMPS                                                                                                                                             |
+|           | CRTMP/RTMPS Server URL | Teradek requires the ingest URL and stream key to be separated. The stream ID should be removed from the Ingest URL rtmp://ingest.liveryvideo.com/app/ |
+|           | Stream                 | The Stream Key is a mandatory value. The last part of the URL, the stream ID, can be added as Stream Key; 12a34b56c78d90e                              |
 
 #### **Screenshots**
 
@@ -452,19 +470,19 @@ Select a custom RTMP source<br>
 
 <!-- tabs:end -->
 
-# Livery Video Ingest Revision History
+## Livery Video Ingest Revision History
 
-|Version|Description|
-|-----|-----|
-|docs update|Ingest info added for LiveU, Magewell Ultra & Teradek Vidiu|
-|0.6.0|Secure ingest<br>Use audio delay setting from the backend |
-|0.5.0|Added the ability to automatically update the encoder from the Management Portal|
+| Version     | Description                                                                      |
+| ----------- | -------------------------------------------------------------------------------- |
+| docs update | Ingest info added for LiveU, Magewell Ultra & Teradek Vidiu                      |
+| 0.6.0       | Secure ingest<br>Use audio delay setting from the backend                        |
+| 0.5.0       | Added the ability to automatically update the encoder from the Management Portal |
 
-# Livery Video Ingest Q&A
+## Livery Video Ingest Q&A
 
 **I see the video but I'm not able to get audio via the output of the computer?**
 
-*Make sure the audio is sent along with the video single via the HDMI or SDI cable. This can be achieved via the audio output settings.*
+_Make sure the audio is sent along with the video single via the HDMI or SDI cable. This can be achieved via the audio output settings._
 
 **I can hear the audio in the stream, but I’m no longer able to hear the audio via my studio headphone/speakers.**
 
@@ -472,12 +490,18 @@ Configure the audio settings, so the audio is played on both audio outputs. See 
 
 **The cloud encoder keeps on restarting.**
 
-*Make sure a 1080p video is ingested via the RTMP or SRT URL.*
+_Make sure a 1080p video is ingested via the RTMP or SRT URL._
 
 **The stream is unstable or the video buffer is low.**
 
-*Check your internet connection; make sure the upload speed is double the combined total of the different qualities and you don't have any package loss.  <br>https://packetlosstest.com/<br>https://www.speedtest.net/ <br> If possible set the encoder/mixer to “Zero Latency” in the encoder settings.*
+_Check your internet connection; make sure the upload speed is double the combined total of the different qualities and you don't have any package loss. <br><https://packetlosstest.com/><br><https://www.speedtest.net/> <br> If possible set the encoder/mixer to “Zero Latency” in the encoder settings._
 
 **I want to ingest in 4k to the cloud encoder (3840x2160px).**
 
-*Please contact the Livery team to make the additional changes.*
+_Please contact the Livery team to make the additional changes._
+
+**How long does it take for a cloud stream to stop?**
+
+Every minute the system checks if a stream is still active.
+If no data has been received for a minute the stream will be stopped.
+This means that a stream will stop somewhere between 1 and 2 minutes after the RTMP/SRT signal has stopped.

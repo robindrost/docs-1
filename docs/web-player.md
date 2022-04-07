@@ -182,13 +182,15 @@ This needs to be connected to the player element like so:
 
 | Attribute         | Property          | Type               | Default | Description                                                                                                                             |
 | ----------------- | ----------------- | ------------------ | ------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| `audiocolor`      | `audioColor`      | `string` \| `null` | `null`  | Audio buffer line color, defaults to `bufferColor` or '#3366cc'.                                                                        |
 | `backgroundcolor` | `backgroundColor` | `string` \| `null` | `null`  | Chart background color.                                                                                                                 |
 | `bubbles`         | `bubbles`         | `boolean`          | `false` | If true then events dispatched by this element will bubble.                                                                             |
-| `buffercolor`     | `bufferColor`     | `string` \| `null` | `null`  | Buffer line color.                                                                                                                      |
-| `latencycolor`    | `latencyColor`    | `string` \| `null` | `null`  | Latency line color.                                                                                                                     |
+| `buffercolor`     | `bufferColor`     | `string` \| `null` | `null`  | Buffer line color used as default for `audioColor` and `videoColor`.                                                                    |
+| `latencycolor`    | `latencyColor`    | `string` \| `null` | `null`  | Live latency line color, defaults to '#ffa500'.                                                                                         |
 | `maxrows`         | `maxRows`         | `number`           | `60`    | Maximum number of rows to store in data table. E.g: With default value: 60 and 500ms updateInterval this will roughly equal 30 seconds. |
 | `textcolor`       | `textColor`       | `string` \| `null` | `null`  | Chart text color.                                                                                                                       |
 | `updateinterval`  | `updateInterval`  | `number`           | `500`   | Interval in milliseconds at which to add a row to the data table and draw the chart.                                                    |
+| `videocolor`      | `videoColor`      | `string` \| `null` | `null`  | Video buffer line color, defaults to `bufferColor` or '#dc3912'.                                                                        |
 
 #### Properties
 

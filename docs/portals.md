@@ -46,6 +46,10 @@ Key features:
 - Leaderboard results
 
 #### Rating
+<p align="center">
+<img src="portal/rating.png" width="500"/>
+</p>
+
 When you’d like to ask the opinion of your audience about a certain topic, you can set up a rating interaction. 
 
 Key features:
@@ -59,6 +63,9 @@ Key features:
 - Quick announcement
 
 #### Live reaction
+<p align="center">
+<img src="portal/live-reaction.png" width="500"/>
+</p>
 To offer the option to express feelings during the broadcast these live reaction emojis can be shown.
 
 Key features:
@@ -67,6 +74,9 @@ Key features:
 - Unlimited reactions during broadcast
 
 #### Countdown
+<p align="center">
+<img src="portal/countdown.png" width="500"/>
+</p>
 The countdown indicates how much time is left before the broadcast event is starting. It shows days, hours, minutes and seconds. 
 
 Key features:
@@ -79,6 +89,9 @@ Key features:
 This pack provides you the chat functionality and the Q&A feature which can be moderated via the web-based management system.
 
 #### Chat
+<p align="center">
+<img src="portal/chat.png" width="400"/>
+</p>
 The audience can chat with each other via the chat module. 
 
 Key features:
@@ -86,6 +99,9 @@ Key features:
 - Enable/disable chat in the web-based management system
 
 #### Q&A
+<p align="center">
+<img src="portal/q-a.png" width="500"/>
+</p>
 When the Q&A session is open the audience has the option to raise questions which the operator can manage in the web-based management system.
 
 Key features:
@@ -127,6 +143,10 @@ Key features:
 To support monetisation, we include elements that offer e-commerce capabilities. With these you can link your audience to your e-commerce platform or webshop to browse, configure, rate and buy your products.
 
 #### Product item
+<p align="center">
+<img src="portal/product-item.png" height="500"/>
+<img src="portal/product-item3.png" height="500"/>
+</p>
 For product promotions the product item interaction can be used. 
 
 Key features:
@@ -155,7 +175,9 @@ These powerful management features give you the opportunity to configure your br
 The features are Broadcast management, Account management, Currency handling, Theming, Audiences, Show/Hide pages or features, Presenter view and Data export. All these management features, real-time interaction results and analytics are provided by our web-based management system.
 
 #### Broadcast management
-
+<p align="center">
+<img src="portal/broadcast-management.png" height="500"/>
+</p>
 Broadcast is the main grouping element within our system. 
 For every broadcast event you set up a broadcast within the web-based management system where you define the details above..
 Once you have a broadcast defined, you can start to add interactions to it to fill up your timeline.
@@ -183,6 +205,9 @@ Key features:
 - Video stream selection 
 
 #### Account management
+<p align="center">
+<img src="portal/account-management.png" height="500"/>
+</p>
 Interactions can be seen anonymously but to earn points, use the chat or Q&A features the players need to log in or set up a guest user.
 
 Key features:
@@ -195,6 +220,9 @@ Key features:
 - Delete account / Clear data
 
 #### Currency handling
+<p align="center">
+<img src="portal/currency-handling.png" width="400"/>
+</p>
 The Broadcast’s locale can be selected on the Broadcast;s form. This will define how currencies, amounts, date/time format will be shown on the front end. 
 
 Key features:
@@ -210,6 +238,9 @@ Key features:
 - Theme definition on broadcast level
 
 #### Audience groups
+<p align="center">
+<img src="portal/audience-group.png" height="500"/>
+</p>
 With audience groups you can set up a broadcast which is available for only a closed group of users.
 
 Key features:
@@ -218,6 +249,9 @@ Key features:
 - Exclude guest user option
 
 #### Show/Hide pages or features
+<p align="center">
+<img src="portal/show-hide-features.png" width="400"/>
+</p>
 You can select which pages and features you’d like to add to your broadcast out of the list of:
 - Chat
 - Q&A
@@ -248,7 +282,7 @@ During the broadcast event we collect information about user’s reactions and a
 - Estimate interaction data
 - Rating results
 
-#### Livery Video Inter=gration - Video Stream Control
+#### Livery Video Integration - Video Stream Control
 The most important Video stream settings and management is available via the web-based management system, so everything can be set up in one place end to end.
 
 #### Google Analytics integration

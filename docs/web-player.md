@@ -116,7 +116,7 @@ See the general [Usage](#usage) section above.
 
 | Attribute     | Property      | Type      | Default | Description                                                                                                                                         |
 | ------------- | ------------- | --------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `akamaitoken` | `akamaiToken` | `string`  | `null`  | Authentication token to use to be able to see a stream that uses Akamai’s Token Auth feature.                                                       |
+| `akamaitoken` | `akamaiToken` | `string`  | `null`  | Access token to use to be able to see a stream that uses Akamai’s Token Auth feature.                                                               |
 | `bubbles`     | `bubbles`     | `boolean` | `false` | If true then events dispatched by this element will bubble.                                                                                         |
 | `configtype`  | `configType`  | `string`  | `null`  | Type of stream config to use. Defaults to SDK platform (WEB) when value is null (attribute is absent).                                              |
 | `fullscreen`  | `fullscreen`  | `boolean` | `false` | If true then player is fullscreen.<br />Dispatches: `livery-fullscreen-change`                                                                      |

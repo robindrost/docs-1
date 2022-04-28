@@ -116,7 +116,7 @@ See the general [Usage](#usage) section above.
 
 | Attribute     | Property      | Type      | Default | Description                                                                                                                                         |
 | ------------- | ------------- | --------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `akamaitoken` | `akamaiToken` | `string`  | `null`  | Access token to use to be able to see a stream that uses Akamai’s Token Auth feature.                                                               |
+| `akamaitoken` | `akamaiToken` | `string`  | `null`  | Authentication token to use to be able to see a stream that uses Akamai’s Token Auth feature.                                                       |
 | `bubbles`     | `bubbles`     | `boolean` | `false` | If true then events dispatched by this element will bubble.                                                                                         |
 | `configtype`  | `configType`  | `string`  | `null`  | Type of stream config to use. Defaults to SDK platform (WEB) when value is null (attribute is absent).                                              |
 | `fullscreen`  | `fullscreen`  | `boolean` | `false` | If true then player is fullscreen.<br />Dispatches: `livery-fullscreen-change`                                                                      |
@@ -136,7 +136,7 @@ See the general [Usage](#usage) section above.
 | `quality`       | R   | `string`                                                                                                                | `null`      | Active quality label.<br />Dispatches: `livery-quality-change`                     |
 | `streamPhase`   | R   | `'PRE'` \| `'LIVE'` \| `'POST'`                                                                                         | `'PRE'`     | Stream phase.<br />Dispatches: `livery-phase-change`                               |
 
-In addition there is an `engine` property but that is meant for debugging purposes only. It's use is not supported.
+In addition there is an `engine` property, and a `debug` property, but these are meant for debugging purposes only. Their use is not supported.
 
 #### Methods
 

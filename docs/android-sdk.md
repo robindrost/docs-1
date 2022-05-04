@@ -286,6 +286,7 @@ The remote configuration is automatically applied when calling createPlayer with
             .setAutoPlay(true)
             .setControlsOptions(controlsOptions)
             .setResizeMode(LiveryResizeMode.DEFAULT)
+            .setAkamaiToken("akamai_token")
             .build();
 
    playerView.createPlayer(playerOptions);
@@ -434,6 +435,14 @@ In the qualities list, the audio-only mode is not visible by default. If you wan
 playerView.setShowAudioOnlyModeInQualitiesList(true);
 ```
 
+### Akamai token
+
+Defines a access token to use to be able to see a stream that uses Akamai’s Token Auth feature.
+
+```java
+playerView.setAkamaiToken("akamai_token");
+```
+
 ### Debug Mode
 
 #### Set Debug Mode Status
@@ -477,6 +486,7 @@ class **_LiveryPlayerOptions_**
 | `controls` | `LiveryControlsOptions`     | `new LiveryControlsOptions()` | Provides access to [LiveryControlsOptions](#livery-controls-options). Player controls can be tweaked by this object. |
 | `fit`      | `LiveryResizeMode`          | `CONTAIN`                     | Provides access to LiveryResizeMode. Video size inside the player view can be changed from here.                     |
 | `poster`   | `String`                    | ``                            | Represents URL to poster image. When this property is not empty, the player will show a poster on creation.          |
+| `akamaiToken`| `String`                  | null                          | Access token to use to be able to see a stream that uses Akamai’s Token Auth feature.          |
 | `sources`  | `String` or `Array<String>` | None                          | Defines the sources URLs.                                                                                            |
 
 ### Player Resize Mode

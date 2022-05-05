@@ -209,10 +209,7 @@ This needs to be connected to the player element like so:
 
 Element defined as `<livery-log>` which shows messages logged by global livery logic and specified LiveryPlayer.
 
-Notes:
-
-- Only one livery-log element can be used (e.g: connected to DOM) at a time.
-- Previously logged messages will not be shown.
+Note that previously logged messages will not be shown.
 
 #### Usage
 

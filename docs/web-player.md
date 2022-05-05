@@ -231,10 +231,11 @@ This needs to be connected to the player element like so:
 
 #### Attributes
 
-| Attribute       | Property        | Type     | Default | Description                                         |
-| --------------- | --------------- | -------- | ------- | --------------------------------------------------- |
-| `maxlinelength` | `maxLineLength` | `number` | `100`   | Number of characters after which to truncate lines. |
-| `maxlines`      | `maxLines`      | `number` | `50`    | Maximum number of lines to display.                 |
+| Attribute       | Property        | Type     | Default | Description                                                     |
+| --------------- | --------------- | -------- | ------- | --------------------------------------------------------------- |
+| `maxlinelength` | `maxLineLength` | `number` | `100`   | Number of characters after which to truncate lines for display. |
+| `maxlines`      | `maxLines`      | `number` | `50`    | Maximum number of lines to display.                             |
+| `maxloglines`   | `maxLogLines`   | `number` | `10000` | Maximum number of log lines to retain in memory.                |
 
 #### Properties
 

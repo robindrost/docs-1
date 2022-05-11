@@ -30,6 +30,9 @@ Interactions are grouped into the following packs:
 Within this pack we include all the essentials, these are Poll, Vote, Trivia and Rating questions, showing Announcements, adding live reactions and the countdown.
 
 #### Poll and Vote
+<p align="center">
+<img src="portal/poll.jpg" width="500"/>
+</p>
 The poll interaction is meant to prepare poll or vote questions with one question and multiple answers. Points are not added to these questions.
 
 Key features:
@@ -37,6 +40,9 @@ Key features:
 - Time limit for answers
 
 #### Trivia
+<p align="center">
+<img src="portal/trivia.jpg" width="500"/>
+</p>
 The trivia interaction is meant to prepare trivia questions with one question and multiple answers where the correct answer(s) are marked. Eventual points will be calculated based on the player’s answers and optionally the time of answer, and these points will affect their position in the leaderboard. 
 
 Key features:
@@ -47,7 +53,7 @@ Key features:
 
 #### Rating
 <p align="center">
-<img src="portal/rating.png" width="500"/>
+<img src="portal/rating2.jpg" width="500"/>
 </p>
 
 When you’d like to ask the opinion of your audience about a certain topic, you can set up a rating interaction. 
@@ -57,6 +63,9 @@ Key features:
 - Rating result override
 
 #### Announcement
+<p align="center">
+<img src="portal/announcement.jpg" width="500"/>
+</p>
 The announcement interaction is meant to prepare quick announcements with title and subtitle. This is shown only one time in the front-end, after the interaction disappears and can't be rewatched.
 
 Key features:
@@ -117,6 +126,9 @@ If you run a competition or would like to give prizes to your audience, this pac
 So the flow is pretty simple, you assign points to the Trivia, Estimation and Prediction interaction, the players will earn points based on their correct answers, their points are ranked on the leaderboard and based on their positions they can win prizes. It couldn’t be easier!
 
 #### Estimation
+<p align="center">
+<img src="portal/estimate.jpg" width="500"/>
+</p>
 The estimation interaction is meant to prepare questions with answers within an interval. Points will be calculated based on the player’s answers and these points will affect their position in the leaderboard. 
 
 Key features:
@@ -124,6 +136,9 @@ Key features:
 - Score deduction per steps
 
 #### Prediction
+<p align="center">
+<img src="portal/prediction.jpg" width="500"/>
+</p>
 The prediction interaction is meant to prepare questions with one question and multiple answers where the correct answer(s) are not known. Points will be calculated based on the player’s answers and these points will affect their position in the Leaderboard. 
 
 Key features:
@@ -156,6 +171,9 @@ Key features:
 - Copy change of the Buy button
 
 #### Announcement
+<p align="center">
+<img src="portal/annoucement-link.jpg" width="500"/>
+</p>
 The announcement interaction is meant to prepare quick announcements with title, subtitle and a button. This is shown only one time in the front-end, after the interaction disappears and can't be rewatched.
 
 Key features:
@@ -163,6 +181,9 @@ Key features:
 - Adding external link
 
 #### Rating
+<p align="center">
+<img src="portal/rating.png" width="500"/>
+</p>
 When you’d like to ask the opinion of your audience about a certain topic, you can set up a Rating interaction. It is also possible to link this rating to one of the items in the Items page (product items) and the result will be then also visible in the details page of this certain item. 
 
 Key features:
@@ -301,7 +322,10 @@ The core video features are accessible via a direct API implementation. Allowing
 
 Additional streams can be added via the “+Stream” button in the top right corner of the portal. The required information needs to be added in the panel.
 
-![Add Stream](portal/add_stream.png)
+<p align="center">
+<img src="portal/add_stream.png" width="400"/>
+</p>
+
 
 | Field         | Description                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -333,13 +357,18 @@ The Stream Phases dropdown allows you to change the phase of the stream. Please 
 
 ?> A phase change takes about 20-60 seconds to become effective for all viewers.
 
-![Streams](portal/stream_line_item.png)
+<p align="center">
+<img src="portal/stream_line_item.png" width="900"/>
+</p>
 
 ### Encoder Overview
 
 One or more encoders can be linked to a customer account. The encoders are listed in the encoder overview. Encoders can be linked or unlinked to a stream, this allows the customer to rotate a single on-prem encoder between multiple streams.
 
-![Encoders](portal/encoder_line_item.png)
+<p align="center">
+<img src="portal/encoder_line_item.png" width="900"/>
+</p>
+
 
 One or more Encoders can be linked to a stream to create a redundant setup. The proper role need to be defined for each encoder. The Livery Platform works with 3 encoder roles.
 
@@ -364,7 +393,10 @@ The settings linked to a stream are managed in the stream setting. Any change in
 | Domain Whitelisting  | One or more domains can be whitelisted when domain whitelisting is enabled. Only players hosted on these domains will be able to watch the stream. If this field is empty, any player can watch the stream.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 | Player configuration | The player settings determine the availability of the different player functions. Each of the settings can be turned ON or OFF. The following settings are available; <br> - Unbranded, determines if the Livery branding is shown in the players. <br> - Casting determines if the Google Cast and Apple Airplay features are accessible to the end-user. <br> - Error determines if the errors are shown in the players. <br> - Fullscreen, determines if the fullscreen button is shown in the players. <br> - Mute determines if the mute/unmute button is shown in the players. <br> - Pip determines if the picture-in-picture mode is allowed. <br> - Quality determines if the quality selection is shown in the players. <br> - Autoplay determines if the video automatically starts when the player is loaded. It is not always possible to Autoplay unmuted, due to browser restrictions. |
 
-![Edit Stream](portal/stream_settings.png)
+<p align="center">
+<img src="portal/stream_settings.png" width="400"/>
+</p>
+
 
 ### Encoder settings
 
@@ -386,14 +418,6 @@ The stream history which can be accessed via the top right menu, contains a list
 The statistics dashboard contains an overview of basic statistics, which are updated every 60 seconds. A customer is able to see his statistics for the past 14 days. Please contact the Livery team for specific stats, which are not listed in the dashboard.
 
 Besides the dashboard, customers can also access the statistics via an API integration. Please see the GetAnalytics section in the [API section](customer-api.md 'GetAnalytics') for more info.
-
-<!--  # Interactive Portal
- TBA
-##Create broadcast
-TBA
-##Broadcast interactions
-TBA
--->
 
 ## Livery Portals Revision History
 

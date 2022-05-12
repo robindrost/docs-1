@@ -286,6 +286,9 @@ The remote configuration is automatically applied when calling createPlayer with
             .setAutoPlay(true)
             .setControlsOptions(controlsOptions)
             .setResizeMode(LiveryResizeMode.DEFAULT)
+            .setPrePoster("prePoster url")
+            .setPoster("poster url")
+            .setPostPoster("postPoster url")
             .setAkamaiToken("akamai_token")
             .build();
 
@@ -485,7 +488,9 @@ class **_LiveryPlayerOptions_**
 | `autoPlay` | `Boolean`                   | `true`                        | Determines whether video shall play immediately after [createPlayer](#creating-player).                              |
 | `controls` | `LiveryControlsOptions`     | `new LiveryControlsOptions()` | Provides access to [LiveryControlsOptions](#livery-controls-options). Player controls can be tweaked by this object. |
 | `fit`      | `LiveryResizeMode`          | `CONTAIN`                     | Provides access to LiveryResizeMode. Video size inside the player view can be changed from here.                     |
-| `poster`   | `String`                    | ``                            | Represents URL to poster image. When this property is not empty, the player will show a poster on creation.          |
+| `prePoster`   | `String`                    | null                            | Represents URL to poster image. When this property is not empty, the player will show a poster on creation.          |
+| `poster`   | `String`                    | null                            | Represents URL to poster image. When this property is not empty, the player will show a poster on creation.          |
+| `postPoster`   | `String`                    | null                            | Represents URL to poster image. When this property is not empty, the player will show a poster on creation.          |
 | `akamaiToken`| `String`                  | null                          | Access token to use to be able to see a stream that uses Akamai’s Token Auth feature.          |
 | `sources`  | `String` or `Array<String>` | None                          | Defines the sources URLs.                                                                                            |
 

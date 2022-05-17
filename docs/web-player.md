@@ -136,7 +136,7 @@ See the general [Usage](#usage) section above.
 | `quality`       | R   | `string`                                                                                                                | `null`      | Active quality label.<br />Dispatches: `livery-quality-change`                     |
 | `streamPhase`   | R   | `'PRE'` \| `'LIVE'` \| `'POST'`                                                                                         | `'PRE'`     | Stream phase.<br />Dispatches: `livery-phase-change`                               |
 
-In addition there is an `engine` property but that is meant for debugging purposes only. It's use is not supported.
+In addition there is an `engine` property, and a `debug` property, but these are meant for debugging purposes only. Their use is not supported.
 
 #### Methods
 

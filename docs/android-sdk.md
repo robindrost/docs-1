@@ -635,6 +635,9 @@ Available IDs and their corresponding view types are listed below, ID names are 
 | Time Separator Text          | `livery_time_separator`               | `TextView`         |
 | Live Text                    | `livery_live_text`                    | `TextView`         |
 
+
+Note: Be aware of the system UI elements such as navigation and status bar when going to full screen mode, and using custom UI elements.
+
 ### Audio Only Stream Indicator
 
 To customize the loading indicator, create a layout named `livery_player_audio_only_view.xml`.

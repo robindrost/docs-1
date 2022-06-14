@@ -240,6 +240,15 @@ This needs to be connected to the player element like so:
 | -------- | --- | -------------- | ------- | ------------------------------------------------------ |
 | `player` | R/W | `LiveryPlayer` | `null`  | Reference to LiveryPlayer element to log details from. |
 
+#### Styling
+
+The livery-log element experimentally defines some CSS parts to allow you to style some aspects of the element. For details of how to write CSS selectors for these parts see: [MDN ::part](https://developer.mozilla.org/en-US/docs/Web/CSS/::part).
+
+| Part               | Description                                                               |
+| ------------------ | ------------------------------------------------------------------------- |
+| `clipboard-button` | Button for copying the contents of the log to the clipboard.              |
+| `code`             | Element in which the log text appears. Helpful for changing the typeface. |
+
 ### LiveryEvents
 
 Object containing references to event classes used by the livery elements.

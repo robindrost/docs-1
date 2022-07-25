@@ -136,7 +136,7 @@ The `completionQueue` defines the `DispatchQueue` in which the `completion` call
 
 The `completion` callback is a block that receives a `LiverySDK.ResultConfig` with the SDK initialization result.
 
-- In case of success it contains the fetched [`LiveryConfig`](#config).
+- In case of success it contains the fetched `LiveryConfig`.
 - In case of an error it contains an error of type `LiverySDK.Errors`.
 
 #### SDK Initialization Result
@@ -251,7 +251,7 @@ The following properties are exposed by Live Player instances:
 | `customLoadingView`         | `UIView`                                                              | Yes   | Custom loading indicator view                                                                   |
 | `delegate`                  | [`PlayerDelegate`](#player-events)                                    | Yes   | Protocol to implement to get player events                                                      |
 | `error`                     | `Error`                                                               | No    | Most recent unrecovered error. Emits: `playerDidFail`, `playerDidRecover`                       |
-| `interactiveBridgeDelegate` | [`PlayerInteractiveBridgeDelegate`](#playerInteractiveBridgeDelegate) | Yes   | Protocol to implement to get custom messages from the interactive layer                         |
+| `interactiveBridgeDelegate` | [`PlayerInteractiveBridgeDelegate`](#playerinteractivebridgedelegate) | Yes   | Protocol to implement to get custom messages from the interactive layer                         |
 | `interactiveURL`            | `URL`                                                                 | Yes   | The interactive layer URL                                                                       |
 | `latency`                   | `Int`                                                                 | No    | End to end latency in milliseconds. Emits: `progressDidChange`                                  |
 | `muted`                     | `Boolean`                                                             | Yes   | If true then audio is muted. Emits: `volumeDidChange`.                                          |

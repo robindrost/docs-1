@@ -12,7 +12,7 @@ Livery Android SDK is compatible with Android 5.0 (API level 21) or higher.
 
 From version 2.0.0 onwards Livery SDK is published via [jitpack.io](https://jitpack.io).
 
-You can still use bintray repository and credentials, please follow the steps in [here](#Installation-from-bintray).
+You can still use bintray repository and credentials, please follow the steps in [here](#installation-from-bintray).
 
 To install Livery SDK into your project, follow these steps below.
 
@@ -138,7 +138,7 @@ public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceStat
 ```
 
 The player might not be initializaed right after `createPlayer` call. For example, it may be defer to after `LiverySDK`
-initialization finishes. [LiveryPlayerView.CreatePlayerListener and LiveryPlayerView.CreatePlayerErrorListener](#CreatePlayer-feedback)
+initialization finishes. [LiveryPlayerView.CreatePlayerListener and LiveryPlayerView.CreatePlayerErrorListener](#createplayer-feedback)
 provide more information if the player was initialized or there was an error during initialization.
 
 ### Add Life-cycle methods
@@ -467,8 +467,8 @@ boolean isDebugModeEnabled = playerView.isDebugModeEnabled();
 
 ### LiverySDK State
 
-LiverySDK.State is used to provide LiverySDK state feedback either with [automatic initalization](#Configure-SDK-streamId)
-or [manual initialization](#Manual-SDK-Configuration).
+LiverySDK.State is used to provide LiverySDK state feedback either with [automatic initalization](#configure-sdk-streamid)
+or [manual initialization](#manual-sdk-configuration).
 
 LiverySDK.State can be one of 3 values:
 
@@ -478,21 +478,21 @@ LiverySDK.State can be one of 3 values:
 
 ### Player Options
 
-LiveryPlayerOptions has these properties listed on the table below. These options take effect only after [createPlayer](#LiveryPlayerView-options) is called.
+LiveryPlayerOptions has these properties listed on the table below. These options take effect only after [createPlayer](#liveryplayerview-options) is called.
 Each of these properties can be defined individually via LiveryPlayerOptions.Builder.
 
 class **_LiveryPlayerOptions_**
 
-| Name          | Type                        | Default                       | Description                                                                                                          |
-| ------------- | --------------------------- | ----------------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| `autoPlay`    | `Boolean`                   | `true`                        | Determines whether video shall play immediately after [createPlayer](#creating-player).                              |
-| `controls`    | `LiveryControlsOptions`     | `new LiveryControlsOptions()` | Provides access to [LiveryControlsOptions](#livery-controls-options). Player controls can be tweaked by this object. |
-| `fit`         | `LiveryResizeMode`          | `CONTAIN`                     | Provides access to LiveryResizeMode. Video size inside the player view can be changed from here.                     |
-| `prePoster`   | `String`                    | null                          | Represents URL to poster image. When this property is not empty, the player will show a poster on creation.          |
-| `poster`      | `String`                    | null                          | Represents URL to poster image. When this property is not empty, the player will show a poster on creation.          |
-| `postPoster`  | `String`                    | null                          | Represents URL to poster image. When this property is not empty, the player will show a poster on creation.          |
-| `akamaiToken` | `String`                    | null                          | Access token to use to be able to see a stream that uses Akamai’s Token Auth feature.                                |
-| `sources`     | `String` or `Array<String>` | None                          | Defines the sources URLs.                                                                                            |
+| Name          | Type                        | Default                       | Description                                                                                                                                |
+| ------------- | --------------------------- | ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| `autoPlay`    | `Boolean`                   | `true`                        | Determines whether video shall play immediately after [createPlayer](#create-player).                                                      |
+| `controls`    | `LiveryControlsOptions`     | `new LiveryControlsOptions()` | Provides access to [LiveryControlsOptions](#liveryplayeroptions-and-liverycontrolsoptions). Player controls can be tweaked by this object. |
+| `fit`         | `LiveryResizeMode`          | `CONTAIN`                     | Provides access to LiveryResizeMode. Video size inside the player view can be changed from here.                                           |
+| `prePoster`   | `String`                    | null                          | Represents URL to poster image. When this property is not empty, the player will show a poster on creation.                                |
+| `poster`      | `String`                    | null                          | Represents URL to poster image. When this property is not empty, the player will show a poster on creation.                                |
+| `postPoster`  | `String`                    | null                          | Represents URL to poster image. When this property is not empty, the player will show a poster on creation.                                |
+| `akamaiToken` | `String`                    | null                          | Access token to use to be able to see a stream that uses Akamai’s Token Auth feature.                                                      |
+| `sources`     | `String` or `Array<String>` | None                          | Defines the sources URLs.                                                                                                                  |
 
 ### Player Resize Mode
 
@@ -726,7 +726,7 @@ where initialization feedback is given via the `LiverySDK.StateListener` callbac
 
 Although you can call `initialize(String, StateListener)` regardless of LiverySDK being automatic or manually initialized
 it is adviced to setup LiverySDK manually by setting the boolean resource `livery_sdk_auto_init` to `false` like as it is
-in [Manual SDK Configuration](#Manual-SDK-Configuration) section.
+in [Manual SDK Configuration](#manual-sdk-configuration) section.
 
 The methods
 
@@ -735,7 +735,7 @@ LiverySDK.getPlayerOptions()
 ```
 
 where removed. Please use LiveryControlsOptions and LiveryPlayerOptions builders as is explained in
-[LiveryPlayerView options](#LiveryPlayerView-options)
+[LiveryPlayerView options](#liveryplayerview-options)
 
 #### LiveryPlayerView
 
@@ -748,7 +748,7 @@ playerView.createPlayer();
 playerView.createPlayer(this::onPlayerCreated, this::onCreatePlayerError);
 ```
 
-although the `createPlayer(LiveryPlayerOptions)` still [exist](#LiveryPlayerView-options).
+although the `createPlayer(LiveryPlayerOptions)` still [exist](#liveryplayerview-options).
 
 The method
 
@@ -765,7 +765,7 @@ LiveryPlayerView.setInteractiveUrl(String);
 #### LiveryPlayerOptions and LiveryControlsOptions
 
 `LiveryPlayerOptions` and `LiveryControlsOptions` should now be defined with the corresponding Builder class.
-See [LiveryPlayerView options](#LiveryPlayerView-options) section as an example.
+See [LiveryPlayerView options](#liveryplayerview-options) section as an example.
 
 #### LiveryPlayerListener
 

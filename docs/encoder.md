@@ -70,7 +70,7 @@ The Livery Console shows information about a cloud stream. For example the inges
 
 ### Input signal
 
-The cloud encoder currently expects a resolution of 1920x1080. It can receive this input signal over RTMP. The URL that is used for RTMP can be found in the [Livery console](#Livery-Console). The encoder does not support a stream key or authentication. For the mixing software, see the RTMP URL stream and output settings (contact us if your prefered streaming software is not included):
+The cloud encoder currently expects a resolution of 1920x1080. It can receive this input signal over RTMP. The URL that is used for RTMP can be found in the [Livery console](#livery-console). The encoder does not support a stream key or authentication. For the mixing software, see the RTMP URL stream and output settings (contact us if your prefered streaming software is not included):
 
 <!-- tabs:start -->
 

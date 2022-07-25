@@ -2,7 +2,7 @@
 
 [![NPM package](https://img.shields.io/npm/v/@liveryvideo/player)](https://www.npmjs.com/package/@liveryvideo/player)
 [![Changelog](https://img.shields.io/badge/docs-CHANGELOG-blue)](web-player-changelog.md)
-[![License](https://img.shields.io/npm/l/@liveryvideo/player)](https://unpkg.com/browse/@liveryvideo/player/LICENSE)
+[![License](https://img.shields.io/npm/l/@liveryvideo/player)](https://cdn.jsdelivr.net/npm/@liveryvideo/player/LICENSE)
 [![Build with Lit](https://img.shields.io/badge/build%20with-Lit-blue.svg)](https://lit.dev/)
 
 Livery video player for use in web browsers.
@@ -16,7 +16,7 @@ Please refer to the [Livery Management Portal](https://video-encoder-director.pl
 If you're not bundling your own JS you can just use an HTML snippet like this:
 
 ```html
-<script src="https://unpkg.com/@liveryvideo/player@x.y.z"></script>
+<script src="https://cdn.jsdelivr.net/npm/@liveryvideo/player@x.y.z"></script>
 <livery-player streamid="5ddb98f5e4b0937e6a4507f2"></livery-player>
 ```
 
@@ -30,16 +30,16 @@ This package exports two bundles.
 
 The ES `module` bundle is targetted at modern browsers and tools supporting `ES2019`.
 
-The UMD `main` bundle (as used by unpkg [CDN](#cdn)) supports iOS/iPadOS Safari v12 and up and the last 2 major versions of: Chrome, Safari, Edge, Firefox, Android Chrome and Samsung Internet.
+The UMD `main` bundle (as used by jsdelivr [CDN](#cdn)) supports iOS/iPadOS Safari v12 and up and the last 2 major versions of: Chrome, Safari, Edge, Firefox, Android Chrome and Samsung Internet.
 
 ## Installation
 
 ### CDN
 
-The player can be loaded from [unpkg](https://unpkg.com):
+The player can be loaded from [jsdelivr](https://jsdelivr.com):
 
 ```html
-<script src="https://unpkg.com/@liveryvideo/player@x.y.z"></script>
+<script src="https://cdn.jsdelivr.net/npm/@liveryvideo/player@x.y.z"></script>
 ```
 
 ?> Replace the version (`x.y.z`) above by the player version that you wish to use. E.g: update to latest stable release periodically. Please see the [CHANGELOG](web-player-changelog.md) for details.

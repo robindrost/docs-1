@@ -51,14 +51,14 @@ The Livery players connect with the following domains. The domains need to be wh
 - cdn.liveryvideo.com
 - ip.liveryvideo.com
 
-#### When using unpkg
+#### When using jsdelivr
 
-- unpkg.com
+- jsdelivr.net
 
 #### When using embed
 
 - embed.liveryvideo.com
-- unpkg.com
+- jsdelivr.net
 
 #### Region dependent
 

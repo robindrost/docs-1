@@ -1,3 +1,3 @@
 # [Livery Video Web Player](web-player.md) - CHANGELOG <!-- {docsify-ignore-all} -->
 
-[filename](https://unpkg.com/@liveryvideo/player/CHANGELOG.md ':include')
+[filename](//cdn.jsdelivr.net/npm/@liveryvideo/player/CHANGELOG.md ':include')

@@ -470,7 +470,7 @@ Select a custom RTMP source<br>
 
 <!-- tabs:end -->
 
-## Livery Video Ingest Revision History
+## Revision History
 
 | Version     | Description                                                                      |
 | ----------- | -------------------------------------------------------------------------------- |
@@ -478,7 +478,7 @@ Select a custom RTMP source<br>
 | 0.6.0       | Secure ingest<br>Use audio delay setting from the backend                        |
 | 0.5.0       | Added the ability to automatically update the encoder from the Management Portal |
 
-## Livery Video Ingest Q&A
+## Q&A
 
 **I see the video but I'm not able to get audio via the output of the computer?**
 

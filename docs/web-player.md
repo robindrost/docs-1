@@ -331,7 +331,7 @@ function MyComponent() {
 }
 ```
 
-## Livery Web Player Q&A
+## Q&A
 
 **Why do stream started muted on some devices?**
 

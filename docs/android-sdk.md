@@ -483,16 +483,16 @@ Each of these properties can be defined individually via LiveryPlayerOptions.Bui
 
 class **_LiveryPlayerOptions_**
 
-| Name       | Type                        | Default                       | Description                                                                                                          |
-| ---------- | --------------------------- | ----------------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| `autoPlay` | `Boolean`                   | `true`                        | Determines whether video shall play immediately after [createPlayer](#creating-player).                              |
-| `controls` | `LiveryControlsOptions`     | `new LiveryControlsOptions()` | Provides access to [LiveryControlsOptions](#livery-controls-options). Player controls can be tweaked by this object. |
-| `fit`      | `LiveryResizeMode`          | `CONTAIN`                     | Provides access to LiveryResizeMode. Video size inside the player view can be changed from here.                     |
-| `prePoster`   | `String`                    | null                            | Represents URL to poster image. When this property is not empty, the player will show a poster on creation.          |
-| `poster`   | `String`                    | null                            | Represents URL to poster image. When this property is not empty, the player will show a poster on creation.          |
-| `postPoster`   | `String`                    | null                            | Represents URL to poster image. When this property is not empty, the player will show a poster on creation.          |
-| `akamaiToken`| `String`                  | null                          | Access token to use to be able to see a stream that uses Akamai’s Token Auth feature.          |
-| `sources`  | `String` or `Array<String>` | None                          | Defines the sources URLs.                                                                                            |
+| Name          | Type                        | Default                       | Description                                                                                                          |
+| ------------- | --------------------------- | ----------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| `autoPlay`    | `Boolean`                   | `true`                        | Determines whether video shall play immediately after [createPlayer](#creating-player).                              |
+| `controls`    | `LiveryControlsOptions`     | `new LiveryControlsOptions()` | Provides access to [LiveryControlsOptions](#livery-controls-options). Player controls can be tweaked by this object. |
+| `fit`         | `LiveryResizeMode`          | `CONTAIN`                     | Provides access to LiveryResizeMode. Video size inside the player view can be changed from here.                     |
+| `prePoster`   | `String`                    | null                          | Represents URL to poster image. When this property is not empty, the player will show a poster on creation.          |
+| `poster`      | `String`                    | null                          | Represents URL to poster image. When this property is not empty, the player will show a poster on creation.          |
+| `postPoster`  | `String`                    | null                          | Represents URL to poster image. When this property is not empty, the player will show a poster on creation.          |
+| `akamaiToken` | `String`                    | null                          | Access token to use to be able to see a stream that uses Akamai’s Token Auth feature.                                |
+| `sources`     | `String` or `Array<String>` | None                          | Defines the sources URLs.                                                                                            |
 
 ### Player Resize Mode
 
@@ -634,7 +634,6 @@ Available IDs and their corresponding view types are listed below, ID names are 
 | Time bar                     | `livery_progress`                     | `TimeBar`          |
 | Time Separator Text          | `livery_time_separator`               | `TextView`         |
 | Live Text                    | `livery_live_text`                    | `TextView`         |
-
 
 Note: Be aware of the system UI elements such as navigation and status bar when going to full screen mode, and using custom UI elements.
 
@@ -830,7 +829,7 @@ dependencies {
 }
 ```
 
-## Android SDK Revision History
+## Revision History
 
 | Version | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -864,4 +863,4 @@ dependencies {
 | 1.6.5   | - Fixed analytics values (EdgeServer, VideoURL) not being reported sometimes.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 | 1.6.4   | - Fixed a crash occured when player.dispose() method was called due to uiElementsHandler not being able to find the player instance.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 
-## Android SDK Q&A
+## Q&A

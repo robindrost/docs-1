@@ -18,7 +18,7 @@ For support questions please contact us via email or phone:
 <br>
 <br>
 
-## Livery Requirements
+## Requirements
 
 The following list contains a number of important requirements for the usages of the Livery platform.
 
@@ -96,7 +96,7 @@ The Livery players connect with the following domains. The domains need to be wh
 - director.video-encoder.playtotv.com
 - sentry.io
 
-### Livery Port configuration
+### Port configuration
 
 The hardware encoder needs to communicate over the internet so send out metrics and allow remote diagnosis. For this it’s required that the encoder can make outbound connections on port 443 and port 22. Please make sure to open up these 2 ports if the encoder is deployed in an environment with a firewall. In order to stream to the cloud encoder one of these ports needs to be open for outbound connections. When using RTMP, port 1935 should be opened. When using SRT, port 9998 should be opened.
 

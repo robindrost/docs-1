@@ -1,15 +1,15 @@
 ```json
 {
-  "streamId": "626fa59fe4b018f4ecdc092c",
-  "customerId": "6267d661e4b0420e3acced5e",
-  "name": "uran",
-  "apiKey": "1651484065733_118447bc58266f92d412ced8ba1bab78b6cca802ab6c5fd93713751f75f80feab9883e1bbb57bf04ed475fc3d04400ae7be26aaf88e146762a02731d66d5e7dc",
+  "streamId": "626fa5997ahk5a5kh3f4ec9dc092c",
+  "customerId": "8q61a685hg6ug13586",
+  "name": "name",
+  "apiKey": "118447bc58266fab9883e1bbb57bf04ed4746762a02731d66d5e7dc",
   "encoderIds": [],
   "currentMonthStreamTime": 0,
   "previousMonthStreamTime": 0,
   "qualityPreset": "CUSTOM",
-  "streamKey": "62e297fce4b08b9e2c49580b",
-  "tokenAuthKey": "626fa5a1e4b018f4ecdc092d",
+  "streamKey": "8q61a685hg6ug1358",
+  "tokenAuthKey": "8531gu6gh586a16q8",
   "enableTokenAuth": false,
   "shouldMonitor": false,
   "streamingState": "STOPPED",
@@ -45,8 +45,8 @@
     "offsetY": 0
   },
   "akamai": {
-    "streamId": "2041504",
-    "eventName": "626fa59fe4b018f4ecdc092c",
+    "streamId": "example-1836856916591695",
+    "eventName": "example-6a2e16s1hc1fe4b018f4ec7dc092c",
     "useIAS": false,
     "ownAccount": false
   },
@@ -73,11 +73,8 @@
   "remoteConfig": {
     "updateInterval": 10
   },
-  "ingestUrls": [
-    "rtmp://ingest.dev.liveryvideo.com/app/626fa59fe4b018f4ecdc092c",
-    "srt://ingest.dev.liveryvideo.com:9998?pkt_size=1316&streamid=626fa59fe4b018f4ecdc092c"
-  ],
-  "cdnRegionId": "5f995257e4b0271339856189",
+  "ingestUrls": ["rtmp://some-rtmp-url", "srt://some-srt-url:9998"],
+  "cdnRegionId": "5f99525157e4b0276189",
   "warnings": [
     "No encoder online"
   ],

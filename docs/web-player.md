@@ -114,16 +114,17 @@ See the general [Usage](#usage) section above.
 
 #### Attributes
 
-| Attribute     | Property      | Type      | Default | Description                                                                                                                                         |
-| ------------- | ------------- | --------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `akamaitoken` | `akamaiToken` | `string`  | `null`  | Access token to use to be able to see a stream that uses Akamai’s Token Auth feature.                                                               |
-| `bubbles`     | `bubbles`     | `boolean` | `false` | If true then events dispatched by this element will bubble.                                                                                         |
-| `configtype`  | `configType`  | `string`  | `null`  | Type of stream config to use. Defaults to SDK platform (WEB) when value is null (attribute is absent).                                              |
-| `fullscreen`  | `fullscreen`  | `boolean` | `false` | If true then player is fullscreen.<br />Dispatches: `livery-fullscreen-change`                                                                      |
-| `loglevel`    | `logLevel`    | `string`  | `null`  | Log level (`'quiet'` \| `'error'` \| `'warn'` \| `'info'` \| `'debug'` \| `'spam'`). Defaults to `'info'` when value is null (attribute is absent). |
-| `muted`       | `muted`       | `boolean` | `false` | If `true` then audio is muted.<br />Dispatches: `livery-volume-change`                                                                              |
-| `streamid`    | `streamId`    | `string`  | `null`  | Livery stream ID (required).                                                                                                                        |
-| `vumeter`     | `vuMeter`     | `boolean` | `false` | Enable volume unit meter.                                                                                                                           |
+| Attribute         | Property          | Type      | Default | Description                                                                                                                                         |
+| ----------------- | ----------------- | --------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `akamailongtoken` | `akamaiLongToken` | `string`  | `null`  | Access token to use to be able to see a stream that uses Akamai’s Long Token Auth feature.                                                          |
+| `akamaitoken`     | `akamaiToken`     | `string`  | `null`  | Access token to use to be able to see a stream that uses Akamai’s Token Auth feature.                                                               |
+| `bubbles`         | `bubbles`         | `boolean` | `false` | If true then events dispatched by this element will bubble.                                                                                         |
+| `configtype`      | `configType`      | `string`  | `null`  | Type of stream config to use. Defaults to SDK platform (WEB) when value is null (attribute is absent).                                              |
+| `fullscreen`      | `fullscreen`      | `boolean` | `false` | If true then player is fullscreen.<br />Dispatches: `livery-fullscreen-change`                                                                      |
+| `loglevel`        | `logLevel`        | `string`  | `null`  | Log level (`'quiet'` \| `'error'` \| `'warn'` \| `'info'` \| `'debug'` \| `'spam'`). Defaults to `'info'` when value is null (attribute is absent). |
+| `muted`           | `muted`           | `boolean` | `false` | If `true` then audio is muted.<br />Dispatches: `livery-volume-change`                                                                              |
+| `streamid`        | `streamId`        | `string`  | `null`  | Livery stream ID (required).                                                                                                                        |
+| `vumeter`         | `vuMeter`         | `boolean` | `false` | Enable volume unit meter.                                                                                                                           |
 
 #### Properties
 

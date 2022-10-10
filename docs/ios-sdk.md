@@ -39,7 +39,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 source 'https://github.com/exmg/livery-sdk-ios-podspec.git'
 
 target 'MyProject' do
-  pod "Livery", "1.4.1"
+  pod "Livery", "2.0.0"
 end
 ```
 
@@ -55,7 +55,7 @@ Swift Package Manager is distributed with Xcode. To add the Livery SDK to your i
 
 1. Open your project in Xcode and select File > Add Packages
 2. Enter the URL for the Swift Package Manager Livery SDK repo (<https://github.com/liveryvideo/livery-sdk-ios-spm>) into the search bar and click "Add Package"
-3. Then on the Dependency Rule menu select the "Exact Version" - 1.4.1 or "Branch" - main to have the latest release
+3. Then on the Dependency Rule menu select the "Exact Version" - 2.0.0 or "Branch" - main to have the latest release
 
 ## Usage
 
@@ -214,26 +214,34 @@ The stream and the player should be configured in the Livery Management Portal. 
 
 ## Player Options
 
-These are the options to be passed to Players:
+These are the options to be passed to the Player:
 
-| Name               | Type                           | Default    | Description                                                                                                              |
-| ------------------ | ------------------------------ | ---------- | ------------------------------------------------------------------------------------------------------------------------ |
-| `autoplay`         | `Boolean`                      | `false`    | Determines whether video shall play immediately after [`createPlayer`](#sdk-create-player).                              |
-| `akamaiToken`      | `String`                       | `""`       | Access token to use to be able to see a stream that uses Akamai’s Token Auth feature                                     |
-| `cast`             | `Boolean`                      | `false`    | Determines whether cast button should be displayed or not on the [`Player Controls`](#player-controls).                  |
-| `error`            | `Boolean`                      | `false`    | Determines whether [`Error Overlay`](#error-overlay) should be displayed or not.                                         |
-| `fit`              | [`playerFit`](#player-fitting) | `.contain` | Determines how the video will be scaled and cropped. See: [`Player Fitting`](#player-fitting)                            |
-| `fullscreen`       | `Boolean`                      | `false`    | Determines whether full screen button should be displayed or not on the [`Player Controls`](#player-controls).           |
-| `maxRecoveryDelay` | `Integer`                      | `90`       | Maximum delay in seconds between subsequent recovery attempts.                                                           |
-| `minRecoveryDelay` | `Integer`                      | `10`       | Minimum delay in seconds before starting automatic recovery.                                                             |
-| `mute`             | `Boolean`                      | `false`    | Determines whether mute button should be displayed or not on the [`Player Controls`](#player-controls).                  |
-| `muted`            | `Boolean`                      | `false`    | Determines whether media should be muted or not.                                                                         |
-| `play`             | `Boolean`                      | `false`    | Determines whether play button should be displayed or not on the [`Player Controls`](#player-controls).                  |
-| `poster`           | `String`                       | `""`       | URL for an image to be shown while the video is loading.                                                                 |
-| `quality`          | `Boolean`                      | `false`    | Determines whether select quality button should be displayed or not on the [`Player Controls`](#player-controls).        |
-| `scrubber`         | `Boolean`                      | `false`    | Determines whether scrubber / progress bar view should be displayed or not on the [`Player Controls`](#player-controls). |
-| `sources`          | `String[]`                     | `[]`       | Array of media source URLs from which the first that can be played will be selected.                                     |
-| `targetLatency`    | `Integer`                      | `3`        | Target live latency in seconds. If 0 then syncing is disabled.                                                           |
+| Name                     | Type                                   | Default             | Description                                                                                                           |
+| ------------------------ | -------------------------------------- | ------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| `autoplay`               | `Boolean`                              | `false`             | Determines whether video shall play immediately after [`createPlayer`](#sdk-create-player).                           |
+| `akamaiLongToken`        | `String`                               | `""`                | Access token to use to be able to see a stream that uses Akamai’s Token Auth feature                                  |
+| `controls`               | [`ControlsOptions`](#controls-options) | `ControlsOptions()` | Provides access to [ControlsOptions](#controls-options). Player's controls can be changed by this object.             |
+| `enablePictureInPicture` | `Boolean`                              | `false`             | Determines whether the Picture in Picture feature should be enabled or not. It is available only on iOS 15 or higher. |
+| `fit`                    | [`playerFit`](#player-fitting)         | `.contain`          | Determines how the video will be scaled and cropped. See: [`Player Fitting`](#player-fitting)                         |
+| `maxRecoveryDelay`       | `Integer`                              | `90`                | Maximum delay in seconds between subsequent recovery attempts.                                                        |
+| `minRecoveryDelay`       | `Integer`                              | `10`                | Minimum delay in seconds before starting automatic recovery.                                                          |
+| `poster`                 | `String`                               | `""`                | URL for an image to be shown while the video is loading.                                                              |
+| `sources`                | `String[]`                             | `[]`                | Array of media source URLs from which the first that can be played will be selected.                                  |
+| `targetLatency`          | `Integer`                              | `3`                 | Target live latency in seconds. If 0 then syncing is disabled.                                                        |
+
+## Controls Options
+
+These are the contorls options to be passed to the Player:
+
+| Name         | Type      | Default | Description                                                                                                                                                     |
+| ------------ | --------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `cast`       | `Boolean` | `false` | Determines whether cast button should be displayed or not on the [`Player Controls`](#player-controls).                                                         |
+| `contact`    | `Boolean` | `false` | Determines whether contact button should be displayed or not on the [`Player Controls`](#player-controls).                                                      |
+| `error`      | `Boolean` | `false` | Determines whether [`Error Overlay`](#error-overlay) should be displayed or not.                                                                                |
+| `fullscreen` | `Boolean` | `false` | Determines whether full screen button should be displayed or not on the [`Player Controls`](#player-controls).                                                  |
+| `mute`       | `Boolean` | `false` | Determines whether mute button should be displayed or not on the [`Player Controls`](#player-controls).                                                         |
+| `pip`        | `Boolean` | `false` | Determines whether Picture in Picture button should be displayed or not on the [`Player Controls`](#player-controls). It is available only on iOS 15 or higher. |
+| `quality`    | `Boolean` | `false` | Determines whether select quality button should be displayed or not on the [`Player Controls`](#player-controls).                                               |
 
 ## Player Properties
 
@@ -242,7 +250,7 @@ The following properties are exposed by Live Player instances:
 | Name                        | Type                                                                  | Write | Description                                                                                     |
 | --------------------------- | --------------------------------------------------------------------- | ----- | ----------------------------------------------------------------------------------------------- |
 | `activeQuality`             | [`Quality`](#player-media-quality)                                    | No    | Active Media Quality. Emits: `activeQualityDidChange`                                           |
-| `akamaiToken`               | `String`                                                              | Yes   | Defines an access token to use to be able to see a stream that uses Akamai’s Token Auth feature |
+| `akamaiLongToken`           | `String`                                                              | Yes   | Defines an access token to use to be able to see a stream that uses Akamai’s Token Auth feature |
 | `buffer`                    | `Int`                                                                 | No    | Size of buffer, ahead of current position, in milliseconds. Emits: `progressDidChange`          |
 | `currentSource`             | `URL`                                                                 | No    | Current media source. Emits: `sourceDidChange` URL.                                             |
 | `currentTime`               | `TimeInterval`                                                        | No    | Current playback time position in seconds. Emits: `timeDidUpdate`                               |
@@ -283,17 +291,13 @@ protocol **_PlayerDelegate_**
 
 ```swift
 public protocol PlayerDelegate: class {
-    func activeQualityDidChange(activeQuality: Quality?) // This method is deprecated and will be removed on the next version
     func activeQualityDidChange(activeQuality: Quality?, auto: Bool) // Emitted when activeQuality has changed.
                                                                     // Auto is 'true' when it was changed through the ABR and 'false' when it was changed manually
-    func bandwidthTest(result: Result<UInt32, Error>) // Emitted when trying to upgrade video bandwidth
     func playbackStateDidChange(playbackState: Player.PlaybackState) // Emitted when playbackState has changed
     func playerDidFail(error: Error) // Emitted when an error occurs
     func playerDidRecover() // Emitted when player has recovered from an error
     func progressDidChange(buffer: Int, latency: Int) // Emitted periodically to inform of progress downloading the media
     func qualitiesDidChange(qualities: [Quality]) // Emitted when qualities have changed
-    func selectedQualityDidChange(selectedQuality: Quality?) // This method is deprecated and will be removed on the next version.
-                                                            // Use the new 'activeQualityDidChange(activeQuality: Quality?, auto: Bool)'
     func sourceDidChange(currentSource: URL?) // Emitted when currentSource has changed
     func timeDidUpdate(currentTime: TimeInterval) // Emitted periodically to inform of current playback time changing
     func volumeDidChange() // Emitted when volume or muted has changed
@@ -421,18 +425,18 @@ To customize player controls create an `UIControl` that conforms to the `LiveryP
 
 ```swift
 public protocol LiveryPlayerControlView where Self: UIControl {
-    var settingsButton: UIButton { get set }
-    var cameraButton: UIButton { get set }
-    var infoButton: UIButton { get set }
-    var airplayButton: UIButton { get set }
+    var currentTimeLabel: UILabel { get set }
     var fullscreenButton: UIButton { get set }
+    var infoButton: UIButton { get set }
     var muteButton: UIButton { get set }
     var playButton: UIButton { get set }
+    var pipButton: UIButton { get set }
     var progressView: UIProgressView { get set }
-    var currentTimeLabel: UILabel { get set }
-    var totalTimeLabel: UILabel { get set }
-    var titleLabel: UILabel { get set }
     var qualityLabel: UILabel { get set }
+    var settingsButton: UIButton { get set }
+    var titleLabel: UILabel { get set }
+    var totalTimeLabel: UILabel { get set }
+
     //Called on the initialization of the Control View
     func setupUI()
     //Called whenever it needs to update the Control View UI like when the device rotates
@@ -522,6 +526,18 @@ public enum CustomCommandResult {
 }
 ```
 
+## Picture in Picture
+
+Please note that this feature is only available on iOS 15 or higher.
+
+To enable the Picture in Picture feature you need to set the `enablePictureInPicture` property to `true` on [`PlayerOptions`](#player-options) and enable the “Audio, AirPlay, and Picture in Picture” option under background modes in Xcode.
+
+The simplest way to configure it is by selecting your app’s target in Xcode and select the Signing & Capabilities tab. Under the Capabilities tab, add the Background Modes capability and select the “Audio, AirPlay, and Picture in Picture” option under its list of background modes, as exemplified on the image below:
+
+<p align="center">
+<img src="iOS/xcode_background_modes.png" width="500"/>
+</p>
+
 ## Analytics
 
 Our SDK makes use of [Amazon Pinpoint](https://aws.amazon.com/pinpoint/).
@@ -535,6 +551,59 @@ Note:
 ```
   pod 'AWSPinpoint', '~> 2.24'
 ```
+
+## Migration Guide
+
+### Migration from 1.4.1 to 2.0
+
+#### Player Properties
+
+##### Notable Changes
+
+- Renamed the `akamaiToken` property to `akamaiLongToken`
+
+#### PlayerOptions
+
+##### Notable Changes
+
+- Renamed the `akamaiToken` property to `akamaiLongToken`
+- Moved all the controls options properties to the new [`controls`](<(#controls-options)>) property, which contains:
+  - cast
+  - contact
+  - error
+  - fullscreen
+  - mute
+  - pip
+  - quality
+
+##### Removals
+
+- Removed `play`, `scrubber` and `seekThreshold` properties
+
+#### PlayerDelegate
+
+##### Removals
+
+- Remove deprecated `activeQualityDidChange(activeQuality: Quality?)`
+
+  - This will continue to be reported through the `activeQualityDidChange(activeQuality: Quality?, auto: Bool)`
+    - Auto is `true` when it was changed through the ABR and `false` when it was changed manually
+
+- Remove deprecated `bandwidthTest(result: Result<UInt32, Error>)`
+
+- Remove deprecated `selectedQualityDidChange(selectedQuality: Quality?)`
+  - Use the new `activeQualityDidChange(activeQuality: Quality?, auto: Bool)`
+    - for this case the `auto` parameter will be `false` meaning the active quality was changed manualy
+
+#### LiveryPlayerControlView
+
+##### Notable Changes
+
+- Added `pipButton`
+
+##### Removals
+
+- Removed `airplayButton` and `cameraButton` properties
 
 ## Example App
 

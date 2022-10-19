@@ -214,6 +214,8 @@ void initializeSdk(String streamId) {
 
 LiveryPlayerView `createPlayer` should only be called after LiverySDK is initialized, otherwise this method will fail.
 
+Be aware that `LiverySDK.getInstance().initialize` is not synchronous and the callback via `LiverySDK.StateListener` might be called later in the program execution when the Activity/Framengment is no long valid.
+
 ### Configure LiveryPlayerView
 
 #### CreatePlayer feedback
@@ -235,6 +237,8 @@ It is possible to have more control of the LiveryPlayerView initialization. Ther
       }
    });
 ```
+
+Be aware that `playerView.createPlayer` might not be synchronous and the callback via `LiveryPlayerView.CreatePlayerListener` or `LiveryPlayerView.CreatePlayerErrorListener` might happen later in the program execution when the Activity/Framengment is no long valid.
 
 #### LiveryPlayerView options
 

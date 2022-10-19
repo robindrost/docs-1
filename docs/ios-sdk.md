@@ -218,13 +218,11 @@ These are the options to be passed to the Player:
 
 | Name                     | Type                                   | Default             | Description                                                                                                           |
 | ------------------------ | -------------------------------------- | ------------------- | --------------------------------------------------------------------------------------------------------------------- |
-| `autoplay`               | `Boolean`                              | `false`             | Determines whether video shall play immediately after [`createPlayer`](#sdk-create-player).                           |
 | `akamaiLongToken`        | `String`                               | `""`                | Access token to use to be able to see a stream that uses Akamai’s Token Auth feature                                  |
+| `autoplay`               | `Boolean`                              | `false`             | Determines whether video shall play immediately after [`createPlayer`](#sdk-create-player).                           |
 | `controls`               | [`ControlsOptions`](#controls-options) | `ControlsOptions()` | Provides access to [ControlsOptions](#controls-options). Player's controls can be changed by this object.             |
 | `enablePictureInPicture` | `Boolean`                              | `false`             | Determines whether the Picture in Picture feature should be enabled or not. It is available only on iOS 15 or higher. |
 | `fit`                    | [`playerFit`](#player-fitting)         | `.contain`          | Determines how the video will be scaled and cropped. See: [`Player Fitting`](#player-fitting)                         |
-| `maxRecoveryDelay`       | `Integer`                              | `90`                | Maximum delay in seconds between subsequent recovery attempts.                                                        |
-| `minRecoveryDelay`       | `Integer`                              | `10`                | Minimum delay in seconds before starting automatic recovery.                                                          |
 | `poster`                 | `String`                               | `""`                | URL for an image to be shown while the video is loading.                                                              |
 | `sources`                | `String[]`                             | `[]`                | Array of media source URLs from which the first that can be played will be selected.                                  |
 | `targetLatency`          | `Integer`                              | `3`                 | Target live latency in seconds. If 0 then syncing is disabled.                                                        |
@@ -281,7 +279,6 @@ The following methods are exposed by Player instances:
 | `sendInteractiveBridgeCustomCommand(name: String, arg: Any?, completionHandler: @escaping (CustomCommandResult) -> Void)` | Sends a custom message to the interactive bridge.                                               |
 | `setView(view: UIView)`                                                                                                   | Set the view for player to render.                                                              |
 | `stop(completionQueue: DispatchQueue = .main, completion: @escaping () -> Void)`                                          | Async call to stop media playback.                                                              |
-| `updateOptions(PlayerOptions)`                                                                                            | Update player options                                                                           |
 
 ## Player Events
 
@@ -562,6 +559,12 @@ Note:
 
 - Renamed the `akamaiToken` property to `akamaiLongToken`
 
+#### Player Methods
+
+##### Removals
+
+- Removed `updateOptions(PlayerOptions)`
+
 #### PlayerOptions
 
 ##### Notable Changes
@@ -578,7 +581,7 @@ Note:
 
 ##### Removals
 
-- Removed `play`, `scrubber` and `seekThreshold` properties
+- Removed `maxRecoveryDelay`, `minRecoveryDelay`, `play`, `preload`, `scrubber` and `seekThreshold` properties
 
 #### PlayerDelegate
 

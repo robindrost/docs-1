@@ -188,6 +188,11 @@ about the SDK initization process:
       public void stateChanged(LiverySDK.State state) {
 
       }
+
+      @Override
+      public Lifecycle getListenerLifecycle() {
+         return getLifecycle();
+      }
    });
 ```
 
@@ -208,13 +213,16 @@ void initializeSdk(String streamId) {
                requireView().post(() -> initializeSdk(streamId));
          }
       }
+
+      @Override
+      public Lifecycle getListenerLifecycle() {
+         return getLifecycle();
+      }
    });
 }
 ```
 
 LiveryPlayerView `createPlayer` should only be called after LiverySDK is initialized, otherwise this method will fail.
-
-Be aware that `LiverySDK.getInstance().initialize` is not synchronous and the callback via `LiverySDK.StateListener` might be called later in the program execution when the Activity/Framengment is no long valid.
 
 ### Configure LiveryPlayerView
 
@@ -237,8 +245,6 @@ It is possible to have more control of the LiveryPlayerView initialization. Ther
       }
    });
 ```
-
-Be aware that `playerView.createPlayer` might not be synchronous and the callback via `LiveryPlayerView.CreatePlayerListener` or `LiveryPlayerView.CreatePlayerErrorListener` might happen later in the program execution when the Activity/Framengment is no long valid.
 
 #### LiveryPlayerView options
 
@@ -686,15 +692,19 @@ It should be safe to replace `tv.exmg.livery` with `com.liveryvideo.sdk` everywh
 
 LiverySDK now implements DefaultLifecycleObserver. The LiverySDK registers itself on the Aplication's LifecycleOwner.
 
+The `Lifecycle getListenerLifecycle()` method was added to LiverySDK.StateListener interface to get the Lifecycle that the LiverySDK should take into account when calling the initialization listener. The getter implementation is options and the default return null. It is advised to return a valid Lifecycle via this method to prevent accessing to a destroyed Activity/Fragment. See [Manual SDK Configuration](#manual-sdk-configuration) for mode details.
+
+
 ### LiveryPlayerView
 
-The method
+The methods
 
 ```java
 LiveryPlayerView.onStop()
+LiveryPlayerView.getTimeOffset()
 ```
 
-was removed.
+were removed.
 
 LiveryPlayerView now implements `DefaultLifecycleObserver` meaning that the methods
 

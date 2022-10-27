@@ -211,7 +211,7 @@ GET api/1/services/streams?pageIndex=1&pageSize=100
 
 Response:
 
-[filename](_customer-api/_example-multiple-StreamResponseDTO.md ':include')
+[filename](_customer-video-api/_example-multiple-StreamResponseDTO.md ':include')
 
 ### StartStream
 
@@ -230,7 +230,7 @@ PUT api/1/services/streams/start?id=5f2022df27b35d1ebfe17b78
 
 Response example:
 
-[filename](_customer-api/_example-StreamResponseDTO.md ':include')
+[filename](_customer-video-api/_example-StreamResponseDTO.md ':include')
 
 ### StopStream
 
@@ -248,7 +248,7 @@ PUT api/1/services/streams/stop?id=5f2022df27b35d1ebfe17b78
 
 Response example:
 
-[filename](_customer-api/_example-stopped-StreamResponseDTO.md ':include')
+[filename](_customer-video-api/_example-stopped-StreamResponseDTO.md ':include')
 
 ### CreateStream
 
@@ -310,7 +310,7 @@ Request body:
 
 Response example:
 
-[filename](_customer-api/_example-StreamResponseDTO.md ':include')
+[filename](_customer-video-api/_example-StreamResponseDTO.md ':include')
 
 ### UpdateStream
 
@@ -367,7 +367,7 @@ Request body:
 
 Response example:
 
-[filename](_customer-api/_example-StreamResponseDTO.md ':include')
+[filename](_customer-video-api/_example-StreamResponseDTO.md ':include')
 
 ### RemoveStream
 
@@ -397,48 +397,4 @@ PUT api/2/customers/6267d661e4b0420e3acced5e/streams/626fa59fe4b018f4ecdc092c/st
 
 Response example:
 
-[filename](_customer-api/_example-key-re-generate-StreamResponseDTO.md ':include')
-
-## Pull restricted broadcast data
-
-Authorized customers are allowed to access Livery interactive restricted API calls. 
-Authorization will be done via an API key that is configured by a supervisor.
-
-The value of the added key must be included in header `x-livery-api-key`
-
-Unless an API key is added, the customer will not be able to retrieve broadcast data.
-
-On broadcast status change, it is possible to be notified of the changes. You have to add a value to `PUSH_URL` 
-server setting, representing your API endpoint which will receive the data with HTTP POST. 
-
-##### Note: Add your API endpoint URL to receive broadcast status changes. This is done via server settings update endpoint
-
-### Get broadcast data
-
-```
-curl -H "x-livery-api-key: value" https://www.example.com/services/broadcasts/{broadcastId}
-```
-
-Response example:
-
-[filename](_customer-api/_example-VideoExtensionBroadcast.md ':include')
-
-### Get user data
-
-```
-curl -H "x-livery-api-key: value" https://www.example.com/services/broadcasts/{broadcastId}/users
-```
-
-Response example:
-
-[filename](_customer-api/_example-Users.md ':include')
-
-### Get leaderboard data
-
-```
-curl -H "x-livery-api-key: value" https://www.example.com/services/broadcasts/{broadcastId}/leaderboard/pagenumbers/{pageNumber}
-```
-
-Response example:
-
-[filename](_customer-api/_example-Leaderboard.md ':include')
+[filename](_customer-video-api/_example-key-re-generate-StreamResponseDTO.md ':include')

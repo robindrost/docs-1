@@ -1,14 +1,14 @@
 ```json
 {
   "leaderboardPageId" : "1212",
-  "broadcastId": "__8adsdads*asd9",
+  "broadcastId": "__8example*asd9",
   "version": 2,
   "entries" : {
     "score" : 1000,
     "rank" : 1,
-    "displayName": "asdasdad",
+    "displayName": "example",
     "avatarUrl": "",
-    "userId": "121asdasd312",
+    "userId": "example",
     "attributes": {}
   },
   "pageNumber" : 1,

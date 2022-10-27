@@ -1,11 +1,11 @@
 ```json
 [
   {
-    "userid": "__8ABka3APNulSp_D5wAAA==",
-    "username": "fasdfsdfs",
-    "mail": "nicholas@exmachina.nl",
+    "userid": "__8Aexample_D5wAAA==",
+    "username": "example",
+    "mail": "example@example.com",
     "emailverified": false,
-    "phonenumber": "+31 127612121",
+    "phonenumber": "+31 0000000",
     "phonenumberverified": false,
     "birthdate" : "",
     "givenname" : "",

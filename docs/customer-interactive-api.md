@@ -24,10 +24,22 @@ server setting, representing your API endpoint which will receive the data with 
 
 Page numbers start at 1 on paginated API calls
 
-### Get broadcast data (pull)
+### Get current broadcast data (pull)
 
 This API call can be used to retrieve information about the broadcast that is currently live.
 A use case is to poll this API to react on the broadcast being closed.
+
+```
+curl -H "x-livery-api-key: value" https://www.example.com/services/broadcasts/current
+```
+
+Response example:
+
+[filename](_customer-interactive-api/_example-VideoExtensionBroadcastCurrent.md ':include')
+
+### Get broadcast data (pull)
+
+This API call can be used to retrieve information about any created broadcast.
 
 ```
 curl -H "x-livery-api-key: value" https://www.example.com/services/broadcasts/{broadcastId}
@@ -40,10 +52,6 @@ Response example:
 ### Get broadcast data (push)
 
 This http request will push data to your API endpoint when a broadcast is updated.
-
-```
-curl -d 'jsonExample' -H "Content-Type: application/json" -X POST http://yourdomain:3000/endpoint
-```
 
 Request body:
 

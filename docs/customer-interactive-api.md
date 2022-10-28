@@ -2,7 +2,7 @@
 
 This document describes the API calls that are available to customers. These calls can be used by application administrators to retrieve restricted data.
 
-For more information regarding domain & paths, see: **Livery Video Customer API**
+For more information regarding domain & paths, ask for the URL from Livery support.
 
 ## Pull restricted broadcast data
 

@@ -778,7 +778,7 @@ LiveryPlayerOptions.setAkamaiLongToken(@Nullable String token)
 
 #### LiveryControlsOptions
 
-The setters `LiveryControlsOptions.showPlay` and `LiveryControlsOptions.showScrubber` were removed.
+The play and scrubber are now hidden regarding of any value defined in `LiveryControlsOptions.showPlay` and `LiveryControlsOptions.showScrubber`.
 A new `showContact` setter method was added to `LiveryControlsOptions`
 
 #### Error Overlay

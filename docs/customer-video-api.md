@@ -211,7 +211,7 @@ GET api/1/services/streams?pageIndex=1&pageSize=100
 
 Response:
 
-[filename](_customer-api/_example-multiple-StreamResponseDTO.md ':include')
+[filename](_customer-video-api/_example-multiple-StreamResponseDTO.md ':include')
 
 ### StartStream
 
@@ -230,7 +230,7 @@ PUT api/1/services/streams/start?id=5f2022df27b35d1ebfe17b78
 
 Response example:
 
-[filename](_customer-api/_example-StreamResponseDTO.md ':include')
+[filename](_customer-video-api/_example-StreamResponseDTO.md ':include')
 
 ### StopStream
 
@@ -248,7 +248,7 @@ PUT api/1/services/streams/stop?id=5f2022df27b35d1ebfe17b78
 
 Response example:
 
-[filename](_customer-api/_example-stopped-StreamResponseDTO.md ':include')
+[filename](_customer-video-api/_example-stopped-StreamResponseDTO.md ':include')
 
 ### CreateStream
 
@@ -310,7 +310,7 @@ Request body:
 
 Response example:
 
-[filename](_customer-api/_example-StreamResponseDTO.md ':include')
+[filename](_customer-video-api/_example-StreamResponseDTO.md ':include')
 
 ### UpdateStream
 
@@ -367,7 +367,7 @@ Request body:
 
 Response example:
 
-[filename](_customer-api/_example-StreamResponseDTO.md ':include')
+[filename](_customer-video-api/_example-StreamResponseDTO.md ':include')
 
 ### RemoveStream
 
@@ -397,4 +397,4 @@ PUT api/2/customers/6267d661e4b0420e3acced5e/streams/626fa59fe4b018f4ecdc092c/st
 
 Response example:
 
-[filename](_customer-api/_example-key-re-generate-StreamResponseDTO.md ':include')
+[filename](_customer-video-api/_example-key-re-generate-StreamResponseDTO.md ':include')

@@ -366,7 +366,7 @@ When you’d like to access the statistics of the interactive layer, you can use
 
 The Livery customers portal allows our customers to manage their streams. The portal comes with default settings, and if requested the Livery team is able to customize the setup according to the specific needs of the customer(s), making more features available.
 
-The core video features are accessible via a direct API implementation. Allowing our customers to merge the Livery Video solution in their own platform. More information about the API implementation can be found in the [API section.](customer-api.md 'api-calls')
+The core video features are accessible via a direct API implementation. Allowing our customers to merge the Livery Video solution in their own platform. More information about the API implementation can be found in the [API section.](customer-video-api.md 'api-calls')
 
 ### Create a stream
 
@@ -464,7 +464,7 @@ The stream history which can be accessed via the top right menu, contains a list
 
 The statistics dashboard contains an overview of basic statistics, which are updated every 60 seconds. A customer is able to see his statistics for the past 14 days. Please contact the Livery team for specific stats, which are not listed in the dashboard.
 
-Besides the dashboard, customers can also access the statistics via an API integration. Please see the GetAnalytics section in the [API section](customer-api.md 'GetAnalytics') for more info.
+Besides the dashboard, customers can also access the statistics via an API integration. Please see the GetAnalytics section in the [API section](customer-video-api.md 'GetAnalytics') for more info.
 
 ## Revision History
 

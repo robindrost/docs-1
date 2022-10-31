@@ -239,7 +239,9 @@ These are the contorls options to be passed to the Player:
 | `fullscreen` | `Boolean` | `false` | Determines whether full screen button should be displayed or not on the [`Player Controls`](#player-controls).                                                  |
 | `mute`       | `Boolean` | `false` | Determines whether mute button should be displayed or not on the [`Player Controls`](#player-controls).                                                         |
 | `pip`        | `Boolean` | `false` | Determines whether Picture in Picture button should be displayed or not on the [`Player Controls`](#player-controls). It is available only on iOS 15 or higher. |
+| `play`       | `Boolean` | `false` | Determines whether play button should be displayed or not on the [`Player Controls`](#player-controls).                                               |
 | `quality`    | `Boolean` | `false` | Determines whether select quality button should be displayed or not on the [`Player Controls`](#player-controls).                                               |
+| `scrubber`   | `Boolean` | `false` | Determines whether scrubber / progress bar view should be displayed or not on the [`Player Controls`](#player-controls).                                               |
 
 ## Player Properties
 
@@ -298,7 +300,6 @@ public protocol PlayerDelegate: class {
     func sourceDidChange(currentSource: URL?) // Emitted when currentSource has changed
     func timeDidUpdate(currentTime: TimeInterval) // Emitted periodically to inform of current playback time changing
     func volumeDidChange() // Emitted when volume or muted has changed
-    func playbackRateDidChange(playbackRate: Float) // Emitted when playbackRate has changed
 }
 ```
 
@@ -581,7 +582,7 @@ Note:
 
 ##### Removals
 
-- Removed `maxRecoveryDelay`, `minRecoveryDelay`, `play`, `preload`, `scrubber` and `seekThreshold` properties
+- Removed `maxRecoveryDelay`, `minRecoveryDelay`, `preload` and `seekThreshold` properties
 
 #### PlayerDelegate
 
@@ -593,6 +594,8 @@ Note:
     - Auto is `true` when it was changed through the ABR and `false` when it was changed manually
 
 - Remove deprecated `bandwidthTest(result: Result<UInt32, Error>)`
+
+- Remove deprecated `playbackRateDidChange(playbackRate: Float)`
 
 - Remove deprecated `selectedQualityDidChange(selectedQuality: Quality?)`
   - Use the new `activeQualityDidChange(activeQuality: Quality?, auto: Bool)`

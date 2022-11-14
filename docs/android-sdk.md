@@ -702,6 +702,7 @@ The methods
 ```java
 LiveryPlayerView.onStop()
 LiveryPlayerView.getTimeOffset()
+LiveryPlayerView.getPlaybackRate()
 ```
 
 were removed.
@@ -748,6 +749,14 @@ with:
 ```java
 LiveryPlayerListener.onActiveQualityChanged(LiveryQuality quality, Boolean auto)
 ```
+
+And the method
+
+```java
+LiveryPlayerListener.onPlaybackRateChanged(float rate)
+```
+
+was also removed.
 
 #### LiveryQuality
 

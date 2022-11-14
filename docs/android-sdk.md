@@ -61,7 +61,7 @@ Add these implementations inside **dependencies** to your app-level build.gradle
 ```groovy
 dependencies {
    //...
-   def livery_sdk_version = '2.4.1'
+   def livery_sdk_version = '3.0.0'
    implementation "com.liveryvideo:livery-sdk-android:$livery_sdk_version"
    //...
 }
@@ -141,38 +141,9 @@ The player might not be initializaed right after `createPlayer` call. For exampl
 initialization finishes. [LiveryPlayerView.CreatePlayerListener and LiveryPlayerView.CreatePlayerErrorListener](#createplayer-feedback)
 provide more information if the player was initialized or there was an error during initialization.
 
-### Add Life-cycle methods
+### Register in a LifecycleOwner
 
-It is critical to implement the lifecycle methods of Livery Player. Otherwise, you can notice the playback is still going on when an activity is paused, stopped or destroyed. Therefore add these lifecycle methods on your activity or fragment’s onDestroy, onStop, onPause and onResume blocks.
-
-```java
-@Override
-public void onResume() {
-   super.onResume();
-   playerView.onResume();
-}
-
-@Override
-public void onPause() {
-   playerView.onPause();
-   super.onPause();
-}
-
-@Override
-public void onStop() {
-   playerView.onStop();
-   super.onStop();
-}
-
-@Override
-public void onDestroy() {
-   playerView.onDestroy();
-   super.onDestroy();
-}
-```
-
-`LiveryPlayerView` implements `LifecycleObserver` and the methods mentioned above are already annotated with the corresponding lifecycle events.
-It is possible to register `LiveryPlayerView` in a `LifecycleOwner`, for example when using a `Fragment`:
+`LiveryPlayerView` implements `DefaultLifecycleObserver` and is must be registered in a `LifecycleOwner`, for example when using a `Fragment`:
 
 ```java
 public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
@@ -217,6 +188,11 @@ about the SDK initization process:
       public void stateChanged(LiverySDK.State state) {
 
       }
+
+      @Override
+      public Lifecycle getListenerLifecycle() {
+         return getLifecycle();
+      }
    });
 ```
 
@@ -236,6 +212,11 @@ void initializeSdk(String streamId) {
                // retry
                requireView().post(() -> initializeSdk(streamId));
          }
+      }
+
+      @Override
+      public Lifecycle getListenerLifecycle() {
+         return getLifecycle();
       }
    });
 }
@@ -289,7 +270,7 @@ The remote configuration is automatically applied when calling createPlayer with
             .setPrePoster("prePoster url")
             .setPoster("poster url")
             .setPostPoster("postPoster url")
-            .setAkamaiToken("akamai_token")
+            .setAkamaiLongToken("akamai_token")
             .build();
 
    playerView.createPlayer(playerOptions);
@@ -416,10 +397,10 @@ For that, you can use the methods below.
 ```java
 //Sets the quality automatically for the rest of the media,
 //until a quality id is specified.
-playerView.setQuality("auto");
+playerView.setQuality(LiveryQuality.AUTO_ID);
 
 //Sets the quality to audio only.
-playerView.setQuality("audio");
+playerView.setQuality(LiveryQuality.AUDIO_ONLY_ID);
 ```
 
 ### Audio Only Mode
@@ -438,12 +419,12 @@ In the qualities list, the audio-only mode is not visible by default. If you wan
 playerView.setShowAudioOnlyModeInQualitiesList(true);
 ```
 
-### Akamai token
+### Akamai long token
 
 Defines a access token to use to be able to see a stream that uses Akamai’s Token Auth feature.
 
 ```java
-playerView.setAkamaiToken("akamai_token");
+playerView.setAkamaiLongToken("akamai_token");
 ```
 
 ### Debug Mode
@@ -483,16 +464,16 @@ Each of these properties can be defined individually via LiveryPlayerOptions.Bui
 
 class **_LiveryPlayerOptions_**
 
-| Name          | Type                        | Default                       | Description                                                                                                                                |
-| ------------- | --------------------------- | ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
-| `autoPlay`    | `Boolean`                   | `true`                        | Determines whether video shall play immediately after [createPlayer](#create-player).                                                      |
-| `controls`    | `LiveryControlsOptions`     | `new LiveryControlsOptions()` | Provides access to [LiveryControlsOptions](#liveryplayeroptions-and-liverycontrolsoptions). Player controls can be tweaked by this object. |
-| `fit`         | `LiveryResizeMode`          | `CONTAIN`                     | Provides access to LiveryResizeMode. Video size inside the player view can be changed from here.                                           |
-| `prePoster`   | `String`                    | null                          | Represents URL to poster image. When this property is not empty, the player will show a poster on creation.                                |
-| `poster`      | `String`                    | null                          | Represents URL to poster image. When this property is not empty, the player will show a poster on creation.                                |
-| `postPoster`  | `String`                    | null                          | Represents URL to poster image. When this property is not empty, the player will show a poster on creation.                                |
-| `akamaiToken` | `String`                    | null                          | Access token to use to be able to see a stream that uses Akamai’s Token Auth feature.                                                      |
-| `sources`     | `String` or `Array<String>` | None                          | Defines the sources URLs.                                                                                                                  |
+| Name              | Type                        | Default                       | Description                                                                                                                                |
+| ----------------- | --------------------------- | ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| `autoPlay`        | `Boolean`                   | `true`                        | Determines whether video shall play immediately after [createPlayer](#create-player).                                                      |
+| `controls`        | `LiveryControlsOptions`     | `new LiveryControlsOptions()` | Provides access to [LiveryControlsOptions](#liveryplayeroptions-and-liverycontrolsoptions). Player controls can be tweaked by this object. |
+| `fit`             | `LiveryResizeMode`          | `CONTAIN`                     | Provides access to LiveryResizeMode. Video size inside the player view can be changed from here.                                           |
+| `prePoster`       | `String`                    | null                          | Represents URL to poster image. When this property is not empty, the player will show a poster on creation.                                |
+| `poster`          | `String`                    | null                          | Represents URL to poster image. When this property is not empty, the player will show a poster on creation.                                |
+| `postPoster`      | `String`                    | null                          | Represents URL to poster image. When this property is not empty, the player will show a poster on creation.                                |
+| `akamaiLongToken` | `String`                    | null                          | Access token to use to be able to see a stream that uses Akamai’s Token Auth feature.                                                      |
+| `sources`         | `String` or `Array<String>` | None                          | Defines the sources URLs.                                                                                                                  |
 
 ### Player Resize Mode
 
@@ -519,8 +500,8 @@ class **_LiveryControlsOptions_**
 | `fullscreen` | `Boolean` | `false` | Sets the visibility of the fullscreen button. |
 | `mute`       | `Boolean` | `false` | Sets the visibility of the mute button.       |
 | `quality`    | `Boolean` | `false` | Sets the visibility of the quality button.    |
+| `contact`    | `Boolean` | `false` | Sets the visibility of the contact button.    |
 | `error`      | `Boolean` | `false` | Sets the visibility of the error overlay.     |
-| `cast`       | `Boolean` | `false` | Sets the visibility of the cast feature.      |
 
 ### Player Events
 
@@ -528,17 +509,17 @@ It might be important in some cases to receive player events and process the dat
 
 class **_LiveryPlayerListener_**
 
-| Name                                                  | Description                                                                                                             |
-| ----------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
-| `onActiveQualityChanged(LiveryQuality quality)`       | Called when the active quality of the media being played has changed.                                                   |
-| `onPlayerError(Exception e)`                          | Called when the player encounters an error.                                                                             |
-| `onPlayerStateChanged(LiveryPlayerState playerState)` | Called when the playback state of the player has changed.                                                               |
-| `onProgressChanged(long buffer, long latency)`        | Called in short intervals while playing, buffer and latency values in milliseconds can be actively retrieved from here. |
-| `onQualitiesChanged(List<LiveryQuality> qualities)`   | Called when available qualities of media have changed.                                                                  |
-| `onPlaybackRateChanged(float rate)`                   | Called when the playback rate of current media has changed.                                                             |
-| `onRecovered()`                                       | Called when an error is recovered.                                                                                      |
-| `onTimeUpdate(long currentTime)`                      | Called when the current time of media has changed.                                                                      |
-| `onSourceChanged(String source)`                      | Called when the media source URL of the player has changed.                                                             |
+| Name                                                                   | Description                                                                                                             |
+| ---------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| `onActiveQualityChanged(@NonNull LiveryQuality quality, boolean auto)` | Called when the active quality of the media being played has changed.                                                   |
+| `onPlayerError(Exception e)`                                           | Called when the player encounters an error.                                                                             |
+| `onPlayerStateChanged(@NonNull LiveryPlayerState playerState)`         | Called when the playback state of the player has changed.                                                               |
+| `onProgressChanged(long buffer, long latency)`                         | Called in short intervals while playing, buffer and latency values in milliseconds can be actively retrieved from here. |
+| `onQualitiesChanged(@NonNull List<LiveryQuality> qualities)`           | Called when available qualities of media have changed.                                                                  |
+| `onPlaybackRateChanged(float rate)`                                    | Called when the playback rate of current media has changed.                                                             |
+| `onRecovered()`                                                        | Called when an error is recovered.                                                                                      |
+| `onTimeUpdate(long currentTime)`                                       | Called when the current time of media has changed.                                                                      |
+| `onSourceChanged(@NonNull String source)`                              | Called when the media source URL of the player has changed.                                                             |
 
 #### Registering Player Event Listener
 
@@ -554,16 +535,15 @@ playerView.registerListener(new LiveryPlayerListener() {
 
 class **_LiveryQuality_**
 
-| Name        | Type      | Description                      |
-| ----------- | --------- | -------------------------------- |
-| `bitrate`   | `Integer` | Bitrate of the quality.          |
-| `codecs`    | `String`  | Codec of the media.              |
-| `frameRate` | `Float`   | Frame rate of the media.         |
-| `height`    | `Integer` | Height of the media.             |
-| `label`     | `String`  | Human readable name of quality.  |
-| `qualityId` | `String`  | ID of quality.                   |
-| `track`     | `String`  | Track type of media. i.e.: video |
-| `width`     | `Integer` | Width of the media.              |
+| Name        | Type      | Description                     |
+| ----------- | --------- | ------------------------------- |
+| `bitrate`   | `Integer` | Bitrate of the quality.         |
+| `codecs`    | `String`  | Codec of the media.             |
+| `frameRate` | `Float`   | Frame rate of the media.        |
+| `height`    | `Integer` | Height of the media.            |
+| `label`     | `String`  | Human readable name of quality. |
+| `qualityId` | `String`  | ID of quality.                  |
+| `width`     | `Integer` | Width of the media.             |
 
 ## Handle Orientation Changes
 
@@ -607,11 +587,10 @@ To customize error overlay, create a layout named `livery_player_error_view.xml`
 Available IDs and their corresponding view types are listed below,
 ID names are self-explanatory about what that item does.
 
-| Name          | ID                            | Type           |
-| ------------- | ----------------------------- | -------------- |
-| Error Title   | `livery_error_header`         | `TextView`     |
-| Error Text    | `livery_error_overlay_text`   | `TextView`     |
-| Reload Button | `livery_error_overlay_button` | `LinearLayout` |
+| Name          | ID                    | Type           |
+| ------------- | --------------------- | -------------- |
+| Error Text    | `livery_error_text`   | `TextView`     |
+| Reload Button | `livery_error_button` | `LinearLayout` |
 
 ### Player Controls
 
@@ -619,21 +598,18 @@ To customize player controls, create a layout named `livery_player_control_view.
 
 Available IDs and their corresponding view types are listed below, ID names are self-explanatory about what that item does. Each view is optional.
 
-| Name                         | ID                                    | Type               |
-| ---------------------------- | ------------------------------------- | ------------------ |
-| Play Button                  | `livery_play`                         | `View`             |
-| Pause Button                 | `livery_pause`                        | `View`             |
-| Mute Button                  | `livery_mute`                         | `View`             |
-| Unmute Button                | `livery_unmute`                       | `View`             |
-| Quality Button               | `livery_quality`                      | `View`             |
-| Fullscreen Button            | `livery_fullscreen`                   | `View`             |
-| Live Circle View             | `livery_live_circle`                  | `View`             |
-| Quality Indicator Background | `livery_quality_indicator_background` | `View`             |
-| Quality Indicator Text       | `livery_quality_indicator_text`       | `TextView`         |
-| Cast Button                  | `livery_cast`                         | `MediaRouteButton` |
-| Time bar                     | `livery_progress`                     | `TimeBar`          |
-| Time Separator Text          | `livery_time_separator`               | `TextView`         |
-| Live Text                    | `livery_live_text`                    | `TextView`         |
+| Name                   | ID                              | Type                |
+| ---------------------- | ------------------------------- | ------------------- |
+| Play Button            | `livery_play`                   | `View`              |
+| Pause Button           | `livery_pause`                  | `View`              |
+| Mute Button            | `livery_mute`                   | `View`              |
+| Unmute Button          | `livery_unmute`                 | `View`              |
+| Fullscreen Button      | `livery_fullscreen`             | `View`              |
+| Quality Indicator Text | `livery_quality_indicator_text` | `TextView`          |
+| Time bar               | `livery_progress`               | `LiveryProgressBar` |
+| Live Indicator         | `livery_live_indicator`         | `View`              |
+| Settings Button        | `livery_settings`               | `View`              |
+| Contact Button         | `livery_contact`                | `View`              |
 
 Note: Be aware of the system UI elements such as navigation and status bar when going to full screen mode, and using custom UI elements.
 
@@ -655,7 +631,7 @@ String url = ...
 playerView.setInteractiveUrl(url);
 ```
 
-Besides the [methods](/interactive-bridge?id=methods) already definied on the Interactive Bridge to get values like the player **latency**, device **orientation**, etc. you can get and send custom messages.
+Besides the [methods](/interactive-bridge?id=methods) already definied on the Interactive Bridge to get values like the player **latency**, **quality**, etc. you can get and send custom messages.
 
 ### Custom commands
 
@@ -703,6 +679,160 @@ To enable sentry.io auto initialization please add the following to the Applicat
 ```
 
 ## Migration Guide
+
+### Migration from 2.4 to 3.0
+
+#### Livery SDK Package name
+
+The Livery SDK package name changed to `com.liveryvideo.sdk` in the 3.0.0 release.
+
+It should be safe to replace `tv.exmg.livery` with `com.liveryvideo.sdk` everywhere in the project.
+
+### LiverySDK
+
+LiverySDK now implements DefaultLifecycleObserver. The LiverySDK registers itself on the Aplication's LifecycleOwner.
+
+The `Lifecycle getListenerLifecycle()` method was added to LiverySDK.StateListener interface to get the Lifecycle that the LiverySDK should take into account when calling the initialization listener. The getter implementation is options and the default return null. It is advised to return a valid Lifecycle via this method to prevent accessing to a destroyed Activity/Fragment. See [Manual SDK Configuration](#manual-sdk-configuration) for mode details.
+
+
+### LiveryPlayerView
+
+The methods
+
+```java
+LiveryPlayerView.onStop()
+LiveryPlayerView.getTimeOffset()
+LiveryPlayerView.getPlaybackRate()
+```
+
+were removed.
+
+LiveryPlayerView now implements `DefaultLifecycleObserver` meaning that the methods
+
+```java
+   liveryPlayer.onResume()
+   liveryPlayer.onPause()
+   liveryPlayer.onDestroy()
+```
+
+now receive a `LifecycleOwner`
+
+```java
+   liveryPlayer.onResume(@NonNull LifecycleOwner owner)
+   liveryPlayer.onPause(@NonNull LifecycleOwner owner)
+   liveryPlayer.onDestroy(@NonNull LifecycleOwner owner)
+```
+
+It is recommended to register the LiveryPlayerView in a `LifecycleOwner` like an `Activity` or `Fragment`.
+
+```java
+   getLifecycle().addObserver(inlinePlayerView);
+   // or
+```
+
+#### LiveryPlayerState
+
+The state LiveryPlayerState.STATE_IDLE was removed.
+
+#### LiveryPlayerListener
+
+Version 3.0 removes the deprecated method from `LiveryPlayerListener`:
+
+Replace:
+
+```java
+LiveryPlayerListener.onActiveQualityChanged(LiveryQuality quality)
+```
+
+with:
+
+```java
+LiveryPlayerListener.onActiveQualityChanged(LiveryQuality quality, Boolean auto)
+```
+
+And the method
+
+```java
+LiveryPlayerListener.onPlaybackRateChanged(float rate)
+```
+
+was also removed.
+
+#### LiveryQuality
+
+LiveryQuality no longer has a `track`property.
+From 3.0.0 there are 2 static properties `AUTO_ID` and `AUDIO_ONLY_ID` which can be used to `setQuality` in LiveryPlayerView.
+
+```java
+   liveryPlayer.setQuality(LiveryQuality.AUTO_ID)
+   // ...
+   liveryPlayer.setQuality(LiveryQuality.AUDIO_ONLY_ID)
+```
+
+#### LiveryPlayerOptions
+
+The properties of LiveryPlayerOptions are now final.
+
+The method
+
+```java
+LiveryPlayerOptions.setAkamaiToken(String token)
+```
+
+was renamed to
+
+```java
+LiveryPlayerOptions.setAkamaiLongToken(@Nullable String token)
+```
+
+#### LiveryControlsOptions
+
+The play and scrubber are now hidden regarding of any value defined in `LiveryControlsOptions.showPlay` and `LiveryControlsOptions.showScrubber`.
+A new `showContact` setter method was added to `LiveryControlsOptions`
+
+#### Error Overlay
+
+The IDs used to customize the error overlay
+
+```java
+   R.id.livery_error_header
+   R.id.livery_error_overlay_text
+   R.id.livery_error_overlay_button
+```
+
+were replaced with
+
+```java
+   R.id.livery_error_text    -> TextView
+   R.id.livery_error_button   -> View
+```
+
+#### Player Controls
+
+The interface `TimeBar` was replaced with `LiveryProgressBar`
+
+The IDs used to customize the player's controls
+
+```java
+   R.id.livery_quality
+   R.id.livery_quality_indicator_background
+   R.id.livery_time_separator
+   R.id.livery_live_circle
+   R.id.livery_live_text
+```
+
+were remove.
+
+#### Nullability changes
+
+`@NonNull` and `@Nullable` annotations were added to some methods in the 3.0.0 release:
+
+- `LiveryPlayerListener.onActiveQualityChanged`
+- `LiveryPlayerListener.onPlayerStateChanged`
+
+#### Interactive Bridge
+
+It is no longer possible to subscribe to orientation changes via Interactive Bridge.
 
 ### Migration from 1.7 to 2.0
 
@@ -833,6 +963,7 @@ dependencies {
 
 | Version | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 3.0.0   | - New Player UI<br>- Replace AkamaiToken with AkamaiLongToken<br>- Improve Nullability<br>- Cast was support was removed<br>- Update targetSdkVersion to 32<br>- Update ExoPlayer to version 2.18.1<br>- Add OkHttp version 4.10.0<br>- Cleanup unused Views IDs<br>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 | 2.4.2   | - Fixed an issue that could occur while a stall happens                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 | 2.4.1   | - New Livery bridge properties added<br> - Fix issue related to initializePlayer<br> - ABR improvement<br> - Improve logic around reconnects<br> - Minor fixes and improvements                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
 | 2.4.0   | - akamai token support<br>- add prePoster and postPoster to LiveryPlayerOptions                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |

@@ -55,6 +55,8 @@ Key features:
 - Optional time limit for answers
 - Optionally attached points
 - Leaderboard results
+- Showing percentage of provided answers
+- Manual vs. auto-close of results
 
 #### Rating
 
@@ -79,6 +81,7 @@ The announcement interaction is meant to prepare quick announcements with title 
 Key features:
 
 - Quick announcement
+- Option for auto or manual closing
 
 #### Live reaction
 
@@ -139,6 +142,18 @@ Key features:
 - Filtering
 - Search
 
+#### Social share
+
+With the social share interaction you can encourage your audience to share a short message on social platforms.
+
+Key features:
+
+- Predefined message
+- Native share functionality on mobile devices
+- Selected sharing platforms on desktop
+- Option for auto or manual closing
+
+
 ### Gamification pack
 
 If you run a competition or would like to give prizes to your audience, this pack is what you need. It includes new interactions like estimation and prediction which are ideal for gamification. Additionally, the leaderboard lets users check their points and compare themselves against the top points.
@@ -156,6 +171,21 @@ Key features:
 - Slider or free value input
 - Score deduction per steps
 
+<!--
+#### Estimation poll
+
+<p align="center">
+<img src="portal/estimate.jpg" width="500"/>
+</p>
+The estimation poll interaction is meant to prepare questions with answers within an interval. Scores are not added, this interaction provides the poll/vote result on a column chart.
+
+Key features:
+
+- Slider or free value input
+- Thank you message
+- Column diagram of result
+- Delayed result presentation
+-->
 #### Prediction
 
 <p align="center">
@@ -209,6 +239,7 @@ Key features:
 
 - Quick announcement
 - Adding external link
+- Option for auto or manual closing
 
 #### Rating
 
@@ -240,7 +271,8 @@ Once you have a broadcast defined, you can start to add interactions to it to fi
 | Field               | Description                                                                          |
 | ------------------- | ------------------------------------------------------------------------------------ |
 | Name                | The name of the broadcast                                                            |
-| Start date and time | The planned “Date” and “Time” of the broadcast                                       |
+| Start date and time| The planned “Date” and “Time” of the broadcast                                       |
+| Authentication      | The list of available authentication templates                                        |
 | Promotional image   | A banner to show to the audience in the interactive layer                            |
 | Stream              | The list of available stream in case Livery Video is configured                      |
 | Audience group      | In case of closed broadcast the list of emails who can participate in the event      |
@@ -252,13 +284,15 @@ The web-based management system allows you to manage your broadcasts and get an 
 
 Key features:
 
+- Select authentication method
 - Add promotional image to your broadcast (banner)
 - Select your locale
 - Start/stop your broadcast anytime you want
 - Select a theme for your branding
 - Add audience group for closed broadcasts
 - Show/Hide features and pages
-- Video stream selection
+- Video Stream selection
+
 
 #### Account management
 
@@ -273,9 +307,9 @@ Key features:
 - Verification code for logging in
 - Logged in or guest users can be removed
 - Leaderboard results are attached to logged in users
-- Terms & Conditions
-- Privacy policy
-- Delete account / Clear data
+- Show/Hide live reactions
+- Show/Hide chat
+- Disclaimers based on the authentication template
 
 #### Currency handling
 

@@ -56,7 +56,7 @@ Key features:
 - Optionally attached points
 - Leaderboard results
 - Showing percentage of provided answers
-- Manual vs. auto-close of results
+- Option for auto or manual closing of the results
 
 #### Rating
 

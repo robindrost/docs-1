@@ -262,7 +262,7 @@ The features are Broadcast management, Account management, Currency handling, Th
 #### Broadcast management
 
 <p align="center">
-<img src="portal/broadcast-management.png" height="500"/>
+<img src="portal/broadcast-v2.png" height="500"/>
 </p>
 Broadcast is the main grouping element within our system.
 For every broadcast event you set up a broadcast within the web-based management system where you define the details above..
@@ -349,7 +349,7 @@ Key features:
 #### Show/Hide pages or features
 
 <p align="center">
-<img src="portal/show-hide-features.png" width="400"/>
+<img src="portal/showhide-v2.png" width="400"/>
 </p>
 You can select which pages and features you’d like to add to your broadcast out of the list of:
 - Chat

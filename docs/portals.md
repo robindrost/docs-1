@@ -371,7 +371,7 @@ You can select which pages and features you’d like to add to your broadcast ou
 #### Presenter view
 
 <p align="center">
-<img src="portal/presenter-view.jpg" width="700"/>
+<img src="portal/presenter-view.png" width="700"/>
 </p>
 During the broadcast event the Presenter can check the interaction results, live reaction activity or the raised Q&A questions on this dedicated page.
 

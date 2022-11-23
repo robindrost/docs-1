@@ -144,6 +144,9 @@ Key features:
 
 #### Social share
 
+<p align="center">
+<img src="portal/social-sharing.png" width="400"/>
+</p>
 With the social share interaction you can encourage your audience to share a short message on social platforms.
 
 Key features:
@@ -202,6 +205,9 @@ Key features:
 
 #### Leaderboard
 
+<p align="center">
+<img src="portal/leaderboard.png" width="400"/>
+</p>
 The Leaderboard shows the earned points of the players during the broadcast.
 
 Key features:
@@ -325,6 +331,9 @@ Key features:
 
 #### Theming
 
+<p align="center">
+<img src="portal/themes.png" width="400"/>
+</p>
 The look and feel of the Interactivity can be defined via Themes. The web-based management system offers an easy to use way to change colours and logos easily.
 
 Key features:
@@ -361,6 +370,9 @@ You can select which pages and features you’d like to add to your broadcast ou
 
 #### Presenter view
 
+<p align="center">
+<img src="portal/presenter-view.png" width="400"/>
+</p>
 During the broadcast event the Presenter can check the interaction results, live reaction activity or the raised Q&A questions on this dedicated page.
 
 Key features:

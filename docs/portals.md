@@ -58,6 +58,20 @@ Key features:
 - Showing percentage of provided answers
 - Option for auto or manual closing of the results
 
+#### Estimation poll
+
+<p align="center">
+<img src="portal/estimation-poll.jpg" width="500"/>
+</p>
+The estimation poll interaction is meant to prepare questions with answers within an interval. Scores are not added, this interaction provides the poll/vote result on a column chart including the average of given answers.
+
+Key features:
+
+- Slider or free value input
+- Thank you message
+- Column diagram of result
+- Delayed result presentation
+
 #### Rating
 
 <p align="center">
@@ -174,21 +188,7 @@ Key features:
 - Slider or free value input
 - Score deduction per steps
 
-<!--
-#### Estimation poll
 
-<p align="center">
-<img src="portal/estimate.jpg" width="500"/>
-</p>
-The estimation poll interaction is meant to prepare questions with answers within an interval. Scores are not added, this interaction provides the poll/vote result on a column chart.
-
-Key features:
-
-- Slider or free value input
-- Thank you message
-- Column diagram of result
-- Delayed result presentation
--->
 #### Prediction
 
 <p align="center">

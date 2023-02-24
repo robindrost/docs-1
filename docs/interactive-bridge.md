@@ -18,7 +18,7 @@ This package exports two bundles.
 
 The ES `module` bundle is targetted at modern browsers and tools supporting `ES2019`.
 
-The UMD `main` bundle (as used by jsdelivr [CDN](#cdn)) supports iOS/iPadOS Safari v12 and up and the last 2 major versions of: Chrome, Safari, Edge, Firefox, Android Chrome and Samsung Internet.
+The UMD `main` bundle (as used by jsdelivr [CDN](#cdn)) supports the last 2 major versions of: Chrome, Safari, Edge, Firefox, Android Chrome, iOS Safari and Samsung Internet.
 
 ## Installation
 

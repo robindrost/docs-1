@@ -132,7 +132,7 @@ The following overview contains an overview of the most common video mixing tool
 | Menu   | Item Property     | Value                                                                                                                       |
 | ------ | ----------------- | --------------------------------------------------------------------------------------------------------------------------- |
 | Stream | Service           | Custom                                                                                                                      |
-|        | Server            | Ingest URL for example srt://ingest.liveryvideo.com:9998?pkt_size=1316&streamid=[streamId]-[streamKey]                      |
+|        | Server            | Ingest URL for example srt://ingest.liveryvideo.com:9998?pkt_size=1316&streamid=[streamId]_[streamKey]                      |
 |        | Stream Key        | Leave empty                                                                                                                 |
 | Output | Output Mode       | Advanced                                                                                                                    |
 |        | Encoder           | x264                                                                                                                        |

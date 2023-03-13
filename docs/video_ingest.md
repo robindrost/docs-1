@@ -6,7 +6,7 @@ Video can be ingested via an encoder. Livery provides reliable encoder technolog
 
 ### Input Signal
 
-The cloud encoder currently expects a resolution of 1920x1080. It can receive this input signal over RTMP or SRT. The URL that is used for the video ingest can be found in the Livery console. The encoder does not support a stream key or authentication. For the mixing software, see the RTMP or SRT URL stream and output settings (contact us if your prefered streaming software is not included).
+The cloud encoder currently expects a resolution of 1920x1080. It can receive this input signal over RTMP or SRT. The URL that is used for the video ingest can be found in the Livery console. See the Mixer Soft- and Hardware chapter for instructions on how to configure this (contact us if your prefered streaming software is not included).
 
 ## On-prem encoder
 
@@ -115,8 +115,8 @@ The following overview contains an overview of the most common video mixing tool
 | Menu   | Item Property     | Value                                                                                                                       |
 | ------ | ----------------- | --------------------------------------------------------------------------------------------------------------------------- |
 | Stream | Service           | Custom                                                                                                                      |
-|        | Server            | Ingest URL for example rtmp://ingest.liveryvideo.com/app/12a34b56c78d90e                                                    |
-|        | Stream Key        | Add the Stream Key as it is listed under Stream Details in the Livery Portal.                                                                     |
+|        | Server            | Ingest URL for example rtmp://ingest.liveryvideo.com/app/[streamId]                                                         |
+|        | Stream Key        | Add the Stream Key as it is listed under Stream Details in the Livery Portal.                                               |
 | Output | Output Mode       | Advanced                                                                                                                    |
 |        | Encoder           | x264                                                                                                                        |
 |        | Rate Control      | CBR                                                                                                                         |
@@ -124,7 +124,7 @@ The following overview contains an overview of the most common video mixing tool
 |        | Keyframe interval | Recommended setting is 2. The value should match the segment size set in the Livery Encoder settings                        |
 |        | CPU Usages Preset | Veryfast                                                                                                                    |
 |        | Tune              | Zerolatency                                                                                                                 |
-| Video  | Output Resolution | Recommended resolution 1920x1080px                                            |
+| Video  | Output Resolution | Recommended resolution 1920x1080px                                                                                          |
 |        | Common FPS Values | 25 PAL It is strongly recommended to use the same FPS throughout the complete workflow, to prevent audio/video sync issues. |
 
 #### **SRT**
@@ -132,8 +132,8 @@ The following overview contains an overview of the most common video mixing tool
 | Menu   | Item Property     | Value                                                                                                                       |
 | ------ | ----------------- | --------------------------------------------------------------------------------------------------------------------------- |
 | Stream | Service           | Custom                                                                                                                      |
-|        | Server            | Ingest URL for example srt://ingest.liveryvideo.com:9998?pkt_size=1316&streamid=12a34b56c78d90e                             |
-|        | Stream Key        | Add the Stream Key as it is listed under Stream Details in the Livery Portal.                                                                   |
+|        | Server            | Ingest URL for example srt://ingest.liveryvideo.com:9998?pkt_size=1316&streamid=[streamId]-[streamKey]                      |
+|        | Stream Key        | Leave empty                                                                                                                 |
 | Output | Output Mode       | Advanced                                                                                                                    |
 |        | Encoder           | x264                                                                                                                        |
 |        | Rate Control      | CBR                                                                                                                         |
@@ -218,7 +218,7 @@ SRT is supported via a workaround
 ### **Screenshots**
 
 <p align="center">
-<img width="512" src="encoder/vmix-stream-settings.png)">
+<img width="512" src="encoder/vmix-stream-settings.png">
 </p>
 <p align="center">
 <img width="512" src="encoder/vmix-video-settings.png">
@@ -482,12 +482,12 @@ Select a custom RTMP source<br>
 
 Open the Back Magic Presenter Setup app on your desktop and select Livery as a RTMP destination. It is also possible to select the Livery RTMP destination directly from the device.<br>
 
-| Menu Item | Property               | Value                                                                                                                                                  |
-| --------- | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Live Stream | Video Output                   | Select a standard that matches the stream quality or higher. Recommanded 1080p 25fps.|
-|           | Platform | Select the Livery platform as specified in the XML |
-|           | Server | Select the Livery stream as specified in the XML |
-|           | Key                | Add the Stream Key as it is listed under Stream Details in the Livery Portal. |
+| Menu Item | Property            |                                                                                      |
+| ----------- | ----------------- | ------------------------------------------------------------------------------------ |
+| Live Stream | Video Output      | Select a standard that matches the stream quality or higher. Recommanded 1080p 25fps.|
+|             | Platform          | Select the Livery platform as specified in the XML |
+|             | Server            | Select the Livery stream as specified in the XML |
+|             | Key               | Add the Stream Key as it is listed under Stream Details in the Livery Portal. |
 
 #### **Screenshots**
 
@@ -501,10 +501,11 @@ Open the Back Magic Presenter Setup app on your desktop and select Livery as a R
 
 | Version     | Description                                                                      |
 | ----------- | -------------------------------------------------------------------------------- |
-| docs update | Ingest info added for Black Magic Web Presenter                    |
-| docs update | Ingest info added for LiveU, Magewell Ultra & Teradek Vidiu                      |
-| 0.6.0       | Secure ingest<br>Use audio delay setting from the backend                        |
-| 0.5.0       | Added the ability to automatically update the encoder from the Management Portal |
+| 2023-03-13  | Added SRT streamKey information                                                  |
+| 2022-12-28  | Ingest info added for Black Magic Web Presenter                                  |
+| 2022-01-21  | Ingest info added for LiveU, Magewell Ultra & Teradek Vidiu                      |
+| 2021-04-30  | Secure ingest<br>Use audio delay setting from the backend                        |
+| 2021-02-18  | Added the ability to automatically update the encoder from the Management Portal |
 
 ## Q&A
 

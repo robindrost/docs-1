@@ -23,24 +23,24 @@ Token Authentication security ensures that the stream is delivered only to the a
 ### Enable Token Authentication
 Token Authentication can be enabled via the checkbox in the ‘Stream Settings’. When enabled the Livery backend generates a Token Authentication Key for each stream, which is automatically added to the configuration of the CDN.  
 
-p align="center">
+<p align="center">
 <img src="security/Token-Auth-1.png" width="500"/>
 </p>
 
 The ‘Token Authentication Key’ is listed on the ‘Stream Details’ accessible via the portall. 
 
-p align="center">
+<p align="center">
 <img src="security/Token-Auth-1.png" width="500"/>
 </p>
 
 The customer backend determines which users, logged in to the customer website, have access to the video stream. The customer backend generates tokens for these users using one of Akamai's Token Auth software development kits (SDKs). 
 
-[C Sharp ("C#")](https://github.com/BookBeat/EdgeAuth-Token-CSharp)
-[Golang ("Go")](https://github.com/mobilerider/EdgeAuth-Token-Golang)
-[Java](https://github.com/akamai/EdgeAuth-Token-Java)
-[NodeJS](https://github.com/akamai/EdgeAuth-Token-Node)
-[Python](https://github.com/akamai/EdgeAuth-Token-Python)
-[Ruby](https://github.com/akamai/EdgeAuth-Token-Ruby)
+- [C Sharp ("C#")](https://github.com/BookBeat/EdgeAuth-Token-CSharp)
+- [Golang ("Go")](https://github.com/mobilerider/EdgeAuth-Token-Golang)
+- [Java](https://github.com/akamai/EdgeAuth-Token-Java)
+- [NodeJS](https://github.com/akamai/EdgeAuth-Token-Node)
+- [Python](https://github.com/akamai/EdgeAuth-Token-Python)
+- [Ruby](https://github.com/akamai/EdgeAuth-Token-Ruby)
 
 To generate the tokens, this backend requires the Token Authentication Key, which can be copied from the ‘Stream Detail’ page in the Livery Portal. The customer's backend then forwards these tokens to the customer application or website.
 
@@ -51,7 +51,7 @@ The Livery player forwards the token to CDN and applies the returned tokens to a
 ## Stream Key
 The Livery Platform utilizes an RTMP or SRT stream for the first mile delivery to the cloud encoder. To authenticate a live stream with the Livery Cloud encoder, a Stream Key is used. The key can be copied or regenerated via the ‘Stream Details’ page in the Livery portal. 
 
-p align="center">
+<p align="center">
 <img src="security/Stream-Key-1.png" width="500"/>
 </p>
 

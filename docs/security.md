@@ -16,7 +16,7 @@ When a viewer attempts to play the stream, the browser will verify if the underl
 ## Token Authentication
 Secure session tokens are utilized to authenticate user sessions and prevent unauthorized sharing of the streaming URL. Token-based authentication mechanisms are widely used across the Internet to verify user rights and enhance security.
 
-This feature employs hybrid tokens that are generated using a "trusted shared secret" between the content owner and the CDN. The primary token is short-lived and used to secure a playlist, while a secondary cookie token is available for the playtime of the media content, protecting subsequent segments delivered after the manifest file.
+This feature employs tokens that are generated using a "trusted shared secret". This secret is shared between the customer and the CDN.
 
 Token Authentication security ensures that the stream is delivered only to the authenticated user, thus preventing link sharing and player hijacking attacks.
 
@@ -27,7 +27,7 @@ Token Authentication can be enabled via the checkbox in the ‘Stream Settings�
 <img src="security/Token-Auth-1.png" width="500"/>
 </p>
 
-The ‘Token Authentication Key’ is listed on the ‘Stream Details’ accessible via the portall. 
+The ‘Token Authentication Key’ is listed on the ‘Stream Details’ accessible via the portal. 
 
 <p align="center">
 <img src="security/Token-Auth-2.png" width="500"/>
@@ -44,9 +44,9 @@ The customer backend determines which users, logged in to the customer website, 
 
 To generate the tokens, this backend requires the Token Authentication Key, which can be copied from the ‘Stream Detail’ page in the Livery Portal. The customer's backend then forwards these tokens to the customer application or website.
 
-The customer application or website opens the Livery native or web player, which has an attribute called 'akamaiToken'. This attribute can be set to the token retrieved from the customer backend.
+The customer application or website opens the Livery native or web player, which has an attribute called 'akamailongtoken'. This attribute can be set to the token retrieved from the customer backend.
 
-The Livery player forwards the token to CDN and applies the returned tokens to all subsequent media requests. Once the token expires, a new token needs to be provided from the customer application or website for the Livery player to authenticate with CDN again.
+The Livery player forwards the token to CDN when fetching the video data. Once the token expires, a new token needs to be provided from the customer application or website for the Livery player to authenticate with CDN again.
 
 ``` mermaid
 sequenceDiagram
@@ -57,7 +57,7 @@ sequenceDiagram
 ```
 
 ## Stream Key
-The Livery Platform utilizes an RTMP or SRT stream for the first mile delivery to the cloud encoder. To authenticate a live stream with the Livery Cloud encoder, a Stream Key is used. The key can be copied or regenerated via the ‘Stream Details’ page in the Livery portal. 
+The Livery platform utilizes an RTMP or SRT stream for the first mile delivery to the cloud encoder. To authenticate a live stream with the Livery Cloud encoder, a Stream Key is used. The key can be copied or regenerated via the ‘Stream Details’ page in the Livery portal. 
 
 <p align="center">
 <img src="security/Stream-Key-1.png" width="500"/>

@@ -1,4 +1,5 @@
-- [Portals](portals.md 'Livery Management Portals')
+- [Interactive Portal](interactive-portal.md 'Livery Interactive Management Portal')
+- [Video Portal](video-portal.md 'Livery Video Management Portal')
 - [Video Ingest](video_ingest.md 'Livery Video Ingest')
 - [Android SDK](android-sdk.md 'Livery Video Android SDK')
 - [iOS SDK](ios-sdk.md 'Livery Video iOS SDK')

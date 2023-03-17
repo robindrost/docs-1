@@ -48,6 +48,12 @@ The customer application or website opens the Livery native or web player, which
 
 The Livery player forwards the token to CDN and applies the returned tokens to all subsequent media requests. Once the token expires, a new token needs to be provided from the customer application or website for the Livery player to authenticate with CDN again.
 
+sequenceDiagram
+    Customer backend->>Customer application or website: Push token
+    Customer application or website->>Livery Player: Pass token
+    Livery Player->>CDN: Request stream with token
+    CDN-->>Livery Player: Authorised stream
+
 ## Stream Key
 The Livery Platform utilizes an RTMP or SRT stream for the first mile delivery to the cloud encoder. To authenticate a live stream with the Livery Cloud encoder, a Stream Key is used. The key can be copied or regenerated via the ‘Stream Details’ page in the Livery portal. 
 

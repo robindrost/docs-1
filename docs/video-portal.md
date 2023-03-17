@@ -5,7 +5,7 @@ The Livery customers portal allows our customers to manage their streams. The po
 
 The core video features are accessible via a direct API implementation. Allowing our customers to merge the Livery Video solution in their own platform. More information about the API implementation can be found in the [API section.](customer-video-api.md 'api-calls')
 
-### Create a stream
+## Create a stream
 
 Additional streams can be added via the “+Stream” button in the top right corner of the portal. The required information needs to be added in the panel.
 
@@ -19,9 +19,16 @@ Additional streams can be added via the “+Stream” button in the top right co
 | Type          | Determines if the stream will use the cloud or on-prem encoder.                                                                                                                                                                                                                                                                                                                                                                             |
 | Region        | Optimises the stream settings according to the main region of the viewers. When a required region is not included, select the second best location and/or contact the Livery team for support.                                                                                                                                                                                                                                              |
 | Video Quality | The Video quality can be set by selecting one or multiple video bitrates. The name of the bitrates contains the information about the configuration of the video quality. The players will use the ABR algorithm when multiple bitrates have been selected. The name of the video quality is set according the following logic: {"P" for Portrait or "L" for Landscape}_{Bitrate (1000K)}_{Resolution (720p)}_{Codec}_{Frame rate (25FPS)}. |
-| Audio Quality | The Audio quality can be set by selecting one audio bitrate.                                                                                                                                                                                                                                                                                                                                                                                |
+| Audio Quality | The Audio quality can be set by selecting one audio bitrate.|
 
-### Stream Overview
+### Stream Quality and ABR
+The predefined video configurations in the Livery platform contain multiple video qualities to support ABR (Adaptive Bitrate). ABR is a technology used in Livery players that provides a smooth viewing experience by dynamically adjusting the video quality based on the user's available network bandwidth and device capabilities.
+
+Due to the small video buffer associated with low-latency streams, Livery's ABR algorithm has to be fairly aggressive. The logic will switch to a lower quality when it detects a negative change in network conditions or when the buffer is draining. The players will start with the lowest or preferred video quality and move up when possible. This approach minimizes the time-to-first frame. The algorithm takes the segment size and position of the I-frames into consideration to determine the best possible moment to switch without stalling.
+
+The Custom quality feature enables our customers to customize their own ABR configuration, without being limited to three preset qualities. With the custom configuration setting, our customers can configure a 4K stream with high bitrates ranging from 10-20 Mbps. However, it is important to note that a custom configuration will have an impact on the user-hour price, which Livery calculates based on the usage of its service.
+
+## Stream Overview
 
 All streams connected to the account are listed in the stream overview. The basic information is listed in the row of a stream. Additional information and settings can be found in the menu on the right side of the row.
 The StreamID is used to link a stream to a player implementation. More information about the players and the integration of the player SDK’s can be found on [docs.liveryvideo.com] (index.md 'Main page')
@@ -47,7 +54,7 @@ The Stream Phases dropdown allows you to change the phase of the stream. Please 
 <img src="portal/stream_line_item.png" width="900"/>
 </p>
 
-### Encoder Overview
+## Encoder Overview
 
 One or more encoders can be linked to a customer account. The encoders are listed in the encoder overview. Encoders can be linked or unlinked to a stream, this allows the customer to rotate a single on-prem encoder between multiple streams.
 
@@ -63,7 +70,7 @@ One or more Encoders can be linked to a stream to create a redundant setup. The 
 | Backup  | The backup encoder for the stream. When the player(s) detect a possible issue it will switch to the backup encoder.                             |
 | Standby | The players will not connect to an encoder in “Standby”. It is important to prevent a situation where a standby encoders is linked to a stream. |
 
-### Stream settings
+## Stream settings
 
 The settings linked to a stream are managed in the stream setting. Any change in the stream settings are automatically picked up by the players. It might take up-to 60 seconds before a change becomes available for all viewers.
 
@@ -82,7 +89,7 @@ The settings linked to a stream are managed in the stream setting. Any change in
 <img src="portal/stream_settings.png" width="400"/>
 </p>
 
-### Encoder settings
+## Encoder settings
 
 The settings linked to one or more Encoders are managed in the encoder setting. The encoder settings determine how the incoming video is encoded and transcoded. A stream needs to be stopped before any of the encoder settings can be changed.
 
@@ -93,23 +100,23 @@ The settings linked to one or more Encoders are managed in the encoder setting. 
 | Segment Size  | Determines the size in seconds of the video segments.                                                                                                                                                                                                                                         |
 | Crop Method   | The "Crop Method" determines how the encoder is allowed to crop the video content to meet the set resolution. This is especially used when the ingest is in landscape and the stream in portrait. When manual is selected an X/Y offset is to be entered, calculated for the top left corner. |
 
-### Stream History
+## Stream History
 
 The stream history which can be accessed via the top right menu, contains a list of all streaming moments. The overview contains a basic list with details to provide insights in each of the streaming moments. When a redundant setup with multiple encoders is configured, each encoder is listed as a separate streaming moment.
 
-### Statistics Dashboard
+## Statistics Dashboard
 
 The statistics dashboard contains an overview of basic statistics, which are updated every 60 seconds. A customer is able to see his statistics for the past 14 days. Please contact the Livery team for specific stats, which are not listed in the dashboard.
 
 Besides the dashboard, customers can also access the statistics via an API integration. Please see the GetAnalytics section in the [API section](customer-video-api.md 'GetAnalytics') for more info.
 
-## Revision History
+# Revision History
 
 | Version | Desciription                        |
 | ------- | ----------------------------------- |
 | 1.0.43  | - Map improvements stats dashboard. |
 
-## Q&A
+# Q&A
 
 **How to link an on-prem Encoder to a different stream?**
 

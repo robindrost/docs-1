@@ -25,9 +25,7 @@
   "authTemplate": {
     "authTemplateId": "____8D_v-TQ_MckBsh0AAA==",
     "templateName": "Default (email + guest + anon)",
-    "loginMethods": [
-      "EMAIL"
-    ],
+    "loginMethods": ["EMAIL"],
     "isGuestLoginAllowed": true,
     "isAnonymousUserAllowed": true,
     "isDefaultTemplate": true,

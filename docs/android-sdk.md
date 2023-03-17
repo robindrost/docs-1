@@ -694,7 +694,6 @@ LiverySDK now implements DefaultLifecycleObserver. The LiverySDK registers itsel
 
 The `Lifecycle getListenerLifecycle()` method was added to LiverySDK.StateListener interface to get the Lifecycle that the LiverySDK should take into account when calling the initialization listener. The getter implementation is options and the default return null. It is advised to return a valid Lifecycle via this method to prevent accessing to a destroyed Activity/Fragment. See [Manual SDK Configuration](#manual-sdk-configuration) for mode details.
 
-
 ### LiveryPlayerView
 
 The methods

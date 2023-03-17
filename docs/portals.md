@@ -170,7 +170,6 @@ Key features:
 - Selected sharing platforms on desktop
 - Option for auto or manual closing
 
-
 ### Gamification pack
 
 If you run a competition or would like to give prizes to your audience, this pack is what you need. It includes new interactions like estimation and prediction which are ideal for gamification. Additionally, the leaderboard lets users check their points and compare themselves against the top points.
@@ -187,7 +186,6 @@ Key features:
 
 - Slider or free value input
 - Score deduction per steps
-
 
 #### Prediction
 
@@ -277,8 +275,8 @@ Once you have a broadcast defined, you can start to add interactions to it to fi
 | Field               | Description                                                                          |
 | ------------------- | ------------------------------------------------------------------------------------ |
 | Name                | The name of the broadcast                                                            |
-| Start date and time| The planned “Date” and “Time” of the broadcast                                       |
-| Authentication      | The list of available authentication templates                                        |
+| Start date and time | The planned “Date” and “Time” of the broadcast                                       |
+| Authentication      | The list of available authentication templates                                       |
 | Promotional image   | A banner to show to the audience in the interactive layer                            |
 | Stream              | The list of available stream in case Livery Video is configured                      |
 | Audience group      | In case of closed broadcast the list of emails who can participate in the event      |
@@ -298,7 +296,6 @@ Key features:
 - Add audience group for closed broadcasts
 - Show/Hide features and pages
 - Video Stream selection
-
 
 #### Account management
 
@@ -410,11 +407,11 @@ When you’d like to access the statistics of the interactive layer, you can use
 
 ### Revision History
 
-| Version | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-| ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Client: 1.6.3<br>Server: 1.16.0<br>CMS: 2.2.1   | - CMS feedback form<br>- Export/Import of Themes and Audience groups<br>- Search on Audience groups<br>- Toast message for data exports<br>- Add participant number to Estimation poll details<br>- Client localisation updates<br>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
-| Client: 1.6.1<br>Server: 1.15.0<br>CMS: 2.0.0   | - Estimation poll with phase setup<br>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-| Client: 1.5.4<br>Server: 1.11.3<br>CMS: 1.10.1   | - Restricted API (user, leaderboard, broadcast, interaction and all data)<br>- Unverified frictionless login<br>- CMS Settings page<br>- Auto-close for Trivia results<br>- Leave popout open after answering<br>- StreamKey is shown in the Ingest dialog<br>- Q&A improvements<br>- Close drawer for returning users after verification<br>- Rate limiter on chat<br>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| Version                                        | Description                                                                                                                                                                                                                                                                                                                                                             |
+| ---------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Client: 1.6.3<br>Server: 1.16.0<br>CMS: 2.2.1  | - CMS feedback form<br>- Export/Import of Themes and Audience groups<br>- Search on Audience groups<br>- Toast message for data exports<br>- Add participant number to Estimation poll details<br>- Client localisation updates<br>                                                                                                                                     |
+| Client: 1.6.1<br>Server: 1.15.0<br>CMS: 2.0.0  | - Estimation poll with phase setup<br>                                                                                                                                                                                                                                                                                                                                  |
+| Client: 1.5.4<br>Server: 1.11.3<br>CMS: 1.10.1 | - Restricted API (user, leaderboard, broadcast, interaction and all data)<br>- Unverified frictionless login<br>- CMS Settings page<br>- Auto-close for Trivia results<br>- Leave popout open after answering<br>- StreamKey is shown in the Ingest dialog<br>- Q&A improvements<br>- Close drawer for returning users after verification<br>- Rate limiter on chat<br> |
 
 ## Video
 

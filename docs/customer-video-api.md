@@ -381,7 +381,6 @@ DELETE api/1/services/streams?id=5f2022df27b35d1ebfe17b78
 | --------------- | --------------------------------------------------------------- |
 | id              | The stream identifier. Required when not using a Stream API Key |
 
-
 ### Re-generate Stream Key
 
 Re-generate stream key for the specified customerId and streamId
@@ -390,10 +389,10 @@ Re-generate stream key for the specified customerId and streamId
 PUT api/2/customers/6267d661e4b0420e3acced5e/streams/626fa59fe4b018f4ecdc092c/streamkey
 ```
 
-| Parameter       | Type  | Mandatory | Description                                                                                                                       |
-|-----------------|-------| --------- |-----------------------------------------------------------------------------------------------------------------------------------|
-| customerId      | Path  | Yes       | The customer identifier                                                                                                           |
-| streamId        | Path  | Yes       | The stream identifier                                                                                                             |
+| Parameter  | Type | Mandatory | Description             |
+| ---------- | ---- | --------- | ----------------------- |
+| customerId | Path | Yes       | The customer identifier |
+| streamId   | Path | Yes       | The stream identifier   |
 
 Response example:
 

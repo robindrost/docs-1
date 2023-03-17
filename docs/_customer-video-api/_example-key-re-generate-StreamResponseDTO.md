@@ -18,12 +18,8 @@
   "httpRetry": false,
   "encoderPlatform": "CLOUDPROXY",
   "startedStreamingTimeStamp": 0,
-  "videoStreamQualities": [
-    "5dc56c8e68ce4700013fdc8e"
-  ],
-  "audioStreamQualities": [
-    "5d01058b68ce470001e36763"
-  ],
+  "videoStreamQualities": ["5dc56c8e68ce4700013fdc8e"],
+  "audioStreamQualities": ["5d01058b68ce470001e36763"],
   "unbranded": false,
   "settings": {
     "targetLatency": 3.0,
@@ -75,9 +71,7 @@
   },
   "ingestUrls": ["rtmp://some-rtmp-url", "srt://some-srt-url:9998"],
   "cdnRegionId": "5f99525157e4b0276189",
-  "warnings": [
-    "No encoder online"
-  ],
+  "warnings": ["No encoder online"],
   "pending": [],
   "restartHour": 4
 }

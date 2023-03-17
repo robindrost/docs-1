@@ -61,5 +61,13 @@
 
     <!-- docsify-tabs (latest v1.x.x) -->
     <script src="//cdn.jsdelivr.net/npm/docsify-tabs@1"></script>
+
+    <!-- <script src="//cdn.jsdelivr.net/npm/docsify-mermaid@2.0.0/dist/docsify-mermaid.js"></script> -->
+
+    <script type="module">
+      import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+      mermaid.initialize({ startOnLoad: true });
+      window.mermaid = mermaid;
+    </script>
   </body>
 </html>

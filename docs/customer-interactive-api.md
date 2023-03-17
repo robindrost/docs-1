@@ -18,7 +18,7 @@ Unless an API key is added, the customer will not be able to retrieve broadcast 
 On broadcast status change, it is possible to be notified of the changes. You have to add a value to `PUSH_URL`
 server setting, representing your API endpoint which will receive the data with HTTP POST.
 
-##### Note: Add your API endpoint URL to receive broadcast status changes. This is done via server settings update endpoint
+Note: Add your API endpoint URL to receive broadcast status changes. This is done via server settings update endpoint
 
 ## API Calls
 

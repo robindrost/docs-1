@@ -13,7 +13,7 @@ This feature allows the whitelisting of one or more domains. If the domain list 
 
 When a viewer attempts to play the stream, the browser will verify if the underlying domain matches any of the domains on the list. Please be aware that subdomains must be added separately, as adding the main domain will not cover them. Additionally, the use of wildcard characters is supported
 
-## Secure Session Tokens
+## Token Authentication
 Secure session tokens are utilized to authenticate user sessions and prevent unauthorized sharing of the streaming URL. Token-based authentication mechanisms are widely used across the Internet to verify user rights and enhance security.
 
 This feature employs hybrid tokens that are generated using a "trusted shared secret" between the content owner and the CDN. The primary token is short-lived and used to secure a playlist, while a secondary cookie token is available for the playtime of the media content, protecting subsequent segments delivered after the manifest file.

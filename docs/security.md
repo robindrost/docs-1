@@ -6,7 +6,7 @@ Security is an essential aspect of live streaming, and Livery strives to ensure 
 By enabling domain-level privacy, customers can specify the websites that are authorized to integrate or embed the Livery video player. Any sites not included on the list will receive an error message when attempting to play the stream. The domain whitelisting feature can be accessed through the 'Stream Settings'.
 
 <p align="center">
-<img src="security/Domain-Whitlist-1.png" width="500"/>
+<img src="security/Domain-Whitelist-1.png" width="500"/>
 </p>
 
 This feature allows the whitelisting of one or more domains. If the domain list is empty, any player will be able to play the stream. Please note that changes made to the domain whitelisting can take up to 4 hours to become active.
@@ -30,7 +30,7 @@ Token Authentication can be enabled via the checkbox in the ‘Stream Settings�
 The ‘Token Authentication Key’ is listed on the ‘Stream Details’ accessible via the portall. 
 
 <p align="center">
-<img src="security/Token-Auth-1.png" width="500"/>
+<img src="security/Token-Auth-2.png" width="500"/>
 </p>
 
 The customer backend determines which users, logged in to the customer website, have access to the video stream. The customer backend generates tokens for these users using one of Akamai's Token Auth software development kits (SDKs). 

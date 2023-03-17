@@ -62,7 +62,9 @@ The Livery platform utilizes an RTMP or SRT stream for the first mile delivery t
 <p align="center">
 <img src="security/Stream-Key-1.png" width="500"/>
 </p>
-The Stream Key in combination with the Stream URL (SRT/RTMP)can be copied to the prefered streaming tool. See [Mixer Soft- and Hardware](https://docs.liveryvideo.com/video_ingest?id=mixer-soft-and-hardware) for more infomation about the tools. 
+The Stream Key in combination with the Stream URL (SRT/RTMP)can be copied to the prefered streaming tool. See 
+[Mixer Soft- and Hardware](https://docs.liveryvideo.com/video_ingest?id=mixer-soft-and-hardware) 
+for more infomation about the tools. 
 
 ## CDN Authentication
 CDN authentication is utilized to secure the connection between the encoder (both cloud and on-premises) and the CDN. This prevents hackers from hijacking the stream. For each stream, unique credentials are used to upload videos to the CDN, and this is done automatically by the Livery platform without requiring any intervention from the user.

@@ -53,6 +53,7 @@ The customer application or website opens the Livery native or web player, which
 The Livery player forwards the token to CDN when fetching the video data. Once the token expires, a new token needs to be provided from the customer application or website for the Livery player to authenticate with CDN again.
 
 ```mermaid
+%%{init: {'theme':'dark'}}%%
 sequenceDiagram
     Customer backend->>Customer application or website: Token
     Customer application or website->>Livery Player: Token

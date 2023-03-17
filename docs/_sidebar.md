@@ -5,5 +5,6 @@
 - [Web Player](web-player.md 'Livery Video Web Player')
 - [Interactive Bridge](interactive-bridge.md 'Livery Video Interactive Bridge')
 - [Embed](embed.md 'Livery Video Embed')
+- [Security](security.md 'Livery Security Features')
 - [Video Customer API](customer-video-api.md 'Livery Video Customer API')
 - [Interactive Customer API](customer-interactive-api.md 'Livery Interactive Customer API')

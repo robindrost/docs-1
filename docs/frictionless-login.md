@@ -32,10 +32,12 @@ sub is the subject identifier, or an identifier by which the customer can unique
 More fields will be added in the future. 
 
 For a description of the OpenId Connect id token see the specification https://openid.net/specs/openid-connect-core-1_0.html. Specifically, the fields accepted in the id_token argument to setUserUnverified( id_token ) are those listed in Table 1 (§5.1 Standard Claims)
-
+<!---
+NOT SUPPORTED YET
 ### Unverified Frictionless Auth via query parameters
 
 ### Tracking data via query parameters
 
 ## Verified Frictionless Auth
 To be announced
+-->

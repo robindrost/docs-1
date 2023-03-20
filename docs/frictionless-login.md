@@ -7,6 +7,10 @@ Livery provides 2 solutions; Verified and Unverified Frictionless, the result of
 ## Unverified Frictionless Auth
 The LiveryPlayer component has a method called setUserUnverified(id_token), which accepts a JavaScript Object representation of an OpenID Connect id token as an argument and returns a Promise that resolves upon success. All fields are optional, and for the unverified frictionless auth feature, only the preferred_username and sub fields are important. End-users can view and manually edit any fields typically visible and editable for 'guest' users. However, please note that when a user edits their information within the Livery system, the surrounding context won't be informed.
 
+```
+document.querySelector('livery-player').setUnverifiedUser({sub: '1234', preferred_username: 'Livery'})
+```
+
 When users are created using setUserUnverified(id_token), they'll use the default profile icon and be assigned a random color for that icon, the same behavior as when an end-user creates a guest account manually.
 
 User details can be modified by making another call to setUserUnverified(id_token). This allows for updates to the user's information to be passed in by the surrounding web page. To update individual fields, the data is merged with the existing user data (as long as the sub field remains unchanged). If the value of a field is undefined, it indicates that the value shouldn't change. If the value of a field is null, it means the field should be removed (i.e., it should become undefined).

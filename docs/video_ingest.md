@@ -8,6 +8,16 @@ Video can be ingested via an encoder. Livery provides reliable encoder technolog
 
 The cloud encoder currently expects a resolution of 1920x1080. It can receive this input signal over RTMP or SRT. The URL that is used for the video ingest can be found in the Livery console. See the Mixer Soft- and Hardware chapter for instructions on how to configure this (contact us if your prefered streaming software is not included).
 
+### Pass Through
+In the context of video encoding, "pass-through" refers to a setting that allows a video source to be copied and passed through the encoder without any modifications. When a video encoder is set to "pass-through," it does not perform any video compression or encoding. Instead, it simply copies the input video and sends it through to the output without any modifications. 
+
+Pass Through can be enabled via the Encoder settings in the portal. It is important to know that when 'Pass Through' is enabled, the Livery encoder will no longer correct any incorrect ingest settings, increasing the importance of configuring the proper settings in your streaming tool. These settings should include:
+
+- Disabling B-frames
+- Enabling a fixed keyframe interval of 1 second
+- Using the H.264 codec
+- Setting the rate control to CBR
+
 ## On-prem encoder
 
 The hardware encoder accepts a HDMI or SDI feed and uploads it to the CDN. The two most important benefits of this device over the cloud encoder are: The first is that the video only needs to be encoded once instead of twice. This means using the hardware encoder will result in better video quality. And the second is that the hardware encoder sends out metrics to our backend. This allows us to diagnose issues when they occur on the internet connection between the encoder and the CDN.

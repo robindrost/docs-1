@@ -6,7 +6,7 @@ Video can be ingested via an encoder. Livery provides reliable encoder technolog
 
 ### Input Signal
 
-The cloud encoder currently expects a resolution of 1920x1080. It can receive this input signal over RTMP or SRT. The URL that is used for the video ingest can be found in the Livery console. See the Mixer Soft- and Hardware chapter for instructions on how to configure this (contact us if your prefered streaming software is not included).
+The Livery Cloud encoder is capable of receiving an input signal via RTMP or SRT. The URL that is used for the video ingest can be found in the Livery Portal under Stream Details. For more detailed instructions on configuring different tools, please refer to the Mixer Soft- and Hardware documentation. If your preferred streaming software is not included, please contact us for further assistance.
 
 ### Pass Through
 In the context of video encoding, "pass-through" refers to a setting that allows a video source to be copied and passed through the encoder without any modifications. When a video encoder is set to "pass-through," it does not perform any video compression or encoding. Instead, it simply copies the input video and sends it through to the output without any modifications. 

@@ -61,7 +61,7 @@ Add these implementations inside **dependencies** to your app-level build.gradle
 ```groovy
 dependencies {
    //...
-   def livery_sdk_version = '3.0.0'
+   def livery_sdk_version = '3.1.0'
    implementation "com.liveryvideo:livery-sdk-android:$livery_sdk_version"
    //...
 }
@@ -260,6 +260,8 @@ The remote configuration is automatically applied when calling createPlayer with
             .showFullscreen(true)
             .showMute(true)
             .showQuality(true)
+            .showPlay(true)
+            .showScrubber(true)
             .showError(true)
             .build();
 
@@ -310,10 +312,18 @@ By calling `createPlayer()` on LiveryPlayerView reference, a player instance wil
 
 ### Current Time
 
-#### Get Current Time of the Media
+#### Get Current playback time since the stream has started.
 
 ```java
 long currentTime = playerView.getCurrentTime();
+```
+
+### Duration
+
+#### Get the duration of the stream. For Live streams returns the duration since the start of the stream.
+
+```java
+long duration = playerView.getDuration();
 ```
 
 ### Mute/Unmute
@@ -344,14 +354,6 @@ playerView.setVolume(volume);
 
 ```java
 float volume = playerView.getVolume();
-```
-
-### Playback Rate
-
-#### Get Playback Rate
-
-```java
-float playBackRate = playerView.getPlaybackRate();
 ```
 
 ### Latency
@@ -500,6 +502,8 @@ class **_LiveryControlsOptions_**
 | `fullscreen` | `Boolean` | `false` | Sets the visibility of the fullscreen button. |
 | `mute`       | `Boolean` | `false` | Sets the visibility of the mute button.       |
 | `quality`    | `Boolean` | `false` | Sets the visibility of the quality button.    |
+| `play`       | `Boolean` | `false` | Sets the visibility of the play button.       |
+| `scrubber`   | `Boolean` | `false` | Sets the visibility of the scrubber button.   |
 | `contact`    | `Boolean` | `false` | Sets the visibility of the contact button.    |
 | `error`      | `Boolean` | `false` | Sets the visibility of the error overlay.     |
 
@@ -608,6 +612,8 @@ Available IDs and their corresponding view types are listed below, ID names are 
 | Quality Indicator Text | `livery_quality_indicator_text` | `TextView`          |
 | Time bar               | `livery_progress`               | `LiveryProgressBar` |
 | Live Indicator         | `livery_live_indicator`         | `View`              |
+| Catchup Indicator      | `livery_catchup_indicator`      | `View`              |
+| Time Indicator         | `livery_time_indicator`         | `TextView`          |
 | Settings Button        | `livery_settings`               | `View`              |
 | Contact Button         | `livery_contact`                | `View`              |
 
@@ -962,6 +968,7 @@ dependencies {
 
 | Version | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 3.1.0   | - VOD Support added<br>- Catchup Support added<br>- Enabled NTP                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
 | 3.0.0   | - New Player UI<br>- Replace AkamaiToken with AkamaiLongToken<br>- Improve Nullability<br>- Cast was support was removed<br>- Update targetSdkVersion to 32<br>- Update ExoPlayer to version 2.18.1<br>- Add OkHttp version 4.10.0<br>- Cleanup unused Views IDs<br>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 | 2.4.2   | - Fixed an issue that could occur while a stall happens                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 | 2.4.1   | - New Livery bridge properties added<br> - Fix issue related to initializePlayer<br> - ABR improvement<br> - Improve logic around reconnects<br> - Minor fixes and improvements                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |

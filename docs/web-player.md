@@ -165,21 +165,13 @@ In addition there is a `livery-engine-change` event but that is meant for debugg
 
 ### LiveryBufferGraph
 
-Element defined as `<livery-buffer-graph>` which renders a graph of the buffer size and latency of specified LiveryPlayer.
+Element defined as `<livery-buffer-graph>` which renders a graph of the buffer size and latency of specified `player` or the first `<livery-player>` element found in the document.
 
 #### Usage
-
-This needs to be connected to the player element like so:
 
 ```html
 <livery-player streamid="5ddb98f5e4b0937e6a4507f2"></livery-player>
 <livery-buffer-graph></livery-buffer-graph>
-
-<script>
-  const player = document.querySelector('livery-player');
-  const graph = document.querySelector('livery-buffer-graph');
-  graph.player = player;
-</script>
 ```
 
 #### Attributes
@@ -198,9 +190,9 @@ This needs to be connected to the player element like so:
 
 #### Properties
 
-| Property | R/W | Type           | Default | Description                                                |
-| -------- | --- | -------------- | ------- | ---------------------------------------------------------- |
-| `player` | R/W | `LiveryPlayer` | `null`  | Reference to LiveryPlayer element to create the graph for. |
+| Property | R/W | Type           | Default | Description                                                                                                                                                                                                                     |
+| -------- | --- | -------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `player` | R/W | `LiveryPlayer` | `null`  | Reference to the specific LiveryPlayer element to create the graph for. If not specified this will default to the first `livery-player` element found in the document. If that is not found the graph will not start rendering. |
 
 #### Events
 
@@ -210,23 +202,16 @@ This needs to be connected to the player element like so:
 
 ### LiveryLog
 
-Element defined as `<livery-log>` which shows messages logged by global livery logic and specified LiveryPlayer.
+Element defined as `<livery-log>` which shows entries logged by Livery modules and enables them to be copied to clipboard for reporting.
+The log copy will also include details from specified `player` or the first `<livery-player>` element found in the document.
 
-Note that previously logged messages will not be shown.
+Note that entries logged before this element is connected to DOM will not be included.
 
 #### Usage
-
-This needs to be connected to the player element like so:
 
 ```html
 <livery-player streamid="5ddb98f5e4b0937e6a4507f2"></livery-player>
 <livery-log></livery-log>
-
-<script>
-  const player = document.querySelector('livery-player');
-  const log = document.querySelector('livery-log');
-  log.player = player;
-</script>
 ```
 
 #### Attributes
@@ -239,9 +224,9 @@ This needs to be connected to the player element like so:
 
 #### Properties
 
-| Property | R/W | Type           | Default | Description                                            |
-| -------- | --- | -------------- | ------- | ------------------------------------------------------ |
-| `player` | R/W | `LiveryPlayer` | `null`  | Reference to LiveryPlayer element to log details from. |
+| Property | R/W | Type           | Default | Description                                                                                                                                                                                                                                           |
+| -------- | --- | -------------- | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `player` | R/W | `LiveryPlayer` | `null`  | Reference to specific LiveryPlayer element to show details from. If not specified this will default to the first `livery-player` element found in the document. If that is not found some of the information will be missing from the clipboard copy. |
 
 #### Styling
 

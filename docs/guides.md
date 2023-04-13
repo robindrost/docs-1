@@ -2,7 +2,7 @@
 Third-party tools are required to ingest a live stream via SRT or RTMP into the Livery platform. While Livery does not provide a mobile streaming library to enable live transmission from mobile devices via RTMP or SRT, there are multiple alternatives available. The following guide explains how to add a transmission library to your application, enabling your customers to stream directly from their native application.
 
 ## Streaming support for iOS
-To add a SRT ingest to your app you can use SRTHaishinKit library, to do so:
+To add a SRT ingest to your app you can use [SRTHaishinKit](https://github.com/shogo4405/SRTHaishinKit.swift#-installation) library, to do so:
 
 Start by adding the library through Carthage or manually into your project (CocoaPods and Swift Package Manager are not available)
 ```groovy
@@ -13,14 +13,17 @@ Install library prerequisites
 ```groovy
 brew install cmake
 ```
-Add camera and microphone permissions in your project’s Info.plist
+Add camera and microphone permissions in your project’s `Info.plist`
 
+```groovy
 <key>NSCameraUsageDescription</key>
 <string>The app uses the camera to Live Stream </string>
 <key>NSMicrophoneUsageDescription</key>
 <string>The app uses the microphone to Live Stream </string>
-Setup AVAudioSession
+```
+- Setup `AVAudioSession`
 
+```groovy
 import AVFoundation
 let session: AVAudioSession = AVAudioSession.sharedInstance()
 do {
@@ -31,24 +34,31 @@ do {
 } catch {
     // catch the error here
 }
-Add a HKView or a MTHKView to your View Controller
+```
+- Add a `HKView` or a `MTHKView` to your View Controller
 
+```groovy
 var hkView = HKView(frame: view.bounds)
 view.addSubview(hkView)
-Create and setup the SRTConnection and the SRTStream
+```
+- Create and setup the `SRTConnection` and the `SRTStream`
 
+```groovy
 let srtConnection = SRTConnection()
 let srtStream = SRTStream(srtConnection)
 
 // attach Camera and Audio sources in the stream
 srtStream.attachCamera(DeviceUtil.device(withPosition: .back))
 srtStream.attachAudio(AVCaptureDevice.default(for: .audio))
-Start streaming
-
+```
+- Start streaming
+```groovy
 srtStream.publish("iOS app's stream")
 srtConnection.connect("srt://host:port?option=foo") // yours srt ingest URL
-Stop streaming
-
+```
+- Stop streaming
+```groovy
 srtStream.close()
 srtConnection.close()
-For more details please check the SRTHaishinKit installation and usage guide.
+```
+For more details please check the [SRTHaishinKit](https://github.com/shogo4405/SRTHaishinKit.swift#-installation) installation and usage guide.

@@ -10,3 +10,4 @@
 - [Security](security.md 'Livery Security Features')
 - [Video Customer API](customer-video-api.md 'Livery Video Customer API')
 - [Interactive Customer API](customer-interactive-api.md 'Livery Interactive Customer API')
+- [Livery Guides](guides.md 'Livery Guides')

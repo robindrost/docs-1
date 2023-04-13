@@ -62,3 +62,64 @@ srtStream.close()
 srtConnection.close()
 ```
 For more details please check the [SRTHaishinKit](https://github.com/shogo4405/SRTHaishinKit.swift#-installation) installation and usage guide.
+
+## Streaming support for Android
+
+To add a SRT ingest to your app you can use [StreamPack](https://github.com/ThibaultBee/StreamPack) library.
+
+Start by adding the library dependencies for SRT:
+```groovy
+dependencies {
+    def streampack_version = ...
+    implementation "io.github.thibaultbee:streampack:${streampack_version}"
+    implementation "io.github.thibaultbee:streampack-extension-srt:${streampack_version}"
+}
+```
+- You need to add permissions to access the device's camera and microphone.
+- Add a AutoFitSurfaceView to preview your stream:
+```groovy
+    <io.github.thibaultbee.streampack.views.AutoFitSurfaceView
+            android:id="@+id/preview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+```
+- Create and configure a streamer:
+```groovy
+    streamer = CameraSrtLiveStreamer(
+        context,
+        enableAudio = true
+    ).apply {
+
+        // (https://developer.android.com/reference/android/media/AudioRecord?hl=en#AudioRecord(int,%20int,%20int,%20int,%20int)): "44100Hz is currently the only rate that is guaranteed to work on all devices, but other rates such as 22050, 16000, and 11025 may work on some devices."
+        val audioConfig = AudioConfig(
+            startBitrate = 128000,
+            sampleRate = 44100,
+            channelConfig = AudioFormat.CHANNEL_IN_STEREO
+        )
+        configure(audioConfig)
+
+        val videoConfig = VideoConfig(
+            startBitrate = <desired bitrate>,
+            resolution = <resolution>,
+            fps = 30
+        )
+        configure(videoConfig)
+    }
+```
+- To start the preview just call:
+```groovy
+    streamer.startPreview(preview)
+```
+- To start streaming using an URL just use:
+```groovy
+    streamer.connect(<srt_ingest_url>)
+    streamer.startStream()
+```
+- At the end don't forget to stop and release the stream and preview:
+```groovy
+streamer.stopStream()
+streamer.disconnect()
+streamer.stopPreview()
+streamer.release()
+```
+For more details check [StreamPack](https://github.com/ThibaultBee/StreamPack) quick start guide.

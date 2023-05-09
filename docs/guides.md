@@ -147,7 +147,7 @@ For this example, Livery's embed page is being used, with the specific stream ID
 
 To ensure that Mailchimp recognizes which email address or name to include in the user URL for each specific user when you send out an email, it is important to use the correct merge tag. Mailchimp offers merge tags for various dynamic information. By inserting a merge tag into your email campaign, you can send personalized content to your subscribers. For instance, to include a user's email address, you should use the merge tag `*|EMAIL|*`. To get a comprehensive overview of Mailchimp's merge tags, please visit https://mailchimp.com/help/all-the-merge-tags-cheat-sheet/
 
-**Step 4:
+**Step 4:**
 
 Create a template email for your email campaign. You can include your URL in multiple ways; 
 - Add the URL code as text to the template

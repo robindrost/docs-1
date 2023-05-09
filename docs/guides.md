@@ -128,13 +128,15 @@ For more details check [StreamPack](https://github.com/ThibaultBee/StreamPack) q
 
 Livery's [Unverified Frictionless Auth](https://docs.liveryvideo.com/frictionless-login) (based on OpenId), in combination with its Query Parameter support, is a perfect tool for a smooth transition from personal marketing messages, such as emails, to active participation in an Interactive Live Broadcast. The user is automatically logged in once they navigate to the Livery interactive client via the URL, and with the use of Livery's Custom Dimensions, additional data can be passed along and stored on the user's profile. The following 5 steps explain how to set this up in combination with [MailChimp](https://mailchimp.com/).
 
-Step 1:
+### Step 1:
+
 Choose which extra user details you want to gather and store in the users broadcast profile. To guarantee that each user has a unique personal URL, it's crucial to add a unique `livery_sub` value parameter alongside other relevant details. A `livery_sub` value that is not known by the backend generates a new user, while a `livery_sub` value that is already known by the backend updates or extends the user's profile with the additional details provided via the parameters. These parameters can include the user's email address and name, as well as other information like their company, location, and phone number.
 
 Step 2:
 Upload your audience to Mailchimp either by uploading a file or entering them manually. When uploading your contacts, make sure to include all the parameters (contact information) that you'd like to add to the users broadcast profile. Also, make sure to match the correct labels to each column of information. These labels will be used in the unique user URLs.
 
-Step 3:
+### Step 3:
+
 Create the URL code that will be included in your email campaign. 
 
 An example URL is: 
@@ -144,13 +146,15 @@ For this example, Livery's embed page is being used, with the specific stream ID
 
 To ensure that Mailchimp recognizes which email address or name to include in the user URL for each specific user when you send out an email, it is important to use the correct merge tag. Mailchimp offers merge tags for various dynamic information. By inserting a merge tag into your email campaign, you can send personalized content to your subscribers. For instance, to include a user's email address, you should use the merge tag `*|EMAIL|*`. To get a comprehensive overview of Mailchimp's merge tags, please visit https://mailchimp.com/help/all-the-merge-tags-cheat-sheet/
 
-Step 4:
+### Step 4:
+
 Create a template email for your email campaign. You can include your URL in multiple ways; 
 - Add the URL code as text to the template
 - Add the URL code as a link to written text (e.g. click here to watch the stream) 
 - Make a button and connect to URL code to that button 
 Both option 2 and 3 have an invisible link, so when your contacts receive the email the won’t see the URL with all the parameters. 
 
-Step 5:
+### Step 5:
+
 Finalize your email and send out the campaign. Each contact will now receive an email with a unique and personalized URL. Clicking on this link will load the stream and automatically register the user, with a profile containing all the information included in the URL.
 

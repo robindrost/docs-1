@@ -141,7 +141,9 @@ Upload your audience to Mailchimp either by uploading a file or entering them ma
 Create the URL code that will be included in your email campaign. 
 
 An example URL is: 
-`https://embed.liveryvideo.com/?id=64382097e4b07f0e2af767a5&v=beta&livery_sub=*|EMAIL|*&livery_preferred_username=*|FNAME|*&livery_cd1=day1&livery_cd2=email`
+```groovy
+https://embed.liveryvideo.com/?id=64382097e4b07f0e2af767a5&v=beta&livery_sub=*|EMAIL|*&livery_preferred_username=*|FNAME|*&livery_cd1=day1&livery_cd2=email
+```
 
 For this example, Livery's embed page is being used, with the specific stream ID contained in the '?id=...' part of the URL. The `livery_sub` parameter is used to determine who the user is. If an unknown value is used, a new user is created. If the 'sub' value is already known, the user's profile is updated. In the example above, the email address is used from each user to make the URL unique, and the first name is used as the preferred username in Livery. Next to the parameters used for the Frictionless login, 2 Custom Dimensions (`livery_cd`) are used to store general information about the campaign. 
 

@@ -199,6 +199,10 @@ Response example:
 
 Returns a list of streams. This call can be used to retrieve streamIds which are needed to start and stop a stream.
 
+This could be used to monitor the streams by polling this API call reading the `warnings` field of the stream object.
+When the system detects a problem with the stream or the attached encoders a new line with a description will be added to that field.
+Check the [Rate limits](#rate-limits) section for some considerations around the polling frequency.
+
 ```
 GET api/1/services/streams?pageIndex=1&pageSize=100
 ```

@@ -73,6 +73,7 @@
   "cdnRegionId": "5f99525157e4b0276189",
   "warnings": ["No encoder online"],
   "pending": [],
-  "restartHour": 4
+  "restartHour": 4,
+  "warnings": ["No encoder online"]
 }
 ```

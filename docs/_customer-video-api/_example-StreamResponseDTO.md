@@ -87,6 +87,7 @@
     "6062e82e40b0aaf95d6c634f"
   ],
 
-  "remoteConfigUrl": "cdn.liveryvideo.com/remoteconfigs/5f2022df27b35d1ebfe17b78"
+  "remoteConfigUrl": "cdn.liveryvideo.com/remoteconfigs/5f2022df27b35d1ebfe17b78",
+  "warnings": ["No encoder online"]
 }
 ```

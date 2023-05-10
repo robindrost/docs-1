@@ -1,5 +1,4 @@
 
-
 # Interactive Portal
 
 Livery Interactive is a cloud based solution which brings true, interactive video within everyone’s reach on web, iOS and android devices. The responsive design ensures that on all devices you can enjoy the same experience.

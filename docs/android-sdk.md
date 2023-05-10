@@ -312,7 +312,7 @@ By calling `createPlayer()` on LiveryPlayerView reference, a player instance wil
 
 ### Current Time
 
-#### Get Current playback time since the stream has started.
+#### Get Current playback time since the stream has started
 
 ```java
 long currentTime = playerView.getCurrentTime();
@@ -320,7 +320,7 @@ long currentTime = playerView.getCurrentTime();
 
 ### Duration
 
-#### Get the duration of the stream. For Live streams returns the duration since the start of the stream.
+#### Get the duration of the stream. For Live streams returns the duration since the start of the stream
 
 ```java
 long duration = playerView.getDuration();

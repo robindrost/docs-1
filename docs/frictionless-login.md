@@ -5,6 +5,7 @@ Frictionless authentication is a feature that allows users to be granted authori
 Livery provides 2 solutions; Verified and Unverified Frictionless, the result of both appoaches is the same but the way the user-date is provided to the Interactive client is different. Unverified Frictionless uses a Javascript method to the interactive client with the user-data. Verified Frictionless validates the recieved user-date via token and requers more effort for the cusotmer to implmeet, but is more secure.  
 
 ## Unverified Frictionless Auth
+
 The LiveryPlayer component has a method called setUserUnverified(id_token), which accepts a JavaScript Object representation of an OpenID Connect id token as an argument and returns a Promise that resolves upon success. All fields are optional, and for the unverified frictionless auth feature, only the preferred_username and sub fields are important. End-users can view and manually edit any fields typically visible and editable for 'guest' users. However, please note that when a user edits their information within the Livery system, the surrounding context won't be informed.
 
 ```
@@ -27,15 +28,17 @@ It may be that certain fields are marked as mandatory for allowing a user to par
 -->
 The Livery client support the following fields:
 
-#### preferred_username (optional)
+### preferred_username (optional)
+
 preferred_username is the username that will be used within the broadcast. Note that uniqueness is not enforced for this field; there can be several users with the same username. If no value is passed for this field, or if an empty string is passed, the end user will be asked to enter a username. The end user will be able to edit this field.
 
-#### sub (optional)
+### sub (optional)
+
 sub is the subject identifier, or an identifier by which the customer can uniquely identify the user. It must be a string of ASCII characters (max length 255). It is included in the customer's data exports. Since this information is unverified, uniqueness is not enforced. Note also that whenever setUserUnverified( id_token ) is called with a sub field that has changed, or a sub field of null, a new user will be created. The field is not shown on the user interface.
 
-More fields will be added in the future. 
+More fields will be added in the future.
 
-For a description of the OpenId Connect id token see the specification https://openid.net/specs/openid-connect-core-1_0.html. Specifically, the fields accepted in the id_token argument to setUserUnverified( id_token ) are those listed in Table 1 (§5.1 Standard Claims)
+For a description of the OpenId Connect id token see the specification <https://openid.net/specs/openid-connect-core-1_0.html>. Specifically, the fields accepted in the id_token argument to setUserUnverified( id_token ) are those listed in Table 1 (§5.1 Standard Claims)
 <!---
 NOT SUPPORTED YET
 ### Unverified Frictionless Auth via query parameters

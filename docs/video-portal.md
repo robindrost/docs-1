@@ -22,6 +22,7 @@ Additional streams can be added via the “+Stream” button in the top right co
 | Video Quality | Livery works with 3 quality presets; Basic (1.0mbps 720p), Premium (1.0mbps 720p, 3.0mbps 1080p) and Ultra (1.0mbps 720p, 3.0mbps 1080p, 5.0mbps 1080p). The cost associated with a configuration can be found on [liveryvideo.com](https://www.liveryvideo.com/pricing/)|
 
 ### Stream Quality and ABR
+
 The predefined video configurations in the Livery platform contain multiple video qualities to support ABR (Adaptive Bitrate). ABR is a technology used in Livery players that provides a smooth viewing experience by dynamically adjusting the video quality based on the user's available network bandwidth and device capabilities.
 
 Due to the small video buffer associated with low-latency streams, Livery's ABR algorithm has to be fairly aggressive. The logic will switch to a lower quality when it detects a negative change in network conditions or when the buffer is draining. The players will start with the lowest or preferred video quality and move up when possible. This approach minimizes the time-to-first frame. The algorithm takes the segment size and position of the I-frames into consideration to determine the best possible moment to switch without stalling.

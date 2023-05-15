@@ -401,3 +401,19 @@ PUT api/2/customers/6267d661e4b0420e3acced5e/streams/626fa59fe4b018f4ecdc092c/st
 Response example:
 
 [filename](_customer-video-api/_example-key-re-generate-StreamResponseDTO.md ':include')
+
+## Push API
+
+Livery has a push API available which can directly inform the customer server when the streaming state of a stream has changed.
+For this the customer needs to configure a push url.
+The Livery server will do an HTTP POST request to that url with the streamId and the streaming state.
+The state can be either `STARTED` or `STOPPED`.
+
+Request body:
+
+```json
+{
+  "streamId" : "5e7a10bee4b046f00ad17248",
+  "streamingState" : "STARTED"
+}
+```

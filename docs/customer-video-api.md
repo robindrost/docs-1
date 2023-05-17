@@ -190,7 +190,9 @@ Response example:
     "name": "ExampleCustomer",
     "email": "info@example.com",
 
-    "encoderIds": ["5f438c8d2e8037d91adf780a", "5f438c9b09ab5a068b9f87e7"]
+    "encoderIds": ["5f438c8d2e8037d91adf780a", "5f438c9b09ab5a068b9f87e7"],
+
+    "pushUrl": "https://customerserveraddress"
   }
 ]
 ```

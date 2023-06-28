@@ -48,8 +48,8 @@ The Livery players connect with the following domains. The domains need to be wh
 #### Generic
 
 - time.akamai.com
-- cdn.liveryvideo.com
-- ip.liveryvideo.com
+- cdn.livery.live
+- ip.livery.live
 
 #### When using jsdelivr
 

@@ -188,3 +188,30 @@ Both option 2 and 3 have an invisible link, so when your contacts receive the em
 **Step 5:**
 
 Finalize your email and send out the campaign. Each contact will now receive an email with a unique and personalized URL. Clicking on this link will load the stream and automatically register the user, with a profile containing all the information included in the URL.
+
+# Adding the Livery web player to your Wix site
+The Livery video player can be added to a Wix powered website. The following guide explains in 4 steps how to adde the player. 
+
+**Step 1:**
+When editing a webpage, choose Add → Embed Code → Popular Embeds → Custom Element 
+<p align="center">
+<img src="wix1.jpg" width="500"/>
+</p>
+
+**Step 2:**
+Click on "choose source" and add the server URL "https://cdn.jsdelivr.net/npm/@liveryvideo/player@X.Y.Z" as well as the tag name "livery-player". The latest player version is [![NPM package](https://img.shields.io/npm/v/@liveryvideo/player)](https://www.npmjs.com/package/@liveryvideo/player)
+<p align="center">
+<img src="wix2.jpg" width="500"/>
+</p>
+
+**Step 3:**
+Close the window and “add attributes”. Here you have to enter the “streamid” that you can find in the video portal or after request.
+<p align="center">
+<img src="wix3.jpg" width="500"/>
+</p>
+
+**Step 4:**
+Close the window and you can add additional attributes, such as the dimensions of the player, as well. More information can be found at official Wix guidelines: https://support.wix.com/en/article/wix-editor-adding-a-custom-element-to-your-site
+<p align="center">
+<img src="wix4.jpg" width="500"/>
+</p>

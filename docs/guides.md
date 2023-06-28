@@ -189,8 +189,8 @@ Both option 2 and 3 have an invisible link, so when your contacts receive the em
 
 Finalize your email and send out the campaign. Each contact will now receive an email with a unique and personalized URL. Clicking on this link will load the stream and automatically register the user, with a profile containing all the information included in the URL.
 
-# Adding the Livery web player to your Wix site
-The Livery video player can be added to a Wix powered website. The following guide explains in 4 steps how to adde the player. 
+# Wix site incombination with Livery
+The Livery video player can be added to a [Wix](https://www.wix.com/) powered website. The following guide explains in 4 steps how to adde the player. 
 
 **Step 1:**
 

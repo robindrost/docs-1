@@ -43,13 +43,14 @@ The Livery players (iOS, Android and Web). Are tested on the 2 latest major OS a
 
 ### Domain Whitelisting
 
-The Livery players connect with the following domains. The domains need to be whitelisted for the best possible user experience. All requests are done over HTTPS.
+The Livery players connect to the following domains. The domains need to be whitelisted for the best possible user experience. All requests are done over HTTPS.
 
 #### Generic
 
 - time.akamai.com
 - cdn.livery.live
 - ip.livery.live
+- amazonaws.com
 
 #### When using jsdelivr
 
@@ -57,7 +58,7 @@ The Livery players connect with the following domains. The domains need to be wh
 
 #### When using embed
 
-- embed.liveryvideo.com
+- embed.livery.live
 - jsdelivr.net
 
 #### Region dependent
@@ -102,4 +103,4 @@ The hardware encoder needs to communicate over the internet so send out metrics 
 
 ### Proxy
 
-Some viewers view the stream via a (corporate) proxy. The Livery video solution uses HTTP/1.1 Chunked transfer encoding. Most proxies do not have a limitation for HTTP/1.1 traffic, allowing our stream to function. Proxies accommodate the option to set additional rules about data usages, domains, ports, ect. The additional rules might have an impact on the performance of the stream. A proxy needs to be ready for high amounts of data, especially with multiple viewers. 2.500 mbps of data passesthrough a proxy when 500 viewers watch a 5 mbps stream.
+Some viewers view the stream via a (corporate) proxy. The Livery video solution uses HTTP/1.1 Chunked transfer encoding. Most proxies do not have a limitation for HTTP/1.1 traffic, allowing our stream to function. Proxies accommodate the option to set additional rules about data usages, domains, ports, ect. The additional rules might have an impact on the performance of the stream. A proxy needs to be ready for high amounts of data, especially with multiple viewers. For example, more than 2.5 Gbps of data passes through a proxy when 500 viewers watch a 5 Mbps stream.

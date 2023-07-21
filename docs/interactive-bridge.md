@@ -110,6 +110,6 @@ Element defined as `<livery-bridge-log>` which logs LiveryBridge and other windo
 
 - Types: `Orientation`, `StreamPhase`
 - For LiveryPlayer `PlayerBridge` implementation: `AbstractPlayerBridge` (in the past: `LiveryBridge`)
-- For testing: `LiveryBridgeMock` `LiveryInteractive`, `MockPlayerBridge`
-  - `LiveryBridgeMock` creates a `MockPlayerBridge` and mocks a LiveryPlayer with an interactive child element or iframe
-  - `LiveryInteractive` is an example interactive element that enables players to test all interactive commands
+- For testing: `MockPlayerBridge` is a player bridge that returns mock data
+- For testing: `LiveryBridgeMock` mocks a LiveryPlayer with an interactive child element or iframe
+- For testing: `LiveryBridgeInteractive` is an interactive element that enables testing all interactive commands

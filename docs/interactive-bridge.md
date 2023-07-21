@@ -8,9 +8,9 @@
 
 Bridge for communicating between a Livery Video Player and the interactive layer page shown within that.
 
-?> Demo page for use by Livery Video Player: [interactive-bridge.liveryvideo.com](https://interactive-bridge.liveryvideo.com)
+?> Test page for use by Livery Video Players: [interactive-bridge.liveryvideo.com](https://interactive-bridge.liveryvideo.com)
 
-?> Demo page with mock player bridge: [interactive-bridge.liveryvideo.com/mock.html](https://interactive-bridge.liveryvideo.com/mock.html)
+?> Test page with mock player bridge: with [interactive element](https://interactive-bridge.liveryvideo.com/?mock) or [interactive iframe](https://interactive-bridge.liveryvideo.com/?mock=iframe)
 
 ## Support
 
@@ -50,14 +50,14 @@ String property specifying version of Livery Video Interactive Bridge.
 
 ### InteractiveBridge
 
-Can be used on Livery interactive layer pages to communicate with the surrounding Livery Player.
+Can be used in Livery interactive layer elements or pages to communicate with the surrounding Livery Player.
 
 #### Usage
 
 ```JS
 import { InteractiveBridge } from '@liveryvideo/interactive-bridge';
 
-const bridge = new InteractiveBridge('*');
+const bridge = new InteractiveBridge(playerBridge || '*');
 
 bridge.getLatency().then(latency => window.alert(`latency: ${latency}`));
 ```
@@ -68,7 +68,7 @@ bridge.getLatency().then(latency => window.alert(`latency: ${latency}`));
 
 | Method                                      | Description                                                                                                                                                                                                       |
 | ------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `constructor(targetOrigin)`                 | Constructs InteractiveBridge with `window.parent` as target window and with specified target origin.                                                                                                              |
+| `constructor(target)`                       | Constructs `InteractiveBridge` with specified `target: AbstractPlayerBridge` (i.e: `PlayerBridge`) or with `window.parent` as target window and with specified `target: string` as origin.                        |
 | `getAppName()`                              | Returns promise of LiveryPlayer application name.                                                                                                                                                                 |
 | `getCustomerId()`                           | Returns promise of LiveryPlayer customer id.                                                                                                                                                                      |
 | `getEndpointId()`                           | Returns promise of LiveryPlayer Pinpoint analytics endpoint id.                                                                                                                                                   |
@@ -99,3 +99,17 @@ Element defined as `<livery-bridge-log>` which logs LiveryBridge and other windo
 | Attribute     | Property      | Type     | Default | Description                            |
 | ------------- | ------------- | -------- | ------- | -------------------------------------- |
 | `maxmessages` | `maxMessages` | `number` | `10`    | Maximum number of messages to display. |
+
+#### Properties
+
+| Property | R/W | Type                   | Default     | Description                                                                                                                                                             |
+| -------- | --- | ---------------------- | ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `bridge` | W   | `AbstractPlayerBridge` | `undefined` | Bridge to spy on. If undefined this will instead just listen to messages posted to this window. Note: This needs to be defined before this element is connected to DOM. |
+
+### Other
+
+- Types: `Orientation`, `StreamPhase`
+- For LiveryPlayer `PlayerBridge` implementation: `AbstractPlayerBridge` (in the past: `LiveryBridge`)
+- For testing: `LiveryBridgeMock` `LiveryInteractive`, `MockPlayerBridge`
+  - `LiveryBridgeMock` creates a `MockPlayerBridge` and mocks a LiveryPlayer with an interactive child element or iframe
+  - `LiveryInteractive` is an example interactive element that enables players to test all interactive commands

@@ -28,11 +28,14 @@ E.g: `https://embed.liveryvideo.com?id=5ddb98f5e4b0937e6a4507f2&v=beta`.
 
 ## Interactive
 
-The `<livery-interactive>` element can similarly be embedded from URL: `https://embed.liveryvideo.com/interactive/`.
+Our Livery Interactive element can also be embedded from URL: `https://embed.liveryvideo.com/interactive/`.
 
 This similarly supports query parameter `v` to specify the version of `@liveryvideo/interactive` to load (defaults to `latest`).
 
-And query parameter `mockBridge` to specify that a `MockPlayerBridge` should be specified as `playerBridge` to the `<livery-interactive>` element.
-The value of this parameter specifies the version of `@liveryvideo/interactive-bridge` to load (defaults to `latest`).
+Or query parameter `test` to specify that a `interactive-bridge` `<livery-bridge-interactive>` element should be used as the interactive element instead to test the bridge.
 
-E.g: `https://embed.liveryvideo.com/interactive/?v=foo&mockBridge=bar`
+And query parameter `mock` to specify that a `interactive-bridge` `MockPlayerBridge` should be specified as `playerBridge` to the interactive element.
+
+And finally query parametr `bridge` to specify the version (defaults to `latest`) of `@liveryvideo/interactive-bridge` to load for `test` and/or `mock`.
+
+E.g: `https://embed.liveryvideo.com/interactive/?v=1.2.3&bridge=4.5.6&test&mock`

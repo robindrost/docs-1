@@ -97,6 +97,12 @@ The Livery players connect to the following domains. The domains need to be whit
 - director.video-encoder.playtotv.com
 - sentry.io
 
+### IP address usage
+
+The IP addresses that are used by the Livery Video platform are provided by multiple cloud providers.
+These IP ranges are quite large and change over time.
+It is therefore not feasible to apply IP address filters in a firewall to allow access to the Livery platform.
+
 ### Port configuration
 
 The hardware encoder needs to communicate over the internet so send out metrics and allow remote diagnosis. For this it’s required that the encoder can make outbound connections on port 443 and port 22. Please make sure to open up these 2 ports if the encoder is deployed in an environment with a firewall. In order to stream to the cloud encoder one of these ports needs to be open for outbound connections. When using RTMP, port 1935 should be opened. When using SRT, port 9998 should be opened.

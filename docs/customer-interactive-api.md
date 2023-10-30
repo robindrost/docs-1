@@ -22,7 +22,7 @@ Note: Add your API endpoint URL to receive broadcast status changes. This is don
 
 ## API Calls
 
-Page numbers start at 1 on paginated API calls
+Page numbers start at 0 on paginated API calls
 
 ### Get current broadcast data (pull)
 

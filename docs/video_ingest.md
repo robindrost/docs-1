@@ -113,7 +113,7 @@ It is recommended to use an internet connection which has at least twice the spe
 
 A soft- and/or hardware mixer is often used to output one or more broadcast streams. All video sources are connected with the Mixer, from which the broadcast stream is ingested in either the Cloud or On-premis encoder.
 
-The following overview contains an overview of the most common video mixing tools and the configuration needed live stream using Livery's cloud encoder. Please be aware of the additional requerement when Passthrough is used. 
+The following overview contains an overview of the most common video mixing tools and the configuration needed live stream using Livery's cloud encoder. Please be aware of the additional requerement when Passthrough [Pass through](#pass-through)is used. 
 
 ### OBS
 
@@ -126,34 +126,36 @@ The following overview contains an overview of the most common video mixing tool
 | Menu   | Item Property     | Value                                                                                                                       |
 | ------ | ----------------- | --------------------------------------------------------------------------------------------------------------------------- |
 | Stream | Service           | Custom                                                                                                                      |
-|        | Server            | Ingest URL for example rtmp://ingest.liveryvideo.com/app/[streamId]                                                         |
-|        | Stream Key        | Add the Stream Key as it is listed under Stream Details in the Livery Portal.                                               |
+|        | Server            | rtmp://ingest.livery.live/live/app                                                         
+                             |
+|        | Stream Key        | The Stream Key is mendatory and listed under Stream Details in the Livery Portal.                                           |
 | Output | Output Mode       | Advanced                                                                                                                    |
-|        | Encoder           | x264                                                                                                                        |
-|        | Rate Control      | CBR                                                                                                                         |
+|        | Encoder           | Hardware Encoding would be recommanded for low-end streaming devices.                                                       |
+|        | Rate Control      | CBR (Constant bit rate)                                                                                                     |
 |        | Bitrate           | A higher value as the max bitrate configured in the Livery Encoder settings                                                 |
-|        | Keyframe interval | Recommended setting is 2. The value should match the segment size set in the Livery Encoder settings                        |
+|        | Keyframe interval | The Keyframe interaval should not be set to 0. It is recommended to match the segment size set in the Livery Encoder settings (default is 1)                         |
 |        | CPU Usages Preset | Veryfast                                                                                                                    |
 |        | Tune              | Zerolatency                                                                                                                 |
 | Video  | Output Resolution | Recommended resolution 1920x1080px                                                                                          |
-|        | Common FPS Values | 25 PAL It is strongly recommended to use the same FPS throughout the complete workflow, to prevent audio/video sync issues. |
+|        | Common FPS Values | It is strongly recommended to use the same FPS throughout the complete workflow, to prevent audio/video sync issues. |
 
 #### **SRT**
 
 | Menu   | Item Property     | Value                                                                                                                       |
 | ------ | ----------------- | --------------------------------------------------------------------------------------------------------------------------- |
 | Stream | Service           | Custom                                                                                                                      |
-|        | Server            | Ingest URL for example srt://ingest.liveryvideo.com:9998?pkt_size=1316&streamid=[streamId]_[streamKey]                      |
-|        | Stream Key        | Leave empty                                                                                                                 |
+|        | Server            | srt://ingest.livery.live:9998?pkt_size=1316
+                             |
+|        | Stream Key        | The Stream Key is mendatory and listed under Stream Details in the Livery Portal.                                           |
 | Output | Output Mode       | Advanced                                                                                                                    |
-|        | Encoder           | x264                                                                                                                        |
-|        | Rate Control      | CBR                                                                                                                         |
+|        | Encoder           | Hardware Encoding would be recommanded for low-end streaming devices.                                                       |
+|        | Rate Control      | CBR (Constant bit rate)                                                                                                     |
 |        | Bitrate           | A higher value as the max bitrate configured in the Livery Encoder settings                                                 |
-|        | Keyframe interval | Recommended setting is 2. The value should match the segment size set in the Livery Encoder settings                        |
+|        | Keyframe interval | The Keyframe interaval should not be set to 0. It is recommended to match the segment size set in the Livery Encoder settings (default is 1)                         |
 |        | CPU Usages Preset | Veryfast                                                                                                                    |
 |        | Tune              | Zerolatency                                                                                                                 |
-| Video  | Output Resolution | Recommended resolution 1920x1080px.                                                                                         |
-|        | Common FPS Values | 25 PAL It is strongly recommended to use the same FPS throughout the complete workflow, to prevent audio/video sync issues. |
+| Video  | Output Resolution | Recommended resolution 1920x1080px                                                                                          |
+|        | Common FPS Values | It is strongly recommended to use the same FPS throughout the complete workflow, to prevent audio/video sync issues. |
 
 #### **On-prem**
 

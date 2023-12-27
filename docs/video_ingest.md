@@ -111,9 +111,9 @@ It is recommended to use an internet connection which has at least twice the spe
 
 ## Mixer Soft- and Hardware
 
-A soft- and or hardware mixer is often used to output one or more broadcast streams. All video sources are connected with the Mixer, from which the broadcast stream is ingested in either the Cloud or On-premis encoder.
+A soft- and/or hardware mixer is often used to output one or more broadcast streams. All video sources are connected with the Mixer, from which the broadcast stream is ingested in either the Cloud or On-premis encoder.
 
-The following overview contains an overview of the most common video mixing tools and the configuration needed live stream using Livery Video.
+The following overview contains an overview of the most common video mixing tools and the configuration needed live stream using Livery's cloud encoder. Please be aware of the additional requerement when Passthrough is used. 
 
 ### OBS
 

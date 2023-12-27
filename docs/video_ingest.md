@@ -422,7 +422,7 @@ Select a custom Caller source<br>
 | Streaming Server      | address            | srt://ingest.livery.live                                                    |
 |                       | Port               | 9998                                                                        |
 |                       | Latency            | 30ms (as low as possible)                                                   |
-|                       | Stream ID          | Add the Stream Key as it is listed under Stream Details in the Livery Portal. If the stream does not contain a Stream Key, the last part of the URL, the stream ID, can be added as Stream Key; 12a34b56c78d90e |
+|                       | Stream ID          | The Stream Key is mendatory and listed under Stream Details in the Livery Portal. |
 | Encodering Parameters | Keyframe frequency | The Keyframe interaval should not be set to 0. It is recommended to match the segment size set in the Livery Encoder settings (default is 1)                                                             |
 |                       | Codec              | H264                                                                        |
 

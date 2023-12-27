@@ -188,36 +188,18 @@ Assign the on-prem encoder as an external monitor of the computer. Set OBS to St
 | Menu Item         | Property           | Value                                                                         |
 | ----------------- | ------------------ | ----------------------------------------------------------------------------- |
 | Destination       | Service            | Custom                                                                        |
-|                   | URL                | Ingest URL for example rtmp://ingest.liveryvideo.com/app/12a34b56c78d90e      |
-|                   | Stream Key         | Add the Stream Key as it is listed under Stream Details in the Livery Portal. |
+|                   | URL                | rtmp://ingest.livery.live/live/app                                            |
+|                   | Stream Key         | The Stream Key is mendatory and listed under Stream Details in the Livery Portal.  |
 |                   | Quality            | Custom via the gear icon                                                      |
 | Streaming Quality | Encode Size        | Recommended resolution 1920x1080                                              |
 |                   | Profile            | Main                                                                          |
 |                   | Level              | 3.1                                                                           |
 |                   | Preset             | Ultrafast                                                                     |
 |                   | Aspect Ratio/Crop  | Original                                                                      |
-|                   | Keyframe Frequency | 2 seconds                                                                     |
+|                   | Keyframe Frequency | It is recommended to match the segment size set in the Livery Encoder settings (default is 1)                           |
 |                   | Network Buffer     | 5 Seconds                                                                     |
 |                   | Strict CBR         | Checked                                                                       |
 
-#### **SRT**
-
-SRT is supported via a workaround
-
-| Menu Item         | Property           | Value                                                                         |
-| ----------------- | ------------------ | ----------------------------------------------------------------------------- |
-| Destination       | Service            | Custom                                                                        |
-|                   | URL                | Ingest URL for example rtmp://ingest.liveryvideo.com/app/12a34b56c78d90e      |
-|                   | Stream Key         | Add the Stream Key as it is listed under Stream Details in the Livery Portal. |
-|                   | Quality            | Custom via the gear icon                                                      |
-| Streaming Quality | Encode Size        | Recommended resolution 1920x1080                                              |
-|                   | Profile            | Main                                                                          |
-|                   | Level              | 3.1                                                                           |
-|                   | Preset             | Ultrafast                                                                     |
-|                   | Aspect Ratio/Crop  | Original                                                                      |
-|                   | Keyframe Frequency | 2 seconds                                                                     |
-|                   | Network Buffer     | 5 Seconds                                                                     |
-|                   | Strict CBR         | Checked                                                                       |
 
 ### **On-prem**
 

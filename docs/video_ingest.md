@@ -124,38 +124,36 @@ The following overview contains an overview of the most common video mixing tool
 #### **RTMP**
 
 | Menu   | Item Property     | Value                                                                                                                       |
-| ------ | ----------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| Stream | Service           | Custom                                                                                                                      |
-|        | Server            | rtmp://ingest.livery.live/live/app                                                         
-                             |
-|        | Stream Key        | The Stream Key is mendatory and listed under Stream Details in the Livery Portal.                                           |
-| Output | Output Mode       | Advanced                                                                                                                    |
-|        | Encoder           | Hardware Encoding would be recommanded for low-end streaming devices.                                                       |
-|        | Rate Control      | CBR (Constant bit rate)                                                                                                     |
-|        | Bitrate           | A higher value as the max bitrate configured in the Livery Encoder settings                                                 |
-|        | Keyframe interval | The Keyframe interaval should not be set to 0. It is recommended to match the segment size set in the Livery Encoder settings (default is 1)                         |
-|        | CPU Usages Preset | Veryfast                                                                                                                    |
-|        | Tune              | Zerolatency                                                                                                                 |
-| Video  | Output Resolution | Recommended resolution 1920x1080px                                                                                          |
-|        | Common FPS Values | It is strongly recommended to use the same FPS throughout the complete workflow, to prevent audio/video sync issues. |
+| ------ | ----------------- | --------------------------------------------------------------------------------------------- |
+| Stream | Service           | Custom                                                                                        |
+|        | Server            | rtmp://ingest.livery.live/live/app                                                            |
+|        | Stream Key        | The Stream Key is mendatory and listed under Stream Details in the Livery Portal.             |
+| Output | Output Mode       | Advanced                                                                                      |
+|        | Encoder           | Hardware Encoding would be recommanded for low-end streaming devices.                         |
+|        | Rate Control      | CBR (Constant bit rate)                                                                       |
+|        | Bitrate           | A higher value as the max bitrate configured in the Livery Encoder settings                   |
+|        | Keyframe interval | The Keyframe interaval should not be set to 0. It is recommended to match the segment size set in the Livery Encoder settings (default is 1)                                                                                |
+|        | CPU Usages Preset | Veryfast                                                                                      |
+|        | Tune              | Zerolatency                                                                                   |
+| Video  | Output Resolution | Recommended resolution 1920x1080px                                                            |
+|        | Common FPS Values | It is strongly recommended to use the same FPS throughout the complete workflow, to prevent audio/video sync issues.                                                                                                     |
 
 #### **SRT**
 
 | Menu   | Item Property     | Value                                                                                                                       |
-| ------ | ----------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| Stream | Service           | Custom                                                                                                                      |
-|        | Server            | srt://ingest.livery.live:9998?pkt_size=1316
-                             |
-|        | Stream Key        | The Stream Key is mendatory and listed under Stream Details in the Livery Portal.                                           |
-| Output | Output Mode       | Advanced                                                                                                                    |
-|        | Encoder           | Hardware Encoding would be recommanded for low-end streaming devices.                                                       |
-|        | Rate Control      | CBR (Constant bit rate)                                                                                                     |
-|        | Bitrate           | A higher value as the max bitrate configured in the Livery Encoder settings                                                 |
-|        | Keyframe interval | The Keyframe interaval should not be set to 0. It is recommended to match the segment size set in the Livery Encoder settings (default is 1)                         |
-|        | CPU Usages Preset | Veryfast                                                                                                                    |
-|        | Tune              | Zerolatency                                                                                                                 |
-| Video  | Output Resolution | Recommended resolution 1920x1080px                                                                                          |
-|        | Common FPS Values | It is strongly recommended to use the same FPS throughout the complete workflow, to prevent audio/video sync issues. |
+| ------ | ----------------- | ----------------------------------------------------------------------------------------------|
+| Stream | Service           | Custom                                                                                        |
+|        | Server            | srt://ingest.livery.live:9998?pkt_size=131                                                    |
+|        | Stream Key        | The Stream Key is mendatory and listed under Stream Details in the Livery Portal.             |
+| Output | Output Mode       | Advanced                                                                                      |
+|        | Encoder           | Hardware Encoding would be recommanded for low-end streaming devices.                         |
+|        | Rate Control      | CBR (Constant bit rate)                                                                       |
+|        | Bitrate           | A higher value as the max bitrate configured in the Livery Encoder settings                   |
+|        | Keyframe interval | The Keyframe interaval should not be set to 0. It is recommended to match the segment size set in the Livery Encoder settings (default is 1)                                                                                |
+|        | CPU Usages Preset | Veryfast                                                                                      |
+|        | Tune              | Zerolatency                                                                                   |
+| Video  | Output Resolution | Recommended resolution 1920x1080px                                                            |
+|        | Common FPS Values | It is strongly recommended to use the same FPS throughout the complete workflow, to prevent audio/video sync issues.                                                                                                     |
 
 #### **On-prem**
 
@@ -241,9 +239,9 @@ Assign the on-prem encoder as an external monitor of the computer. Set OBS to St
 | Menu Item   | Property          | Value                                                                                                                                                                                                           |
 | ----------- | ----------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Destination | Service           | Custom                                                                                                                                                                                                          |
-|             | RTMP Server URL   | Streamyard requers the ingest URL and stream key to be separated. The stream ID should be removed from the Ingest URL rtmp://ingest.liveryvideo.com/app/                                                        |
-|             | Stream Key        | Add the Stream Key as it is listed under Stream Details in the Livery Portal. If the stream does not contain a Stream Key, the last part of the URL, the stream ID, can be added as Stream Key; 12a34b56c78d90e |
-| Settings    | Broadcast Quality | Recommended resolution 1080p                                                                                                                                                                                    |
+|             | RTMP Server URL   | rtmp://ingest.liveryvideo.com/app                                                 |
+|             | Stream Key        | The Stream Key is mendatory and listed under Stream Details in the Livery Portal. |
+| Settings    | Broadcast Quality | Recommended resolution 1080p                                                      |     
 
 #### **Screenshots**
 
@@ -269,7 +267,7 @@ Assign the on-prem encoder as an external monitor of the computer. Set OBS to St
 | Menu Item | Property          | Value                                                                         |
 | --------- | ----------------- | ----------------------------------------------------------------------------- |
 | Channel   | Service           | Custom                                                                        |
-|           | RTMP URL          | Ingest URL for example rtmp://ingest.liveryvideo.com/app/12a34b56c78d90e      |
+|           | RTMP URL          | rtmp://ingest.livery.live/live/app                                            |
 |           | Stream Key        | Add the Stream Key as it is listed under Stream Details in the Livery Portal. |
 | Settings  | Broadcast Quality | Recommended resolution 1080p                                                  |
 
@@ -297,7 +295,7 @@ Assign the on-prem encoder as an external monitor of the computer. Set OBS to St
 
 | Menu Item | Property              | Value                                                                         |
 | --------- | --------------------- | ----------------------------------------------------------------------------- |
-| Settings  | Server URL            | Ingest URL for example rtmp://ingest.liveryvideo.com/app/12a34b56c78d90e      |
+| Settings  | Server URL            | rtmp://ingest.livery.live/live/app                                            |
 |           | Server Authentication | Add the Stream Key as it is listed under Stream Details in the Livery Portal. |
 |           | Resolution            | Recommended resolution 1920x1080                                              |
 
@@ -320,11 +318,11 @@ Assign the on-prem encoder as an external monitor of the computer. Set OBS to St
 
 | Menu Item   | Property                         | Value                                                                                                                                                                                                           |
 | ----------- | -------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Destination | URL                              | Larix requires the ingest URL and stream key to be separated. The stream ID should be removed from the Ingest URL rtmp://ingest.liveryvideo.com/app/                                                            |
-|             | Stream Key                       | Add the Stream Key as it is listed under Stream Details in the Livery Portal. If the stream does not contain a Stream Key, the last part of the URL, the stream ID, can be added as Stream Key; 12a34b56c78d90e |
+| Destination | URL                              | rtmp://ingest.livery.live/live/app                                       |
+|             | Stream Key                       | Add the Stream Key as it is listed under Stream Details in the Livery Portal. |
 |             | Recommended resolution 1920x1080 |
-|             | Keyframe frequency               | 2 seconds                                                                                                                                                                                                       |
-|             | Codec                            | H264                                                                                                                                                                                                            |
+|             | Keyframe frequency               |  The Keyframe interaval should not be set to 0. It is recommended to match the segment size set in the Livery Encoder settings (default is 1)                                                                                                             |
+|             | Codec                            | H264                                                                       |
 
 #### **SRT**
 

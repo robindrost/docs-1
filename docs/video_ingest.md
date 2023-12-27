@@ -357,9 +357,9 @@ Assign the on-prem encoder as an external monitor of the computer. Set OBS to St
 Select a custom RTMP source<br>
 
 | Menu Item   | Property   | Value                                                                                                                                                                                                           |
-| ----------- | ---------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Destination | URL        | LiveU requires the ingest URL and stream key to be separated. The stream ID should be removed from the Ingest URL rtmp://ingest.liveryvideo.com/app/                                                            |
-|             | Stream Key | Add the Stream Key as it is listed under Stream Details in the Livery Portal. If the stream does not contain a Stream Key, the last part of the URL, the stream ID, can be added as Stream Key; 12a34b56c78d90e |
+| ----------- | ---------- | ----------------------------------------------------------------------------------|
+| Destination | URL        | rtmp://ingest.livery.live/live/app                                                |
+|             | Stream Key | The Stream Key is mendatory and listed under Stream Details in the Livery Portal. |
 
 #### **Screenshots**
 
@@ -380,11 +380,11 @@ Select a custom RTMP source<br>
 Select a custom RTMP source<br>
 
 | Menu Item        | Property          | Value                                                                                                                                                                                                           |
-| ---------------- | ----------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Streaming Server | URL               | Magewell requires the ingest URL and stream key to be separated. The stream ID should be removed from the Ingest URL rtmp://ingest.liveryvideo.com/app/                                                         |
-|                  | Stream Key        | Add the Stream Key as it is listed under Stream Details in the Livery Portal. If the stream does not contain a Stream Key, the last part of the URL, the stream ID, can be added as Stream Key; 12a34b56c78d90e |
-|                  | Keyframe Interval | 2 seconds                                                                                                                                                                                                       |
-|                  | Codec type        | H264                                                                                                                                                                                                            |
+| ---------------- | ----------------- | --------------------------------------------------------------------------------- |
+| Streaming Server | URL               | rtmp://ingest.livery.live/live/app                                                |
+|                  | Stream Key        | The Stream Key is mendatory and listed under Stream Details in the Livery Portal. |
+|                  | Keyframe Interval | The Keyframe interaval should not be set to 0. It is recommended to match the segment size set in the Livery Encoder settings (default is 1)                                                             |
+|                  | Codec type        | H264                                                                              |
 
 #### **Screenshots**
 
@@ -407,24 +407,24 @@ Select a custom RTMP source<br>
 Select a custom RTMP source<br>
 
 | Menu Item             | Property          | Value                                                                                                                                                                                                           |
-| --------------------- | ----------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Streaming Server      | URL               | Magewell requires the ingest URL and stream key to be separated. The stream ID should be removed from the Ingest URL rtmp://ingest.liveryvideo.com/app/                                                         |
-|                       | Stream Key        | Add the Stream Key as it is listed under Stream Details in the Livery Portal. If the stream does not contain a Stream Key, the last part of the URL, the stream ID, can be added as Stream Key; 12a34b56c78d90e |
-| Encodering Parameters | Keyframe Interval | 2 seconds                                                                                                                                                                                                       |
-|                       | Codec type        | H264                                                                                                                                                                                                            |
+| --------------------- | ----------------- | -----------------------------------------------------------------------------|
+| Streaming Server      | URL               | rtmp://ingest.livery.live/live/app                                           |
+|                       | Stream Key        | The Stream Key is mendatory and listed under Stream Details in the Livery Portal.                                                                                                                    |
+| Encodering Parameters | Keyframe Interval | The Keyframe interaval should not be set to 0. It is recommended to match the segment size set in the Livery Encoder settings (default is 1)                                                             |
+|                       | Codec type        | H264                                                                         |
 
 #### **SRT**
 
 Select a custom Caller source<br>
 
-| Menu Item             | Property           | Value                                                                                                                                                                                                           |
-| --------------------- | ------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Streaming Server      | address            | Magewell requires the ingest URL and stream key to be separated. The stream ID should be removed from the Ingest URL ingest.liveryvideo.com                                                                     |
-|                       | Port               | 9998                                                                                                                                                                                                            |
-|                       | Latency            | 30ms (as low as possible)                                                                                                                                                                                       |
+| Menu Item             | Property           | Value |
+| --------------------- | ------------------ | ----------------------------------------------------------------------------|
+| Streaming Server      | address            | srt://ingest.livery.live                                                    |
+|                       | Port               | 9998                                                                        |
+|                       | Latency            | 30ms (as low as possible)                                                   |
 |                       | Stream ID          | Add the Stream Key as it is listed under Stream Details in the Livery Portal. If the stream does not contain a Stream Key, the last part of the URL, the stream ID, can be added as Stream Key; 12a34b56c78d90e |
-| Encodering Parameters | Keyframe frequency | 2 seconds                                                                                                                                                                                                       |
-|                       | Codec              | H264                                                                                                                                                                                                            |
+| Encodering Parameters | Keyframe frequency | The Keyframe interaval should not be set to 0. It is recommended to match the segment size set in the Livery Encoder settings (default is 1)                                                             |
+|                       | Codec              | H264                                                                        |
 
 #### **Screenshots**
 
@@ -450,10 +450,10 @@ Select a custom Caller source<br>
 Select a custom RTMP source<br>
 
 | Menu Item | Property               | Value                                                                                                                                                                                                           |
-| --------- | ---------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Broadcast | Mode                   | RTMP/RTMPS                                                                                                                                                                                                      |
-|           | CRTMP/RTMPS Server URL | Teradek requires the ingest URL and stream key to be separated. The stream ID should be removed from the Ingest URL rtmp://ingest.liveryvideo.com/app/                                                          |
-|           | Stream                 | Add the Stream Key as it is listed under Stream Details in the Livery Portal. If the stream does not contain a Stream Key, the last part of the URL, the stream ID, can be added as Stream Key; 12a34b56c78d90e |
+| --------- | ---------------------- | --------------------------------------------------------------------------------- |
+| Broadcast | Mode                   | RTMP/RTMPS                                                                        |
+|           | CRTMP/RTMPS Server URL | rtmp://ingest.livery.live/live/app                                                |
+|           | Stream                 | The Stream Key is mendatory and listed under Stream Details in the Livery Portal. |
 
 #### **Screenshots**
 

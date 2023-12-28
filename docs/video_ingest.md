@@ -127,7 +127,7 @@ The following overview contains an overview of the most common video mixing tool
 | ------ | ----------------- | --------------------------------------------------------------------------------------------- |
 | Stream | Service           | Custom                                                                                        |
 |        | Server            | rtmp://ingest.livery.live/live/app                                                            |
-|        | Stream Key        | The Stream Key is mendatory and listed under Stream Details in the Livery Portal.             |
+|        | Stream Key        | The Stream Key is mandatory and listed under Stream Details in the Livery Portal.             |
 | Output | Output Mode       | Advanced                                                                                      |
 |        | Encoder           | Hardware Encoding would be recommanded for low-end streaming devices.                         |
 |        | Rate Control      | CBR (Constant bit rate)                                                                       |
@@ -144,7 +144,7 @@ The following overview contains an overview of the most common video mixing tool
 | ------ | ----------------- | ----------------------------------------------------------------------------------------------|
 | Stream | Service           | Custom                                                                                        |
 |        | Server            | srt://ingest.livery.live:9998?pkt_size=131                                                    |
-|        | Stream Key        | The Stream Key is mendatory and listed under Stream Details in the Livery Portal.             |
+|        | Stream Key        | The Stream Key is mandatory and listed under Stream Details in the Livery Portal.             |
 | Output | Output Mode       | Advanced                                                                                      |
 |        | Encoder           | Hardware Encoding would be recommanded for low-end streaming devices.                         |
 |        | Rate Control      | CBR (Constant bit rate)                                                                       |
@@ -187,7 +187,7 @@ Assign the on-prem encoder as an external monitor of the computer. Set OBS to St
 | ----------------- | ------------------ | ----------------------------------------------------------------------------- |
 | Destination       | Service            | Custom                                                                        |
 |                   | URL                | rtmp://ingest.livery.live/live/app                                            |
-|                   | Stream Key         | The Stream Key is mendatory and listed under Stream Details in the Livery Portal.  |
+|                   | Stream Key         | The Stream Key is mandatory and listed under Stream Details in the Livery Portal.  |
 |                   | Quality            | Custom via the gear icon                                                      |
 | Streaming Quality | Encode Size        | Recommended resolution 1920x1080                                              |
 |                   | Profile            | Main                                                                          |
@@ -240,7 +240,7 @@ Assign the on-prem encoder as an external monitor of the computer. Set OBS to St
 | ----------- | ----------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Destination | Service           | Custom                                                                                                                                                                                                          |
 |             | RTMP Server URL   | rtmp://ingest.liveryvideo.com/app                                                 |
-|             | Stream Key        | The Stream Key is mendatory and listed under Stream Details in the Livery Portal. |
+|             | Stream Key        | The Stream Key is mandatory and listed under Stream Details in the Livery Portal. |
 | Settings    | Broadcast Quality | Recommended resolution 1080p                                                      |     
 
 #### **Screenshots**
@@ -359,7 +359,7 @@ Select a custom RTMP source<br>
 | Menu Item   | Property   | Value                                                                                                                                                                                                           |
 | ----------- | ---------- | ----------------------------------------------------------------------------------|
 | Destination | URL        | rtmp://ingest.livery.live/live/app                                                |
-|             | Stream Key | The Stream Key is mendatory and listed under Stream Details in the Livery Portal. |
+|             | Stream Key | The Stream Key is mandatory and listed under Stream Details in the Livery Portal. |
 
 #### **Screenshots**
 
@@ -382,7 +382,7 @@ Select a custom RTMP source<br>
 | Menu Item        | Property          | Value                                                                                                                                                                                                           |
 | ---------------- | ----------------- | --------------------------------------------------------------------------------- |
 | Streaming Server | URL               | rtmp://ingest.livery.live/live/app                                                |
-|                  | Stream Key        | The Stream Key is mendatory and listed under Stream Details in the Livery Portal. |
+|                  | Stream Key        | The Stream Key is mandatory and listed under Stream Details in the Livery Portal. |
 |                  | Keyframe Interval | The Keyframe interaval should not be set to 0. It is recommended to match the segment size set in the Livery Encoder settings (default is 1)                                                             |
 |                  | Codec type        | H264                                                                              |
 
@@ -409,7 +409,7 @@ Select a custom RTMP source<br>
 | Menu Item             | Property          | Value                                                                                                                                                                                                           |
 | --------------------- | ----------------- | -----------------------------------------------------------------------------|
 | Streaming Server      | URL               | rtmp://ingest.livery.live/live/app                                           |
-|                       | Stream Key        | The Stream Key is mendatory and listed under Stream Details in the Livery Portal.                                                                                                                    |
+|                       | Stream Key        | The Stream Key is mandatory and listed under Stream Details in the Livery Portal.                                                                                                                    |
 | Encodering Parameters | Keyframe Interval | The Keyframe interaval should not be set to 0. It is recommended to match the segment size set in the Livery Encoder settings (default is 1)                                                             |
 |                       | Codec type        | H264                                                                         |
 
@@ -422,7 +422,7 @@ Select a custom Caller source<br>
 | Streaming Server      | address            | srt://ingest.livery.live                                                    |
 |                       | Port               | 9998                                                                        |
 |                       | Latency            | 30ms (as low as possible)                                                   |
-|                       | Stream ID          | The Stream Key is mendatory and listed under Stream Details in the Livery Portal. |
+|                       | Stream ID          | The Stream Key is mandatory and listed under Stream Details in the Livery Portal. |
 | Encodering Parameters | Keyframe frequency | The Keyframe interaval should not be set to 0. It is recommended to match the segment size set in the Livery Encoder settings (default is 1)                                                             |
 |                       | Codec              | H264                                                                        |
 
@@ -453,7 +453,7 @@ Select a custom RTMP source<br>
 | --------- | ---------------------- | --------------------------------------------------------------------------------- |
 | Broadcast | Mode                   | RTMP/RTMPS                                                                        |
 |           | CRTMP/RTMPS Server URL | rtmp://ingest.livery.live/live/app                                                |
-|           | Stream                 | The Stream Key is mendatory and listed under Stream Details in the Livery Portal. |
+|           | Stream                 | The Stream Key is mandatory and listed under Stream Details in the Livery Portal. |
 
 #### **Screenshots**
 

@@ -1,10 +1,10 @@
 # Livery Video Interactive Bridge
 
-[![GitHub last commit](https://img.shields.io/github/last-commit/liveryvideo/interactive-bridge)](https://github.com/liveryvideo/interactive-bridge)
-[![NPM package](https://img.shields.io/npm/v/@liveryvideo/interactive-bridge)](https://www.npmjs.com/package/@liveryvideo/interactive-bridge)
-[![Changelog](https://img.shields.io/badge/docs-CHANGELOG-blue)](interactive-bridge-changelog.md)
-[![License](https://img.shields.io/npm/l/@liveryvideo/interactive-bridge)](https://cdn.jsdelivr.net/npm/@liveryvideo/interactive-bridge/LICENSE)
-[![Build with Lit](https://img.shields.io/badge/build%20with-Lit-blue.svg)](https://lit.dev/)
+[![npm package](https://img.shields.io/npm/v/@liveryvideo/interactive-bridge.svg?logo=npm)](https://www.npmjs.com/package/@liveryvideo/interactive-bridge)
+[![conventional CHANGELOG](https://img.shields.io/badge/conventional-CHANGELOG-FE5196.svg?logo=conventionalcommits)](interactive-bridge-changelog.md)
+[![tsdocs API](https://img.shields.io/badge/tsdocs-API-3178C6.svg?logo=typescript)](https://tsdocs.dev/docs/@liveryvideo/interactive-bridge/modules.html)
+[![Lit Elements](https://img.shields.io/badge/Lit-Elements-324FFF.svg?logo=lit)](https://lit.dev/)
+[![license MIT](https://img.shields.io/npm/l/@liveryvideo/interactive-bridge.svg?color=808080&logo=unlicense)](https://cdn.jsdelivr.net/npm/@liveryvideo/interactive-bridge/LICENSE)
 
 Bridge for communicating between a Livery Video Player and the interactive layer page shown within that.
 
@@ -42,74 +42,6 @@ Or load from [jsdelivr](https://jsdelivr.com):
 
 ## Exports
 
-When using the UMD bundle, these can be found as properties of `livery` in the global namespace, e.g: `livery.version`.
+Please refer to our [tsdocs API](https://tsdocs.dev/docs/@liveryvideo/interactive-bridge/modules.html) for documentation of the exports of current and past versions of the interactive-bridge package.
 
-### version
-
-String property specifying version of Livery Video Interactive Bridge.
-
-### InteractiveBridge
-
-Can be used in Livery interactive layer elements or pages to communicate with the surrounding Livery Player.
-
-#### Usage
-
-```JS
-import { InteractiveBridge } from '@liveryvideo/interactive-bridge';
-
-const bridge = new InteractiveBridge(playerBridge || '*');
-
-bridge.getLatency().then(latency => window.alert(`latency: ${latency}`));
-```
-
-**Note:** To prevent [cross site security issues](https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage#security_concerns) replace the `'*'` origin above with the origin of the page that the Livery Player containing this interactive layer page will be on.
-
-#### Methods
-
-| Method                                      | Description                                                                                                                                                                                                       |
-| ------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `constructor(target)`                       | Constructs `InteractiveBridge` with specified `target: AbstractPlayerBridge` (i.e: `PlayerBridge`) or with `window.parent` as target window and with specified `target: string` as origin.                        |
-| `getAppName()`                              | Returns promise of LiveryPlayer application name.                                                                                                                                                                 |
-| `getCustomerId()`                           | Returns promise of LiveryPlayer customer id.                                                                                                                                                                      |
-| `getEndpointId()`                           | Returns promise of LiveryPlayer Pinpoint analytics endpoint id.                                                                                                                                                   |
-| `getLatency()`                              | Returns promise of current LiveryPlayer latency in seconds.                                                                                                                                                       |
-| `getLiveryParams()`                         | Returns promise of an object of key-value string parameters from LiveryPlayer.                                                                                                                                    |
-| `getPlayerVersion()`                        | Returns promise of LiveryPlayer version.                                                                                                                                                                          |
-| `getStreamId()`                             | Returns promise of LiveryPlayer stream id.                                                                                                                                                                        |
-| `registerInteractiveCommand(name, handler)` | Register `handler` function to be called with `arg` and `listener` when `sendInteractiveCommand()` is called on LiveryPlayer with matching `name`.                                                                |
-| `sendPlayerCommand(name, arg?, listener?)`  | Returns promise of value returned by LiveryPlayer custom command handler with matching `name` that is passed `arg`. Any `handler` `listener` calls will subsequently also be bridged to this `listener` callback. |
-| `subscribeFullscreen(listener)`             | Returns promise of current LiveryPlayer fullscreen state and calls back `listener` with any subsequent state changes.                                                                                             |
-| `subscribeOrientation(listener)`            | Returns promise of current LiveryPlayer window orientation (`'landscape' \| 'portrait'`) and calls back `listener` with any subsequent orientations.                                                              |
-| `subscribeQuality(listener)`                | Returns promise of current LiveryPlayer playback quality and calls back `listener` with any subsequent quality changes.                                                                                           |
-| `subscribeStreamPhase(listener)`            | Returns promise of current LiveryPlayer stream phase (`'PRE' \| 'LIVE' \| 'POST'`) and calls back `listener` with any subsequent phases.                                                                          |
-| `unregisterInteractiveCommand(name)`        | Unregister custom interactive command by name.                                                                                                                                                                    |
-
-### LiveryBridgeLog
-
-Element defined as `<livery-bridge-log>` which logs LiveryBridge and other window messages posted to this window.
-
-#### Usage
-
-```html
-<livery-bridge-log></livery-bridge-log>
-```
-
-#### Attributes
-
-| Attribute     | Property      | Type     | Default | Description                            |
-| ------------- | ------------- | -------- | ------- | -------------------------------------- |
-| `maxmessages` | `maxMessages` | `number` | `10`    | Maximum number of messages to display. |
-
-#### Properties
-
-| Property | R/W | Type                   | Default     | Description                                                                                                                                                             |
-| -------- | --- | ---------------------- | ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `bridge` | W   | `AbstractPlayerBridge` | `undefined` | Bridge to spy on. If undefined this will instead just listen to messages posted to this window. Note: This needs to be defined before this element is connected to DOM. |
-
-### Other
-
-- Types: `Orientation`, `StreamPhase`
-- For LiveryPlayer `PlayerBridge` implementation: `AbstractPlayerBridge` (in the past: `LiveryBridge`)
-- For testing: `MockPlayerBridge` is a player bridge that returns mock data
-- For testing: `LiveryBridgeMock` mocks a LiveryPlayer with an interactive child element or iframe
-- For testing: `LiveryBridgeInteractive` is an interactive element that enables testing all interactive commands
+**Note:** When using the UMD bundle, the documented exports can be found as properties of `livery` in the global namespace, e.g: `livery.version`.

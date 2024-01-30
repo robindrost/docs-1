@@ -137,7 +137,6 @@ The `completionQueue` defines the `DispatchQueue` in which the `completion` call
 
 The `completion` callback is a block that receives a `LiveryErrors?` with the SDK initialization eror in case of any.
 
-
 #### SDK Initialization Errors
 
 ```swift
@@ -196,8 +195,9 @@ LiverySDK.audioSessionSettings?.options = [.mixWithOthers]
 
 ## LiveryPlayerView
 
-| `controls`               | [`ControlsOptions`](#controls-options) | `ControlsOptions()` | Provides access to [ControlsOptions](#controls-options). Player's controls can be changed by this object.             |
+`LiveryPlayerView` is a `UIView` subclass that can be used to play a stream and can be placed in the view hierarchy.
 
+It is possible to customize which controls are visible either via Remote Configuration or by calling [`LiveryPlayerView.setControlsOptions(controlsOptions:)`](#controls-options).
 
 ### Create Player
 
@@ -205,28 +205,27 @@ LiverySDK.audioSessionSettings?.options = [.mixWithOthers]
 | ---------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
 | `createPlayer()`       | Create a Livery internal Player. This method can receive specified options if you need to override the remote configurations. |
 
-
 The LiveryPlayerView `createPlayer()` method must be called after calling `LiverySDK.initialize()`.
 
 ```swift
 let playerView = LiveryPlayerView()
 ....
-
 /* Create the player */
-player = playerView.createPlayer()
+let options = LiveryPlayerOptions()
+try playerView.createPlayer(with: options)
 ```
 
 If you need to override the remote configurations of the player you can call `createPlayer(options: LiveryPlayerOptions)` with a `LiveryPlayerOptions` object.<br>
-For more information about [`LiveryPlayerOptions`](#livery-player-options) properties please see the corresponding section.
+For more information about [`LiveryPlayerOptions`](#player-options) properties please see the corresponding section.
 
 ### Player Options
 
-These are the options to be passed to wehen creating the LiveryPlayerView [internal player](#create-player):
+These are the `LiveryPlayerOptions` to be passed to when creating the LiveryPlayerView [internal player](#create-player):
 
 | Name                     | Type                                   | Default             | Description                                                                                                           |
 | ------------------------ | -------------------------------------- | ------------------- | --------------------------------------------------------------------------------------------------------------------- |
-| `akamaiLongToken`        | `String`                               | `nil`                | Access token to use to be able to see a stream that uses Akamai’s Token Auth feature                                 |
-| `autoplay`               | `Boolean`                              | `false`             | Determines whether video shall play immediately after [`createPlayer`](#sdk-create-player).                           |
+| `akamaiLongToken`        | `String`                               | `nil`               | Access token to use to be able to see a stream that uses Akamai’s Token Auth feature                                  |
+| `autoplay`               | `Boolean`                              | `false`             | Determines whether video shall play immediately after [`createPlayer`](#create-player).                           |
 | `enablePictureInPicture` | `Boolean`                              | `false`             | Determines whether the Picture in Picture feature should be enabled or not. It is available only on iOS 15 or higher. |
 | `fit`                    | [`LiveryPlayerFit`](#livery-player-fit)| `.contain`          | Determines how the video will be scaled and cropped. See: [`LiveryPlayerFit`](#livery-player-fit)                     |
 | `prePoster`              | `String`                               | `nil`               | URL for an image to be shown while the video is loading.                                                              |
@@ -238,19 +237,19 @@ These are the options to be passed to wehen creating the LiveryPlayerView [inter
 
 ### Controls Options
 
-These are the controls visibility options to be passed to the LiveryPlayerView:
+These are the `LiveryControlsOptions` properties to control the controls visibility:
 
-| Name         | Type      | Default | Description                                                                                                                                                     |
-| ------------ | --------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `cast`       | `Boolean` | `false` | Determines whether cast button should be displayed or not on the [`Player Controls`](#player-controls).                                                         |
-| `contact`    | `Boolean` | `false` | Determines whether contact button should be displayed or not on the [`Player Controls`](#player-controls).                                                      |
-| `error`      | `Boolean` | `false` | Determines whether Error Overlay should be displayed or not.                                                                                |
-| `fullscreen` | `Boolean` | `false` | Determines whether full screen button should be displayed or not on the [`Player Controls`](#player-controls).                                                  |
-| `mute`       | `Boolean` | `false` | Determines whether mute button should be displayed or not on the [`Player Controls`](#player-controls).                                                         |
-| `pip`        | `Boolean` | `false` | Determines whether Picture in Picture button should be displayed or not on the [`Player Controls`](#player-controls). It is available only on iOS 15 or higher. |
-| `play`       | `Boolean` | `false` | Determines whether play button should be displayed or not on the [`Player Controls`](#player-controls).                                                         |
-| `quality`    | `Boolean` | `false` | Determines whether select quality button should be displayed or not on the [`Player Controls`](#player-controls).                                               |
-| `scrubber`   | `Boolean` | `false` | Determines whether scrubber / progress bar view should be displayed or not on the [`Player Controls`](#player-controls).                                        |
+| Name         | Type      | Default | Description                                                                                                        |
+| ------------ | --------- | ------- | -------------------------------------------------------------------------------------------------------------------|
+| `play`       | `Boolean` | `false` | Determines whether play button should be displayed or not.                                                         |
+| `quality`    | `Boolean` | `false` | Determines whether select quality button should be displayed or not.                                               |
+| `scrubber`   | `Boolean` | `false` | Determines whether scrubber / progress bar view should be displayed or not.                                        |
+| `error`      | `Boolean` | `false` | Determines whether Error Overlay should be displayed or not.                                                       |
+| `fullscreen` | `Boolean` | `false` | Determines whether full screen button should be displayed or not.                                                  |
+| `mute`       | `Boolean` | `false` | Determines whether mute button should be displayed or not.                                                         |
+| `pip`        | `Boolean` | `false` | Determines whether Picture in Picture button should be displayed or not. It is available only on iOS 15 or higher. |
+| `contact`    | `Boolean` | `false` | Determines whether contact button should be displayed or not.                                                      |
+| `cast`       | `Boolean` | `false` | Determines whether cast button should be displayed or not.                                                         |
 
 ### Properties :id=player-properties
 
@@ -373,12 +372,12 @@ struct LiveryQuality {
 | `codecs`     | `String` | Codec of the media.                             |
 | `frameRate`  | `Float`  | Frame rate of the media.                        |
 
-### LiveryPlayerFit
+### LiveryPlayerFit :id=livery-player-fit
 
 The SDK provides fitting methods to scale and crop the video according to the specified ​fit​ option value.
 
 ```swift
-public enum PlayerFit {
+public enum LiveryPlayerFit {
  case contain
  case cover
  case fill
@@ -400,14 +399,6 @@ The player will receive the millisecond precision server time from the time urls
 `currentTime - targetLatency`
 
 In other words, IOS SDK players behave always in sync once initialized, meaning if audio packages or video frames are received later then their presentation timestamps due the network connections, they will be ignored or played back in a faster rate by the player.
-
-
-## Player Skin
-
-### Player Controls :id=player-controls
-
-### Error Overlay
-
 
 ## Audio Session
 

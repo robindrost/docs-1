@@ -2,10 +2,9 @@
 
 ## Migration from 2.1.0 to 3.0.0
 
-
 ### LiverySDK changes
 
-It is no longer necessary to hold an instance of `LiverySDK``, `LiverySDK` have static methods for initialization:
+It is no longer necessary to hold an instance of `LiverySDK`, `LiverySDK` have static methods for initialization:
 
 ```swift
 LiverySDK.initialize(streamId: streamId) { error in
@@ -57,26 +56,24 @@ The `RenderProtocol` and `AudioRenderProtocol` along with `setRenderProtocol` me
 - `currentTime` and `duration` properties are now of type `Int64` instead of `TimeInterval` representing milliseconds instead of seconds.
 - `buffer` and `latency` properties are now of type `Int64` instead of `Int`.
 
-
 ### Removals
 
 - `Player.volume` property was removed
 - `Player.Errors` was removed
 
-
 ## Names renaming
 
 Class/structs/enums have been renamed with `Livery` prefix to avoid name colisions.
 
-* `AudioSessionSettings` has been renamed to `LiveryAudioSessionSettings`
-* `PlayerDelegate` has been renamed to `LiveryPlayerDelegate`
-* `PlayerOptions` has been renamed to `LiveryPlayerOptions`
-* `PlayerFit` has been renamed to `LiveryPlayerFit`
-* `PlayerPosition` has been renamed to `LiveryPlayerPosition`
-* `Quality` has been renamed to `LiveryQuality`
-* `Player.PlaybackState` has been renamed to `LiveryPlaybackState`
-* `StreamPhase` has been renamed to `LiveryStreamPhase`
-* `ControlsOptions` has been renamed to `LiveryControlsOptions`
-* `LiverySDK.Errors` has been renamed to `LiveryErrors`
-* `PlayerInteractiveBridgeDelegate` has been renamed to `LiveryInteractiveBridgeCustomCommandDelegate`
-* `CustomCommandResult` has been renamed to `LiveryInteractiveBridgeCustomCommandResult`
+- `AudioSessionSettings` has been renamed to `LiveryAudioSessionSettings`
+- `PlayerDelegate` has been renamed to `LiveryPlayerDelegate`
+- `PlayerOptions` has been renamed to `LiveryPlayerOptions`
+- `PlayerFit` has been renamed to `LiveryPlayerFit`
+- `PlayerPosition` has been renamed to `LiveryPlayerPosition`
+- `Quality` has been renamed to `LiveryQuality`
+- `Player.PlaybackState` has been renamed to `LiveryPlaybackState`
+- `StreamPhase` has been renamed to `LiveryStreamPhase`
+- `ControlsOptions` has been renamed to `LiveryControlsOptions`
+- `LiverySDK.Errors` has been renamed to `LiveryErrors`
+- `PlayerInteractiveBridgeDelegate` has been renamed to `LiveryInteractiveBridgeCustomCommandDelegate`
+- `CustomCommandResult` has been renamed to `LiveryInteractiveBridgeCustomCommandResult`

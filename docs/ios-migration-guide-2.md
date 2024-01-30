@@ -1,4 +1,4 @@
-# [Livery Video iOS SDK](ios-sdk.md)
+# [Livery Video iOS SDK](/ios-sdk#migration-guide)
 
 ## Migration from 1.4.1 to 2.0.0
 

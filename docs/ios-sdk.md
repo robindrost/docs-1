@@ -527,6 +527,8 @@ Note:
 
 #### [Migration from 1.4.1 to 2.0.0](/ios-migration-guide-2#migration-from-141-to-200)
 
+#### [Migration from 2.1.0 to 3.0.0](/ios-migration-guide-3#migration-from-210-to-300)
+
 ## Example App
 
 Example iOS application which demonstrates how to use the Livery iOS SDK.<br>

@@ -319,7 +319,7 @@ Assign the on-prem encoder as an external monitor of the computer. Set OBS to St
 | Menu Item   | Property                         | Value                                                                                                                                                                                                           |
 | ----------- | -------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Destination | URL                              | rtmp://ingest.livery.live/live/app                                       |
-|             | Stream Key                       | Add the Stream Key as it is listed under Stream Details in the Livery Portal. |
+|             | Stream Key                       | Add the Stream Key as it is listed under Stream Details in the Livery Portal to the ingest URL. For example rtmp://ingest.livery.live/live/app/12345   |
 |             | Recommended resolution 1920x1080 |
 |             | Keyframe frequency               |  The Keyframe interaval should not be set to 0. It is recommended to match the segment size set in the Livery Encoder settings (default is 1)                                                                                                             |
 |             | Codec                            | H264                                                                       |

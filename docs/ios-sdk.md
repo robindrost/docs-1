@@ -158,7 +158,7 @@ enum LiveryErrors: LocalizedError {
 | Name                   | Type                                           | Default                        | Description                                                          |
 | ---------------------- | ---------------------------------------------- | ------------------------------ | -------------------------------------------------------------------- |
 | `sdkVersion`           | `String`                                       |                                | A getter to retrieve the SDK version.                                |
-| `enableSentrySDK`      | `Bool`                                         | `true`                         | A Boolean whose enables the use of the `SentrySDK` instance.         |
+| `enableSentrySDK`      | `Bool`                                         | `true`                         | A Bool which enables the use of the `SentrySDK` instance.            |
 | `audioSessionSettings` | [`LivertAudioSessionSettings`](#audio-session) | `LivertAudioSessionSettings()` | Property to store the `AVAudioSession` settings.                     |
 | `minimumDeviceSpace`   | `Int`                                          | `20000000`                     | Minimum device space in bytes required for the SDK to work properly. |
 
@@ -225,31 +225,31 @@ These are the `LiveryPlayerOptions` to be passed to when creating the LiveryPlay
 | Name                     | Type                                   | Default             | Description                                                                                                           |
 | ------------------------ | -------------------------------------- | ------------------- | --------------------------------------------------------------------------------------------------------------------- |
 | `akamaiLongToken`        | `String`                               | `nil`               | Access token to use to be able to see a stream that uses Akamai’s Token Auth feature                                  |
-| `autoplay`               | `Boolean`                              | `false`             | Determines whether video shall play immediately after [`createPlayer`](#create-player).                           |
-| `enablePictureInPicture` | `Boolean`                              | `false`             | Determines whether the Picture in Picture feature should be enabled or not. It is available only on iOS 15 or higher. |
+| `autoplay`               | `Bool`                                 | `false`             | Determines whether video shall play immediately after [`createPlayer`](#create-player).                               |
+| `enablePictureInPicture` | `Bool`                                 | `false`             | Determines whether the Picture in Picture feature should be enabled or not. It is available only on iOS 15 or higher. |
 | `fit`                    | [`LiveryPlayerFit`](#livery-player-fit)| `.contain`          | Determines how the video will be scaled and cropped. See: [`LiveryPlayerFit`](#livery-player-fit)                     |
-| `prePoster`              | `String`                               | `nil`               | URL for an image to be shown while the video is loading.                                                              |
+| `prePoster`              | `String`                               | `nil`               | URL for an image to be shown when in PRE streamPhase.                                                                 |
 | `poster`                 | `String`                               | `nil`               | URL for an image to be shown while the video is loading.                                                              |
-| `postPoster`             | `String`                               | `nil`               | URL for an image to be shown while the video is loading.                                                              |
+| `postPoster`             | `String`                               | `nil`               | URL for an image to be shown while in POST streamPhase.                                                               |
 | `sources`                | `String[]`                             | `[]`                | Array of media source URLs from which the first that can be played will be selected.                                  |
 | `targetLatency`          | `Integer`                              | `3`                 | Target live latency in seconds. If 0 then syncing is disabled.                                                        |
-| `audioOnly`               | `Boolean`                             | `false`             | Enabled [Audio Only Mode](#audio-only-mode).                                                                                              |
+| `audioOnly`              | `Bool`                                 | `false`             | Enabled [Audio Only Mode](#audio-only-mode).                                                                                              |
 
 ### Controls Options
 
 These are the `LiveryControlsOptions` properties to control the controls visibility:
 
-| Name         | Type      | Default | Description                                                                                                        |
-| ------------ | --------- | ------- | -------------------------------------------------------------------------------------------------------------------|
-| `play`       | `Boolean` | `false` | Determines whether play button should be displayed or not.                                                         |
-| `quality`    | `Boolean` | `false` | Determines whether select quality button should be displayed or not.                                               |
-| `scrubber`   | `Boolean` | `false` | Determines whether scrubber / progress bar view should be displayed or not.                                        |
-| `error`      | `Boolean` | `false` | Determines whether Error Overlay should be displayed or not.                                                       |
-| `fullscreen` | `Boolean` | `false` | Determines whether full screen button should be displayed or not.                                                  |
-| `mute`       | `Boolean` | `false` | Determines whether mute button should be displayed or not.                                                         |
-| `pip`        | `Boolean` | `false` | Determines whether Picture in Picture button should be displayed or not. It is available only on iOS 15 or higher. |
-| `contact`    | `Boolean` | `false` | Determines whether contact button should be displayed or not.                                                      |
-| `cast`       | `Boolean` | `false` | Determines whether cast button should be displayed or not.                                                         |
+| Name         | Type   | Default | Description                                                                                                        |
+| ------------ | ------ | ------- | -------------------------------------------------------------------------------------------------------------------|
+| `play`       | `Bool` | `false` | Determines whether play button should be displayed or not.                                                         |
+| `quality`    | `Bool` | `false` | Determines whether select quality button should be displayed or not.                                               |
+| `scrubber`   | `Bool` | `false` | Determines whether scrubber / progress bar view should be displayed or not.                                        |
+| `error`      | `Bool` | `false` | Determines whether Error Overlay should be displayed or not.                                                       |
+| `fullscreen` | `Bool` | `false` | Determines whether full screen button should be displayed or not.                                                  |
+| `mute`       | `Bool` | `false` | Determines whether mute button should be displayed or not.                                                         |
+| `pip`        | `Bool` | `false` | Determines whether Picture in Picture button should be displayed or not. It is available only on iOS 15 or higher. |
+| `contact`    | `Bool` | `false` | Determines whether contact button should be displayed or not.                                                      |
+| `cast`       | `Bool` | `false` | Determines whether cast button should be displayed or not.                                                         |
 
 ### Properties :id=player-properties
 

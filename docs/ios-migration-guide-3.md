@@ -4,7 +4,7 @@
 
 ### LiverySDK changes
 
-It is no longer necessary to hold an instance of `LiverySDK`, `LiverySDK` have static methods for initialization:
+It is no longer necessary to hold an instance of `LiverySDK`, `LiverySDK` now has static methods for initialization:
 
 ```swift
 LiverySDK.initialize(streamId: streamId) { error in
@@ -20,7 +20,7 @@ try await LiverySDK.initialize(streamId: streamId)
 
 `LiverySDK.Errors` was renamed to `LiveryErrors`
 
-`LiverySDK.ResultConfig` was removed and now `initialize` completion block receive a `LiveryErrors` in case of an error and `nil` otherwise.
+`LiverySDK.ResultConfig` was removed and now `initialize` completion block receives a `LiveryErrors` in case of an error and `nil` otherwise.
 
 In case of the `async/await` alternative, `initialize` throws a `LiveryErrors` in case of an error.
 

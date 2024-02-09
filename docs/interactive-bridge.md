@@ -12,6 +12,48 @@ Bridge for communicating between a Livery Video Player and the interactive layer
 
 ?> Test page with mock player bridge: with [interactive element](https://interactive-bridge.liveryvideo.com/?mock) or [interactive iframe](https://interactive-bridge.liveryvideo.com/?mock=iframe)
 
+<|title|>Livery Bridge Supported Commands<|title|>
+
+#Command Overview
+The Livery Bridge facilitates various types of commands for interaction between the Interactive Client and the underlying platform. These commands are categorized into GET, SUBSCRIBE, SET, and ACTION types, supporting a wide array of functionalities.
+
+| Name                | Type       | Description                                                                                   |
+|---------------------|------------|-----------------------------------------------------------------------------------------------|
+| getAppName          | GET        | Returns the base domain name on web and the package's name on native.                         |
+| getCustomerId       | GET        | Returns the customer id as used by the video backend.                                         |
+| getEndpointId       | GET        | Returns the end point id of the video backend.                                                |
+| getFeatures         | GET        | Returns promise of a registry of features supported by the player under given circumstances.  |
+| getLatency          | GET        | Returns the glass-to-glass latency of the video.                                              |
+| getLiveryParams     | GET        | Returns the query parameters added to the URL.                                                |
+| getPlayback         | GET        | Returns promise of current playback details.                                                  |
+| getPlayerVersion    | GET        | Returns the version of the player SDK.                                                        |
+| getStreamId         | GET        | Returns the stream id used in the player.                                                     |
+| pause               | ACTION     | Pauses playback.                                                                              |
+| play                | ACTION     | Attempt to start or resume playback.                                                          |
+| reload              | ACTION     | Reloads player.                                                                               |
+| seek                | ACTION     | Seek to a specified position in seconds since the start of the video.                         |
+| selectQuality       | SET        | Select quality at specified index of subscribeQualities list. -1 sets the player to use ABR.  |
+| setControlsDisabled | SET        | Change value to TRUE to disable all default player controls and implement your own instead.   |
+| setDisplay          | SET        | Attempt to change display mode to specified value.                                            |
+| setMuted            | SET        | Attempt to change muted state to specified value.                                             |
+| submitUserFeedback  | SET        | Uses the player’s Sentry API to submit user feedback.                                         |
+| subscribeConfig     | SUBSCRIBE  | Returns promise of Livery stream config, can change with server side updates or when streamId is changed. |
+| subscribeDisplay    | SUBSCRIBE  | Returns current display mode and future changes to the value.                                 |
+| subscribeError      | SUBSCRIBE  | Returns current player error message or undefined and future changes to the value.            |
+| subscribeFullscreen | SUBSCRIBE  | Returns TRUE or FALSE indicating if the player is in full screen mode and updates when the value changes. |
+| subscribeMode       | SUBSCRIBE  | Returns the type of PlaybackMode and future updates to the value.                             |
+| subscribeMuted      | SUBSCRIBE  | Returns TRUE or FALSE indicating if the audio is muted and updates when the value changes.    |
+| subscribeOrientation| SUBSCRIBE  | Returns the orientation of the device and updates when the value changes.                     |
+| subscribePaused     | SUBSCRIBE  | Returns true if playbackState equals 'ENDED' | 'PAUSED'.                                      |
+| subscribePlaybackState | SUBSCRIBE | Returns the PlaybackState of the player and future updates to the value.                      |
+| subscribePlaying    | SUBSCRIBE  | Returns TRUE if playbackState equals: FAST_FORWARD, PLAYING, REWIND, SLOW_MO and future updates to the value. |
+| subscribeQualities  | SUBSCRIBE  | Returns the available qualities of the video and future updates to the value.                 |
+| subscribeQuality    | SUBSCRIBE  | Returns the current quality of the video and future updates to the value.                     |
+| subscribeStalled    | SUBSCRIBE  | Returns true if playbackState equals BUFFERING or SEEKING and future updates to the value.    |
+| subscribeStreamPhase| SUBSCRIBE  | Returns the stream phase (PRE, LIVE, POST) and future updates to the value.                   |
+| subscribeAuthToken  | SUBSCRIBE  |                                                                                               |
+
+
 ## Support
 
 This package exports two bundles.

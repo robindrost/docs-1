@@ -12,9 +12,7 @@ Bridge for communicating between a Livery Video Player and the interactive layer
 
 ?> Test page with mock player bridge: with [interactive element](https://interactive-bridge.liveryvideo.com/?mock) or [interactive iframe](https://interactive-bridge.liveryvideo.com/?mock=iframe)
 
-<|title|>Livery Bridge Supported Commands<|title|>
-
-#Command Overview
+# Command Overview
 The Livery Bridge facilitates various types of commands for interaction between the Interactive Client and the underlying platform. These commands are categorized into GET, SUBSCRIBE, SET, and ACTION types, supporting a wide array of functionalities.
 
 | Name                | Type       | Description                                                                                   |

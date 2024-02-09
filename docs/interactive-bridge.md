@@ -49,8 +49,6 @@ The Livery Bridge facilitates various types of commands for interaction between 
 | subscribeQuality    | SUBSCRIBE  | Returns the current quality of the video and future updates to the value.                     |
 | subscribeStalled    | SUBSCRIBE  | Returns true if playbackState equals BUFFERING or SEEKING and future updates to the value.    |
 | subscribeStreamPhase| SUBSCRIBE  | Returns the stream phase (PRE, LIVE, POST) and future updates to the value.                   |
-| subscribeAuthToken  | SUBSCRIBE  |                                                                                               |
-
 
 ## Support
 

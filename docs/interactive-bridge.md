@@ -42,6 +42,4 @@ Or load from [jsdelivr](https://jsdelivr.com):
 
 ## Exports
 
-Please refer to our [tsdocs API](https://tsdocs.dev/docs/@liveryvideo/interactive-bridge/modules.html) for documentation of the exports of current and past versions of the interactive-bridge package.
-
-**Note:** When using the UMD bundle, the documented exports can be found as properties of `livery` in the global namespace, e.g: `livery.version`.
+Please find the exports in the generated [API](interactive-bridge-api.md) documentation.

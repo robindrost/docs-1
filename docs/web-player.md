@@ -69,7 +69,7 @@ import '@liveryvideo/player';
 
 ?> Replace the Livery Demo stream id (`5ddb98f5e4b0937e6a4507f2`) above by your own.
 
-Please see the [LiveryPlayer](#liveryplayer) API documentation below for additional attributes etc.
+Please see the `LiveryPlayer` API documentation under [Exports](#exports) below for additional attributes etc.
 
 ### CSS
 
@@ -96,6 +96,56 @@ See also: [MDN object-fit](https://developer.mozilla.org/en-US/docs/Web/CSS/obje
 Please refer to our [tsdocs API](https://tsdocs.dev/docs/@liveryvideo/player/modules.html) for documentation of the exports of current and past versions of the web player package.
 
 **Note:** When using the UMD bundle, the documented exports can be found as properties of `livery` in the global namespace, e.g: `livery.version`.
+
+## Custom Controls
+
+The default player controls can be disabled by changing the `LiveryPlayer` `controlsDisabled` attribute to `true` directly or via the `InteractiveBridge` `setControlsDisabled()` method.
+
+You can subsequently implement custom controls using the `LiveryPlayer` or `InteractiveBridge` API.
+
+General guidelines based on the `LiveryPlayer` API (the `InteractiveBridge` API is similar):
+
+- Wait for loading to finish (e.g: for `config` to be defined)
+- Only show playback controls when video is available (i.e: `config?.streamPhase === 'LIVE'`)
+- Only use supported `features`
+- Respect which `config?.controls` are enabled and disabled
+- Show controls when active and hide them again after a timeout of around 1.8s
+  - Besides actively using controls (e.g: showing quality selection dialog)
+  - Consider hovering as activity with pointer devices and keyboard focus with keyboard inputs
+  - In addition to tapping or clicking anywhere in your preferred controls area
+  - Immediately hide controls when pointer hover or keyboard focus leaves the player
+
+More specifically, from bottom to top the following layers/controls should be shown on top of the video player:
+
+- While `!config || stalled` show a loading overlay
+  - With custom controls in the interactive layer render this below your interactive content
+- Interactive layer
+  - Shown by the interactive element/page within the player as configured by the server
+- While `(config?.controls.error ?? true) && !!error` show an error dialog with `error.message` and:
+  - A reload button bound to `reload()`
+  - If `features.contact && controls.contact` then show a link to the contact form in the info dialog
+  - Note: Not just when error control is enabled, but also when config has not loaded (yet) and there is an error (e.g: loading config)
+- While `!navigator.onLine` show an offline overlay
+- While `!!config && muted && (!config.controls.mute || userMuted !== 'MUTED')` show a dialog with a big unmute button
+  - Where `userMuted: 'UNSPECIFIED' | 'MUTED' | 'UNMUTED'` corresponding to your use of `setMuted()`
+    - The player persists this to storage and so should you
+- While `config?.streamPhase === 'LIVE' && paused && (!config.controls.play || userPaused !== 'PAUSED')` show a dialog with a big play button
+  - Where `userPaused: 'UNSPECIFIED' | 'PAUSED' | 'UNPAUSED'` corresponding to your use of `pause()` and `play()`
+- While `features.scrubber && config?.streamPhase === 'LIVE' && config.controls.scrubber` show scrubber:
+  - _(to be specified, e.g: using playback details and `seek()`)_
+- While `config?.streamPhase === 'LIVE' && config.controls.play` show a pause toggle button using `paused` and `play()` or `pause()`
+- While `config?.controls.mute` show a mute toggle button using `muted` and `setMuted()`
+- While `features.volume && config?.controls.mute` show a volume slider using `volume`
+- While `config?.streamPhase === 'LIVE' && config.controls.quality` show a `qualities.list` toggle:
+  - Highlighting the `qualities.active` and `qualities.selected` qualities
+  - Enabling selecting one of those or the automatic quality selection (`-1`) using `selectQuality()`
+- While `features.pip && config?.controls.pip` show a picture-in-picture toggle button using `display` and `setDisplay('PIP' | 'DEFAULT')`
+- While `features.fullscreen && config?.controls.fullscreen` show a fullscreen toggle button using `display` and `setDisplay('FULLSCREEN' | 'DEFAULT')`
+- While `features.airplay && config?.controls.airplay` show an Airplay toggle button using `display` and `setDisplay('AIRPLAY' | 'DEFAULT')`
+- While `features.chromecast && config?.controls.chromecast` show a Chromecast toggle button using `display` and `setDisplay('CHROMECAST' | 'DEFAULT')`
+- Enable showing an info dialog (currently shown on player/controls right click) with:
+  - Livery player `version` from package
+  - While `features.contact && config?.controls.contact` show a contact form bound to `submitUserFeedback()`
 
 ## Integrations
 

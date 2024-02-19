@@ -85,7 +85,7 @@ The Livery players connect to the following domains. The domains need to be whit
 
 #### RTMP/SRT
 
-- ingest.liveryvideo.com
+- ingest.livery.live
 
 #### Portal
 

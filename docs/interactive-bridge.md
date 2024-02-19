@@ -42,4 +42,4 @@ Or load from [jsdelivr](https://jsdelivr.com):
 
 ## Exports
 
-Please find the exports in the generated [API](interactive-bridge-api.md) documentation.
+API documentation is included in the NPM package and can be viewed here: [API](/interactive-bridge-api/)

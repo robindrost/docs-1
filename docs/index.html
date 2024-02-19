@@ -40,6 +40,20 @@
         requestHeaders: {
           'cache-control': 'no-cache',
         },
+        auto2top: true,
+        relativePath: true,
+        alias: {
+          '/.*/_sidebar.md': '/_sidebar.md',
+        },
+        routes: {
+          '/interactive-bridge-api/(.*)': (route, matched, next) => {
+            console.log('route', { route, matched });
+            // fetch(`https://cdn.jsdelivr.net/npm/@liveryvideo/${matched[1]}`)
+            fetch(`http://127.0.0.1:52202/dist/${matched[1] || 'index'}.md`)
+              .then((response) => response.text())
+              .then(next);
+          },
+        },
       };
     </script>
 

@@ -1,14 +1,16 @@
 # Livery Video Web Player
 
 [![npm package](https://img.shields.io/npm/v/@liveryvideo/player.svg?logo=npm)](https://www.npmjs.com/package/@liveryvideo/player)
-[![conventional CHANGELOG](https://img.shields.io/badge/conventional-CHANGELOG-FE5196.svg?logo=conventionalcommits)](web-player-changelog.md)
-[![tsdocs API](https://img.shields.io/badge/tsdocs-API-3178C6.svg?logo=typescript)](https://tsdocs.dev/docs/@liveryvideo/player/modules.html)
+[![conventional CHANGELOG](https://img.shields.io/badge/conventional-CHANGELOG-FE5196.svg?logo=conventionalcommits)](/npm/player/CHANGELOG)
+[![tsdoc API](https://img.shields.io/badge/tsdoc-API-3178C6.svg?logo=typescript)](/npm/player/dist/)
 [![Lit built with](https://img.shields.io/badge/Lit-Elements-324FFF.svg?logo=lit)](https://lit.dev/)
 [![license MIT](https://img.shields.io/npm/l/@liveryvideo/player.svg?color=808080&logo=unlicense)](https://cdn.jsdelivr.net/npm/@liveryvideo/player/LICENSE)
 
 Livery video player for use in web browsers.
 
 ?> Demo can be found at: [demo.liveryvideo.com](https://demo.liveryvideo.com) ([source](https://github.com/liveryvideo/demo-web)).
+
+?> Detailed documentation of the exported API is included in the NPM package and can be viewed here: [API](/npm/player/dist/).
 
 Please refer to the [Livery Management Portal](https://video-encoder-director.playtotv.com/) for stream configuration options.
 
@@ -43,7 +45,7 @@ The player can be loaded from [jsdelivr](https://jsdelivr.com):
 <script src="https://cdn.jsdelivr.net/npm/@liveryvideo/player@x.y.z"></script>
 ```
 
-?> Replace the version (`x.y.z`) above by the player version that you wish to use. E.g: update to latest stable release periodically. Please see the [CHANGELOG](web-player-changelog.md) for details.
+?> Replace the version (`x.y.z`) above by the player version that you wish to use. E.g: update to latest stable release periodically. Please see the [CHANGELOG](/npm/player/CHANGELOG) for details.
 
 ### NPM
 
@@ -69,7 +71,7 @@ import '@liveryvideo/player';
 
 ?> Replace the Livery Demo stream id (`5ddb98f5e4b0937e6a4507f2`) above by your own.
 
-Please see the `LiveryPlayer` API documentation under [Exports](#exports) below for additional attributes etc.
+Please see the [LiveryPlayer](/npm/player/dist/classes/LiveryPlayer) API documentation for additional attributes etc.
 
 ### CSS
 
@@ -90,12 +92,6 @@ See also: [MDN Sizing items in CSS](https://developer.mozilla.org/en-US/docs/Lea
 When you use a fixed height like this the video contents of the player will be fitted inside the available space based on the `Fit` mode configured in the Livery Portal for this stream (e.g: `CONTAIN` or `COVER` or ..).
 
 See also: [MDN object-fit](https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit)
-
-## Exports
-
-Please refer to our [tsdocs API](https://tsdocs.dev/docs/@liveryvideo/player/modules.html) for documentation of the exports of current and past versions of the web player package.
-
-**Note:** When using the UMD bundle, the documented exports can be found as properties of `livery` in the global namespace, e.g: `livery.version`.
 
 ## Custom Controls
 

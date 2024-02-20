@@ -44,7 +44,8 @@ This supports the following query parameters:
 The `bridge` and `v` query parameters are NPM package version selector strings that default to: `latest`.
 
 Parameter examples:
-* [?v=1.0.0&region=eu&tenantid=123abc](https://embed.livery.live/interactive/?v=1.0.0&region=eu&tenantid=123abc) -- E.g. for use by native players in a WebView or third party players in an iframe
-* [?test&bridge=1.9.0](https://embed.livery.live/interactive/?test&bridge=1.9.0) -- For native player devs to test with specified version of interactive bridge
-* [?mock&v=1.0.0](https://embed.livery.live/interactive/?mock&v=1.0.0) -- For interactive devs to test specified version of their element without a player
-* [?mock&test&bridge=1.9.0&region=eu&tenantid=123abc](https://embed.livery.live/interactive/?mock&test&bridge=1.9.0&region=eu&tenantid=123abc) -- For bridge devs to test a specified version
+
+- [?v=1.0.0&region=eu&tenantid=123abc](https://embed.livery.live/interactive/?v=1.0.0&region=eu&tenantid=123abc) -- E.g. for use by native players in a WebView or third party players in an iframe
+- [?test&bridge=1.9.0](https://embed.livery.live/interactive/?test&bridge=1.9.0) -- For native player devs to test with specified version of interactive bridge
+- [?mock&v=1.0.0](https://embed.livery.live/interactive/?mock&v=1.0.0) -- For interactive devs to test specified version of their element without a player
+- [?mock&test&bridge=1.9.0&region=eu&tenantid=123abc](https://embed.livery.live/interactive/?mock&test&bridge=1.9.0&region=eu&tenantid=123abc) -- For bridge devs to test a specified version

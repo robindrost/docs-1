@@ -27,33 +27,65 @@
     <div id="app"></div>
 
     <script>
+      const fetchText = (url) => fetch(url).then((response) => response.text());
+
+      const deprecated = (path) =>
+        `# Deprecated page\nPlease use the following path instead: [${path}](${path})`;
+
       window.$docsify = {
-        name: 'Livery Video Docs',
-        logo: 'logo.png',
-        routerMode: 'history',
+        alias: {
+          '/.*/_sidebar.md': '/_sidebar.md',
+        },
+        auto2top: true,
         loadSidebar: true,
-        subMaxLevel: 3,
+        logo: 'logo.png',
+        name: 'Livery Video Docs',
+        nameLink: '/',
+        relativePath: true,
+        requestHeaders: {
+          'cache-control': 'no-cache',
+        },
+        routerMode: 'history',
+        routes: {
+          // Load markdown from one of our @liveryvideo/* NPM packages
+          '/npm/(.*)': (route, matched, next) => {
+            let path = matched[1];
+            if (path.endsWith('/')) {
+              path += 'index';
+            }
+            fetchText(
+              `https://cdn.jsdelivr.net/npm/@liveryvideo/${path}.md`,
+            ).then(next);
+          },
+
+          // Deprecated pages
+          '/interactive-bridge-changelog': () =>
+            deprecated('/npm/interactive-bridge/CHANGELOG'),
+          '/interactive-sdk': () => deprecated('/interactive-bridge'),
+          '/interactive-sdk-changelog': () =>
+            deprecated('/npm/interactive-bridge/CHANGELOG'),
+          '/web-player-changelog': () => deprecated('/npm/player/CHANGELOG'),
+          '/web-sdk': () => deprecated('/web-player'),
+          '/web-sdk-changelog': () => deprecated('/npm/player/CHANGELOG'),
+
+          // Work around notFoundPage not working with routerMode history and server returning index.html instead of 404
+          '.*': (route, matched, next) => {
+            fetchText(`${route}.md`).then((text) => {
+              if (text.startsWith('<!DOCTYPE html>')) {
+                fetch('_404.md')
+                  .then((response) => response.text())
+                  .then(next);
+              } else {
+                next(text);
+              }
+            });
+          },
+        },
         search: {
           namespace: 'livery-video-docs',
           depth: 6,
         },
-        requestHeaders: {
-          'cache-control': 'no-cache',
-        },
-        auto2top: true,
-        relativePath: true,
-        alias: {
-          '/.*/_sidebar.md': '/_sidebar.md',
-        },
-        routes: {
-          '/interactive-bridge-api/(.*)': (route, matched, next) => {
-            console.log('route', { route, matched });
-            // fetch(`https://cdn.jsdelivr.net/npm/@liveryvideo/${matched[1]}`)
-            fetch(`http://127.0.0.1:52202/dist/${matched[1] || 'index'}.md`)
-              .then((response) => response.text())
-              .then(next);
-          },
-        },
+        subMaxLevel: 3,
       };
     </script>
 

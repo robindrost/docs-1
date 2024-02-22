@@ -56,15 +56,6 @@
         },
         routerMode: 'history',
         routes: {
-          // Local testing override
-          '/npm/interactive-bridge/(.*)': (route, matched, next) => {
-            let path = matched[1];
-            if (path.endsWith('/')) {
-              path += 'index';
-            }
-            fetchText(`http://127.0.0.1:60954/${path}.md`).then(next);
-          },
-
           // Load markdown from one of our @liveryvideo/* NPM packages
           '/npm/(.*)': (route, matched, next) => {
             let path = matched[1];

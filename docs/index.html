@@ -70,15 +70,17 @@
 
           // Work around notFoundPage not working with routerMode history and server returning index.html instead of 404
           '.*': (route, matched, next) => {
-            fetchText(`${route}.md`).then((text) => {
-              if (text.startsWith('<!DOCTYPE html>')) {
-                fetch('_404.md')
-                  .then((response) => response.text())
-                  .then(next);
-              } else {
-                next(text);
-              }
-            });
+            fetchText(`${route === '/' ? '/README' : route}.md`).then(
+              (text) => {
+                if (text.startsWith('<!DOCTYPE html>')) {
+                  fetch('_404.md')
+                    .then((response) => response.text())
+                    .then(next);
+                } else {
+                  next(text);
+                }
+              },
+            );
           },
         },
         search: {

@@ -27,7 +27,10 @@
     <div id="app"></div>
 
     <script>
-      const fetchText = (url) => fetch(url).then((response) => response.text());
+      const fetchText = (url) =>
+        fetch(url, {
+          headers: window.$docsify.requestHeaders,
+        }).then((response) => response.text());
 
       const deprecated = (path) =>
         `# Deprecated page\nPlease use the following path instead: [${path}](${path})`;

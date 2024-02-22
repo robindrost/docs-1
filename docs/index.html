@@ -27,9 +27,12 @@
     <div id="app"></div>
 
     <script>
+      const dev = window.location.origin === 'http://127.0.0.1:8080';
+
       const fetchText = (url) =>
         fetch(url, {
-          headers: window.$docsify.requestHeaders,
+          // From local dev server don't use headers to work around CORS
+          headers: dev ? {} : window.$docsify.requestHeaders,
         }).then((response) => response.text());
 
       const deprecated = (path) =>
@@ -37,11 +40,14 @@
 
       window.$docsify = {
         alias: {
-          '/.*/_sidebar.md': '/_sidebar.md',
+          '/.*/_navbar.md': '/_navbar.md',
         },
         auto2top: true,
-        loadSidebar: true,
+        loadNavbar: true,
         logo: 'logo.png',
+        maxLevel: 3,
+        // TODO: Use this if we make nav bar too wide
+        mergeNavbar: true,
         name: 'Livery Video Docs',
         nameLink: '/',
         relativePath: true,
@@ -50,6 +56,15 @@
         },
         routerMode: 'history',
         routes: {
+          // Local testing override
+          '/npm/interactive-bridge/(.*)': (route, matched, next) => {
+            let path = matched[1];
+            if (path.endsWith('/')) {
+              path += 'index';
+            }
+            fetchText(`http://127.0.0.1:60954/${path}.md`).then(next);
+          },
+
           // Load markdown from one of our @liveryvideo/* NPM packages
           '/npm/(.*)': (route, matched, next) => {
             let path = matched[1];
@@ -76,9 +91,7 @@
             fetchText(`${route === '/' ? '/README' : route}.md`).then(
               (text) => {
                 if (text.startsWith('<!DOCTYPE html>')) {
-                  fetch('_404.md')
-                    .then((response) => response.text())
-                    .then(next);
+                  fetchText('_404.md').then(next);
                 } else {
                   next(text);
                 }
@@ -90,7 +103,6 @@
           namespace: 'livery-video-docs',
           depth: 6,
         },
-        subMaxLevel: 3,
       };
     </script>
 

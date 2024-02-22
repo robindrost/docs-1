@@ -1,6 +1,6 @@
 - Video
-  - [Video Portal](/video-portal.md 'Livery Video Management Portal')
-  - [Video Ingest](/video_ingest.md 'Livery Video Ingest')
+  - [Portal](/video-portal.md 'Livery Video Management Portal')
+  - [Ingest](/video_ingest.md 'Livery Video Ingest')
   - [Android SDK](/android-sdk.md 'Livery Video Android SDK')
   - [iOS SDK](/ios-sdk.md 'Livery Video iOS SDK')
   - [Web Player](/web-player.md 'Livery Video Web Player')
@@ -8,13 +8,13 @@
   - [·· Changelog](/npm/player/CHANGELOG 'Livery Video Web Player Changelog')
   - [Embed](/embed.md 'Livery Video Embed')
   - [Security](/security.md 'Livery Security Features')
-  - [Video Customer API](/customer-video-api.md 'Livery Video Customer API')
+  - [Customer API](/customer-video-api.md 'Livery Video Customer API')
 - Interactive
-  - [Interactive Portal](/interactive-portal.md 'Livery Interactive Management Portal')
-  - [Interactive Bridge](/interactive-bridge.md 'Livery Video Interactive Bridge')
+  - [Portal](/interactive-portal.md 'Livery Interactive Management Portal')
+  - [Bridge](/interactive-bridge.md 'Livery Video Interactive Bridge')
   - [·· API](/npm/interactive-bridge/dist/ 'Livery Video Interactive Bridge API')
   - [·· Changelog](/npm/interactive-bridge/CHANGELOG 'Livery Video Interactive Bridge Changelog')
-  - [Interactive Customer API](/customer-interactive-api.md 'Livery Interactive Customer API')
+  - [Customer API](/customer-interactive-api.md 'Livery Interactive Customer API')
 - Misc
   - [Frictionless Login](/frictionless-login.md 'Frictionless Login')
   - [Livery Guides](/guides.md 'Livery Guides')

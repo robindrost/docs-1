@@ -36,7 +36,7 @@ The ‘Token Authentication Key’ is listed on the ‘Stream Details’ accessi
 <img src="security/Token-Auth-2.png" width="500"/>
 </p>
 
-The customer backend determines which users, logged in to the customer website, have access to the video stream. The customer backend generates tokens for these users using one of [Akamai's Token Auth software development kits (SDKs)](https://techdocs.akamai.com/adaptive-media-delivery/docs/generate-a-token-and-apply-it-to-content). The Akamai documentation explains how they use long and short tokens. With Livery we use a advanced version of Token Authentication which only uses long tokens. This allows you to deny access to users wihtout having to wait 24 hours, which would be the case when using the traditional setup.
+The customer backend determines which users, logged in to the customer website, have access to the video stream. The customer backend generates tokens for these users using one of [Akamai's Token Auth software development kits (SDKs)](https://techdocs.akamai.com/adaptive-media-delivery/docs/generate-a-token-and-apply-it-to-content). The Akamai documentation explains how they use long and short tokens. With Livery we use a advanced version of Token Authentication which only uses long tokens. This allows you to deny access to users without having to wait 24 hours, which would be the case when using the traditional setup.
 
 To generate the tokens, the backend needs the Token Authentication Key, which can be copied from the ‘Stream Detail’ page in the Livery Portal. The customer's backend then forwards these tokens to the customer application or website. When using one of the SDK's to generate a token, make sure to use these settings.
 
